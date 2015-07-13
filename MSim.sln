@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSim", "MSim\MSim.csproj", "{F5492DFF-DEAD-46B4-8CCA-1AAAB08D586E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSim.Tests", "MSim.Tests\MSim.Tests.csproj", "{2725D97D-AB1D-43CC-8898-913451DB0DBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSim.DAL", "MSim.DAL\MSim.DAL.csproj", "{376180FC-03DC-4739-A509-D1EAE735F3B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5492DFF-DEAD-46B4-8CCA-1AAAB08D586E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5492DFF-DEAD-46B4-8CCA-1AAAB08D586E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5492DFF-DEAD-46B4-8CCA-1AAAB08D586E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5492DFF-DEAD-46B4-8CCA-1AAAB08D586E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2725D97D-AB1D-43CC-8898-913451DB0DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2725D97D-AB1D-43CC-8898-913451DB0DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2725D97D-AB1D-43CC-8898-913451DB0DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2725D97D-AB1D-43CC-8898-913451DB0DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{376180FC-03DC-4739-A509-D1EAE735F3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{376180FC-03DC-4739-A509-D1EAE735F3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{376180FC-03DC-4739-A509-D1EAE735F3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{376180FC-03DC-4739-A509-D1EAE735F3B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

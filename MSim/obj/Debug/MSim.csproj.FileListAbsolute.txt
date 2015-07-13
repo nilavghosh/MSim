@@ -1,0 +1,150 @@
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x86.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\MSim.dll.config
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\MSim.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\MSim.pdb
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Antlr3.Runtime.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\EntityFramework.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\EntityFramework.SqlServer.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.DependencyCollector.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.Web.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Web.TelemetryChannel.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Google.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Web.Infrastructure.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Newtonsoft.Json.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Owin.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Net.Http.Formatting.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Helpers.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Http.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Http.Owin.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Http.WebHost.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Mvc.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Optimization.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Razor.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.WebPages.Deployment.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.WebPages.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.WebPages.Razor.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\WebGrease.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Antlr3.Runtime.pdb
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\EntityFramework.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\EntityFramework.SqlServer.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.DependencyCollector.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.Web.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.ApplicationInsights.Web.TelemetryChannel.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Google.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\Newtonsoft.Json.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Net.Http.Formatting.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Helpers.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Http.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Http.Owin.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Http.WebHost.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Mvc.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Optimization.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.Razor.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.WebPages.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.WebPages.Deployment.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\bin\System.Web.WebPages.Razor.xml
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\obj\Debug\MSim.csprojResolveAssemblyReference.cache
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\obj\Debug\MSim.dll
+c:\users\nilav\documents\visual studio 2013\Projects\MSim\MSim\obj\Debug\MSim.pdb
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x86.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\MSim.dll.config
+C:\Learning\MSim\Development\MSim\MSim\bin\MSim.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\MSim.pdb
+C:\Learning\MSim\Development\MSim\MSim\bin\Antlr3.Runtime.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\EntityFramework.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\EntityFramework.SqlServer.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.DependencyCollector.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.Web.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Web.TelemetryChannel.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Google.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Web.Infrastructure.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Newtonsoft.Json.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Owin.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Net.Http.Formatting.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Helpers.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Http.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Http.Owin.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Http.WebHost.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Mvc.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Optimization.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Razor.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.Deployment.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.Razor.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\WebGrease.dll
+C:\Learning\MSim\Development\MSim\MSim\bin\Antlr3.Runtime.pdb
+C:\Learning\MSim\Development\MSim\MSim\bin\EntityFramework.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\EntityFramework.SqlServer.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.DependencyCollector.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Extensibility.Web.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.ApplicationInsights.Web.TelemetryChannel.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Google.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\Newtonsoft.Json.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Net.Http.Formatting.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Helpers.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Http.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Http.Owin.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Http.WebHost.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Mvc.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Optimization.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.Razor.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.Deployment.xml
+C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.Razor.xml
+C:\Learning\MSim\Development\MSim\MSim\obj\Debug\MSim.csprojResolveAssemblyReference.cache
+C:\Learning\MSim\Development\MSim\MSim\obj\Debug\MSim.dll
+C:\Learning\MSim\Development\MSim\MSim\obj\Debug\MSim.pdb
