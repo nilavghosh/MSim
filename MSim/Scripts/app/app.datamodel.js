@@ -4,6 +4,7 @@
     self.userInfoUrl = "/api/Me";
     self.siteUrl = "/";
     self.fmcgApiUrl = "/api/fmcg/SubmitChannelPartner"
+    self.fmcgAdminUrl = "/api/fmcg"
     // Route operations
 
     // Other private operations

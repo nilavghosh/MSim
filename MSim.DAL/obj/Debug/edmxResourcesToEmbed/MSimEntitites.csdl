@@ -61,17 +61,6 @@
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
     <NavigationProperty Name="ChannelPartnerManagements" Relationship="MSimModel.FK_ChannelPartnerManagement_AspNetUsers" FromRole="AspNetUser" ToRole="ChannelPartnerManagement" />
   </EntityType>
-  <EntityType Name="ChannelPartnerManagement">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="PTD" Type="Int32" />
-    <Property Name="DistributorMargin" Type="Int32" />
-    <Property Name="RetailerMargin" Type="Int32" />
-    <NavigationProperty Name="AspNetUser" Relationship="MSimModel.FK_ChannelPartnerManagement_AspNetUsers" FromRole="ChannelPartnerManagement" ToRole="AspNetUser" />
-  </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -110,7 +99,6 @@
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-    <EntitySet Name="ChannelPartnerManagements" EntityType="Self.ChannelPartnerManagement" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -123,11 +111,23 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="ChannelPartnerManagements" EntityType="MSimModel.ChannelPartnerManagement" />
     <AssociationSet Name="FK_ChannelPartnerManagement_AspNetUsers" Association="MSimModel.FK_ChannelPartnerManagement_AspNetUsers">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="ChannelPartnerManagement" EntitySet="ChannelPartnerManagements" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ChannelPartnerManagement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PTD" Type="Int32" />
+    <Property Name="DistributorMargin" Type="Int32" />
+    <Property Name="RetailerMargin" Type="Int32" />
+    <NavigationProperty Name="AspNetUser" Relationship="MSimModel.FK_ChannelPartnerManagement_AspNetUsers" FromRole="ChannelPartnerManagement" ToRole="AspNetUser" />
+  </EntityType>
   <Association Name="FK_ChannelPartnerManagement_AspNetUsers">
     <End Type="MSimModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
     <End Type="MSimModel.ChannelPartnerManagement" Role="ChannelPartnerManagement" Multiplicity="*" />

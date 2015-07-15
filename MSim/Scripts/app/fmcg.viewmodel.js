@@ -7,16 +7,29 @@ IssuesFlaggedData = function () {
     };
 }
 
+FMCGAdminDataModel = function () {
+    return {
+        Result: ko.observable(""),
+        Player1Name: ko.observable(""),
+        Player2Name: ko.observable(""),
+        Player1Value: ko.observable(""),
+        Player2Value: ko.observable("")
+    };
+}
+
+
 function FmcgViewModel(app, dataModel) {
     var self = this;
 
     self.FMCGData = new IssuesFlaggedData();
+    self.FMCGAdmin = new FMCGAdminDataModel();
 
     Sammy(function () {
         this.get('#/ManagingChannelPartner', function () {
             $(".view").hide();
             $("#fmcg-channelpartnermanagement").show();
         });
+
         this.post('#/Save', function (context) {
             // Make a call to the protected Web API by passing in a Bearer Authorization Header
             $.ajax({
@@ -28,10 +41,28 @@ function FmcgViewModel(app, dataModel) {
                     'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
                 },
                 success: function (data) {
-                    self.myHometown('Your Hometown is : ' + data.hometown);
+                    pushMessage('info');
                 }
             });
         })
+
+        this.get('#/Admin', function (context) {
+            $(".view").hide();
+            $("#fmcg-admin").show();
+            $.ajax({
+                method: 'get',
+                url: app.dataModel.fmcgAdminUrl,
+                contentType: "application/json; charset=utf-8",
+                headers: {
+                    'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
+                },
+                success: function (data) {
+                    self.FMCGAdmin.Result(data);
+                    //self.myHometown('Your Hometown is : ' + data.hometown);
+                }
+            });
+        });
+
         //this.get('/', function () { this.app.runRoute('get', '#home') });
     });
 
@@ -43,3 +74,12 @@ app.addViewModel({
     bindingMemberName: "fmcg",
     factory: FmcgViewModel
 });
+
+function pushMessage(t) {
+    var mes = 'Info|Data Saved!';
+    $.Notify({
+        caption: mes.split("|")[0],
+        content: mes.split("|")[1],
+        type: t
+    });
+}

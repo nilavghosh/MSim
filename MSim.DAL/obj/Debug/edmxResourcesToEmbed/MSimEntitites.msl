@@ -57,17 +57,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChannelPartnerManagements">
-      <EntityTypeMapping TypeName="MSimModel.ChannelPartnerManagement">
-        <MappingFragment StoreEntitySet="ChannelPartnerManagement">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="PTD" ColumnName="PTD" />
-          <ScalarProperty Name="DistributorMargin" ColumnName="DistributorMargin" />
-          <ScalarProperty Name="RetailerMargin" ColumnName="RetailerMargin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <AssociationSetMapping Name="AspNetUserRoles" TypeName="MSimModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
       <EndProperty Name="AspNetRoles">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
@@ -76,5 +65,16 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="ChannelPartnerManagements">
+      <EntityTypeMapping TypeName="MSimModel.ChannelPartnerManagement">
+        <MappingFragment StoreEntitySet="ChannelPartnerManagement">
+          <ScalarProperty Name="RetailerMargin" ColumnName="RetailerMargin" />
+          <ScalarProperty Name="DistributorMargin" ColumnName="DistributorMargin" />
+          <ScalarProperty Name="PTD" ColumnName="PTD" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
