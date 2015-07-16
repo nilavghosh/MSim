@@ -9,11 +9,7 @@ IssuesFlaggedData = function () {
 
 FMCGAdminDataModel = function () {
     return {
-        Result: ko.observable(""),
-        Player1Name: ko.observable(""),
-        Player2Name: ko.observable(""),
-        Player1Value: ko.observable(""),
-        Player2Value: ko.observable("")
+        Result: ko.observableArray([]),
     };
 }
 

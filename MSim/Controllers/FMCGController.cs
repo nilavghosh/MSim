@@ -17,15 +17,14 @@ using MSim.DAL;
 
 namespace MSim.Controllers
 {
-    [Authorize]
     public class FMCGController : ApiController
     {
         private ApplicationUserManager _userManager;
 
 
         public FMCGController()
-        { 
-        
+        {
+
         }
 
         public FMCGController(ApplicationUserManager userManager)
@@ -46,22 +45,25 @@ namespace MSim.Controllers
         }
 
         // GET api/<controller>
-        public int Get()
+        public List<UserMarketShare> Get()
         {
             MSimEntities db = new MSimEntities();
             ResultData res = new ResultData();
-
+            List<UserMarketShare> marketShares = new List<UserMarketShare>();
             var entries = db.ChannelPartnerManagements;
-            int totalSum = 0;
-            entries.ToList().ForEach(entry => totalSum += (int)entry.PTD);
-            res.Player1Name = db.AspNetUsers.Where(user => user.Id == entries.ToList()[0].UserId).First().UserName;
-            res.Player2Name = db.AspNetUsers.Where(user => user.Id == entries.ToList()[1].UserId).First().UserName;
-            res.Player1Value = (int)entries.ToList()[0].PTD / totalSum * 100;
-            res.Player2Value = (int)entries.ToList()[1].PTD / totalSum * 100;
-            return 5;
+            double totalSum = 0.0;
+            entries.ToList().ForEach(entry => totalSum += (double)entry.PTD);
+            entries.ToList().ForEach(cpData =>
+            {
+                UserMarketShare mshare = new UserMarketShare();
+                mshare.UserName = cpData.AspNetUser.UserName;
+                mshare.MarketShare = ((int)cpData.PTD / totalSum) * 100.0;
+                marketShares.Add(mshare);
+            });
+            return marketShares;
         }
 
-       
+
 
 
         // POST api/<controller>
