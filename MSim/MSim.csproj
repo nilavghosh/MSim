@@ -293,6 +293,7 @@
     <Content Include="fonts\metro.ttf" />
     <Content Include="fonts\metro.eot" />
     <Content Include="Scripts\app\fmcg.viewmodel.js" />
+    <None Include="Properties\PublishProfiles\MSimulator.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

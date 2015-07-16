@@ -1,0 +1,10 @@
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\MSim.DAL.dll.config
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\MSim.DAL.dll
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\MSim.DAL.pdb
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\EntityFramework.dll
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\EntityFramework.xml
+C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Learning\MSim\Development\MSim\MSim.DAL\obj\Release\MSim.DAL.csprojResolveAssemblyReference.cache
+C:\Learning\MSim\Development\MSim\MSim.DAL\obj\Release\MSim.DAL.dll
+C:\Learning\MSim\Development\MSim\MSim.DAL\obj\Release\MSim.DAL.pdb
