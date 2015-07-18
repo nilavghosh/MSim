@@ -1,4 +1,4 @@
-*.suo
+﻿*.suo
 MSim/bin/*
 MSim/obj/*
 MSim.DAL/bin/*
