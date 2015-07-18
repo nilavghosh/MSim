@@ -19,8 +19,7 @@ namespace MSim
 
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                 "~/Scripts/knockout-{version}.js",
-                "~/Scripts/knockout.validation.js",
-                "~/Scripts/pager.js"));
+                "~/Scripts/knockout.validation.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/metroui").Include(
                 "~/Scripts/metro.js"));

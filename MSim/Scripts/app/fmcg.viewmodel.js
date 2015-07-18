@@ -22,8 +22,8 @@ function FmcgViewModel(app, dataModel) {
 
     Sammy(function () {
         this.get('#/ManagingChannelPartner', function () {
-            //$(".view").hide();
-            //$("#fmcg-channelpartnermanagement").show();
+            $(".view").hide();
+            $("#fmcg-channelpartnermanagement").show();
         });
 
         this.post('#/Save', function (context) {

@@ -224,6 +224,3 @@ C:\Learning\MSim\Development\MSim\MSim\bin\System.Web.WebPages.Razor.xml
 C:\Learning\MSim\Development\MSim\MSim\obj\Debug\MSim.csprojResolveAssemblyReference.cache
 C:\Learning\MSim\Development\MSim\MSim\obj\Debug\MSim.dll
 C:\Learning\MSim\Development\MSim\MSim\obj\Debug\MSim.pdb
-C:\Visual Studio Projects\MSim\MSim\bin\MSim.DAL.dll
-C:\Visual Studio Projects\MSim\MSim\bin\MSim.DAL.pdb
-C:\Visual Studio Projects\MSim\MSim\obj\Debug\MSim.csprojResolveAssemblyReference.cache
