@@ -1,7 +1,7 @@
 MSim.v12.suo
-/MSim/bin/
-/MSim/obj/
-/MSim.DAL/bin/
-/MSim.DAL/obj/
-/MSim.Tests/bin/
-/MSim.Tests/obj/
+/MSim/bin/*
+/MSim/obj/*
+/MSim.DAL/bin/*
+/MSim.DAL/obj/*
+/MSim.Tests/bin/*
+/MSim.Tests/obj/*
