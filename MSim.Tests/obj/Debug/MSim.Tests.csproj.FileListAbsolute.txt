@@ -108,5 +108,3 @@ C:\Learning\MSim\Development\MSim\MSim.Tests\bin\Debug\MSim.DAL.pdb
 C:\Learning\MSim\Development\MSim\MSim.Tests\obj\Debug\MSim.Tests.csprojResolveAssemblyReference.cache
 C:\Learning\MSim\Development\MSim\MSim.Tests\obj\Debug\MSim.Tests.dll
 C:\Learning\MSim\Development\MSim\MSim.Tests\obj\Debug\MSim.Tests.pdb
-C:\Visual Studio Projects\MSim\MSim.Tests\bin\Debug\MSim.DAL.dll
-C:\Visual Studio Projects\MSim\MSim.Tests\bin\Debug\MSim.DAL.pdb

@@ -5,6 +5,7 @@ C:\Visual Studio Projects\MSim\MSim.DAL\bin\Debug\EntityFramework.dll
 C:\Visual Studio Projects\MSim\MSim.DAL\bin\Debug\EntityFramework.SqlServer.dll
 C:\Visual Studio Projects\MSim\MSim.DAL\bin\Debug\EntityFramework.xml
 C:\Visual Studio Projects\MSim\MSim.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Visual Studio Projects\MSim\MSim.DAL\obj\Debug\MSim.DAL.csprojResolveAssemblyReference.cache
 C:\Visual Studio Projects\MSim\MSim.DAL\obj\Debug\MSim.DAL.dll
 C:\Visual Studio Projects\MSim\MSim.DAL\obj\Debug\MSim.DAL.pdb
 C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Debug\MSim.DAL.dll.config
