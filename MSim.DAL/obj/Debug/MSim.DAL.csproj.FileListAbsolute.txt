@@ -16,4 +16,3 @@ C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Debug\EntityFramework.xml
 C:\Learning\MSim\Development\MSim\MSim.DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Learning\MSim\Development\MSim\MSim.DAL\obj\Debug\MSim.DAL.dll
 C:\Learning\MSim\Development\MSim\MSim.DAL\obj\Debug\MSim.DAL.pdb
-C:\Learning\MSim\Development\MSim\MSim.DAL\obj\Debug\MSim.DAL.csprojResolveAssemblyReference.cache
