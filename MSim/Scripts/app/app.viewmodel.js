@@ -68,7 +68,7 @@
     };
 
     self.initialize = function () {
-        Sammy().run();
+        Sammy("#container").run();
     }
 }
 

@@ -20,10 +20,11 @@ function FmcgViewModel(app, dataModel) {
     self.FMCGData = new IssuesFlaggedData();
     self.FMCGAdmin = new FMCGAdminDataModel();
 
-    Sammy(function () {
+    Sammy(function (context) {
         this.get('#/ManagingChannelPartner', function () {
+            context.app.swap('');
             //$(".view").hide();
-            //$("#fmcg-channelpartnermanagement").show();
+            $("#fmcg-channelpartnermanagement").show();
         });
 
         this.post('#/Save', function (context) {
