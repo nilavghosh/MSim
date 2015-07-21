@@ -20,11 +20,15 @@ function FmcgViewModel(app, dataModel) {
     self.FMCGData = new IssuesFlaggedData();
     self.FMCGAdmin = new FMCGAdminDataModel();
 
-    Sammy(function (context) {
-        this.get('#/ManagingChannelPartner', function () {
+    Sammy("#container", function () {
+        this.get('#/ManagingChannelPartner', function (context) {
             context.app.swap('');
+            context.render("/fmcg/ChannelPartnerManagement", function (content) {
+                $("#container").html(content);
+                ko.applyBindings(app);
+            });
             //$(".view").hide();
-            $("#fmcg-channelpartnermanagement").show();
+            //$("#fmcg-channelpartnermanagement").show();
         });
 
         this.post('#/Save', function (context) {

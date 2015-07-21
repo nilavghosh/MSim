@@ -12,5 +12,11 @@ namespace MSim.Controllers
         {
             return View();
         }
+
+        public ActionResult Home()
+        {
+            return PartialView("~/Views/Home/_Home.cshtml");
+        }
+
     }
 }

@@ -232,6 +232,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FMCGController.cs" />
+    <Compile Include="Controllers\Services\FMCGServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -353,7 +354,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement.cshtml" />
+    <None Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement.cshtml" />
     <Content Include="Views\Industries\fmcg\Admin\Manage.cshtml" />
     <Content Include="Views\Industries\fmcg\Admin\ResultState.cshtml" />
   </ItemGroup>
