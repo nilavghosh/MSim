@@ -22,11 +22,12 @@ function FmcgViewModel(app, dataModel) {
 
     Sammy("#container", function () {
         this.get('#/ManagingChannelPartner', function (context) {
-            context.app.swap('');
-            context.render("/fmcg/ChannelPartnerManagement", function (content) {
-                $("#container").html(content);
-                ko.applyBindings(app);
-            });
+            app.templatename("fmcg_ChannelPartnerManagement");
+            //context.app.swap('');
+            //context.render("/fmcg/ChannelPartnerManagement", function (content) {
+            //    $("#container").html(content);
+            //    ko.applyBindings(app);
+            //});
             //$(".view").hide();
             //$("#fmcg-channelpartnermanagement").show();
         });

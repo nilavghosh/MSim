@@ -5,10 +5,10 @@
 
     Sammy("#container", function () {
         this.get('#home', function (context) {
-            context.app.swap('');
-            context.render("/home/home", function (content) {
-                $("#container").html(content);
-            });
+            //context.app.swap('');
+            //context.render("/home/home", function (content) {
+            //    $("#container").html(content);
+            //});
             // Make a call to the protected Web API by passing in a Bearer Authorization Header
             $.ajax({
                 method: 'get',

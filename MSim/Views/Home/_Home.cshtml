@@ -1,68 +1,77 @@
-﻿<!-- ko with: home -->
-<section data-bind="page: {id: 'start', title: 'Pager.js Demo Start'}" id="homepage" class="view">
-    <div class="tile-group quadro align-center-tiles">
-        <div class="tile-container">
-            <div class="tile bg-white" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label"><a href="#/ManagingChannelPartner">MANAGING CHANNEL PARTNER</a></span>
+﻿<div data-bind="template: { name: templatename}"></div>
+
+
+<script type="text/html" id="fmcgHome">
+    <!-- ko with: home -->
+    <section data-bind="page: {id: 'start', title: 'Pager.js Demo Start'}" id="homepage" class="view">
+        <div class="tile-group quadro align-center-tiles">
+            <div class="tile-container">
+                <div class="tile bg-white" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label"><a href="#/ManagingChannelPartner">MANAGING CHANNEL PARTNER</a></span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-violet" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">
-                        <span class="tile-label">MANAGING SALES TEAM</span>
-                        @*@Html.ActionLink("", "Index", "Help", new { area = "HelpPage" }, null)*@
-                    </span>
+                <div class="tile bg-violet" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">
+                            <span class="tile-label">MANAGING SALES TEAM</span>
+                            @*@Html.ActionLink("", "Index", "Help", new { area = "HelpPage" }, null)*@
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-emerald" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MANAGING PROMOTION</span>
+                <div class="tile bg-emerald" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">MANAGING PROMOTION</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-amber" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MANAGING PRODUCT</span>
+                <div class="tile bg-amber" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">MANAGING PRODUCT</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-cobalt" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">FINANCIAL REPORTS</span>
+                <div class="tile bg-cobalt" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">FINANCIAL REPORTS</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-brown" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MARKET RESEARCH REPORTS</span>
+                <div class="tile bg-brown" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">MARKET RESEARCH REPORTS</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-blue" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MAILBOX</span>
+                <div class="tile bg-blue" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">MAILBOX</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-red" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">HELP !!!</span>
+                <div class="tile bg-red" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">HELP !!!</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile bg-white" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">
-                        <a href="#/Admin">ADMIN</a>
-                    </span>
+                <div class="tile bg-white" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">
+                            <a href="#/Admin">ADMIN</a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- /ko -->
+    </section>
+    <!-- /ko -->
+</script>
 
+
+<script type="text/html" id="fmcg_ChannelPartnerManagement">
+    @Html.Partial("~/Views/Industries/fmcg/ChannelPartners/ChannelPartnerManagement.cshtml")
+</script>
