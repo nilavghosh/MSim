@@ -259,7 +259,6 @@
     <Content Include="Content\metro-icons.css" />
     <Content Include="Content\metro-icons.min.css" />
     <Content Include="Content\metro.css" />
-    <Content Include="Content\metro.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\1.jpg" />
     <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\2.jpg" />
@@ -310,7 +309,6 @@
     <Content Include="Scripts\knockout.validation.debug.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\metro.js" />
-    <Content Include="Scripts\metro.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pager.js" />
     <Content Include="Scripts\respond.js" />
