@@ -261,7 +261,13 @@
     <Content Include="Content\metro.css" />
     <Content Include="Content\metro.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Slides\Industries\fmcg\ProductManagement\2.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\1.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\2.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\3.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\Products\1.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\Products\2.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\Promotions\1.jpg" />
+    <Content Include="Content\Slides\Industries\fmcg\Sales\1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\metro.svg" />
@@ -317,7 +323,6 @@
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
-    <Content Include="Content\Slides\Industries\fmcg\ProductManagement\1.jpg" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -366,6 +371,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Slides\Industries\fmcg\Admin\" />
+    <Folder Include="Content\Slides\Industries\fmcg\FinancialReports\" />
     <Folder Include="Views\Industries\fmcg\FinancialReports\" />
     <Folder Include="Views\Sales\" />
   </ItemGroup>

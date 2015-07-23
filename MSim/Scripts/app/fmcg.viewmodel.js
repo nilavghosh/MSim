@@ -1,11 +1,13 @@
 ﻿
-IssuesFlaggedData = function () {
+ChannelPartnerDataModel = function () {
     return {
         PTD: ko.observable(""),
-        FlaggedInMPI: ko.observable(),
-        FlaggedInRCSA: ko.observable(),
+        DistributorMargin: ko.observable(""),
+        RetailerMargin: ko.observable(""),
     };
 }
+
+//http://stackoverflow.com/questions/18274976/make-bootstrap-well-semi-transparent
 
 FMCGAdminDataModel = function () {
     return {
@@ -17,7 +19,7 @@ FMCGAdminDataModel = function () {
 function FmcgViewModel(app, dataModel) {
     var self = this;
 
-    self.FMCGData = new IssuesFlaggedData();
+    self.FMCGData = new ChannelPartnerDataModel();
     self.FMCGAdmin = new FMCGAdminDataModel();
 
     Sammy("#container", function () {
