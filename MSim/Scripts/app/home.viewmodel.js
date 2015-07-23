@@ -5,11 +5,8 @@
 
     Sammy("#container", function () {
         this.get('#home', function (context) {
-            //context.app.swap('');
-            //context.render("/home/home", function (content) {
-            //    $("#container").html(content);
-            //});
-            // Make a call to the protected Web API by passing in a Bearer Authorization Header
+            app.templatename("fmcgHome");
+
             $.ajax({
                 method: 'get',
                 url: app.dataModel.userInfoUrl,
@@ -22,7 +19,7 @@
                 }
             });
         });
-        //this.get('/', function () { this.app.runRoute('get', '#home') });
+        this.get('/', function () { this.app.runRoute('get', '#home') });
         this.get('#/', function () { this.app.runRoute('get', '#home') });
     });
 

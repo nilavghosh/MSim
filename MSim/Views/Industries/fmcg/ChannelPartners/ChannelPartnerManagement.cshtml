@@ -1,32 +1,41 @@
-﻿<section id="fmcg-channelpartnermanagement" class="view">
+﻿<section>
     <!-- ko with: fmcg -->
-    <div class="grid">
-        <h3>Channel Partner Management</h3>
-        <div class="cells2">
-            <div class="cell">
+    <h3>Channel Partner Management</h3>
+    <br />
+    <div class="row">
+        <div class="col-md-7">
+            As a sales person, one of the things which need your utmost attention will be the channel. A simple Channel has been shown in Exhibit.1. There are many variation to this channel but the base remains whatever has been shown in the exhibit. Before entering into the channel partners, decide the company’s margin this is the profit which comes into the company’s accounts for taking care of overheads and all.
+
+            As a part of the exercise the participants will have to fix the company’s margin.
+
+            Distributor
+            As depicted in Exhibit.1 Distributor forms the first link of the supply chain. For a FMCG Company, a distributor plays a very essential role; as the company revenues depends on the billing amount done by the Distributor. In an actual scenario a distributor is concerned with his ROI which includes various factors like subsidies, claim settlements and distributor margin. However, for the simplicity of the game we have considered only distributor margin as a guiding factor.
+
+            Distributor margin is the margin which distributor keeps with him for selling the product. For example, if the Price to Distributor (PTD) is Rs.100 and the distributor margin is 5% then the Price to the Retailer (PTR) will be Rs. 105.
+
+            As a part of the exercise the participants will have to fix the distributor margin.
+
+        </div>
+        <div class="col-md-offset-1 col-md-4">
+            <div class="row">
                 <form class="form-horizontal" action="#/Save" method="post">
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">PTD</label>
-                        <div class="col-sm-10">
-                            <input type="text" data-bind="value: FMCGData.PTD" class="form-control" id="inputEmail3">
-                        </div>
+                        <label for="inputEmail3">PTD</label>
+                        <input type="text" data-bind="value: FMCGData.PTD" class="form-control" id="inputEmail3">
+
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Distributor Margin</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="inputPassword3" placeholder="in %">
-                        </div>
+                        <label for="inputPassword3">Distributor Margin</label>
+                        <input type="number" class="form-control" id="inputPassword3" placeholder="in %">
+
                     </div>
                     <div class="form-group">
-                        <label for="inputRetailerMargin3" class="col-sm-2 control-label">Retailer Margin</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="inputPassword3" placeholder="in %">
-                        </div>
+                        <label for="inputRetailerMargin3">Retailer Margin</label>
+                        <input type="number" class="form-control" id="inputPassword3" placeholder="in %">
+
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
                     </div>
                 </form>
             </div>

@@ -1,4 +1,8 @@
-﻿<div data-bind="template: { name: templatename}"></div>
+﻿<!-- Indicates a successful or positive action -->
+<form action="#home" method="get">
+    <button type="submit" class="btn btn-success">Back to Dashboard</button>
+</form>
+<div data-bind="template: { name: templatename}"></div>
 
 
 <script type="text/html" id="fmcgHome">
@@ -16,7 +20,7 @@
                     <div class="tile-content iconic">
                         <icon />
                         <span class="tile-label">
-                            <span class="tile-label">MANAGING SALES TEAM</span>
+                            <span class="tile-label"><a href="#/ManagingSalesTeam">MANAGING SALES TEAM</a></span>
                             @*@Html.ActionLink("", "Index", "Help", new { area = "HelpPage" }, null)*@
                         </span>
                     </div>
@@ -24,13 +28,13 @@
                 <div class="tile bg-emerald" data-role="tile">
                     <div class="tile-content iconic">
                         <icon />
-                        <span class="tile-label">MANAGING PROMOTION</span>
+                        <span class="tile-label"><a href="#/ManagingPromotions">MANAGING PROMOTION</a></span>
                     </div>
                 </div>
                 <div class="tile bg-amber" data-role="tile">
                     <div class="tile-content iconic">
                         <icon />
-                        <span class="tile-label">MANAGING PRODUCT</span>
+                        <span class="tile-label"><a href="#/ManagingProduct">MANAGING PRODUCT</a></span>
                     </div>
                 </div>
                 <div class="tile bg-cobalt" data-role="tile">
@@ -72,6 +76,21 @@
 </script>
 
 
-<script type="text/html" id="fmcg_ChannelPartnerManagement">
+<script type="text/html" id="fmcg-ChannelPartnerManagement">
     @Html.Partial("~/Views/Industries/fmcg/ChannelPartners/ChannelPartnerManagement.cshtml")
+</script>
+
+
+<script type="text/html" id="fmcg-SalesTeamManagement">
+    @Html.Partial("~/Views/Industries/fmcg/Sales/SalesTeamManagement.cshtml")
+</script>
+
+
+<script type="text/html" id="fmcg-ProductManagement">
+    @Html.Partial("~/Views/Industries/fmcg/Products/ProductManagement.cshtml")
+</script>
+
+
+<script type="text/html" id="fmcg-PromotionManagement">
+    @Html.Partial("~/Views/Industries/fmcg/Promotions/PromotionManagement.cshtml")
 </script>

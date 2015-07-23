@@ -1,0 +1,74 @@
+﻿<section>
+    <!-- ko with: fmcg -->
+    <h3>Promotion Management</h3>
+    <br />
+    <div class="row">
+        <div class="col-md-7">
+            With the rise of many brands, Promotion has become a necessary evil. A company has to promote their product through various means as it results in the more pull sales which corresponds to the better sale, better profit and it directly improves brand equity. The promotion has been classified in the two heads
+
+            ATL (Above the Line)
+
+            There are various ATL activities,However for the game we are considering only three ATL activities.
+
+            As a part of the exercise the participants will have to allocate the budget for ATL activities under each head.
+
+            BTL (Below the Line)
+
+            There are various BTL activities However for the game we are considering only three ATL activities.
+
+            As a part of the exercise the participants will have to allocate the budget for BTL activities under each head.
+        </div>
+        <div class="col-md-offset-1 col-md-4">
+            <div class="row">
+                <form class="form-horizontal" action="#/Save" method="post">
+                    <div class="form-group">
+                        <label>TV Advertisement</label>
+                        <input type="number" data-bind="value: FMCGData.PTD" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Newspaper</label>
+                        <input type="number" class="form-control" placeholder="in %">
+                    </div>
+                    <div class="form-group">
+                        <label>Hoardings</label>
+                        <input type="number" class="form-control" placeholder="in %">
+                    </div>
+                    <div class="form-group">
+                        <label>Total ATL Expense</label>
+                        <input type="number" class="form-control" placeholder="in %">
+                    </div>
+                </form>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <form class="form-horizontal" action="#/Save" method="post">
+                    <div class="form-group">
+                        <label>Promoters</label>
+                        <input type="number" data-bind="value: FMCGData.PTD" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Sampling</label>
+                        <input type="number" class="form-control" placeholder="in %" />
+                    </div>
+                    <div class="form-group">
+                        <label>In shop branding</label>
+                        <input type="number" class="form-control" placeholder="in %" />
+                    </div>
+                    <div class="form-group">
+                        <label>Total BTL Expense</label>
+                        <input type="number" class="form-control" placeholder="in %" />
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <form class="form-horizontal" action="#/Save" method="post">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</section>

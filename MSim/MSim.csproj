@@ -261,6 +261,7 @@
     <Content Include="Content\metro.css" />
     <Content Include="Content\metro.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Slides\Industries\fmcg\ProductManagement\2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\metro.svg" />
@@ -316,6 +317,7 @@
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
+    <Content Include="Content\Slides\Industries\fmcg\ProductManagement\1.jpg" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -354,15 +356,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement.cshtml" />
+    <Content Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement.cshtml" />
+    <None Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement-metroui.cshtml" />
     <Content Include="Views\Industries\fmcg\Admin\Manage.cshtml" />
     <Content Include="Views\Industries\fmcg\Admin\ResultState.cshtml" />
+    <Content Include="Views\Industries\fmcg\Sales\SalesTeamManagement.cshtml" />
+    <Content Include="Views\Industries\fmcg\Products\ProductManagement.cshtml" />
+    <Content Include="Views\Industries\fmcg\Promotions\PromotionManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Industries\fmcg\FinancialReports\" />
-    <Folder Include="Views\Industries\fmcg\Products\" />
-    <Folder Include="Views\Industries\fmcg\Promotions\" />
     <Folder Include="Views\Sales\" />
   </ItemGroup>
   <ItemGroup>
