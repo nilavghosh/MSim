@@ -22,14 +22,19 @@ function FmcgViewModel(app, dataModel) {
 
     Sammy("#container", function () {
         this.get('#/ManagingChannelPartner', function (context) {
-            app.templatename("fmcg_ChannelPartnerManagement");
-            //context.app.swap('');
-            //context.render("/fmcg/ChannelPartnerManagement", function (content) {
-            //    $("#container").html(content);
-            //    ko.applyBindings(app);
-            //});
-            //$(".view").hide();
-            //$("#fmcg-channelpartnermanagement").show();
+            app.templatename("fmcg-ChannelPartnerManagement");
+        });
+
+        this.get('#/ManagingSalesTeam', function (context) {
+            app.templatename("fmcg-SalesTeamManagement");
+        });
+
+        this.get('#/ManagingProduct', function (context) {
+            app.templatename("fmcg-ProductManagement");
+        });
+
+        this.get('#/ManagingPromotions', function (context) {
+            app.templatename("fmcg-PromotionManagement");
         });
 
         this.post('#/Save', function (context) {
