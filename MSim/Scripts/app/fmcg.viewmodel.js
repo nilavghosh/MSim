@@ -7,6 +7,38 @@ ChannelPartnerDataModel = function () {
     };
 }
 
+
+SalesTeamDataModel = function () {
+    return {
+        NoOfSalesmen: ko.observable(""),
+        AvgSalary: ko.observable(""),
+        Training: ko.observable(""),
+    };
+}
+
+PromotionsDataModel = function () {
+    this.TVAds = ko.observable(0);
+    this.NewspaperAds= ko.observable(0);
+    this.HoardingAds= ko.observable(0);
+    this.TotalATLExpense= ko.computed(function () {
+        return  this.NewspaperAds() + this.TVAds() + this.HoardingAds ;
+    }, this);
+    Promoters= ko.observable("");
+    Sampling= ko.observable("");
+    InShopBranding= ko.observable("");
+    TotalBTLExpense= ko.observable("");
+    
+}
+
+ProductDataModel = function () {
+    return {
+        MustardOilPercentage: ko.observable(""),
+        PalmOilPercentage: ko.observable(""),
+        PakagingMaterial: ko.observable(""),
+    };
+}
+
+
 //http://stackoverflow.com/questions/18274976/make-bootstrap-well-semi-transparent
 
 FMCGAdminDataModel = function () {
@@ -20,6 +52,9 @@ function FmcgViewModel(app, dataModel) {
     var self = this;
 
     self.FMCGData = new ChannelPartnerDataModel();
+    self.SalesTeamData = new SalesTeamDataModel();
+    self.ProductData = new ProductDataModel();
+    self.PromotionsData = new PromotionsDataModel();
     self.FMCGAdmin = new FMCGAdminDataModel();
 
     Sammy("#container", function () {

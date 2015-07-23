@@ -80,12 +80,16 @@ namespace MSim.Controllers.Services
                 var cpEntry = db.ChannelPartnerManagements.Create();
                 cpEntry.UserId = user.Id;
                 cpEntry.PTD = CPData.PTD;
+                cpEntry.DistributorMargin = CPData.DistributorMargin;
+                cpEntry.RetailerMargin = CPData.RetailerMargin;
                 db.ChannelPartnerManagements.Add(cpEntry);
             }
             else
             {
                 var cpEntry = entries.First();
                 cpEntry.PTD = CPData.PTD;
+                cpEntry.DistributorMargin = CPData.DistributorMargin;
+                cpEntry.RetailerMargin = CPData.RetailerMargin;
             }
             db.SaveChanges();
         }

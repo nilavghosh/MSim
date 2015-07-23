@@ -3620,12 +3620,20 @@ dl.horizontal dt {
 dl.horizontal dd {
   margin-left: 11.25rem;
 }
-a {
+/*a {
   color: #2086bf;
 }
 a:visited {
   color: #2086bf;
+}*/
+
+a {
+  color: #1d1d1d;
 }
+a:visited {
+  color: #1d1d1d;
+}
+
 hr {
   border: 0;
   height: 2px;
@@ -12776,7 +12784,7 @@ input[type="submit"].link:active {
 .accordion.large-heading > .frame.active > .heading:before {
   border-bottom-color: #ffffff;
 }
-.carousel {
+/*.carousel {
   display: block;
   width: 100%;
   position: relative;
@@ -12867,7 +12875,7 @@ input[type="submit"].link:active {
 .carousel .carousel-switch-prev {
   left: 0;
   right: auto;
-}
+}*/
 .panel {
   display: block;
   position: relative;

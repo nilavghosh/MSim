@@ -73,9 +73,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" />
-          <Property Name="PTD" Type="int" />
-          <Property Name="DistributorMargin" Type="int" />
-          <Property Name="RetailerMargin" Type="int" />
+          <Property Name="PTD" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DistributorMargin" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RetailerMargin" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_ChannelPartnerManagement_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
@@ -301,9 +301,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="PTD" Type="Int32" />
-          <Property Name="DistributorMargin" Type="Int32" />
-          <Property Name="RetailerMargin" Type="Int32" />
+          <Property Name="PTD" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DistributorMargin" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RetailerMargin" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="AspNetUser" Relationship="MSimModel.FK_ChannelPartnerManagement_AspNetUsers" FromRole="ChannelPartnerManagement" ToRole="AspNetUser" />
         </EntityType>
         <Association Name="FK_ChannelPartnerManagement_AspNetUsers">
