@@ -91,20 +91,20 @@ function FmcgViewModel(app, dataModel) {
         })
 
         this.get('#/Admin', function (context) {
-            $(".view").hide();
-            $("#fmcg-admin").show();
-            $.ajax({
-                method: 'get',
-                url: app.dataModel.fmcgAdminUrl,
-                contentType: "application/json; charset=utf-8",
-                headers: {
-                    'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
-                },
-                success: function (data) {
-                    self.FMCGAdmin.Result(data);
-                    //self.myHometown('Your Hometown is : ' + data.hometown);
-                }
-            });
+            app.templatename("fmcg-Admin");
+
+            //$.ajax({
+            //    method: 'get',
+            //    url: app.dataModel.fmcgAdminUrl,
+            //    contentType: "application/json; charset=utf-8",
+            //    headers: {
+            //        'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
+            //    },
+            //    success: function (data) {
+            //        self.FMCGAdmin.Result(data);
+            //        //self.myHometown('Your Hometown is : ' + data.hometown);
+            //    }
+            //});
         });
 
         //this.get('/', function () { this.app.runRoute('get', '#home') });

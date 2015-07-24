@@ -256,6 +256,10 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\handsontable\handsontable.css" />
+    <Content Include="Content\handsontable\handsontable.full.css" />
+    <Content Include="Content\handsontable\handsontable.full.min.css" />
+    <Content Include="Content\handsontable\handsontable.min.css" />
     <Content Include="Content\metro-icons.css" />
     <Content Include="Content\metro-icons.min.css" />
     <Content Include="Content\metro.css" />
@@ -302,6 +306,10 @@
     <Content Include="Scripts\app\fmcg.viewmodel.js" />
     <None Include="Properties\PublishProfiles\MSimulator.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\handsontable.full.js" />
+    <Content Include="Scripts\handsontable.full.min.js" />
+    <Content Include="Scripts\handsontable.js" />
+    <Content Include="Scripts\handsontable.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\knockout-2.3.0.debug.js" />

@@ -1,1 +1,92 @@
-﻿
+﻿<section>
+
+        <div class="row">
+            <h3>FMCG - Admin - Algo Manage</h3>
+        </div>
+        <div class="row">
+            <div class="cells12">
+                <div class="wrapper">
+                    <div class="wrapper-row">
+
+                        <div id="container">
+                            <div class="columnLayout">
+
+                                <div class="rowLayout">
+                                    <div class="descLayout">
+                                        <div class="pad" data-jsfiddle="example1">
+
+                                            <h2>Integration ruleJS library with Handsontable</h2>
+
+                                            <p>
+                                                The following demo uses <code>ruleJS</code> library to parse some formulas.<br>
+                                                To enable this feature, use setting <code>formulas: true</code>
+                                            </p>
+                                            <div id="example1"></div>
+                                            <div id="example2"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="codeLayout">
+                                        <div class="pad">
+                                            <div class="jsFiddle">
+                                                <button class="jsFiddleLink" data-runfiddle="example1">Edit in jsFiddle</button>
+                                            </div>
+                                            <script data-jsfiddle="example1">
+
+                                                var data1 = [
+                                                  ['=$B$2', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1"],
+                                                  [2009, 0, 2941, 4303, 354, 5814],
+                                                  [2010, 5, 2905, 2867, '=SUM(A4,2,3)', '=$B1'],
+                                                  [2011, 4, 2517, 4822, 552, 6127],
+                                                  [2012, '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, 4151]
+                                                ];
+
+                                                var data2 = [
+                                                  ['=$B$2', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1"],
+                                                  [2009, 0, 2941, 4303, 354, 5814],
+                                                  [2010, 5, 2905, 2867, '=SUM(A4,2,3)', '=$B1'],
+                                                  [2011, 4, 2517, 4822, 552, 6127],
+                                                  [2012, '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, 4151]
+                                                ];
+
+                                                var container1 = $('#example1');
+
+                                                container1.handsontable({
+                                                    data: data1,
+                                                    minSpareRows: 1,
+                                                    colHeaders: true,
+                                                    rowHeaders: true,
+                                                    contextMenu: true,
+                                                    manualColumnResize: true,
+                                                    formulas: true
+                                                });
+
+                                                var container2 = $('#example2');
+
+                                                container2.handsontable({
+                                                    data: data2,
+                                                    minSpareRows: 1,
+                                                    colHeaders: true,
+                                                    rowHeaders: true,
+                                                    contextMenu: true,
+                                                    manualColumnResize: true,
+                                                    formulas: false
+                                                });
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+</section>
