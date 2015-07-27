@@ -92,6 +92,7 @@ function FmcgViewModel(app, dataModel) {
 
         this.get('#/Admin', function (context) {
             app.templatename("fmcg-Admin");
+            //$("#mainbody").html($("#admin").html());
 
             //$.ajax({
             //    method: 'get',

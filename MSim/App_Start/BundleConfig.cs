@@ -23,8 +23,7 @@ namespace MSim
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/metroui").Include(
-                "~/Scripts/metro.js",
-                "~/Scripts/handsontable.full.js"));
+                "~/Scripts/metro.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/sammy-{version}.js",
@@ -34,6 +33,16 @@ namespace MSim
                 "~/Scripts/app/home.viewmodel.js",
                 "~/Scripts/app/fmcg.viewmodel.js",
                 "~/Scripts/app/_run.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/admin").Include(
+                "~/Scripts/bower_components/RuleJS/ruleJS.lib.full.js",
+                "~/Scripts/bower_components/RuleJS/ruleJS.parser.full.js",
+                "~/Scripts/bower_components/RuleJS/ruleJS.all.full.js",
+                "~/Scripts/bower_components/angular/angular.js",
+                "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
+                "~/Scripts/bower_components/handsontable/dist/handsontable.formula.js",
+                "~/Scripts/bower_components/handsontable/extensions/angular/ngHandsontable.js",
+                "~/Scripts/admin.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
