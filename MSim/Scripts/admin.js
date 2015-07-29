@@ -90,16 +90,15 @@
 //);
 
 angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', function ($scope, $http, $timeout) {
-    $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1"],
+    $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
                     [2009, 0, 2941, 4303, 354, 5814],
-                    [2010, 5, 2905, 2867, '=SUM(A4,2,3)', 32],
-                    [2011, 4, 2517, 4822, 552, 6127],
-                    [2012, 42, 21, 81, 12, 4151]
+                    [2010, 5, 2905, 2867, '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
+                    [2011, 4, 2517, 4822, 552, 6127, '', '', '', '', '', '', '', ''],
+                    [2012, 42, 21, 81, 12, 4151, '', '', '', '', '', '', '', '', ]
     ];
 
 
     $scope.settings = ({
-        data: $scope.data1,
         minSpareRows: 1,
         colHeaders: true,
         rowHeaders: true,
@@ -108,4 +107,30 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
         formulas: true
     });
 
+    $http.get('/someUrl').
+    success(function (data, status, headers, config) {
+        // this callback will be called asynchronously
+        // when the response is available
+    }).
+    error(function (data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+    });
+
+});
+
+
+
+Handsontable.Dom.addEvent(save, 'click', function () {
+    // save all cell's data
+    ajax('scripts/json/save.json', 'GET', JSON.stringify({ data: hot.getData() }), function (res) {
+        var response = JSON.parse(res.response);
+
+        if (response.result === 'ok') {
+            exampleConsole.innerText = 'Data saved';
+        }
+        else {
+            exampleConsole.innerText = 'Save error';
+        }
+    });
 });

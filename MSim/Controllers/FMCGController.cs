@@ -10,9 +10,9 @@ namespace MSim.Controllers
     public class FMCGController : Controller
     {
         // GET: FMCG
-        public ActionResult ChannelPartnerManagement()
+        public ActionResult Manage()
         {
-            return PartialView("~/views/Industries/fmcg/channelpartners/ChannelPartnerManagement.cshtml");
+            return View("~/views/Industries/fmcg/Admin/Manage.cshtml");
         }
     }
 }

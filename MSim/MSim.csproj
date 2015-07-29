@@ -258,8 +258,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\handsontable\handsontable.css" />
     <Content Include="Content\handsontable\handsontable.full.css" />
-    <Content Include="Content\handsontable\handsontable.full.min.css" />
-    <Content Include="Content\handsontable\handsontable.min.css" />
     <Content Include="Content\metro-icons.css" />
     <Content Include="Content\metro-icons.min.css" />
     <Content Include="Content\metro.css" />

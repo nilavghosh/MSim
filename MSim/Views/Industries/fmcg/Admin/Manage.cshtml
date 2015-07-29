@@ -1,4 +1,4 @@
-﻿<section>
+﻿<section class="AdminView">
     <div class="row">
         <h3>FMCG - Admin - Algo Manage</h3>
     </div>
@@ -6,99 +6,29 @@
         <div class="cells12">
             <div data-ng-app="ngHandsontableDemo">
                 <div data-ng-controller="DemoCtrl">
-                    <div class="wrapper">
-                        <div class="wrapper-row">
-                            <div id="global-menu-clone">
-                                <h1><a href="index.html">ngHandsontable</a> <span class="ver"></span></h1>
-
-                                <ul id="global-menu">
-                                    <li>
-                                        <a href="https://handsontable.com">
-                                            Handsontable.com <sup>
-                                                <i class="icon-external-link"></i>
-                                            </sup>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div id="github-buttons">
-                                <span class="github-btn" id="githubWatch">
-                                    <a class="gh-btn github-watchers" href="https://github.com/handsontable/ngHandsontable">
-                                        <span class="gh-ico"></span>
-                                        <span class="gh-text">Star</span>
-                                    </a>
-                                    <a class="gh-count" href="https://github.com/handsontable/ngHandsontable/stargazers"></a>
-                                </span>
-
-                                <span class="github-btn" id="githubFork">
-                                    <a class="gh-btn github-forks" href="https://github.com/handsontable/ngHandsontable">
-                                        <span class="gh-ico"></span>
-                                        <span class="gh-text">Fork</span>
-                                    </a>
-                                    <a class="gh-count" href="https://github.com/handsontable/ngHandsontable/network"></a>
-                                </span>
-                            </div>
-
-                            <div id="container">
-                                <div class="columnLayout">
-
-                                    <div class="rowLayout">
-                                        <div class="descLayout">
-                                            <div class="pad" data-jsfiddle="example">
-
-                                                <p style="font-size: 20px"><strong>ngHandsontable</strong> is the <a href="https://angularjs.org/">AngularJS</a> version of the <a href="http://www.handsontable.com">Handsontable</a> data grid</p>
-
-                                                <p>
-                                                    This demo page shows usage usage examples. All features of Handsontable are supported.
-                                                </p>
-
-                                                <h2>Static configuration with dynamic data</h2>
-
-                                                <p>
-                                                    The main directive for ngHandsontable is <code>hot-table</code>
-                                                </p>
-
-                                                <p>
-                                                    You can put all your settings in <code>settings="{colHeaders: colHeaders, <br>contextMenu: true }"</code>
-                                                    attribute
-                                                    or in separated attributes, e.g. <code>minSpareRows="minSpareRows"</code>, <code>rowHeaders="false"</code>.
-                                                </p>
-
-                                               
-                                                <h2>Dynamic configuration with dynamic data</h2>
-
-                                                <p>This example uses a dynamic <code>columns</code> configuration that changes every 3 seconds!</p>
-
-                                                <p>It is bound to the same data source as the first instance on this page.</p>
 
 
-                                                <hot-table id="example2"
-                                                     colheaders="true"
-                                                     datarows="data1"></hot-table>
+                    <hot-table id="example2"
+                               colheaders="true"
+                               datarows="data1"></hot-table>
 
 
-                                                <h2>Data binding</h2>
+                    <h2>Data binding</h2>
 
-                                                <p>The below <code>input</code> field is bound to the <code>address</code> property of the first data row.</p>
+                    <p>The below <code>input</code> field is bound to the <code>address</code> property of the first data row.</p>
 
-                                                <label>Address <input type="text" data-ng-model="data1[1][3]" style="width: 300px"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="footer-text">ngHandsontable &copy; 2012-2015 Marcin Warpechowski and contributors.<br> Code and documentation licensed under the The MIT License.</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <label>Address <input type="text" data-ng-model="data1[1][3]" style="width: 300px"></label>
                 </div>
             </div>
         </div>
+        <div class="footer-text">ngHandsontable &copy; 2012-2015 Marcin Warpechowski and contributors.<br> Code and documentation licensed under the The MIT License.</div>
     </div>
 
 
 
 
 
+
 </section>
+
+@Scripts.Render("~/bundles/admin")
