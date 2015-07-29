@@ -107,30 +107,30 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
         formulas: true
     });
 
-    $http.get('/someUrl').
-    success(function (data, status, headers, config) {
-        // this callback will be called asynchronously
-        // when the response is available
-    }).
-    error(function (data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-    });
+    //$http.get('/someUrl').
+    //success(function (data, status, headers, config) {
+    //    // this callback will be called asynchronously
+    //    // when the response is available
+    //}).
+    //error(function (data, status, headers, config) {
+    //    // called asynchronously if an error occurs
+    //    // or server returns response with an error status.
+    //});
 
 });
 
 
 
-Handsontable.Dom.addEvent(save, 'click', function () {
-    // save all cell's data
-    ajax('scripts/json/save.json', 'GET', JSON.stringify({ data: hot.getData() }), function (res) {
-        var response = JSON.parse(res.response);
+//Handsontable.Dom.addEvent(save, 'click', function () {
+//    // save all cell's data
+//    ajax('scripts/json/save.json', 'GET', JSON.stringify({ data: hot.getData() }), function (res) {
+//        var response = JSON.parse(res.response);
 
-        if (response.result === 'ok') {
-            exampleConsole.innerText = 'Data saved';
-        }
-        else {
-            exampleConsole.innerText = 'Save error';
-        }
-    });
-});
+//        if (response.result === 'ok') {
+//            exampleConsole.innerText = 'Data saved';
+//        }
+//        else {
+//            exampleConsole.innerText = 'Save error';
+//        }
+//    });
+//});
