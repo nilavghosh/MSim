@@ -58,6 +58,8 @@ namespace MSim
                  "~/Content/metro.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css"));
+            
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
