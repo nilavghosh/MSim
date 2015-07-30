@@ -107,6 +107,10 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
         formulas: true
     });
 
+    $scope.saveAdminSheet = function () {
+        alert("ok");
+    };
+
     //$http.get('/someUrl').
     //success(function (data, status, headers, config) {
     //    // this callback will be called asynchronously

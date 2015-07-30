@@ -447,7 +447,6 @@
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.lib.full.js" />
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.parser.full.js" />
     <Content Include="Scripts\bower_components\handsontable\extensions\angular\ngHandsontable.js" />
-    <Content Include="Scripts\bower_components\handsontable\extensions\angular\ngHandsontable.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\knockout-2.3.0.debug.js" />

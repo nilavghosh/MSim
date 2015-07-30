@@ -8,6 +8,8 @@
  * Date: Mon Jul 13 2015 20:04:20 GMT+0200 (CEST)
 */
 
+var hotAdmin;
+
 if (document.all && !document.addEventListener) { // IE 8 and lower
   document.createElement('hot-table');
   document.createElement('hot-column');
@@ -36,7 +38,8 @@ angular.module('ngHandsontable.services', [])
           container.className = this.containerClassName;
           element[0].appendChild(container);
 
-          return new Handsontable(container, htSettings);
+          hotAdmin = new Handsontable(container, htSettings);
+          return hotAdmin;
         },
 
         /**
