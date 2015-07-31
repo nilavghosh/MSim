@@ -108,7 +108,24 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
     });
 
     $scope.saveAdminSheet = function () {
-        alert("ok");
+        //$('.htCore tr').each(function () {
+        //    $(this, 'tr').each(function (index, tr) {
+        //        var lines = $('td', tr).map(function (index, td) {
+        //            return $(td).text();
+        //        });
+        //        //This assumes that you have a table with an id of tblPurchaseOrders and that you have two cells of data
+        //        alert(lines[0] + ' ' + lines[1]);
+        //    })
+        //});
+        var data = [];
+        $('.ht_master .htCore tbody tr').each(function (rowIndex, r) {
+            var cols = [];
+            $(this).find('td').each(function (colIndex, c) {
+                cols.push(c.textContent);
+            });
+            data.push(cols);
+        });
+        alert(data);
     };
 
     //$http.get('/someUrl').
