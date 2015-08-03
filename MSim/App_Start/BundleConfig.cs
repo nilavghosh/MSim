@@ -41,6 +41,7 @@ namespace MSim
                 "~/Scripts/bower_components/angular/angular.js",
                 "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
                 "~/Scripts/bower_components/handsontable/dist/handsontable.formula.js",
+                "~/Scripts/bower_components/handsontable/dist/handsontable.playerdata.js",
                 "~/Scripts/bower_components/handsontable/extensions/angular/ngHandsontable.js",
                 "~/Scripts/admin.js"));
 
@@ -55,7 +56,7 @@ namespace MSim
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/metro.css",
+                 
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css"));
             

@@ -89,10 +89,12 @@
 //  ]
 //);
 
+var k = 32;
+
 angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', function ($scope, $http, $timeout) {
     $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
                     [2009, 0, 2941, 4303, 354, 5814],
-                    [2010, 5, 2905, 2867, '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
+                    [2010, 5, 2905, eval("k"), '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
                     [2011, 4, 2517, 4822, 552, 6127, '', '', '', '', '', '', '', ''],
                     [2012, 42, 21, 81, 12, 4151, '', '', '', '', '', '', '', '', ]
     ];

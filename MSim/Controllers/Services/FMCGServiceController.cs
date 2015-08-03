@@ -13,6 +13,11 @@ using Microsoft.Owin.Security;
 using Owin;
 using MSim.Models;
 using MSim.DAL;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Driver.Linq;
+using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using Newtonsoft.Json;
 
 namespace MSim.Controllers.Services
 {
@@ -68,30 +73,67 @@ namespace MSim.Controllers.Services
 
         // POST api/<controller>
         [HttpPost]
-        [ActionName("SubmitChannelPartner")]
-        public void SubmitChannelPartner(ChannelPartnerData CPData)
+        [ActionName("SaveFMCGData")]
+        public async Task<IHttpActionResult> SaveFMCGData(Object CPData)
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
+            var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)CPData).ToString());
+            document.Add(new BsonElement("userid", user.Id));
 
-            MSimEntities db = new MSimEntities();
-            var entries = db.ChannelPartnerManagements.Where(cp => cp.UserId == user.Id);
-            if (entries.Count() == 0)
+            var client = new MongoClient();
+            var database = client.GetDatabase("MSim");
+
+            var collection = database.GetCollection<BsonDocument>("fmcgGameData");
+            var filter = Builders<BsonDocument>.Filter.Eq("userid", user.Id);
+            var userentry = await collection.Find(filter).ToListAsync();
+            if (userentry.Count > 0)
             {
-                var cpEntry = db.ChannelPartnerManagements.Create();
-                cpEntry.UserId = user.Id;
-                cpEntry.PTD = CPData.PTD;
-                cpEntry.DistributorMargin = CPData.DistributorMargin;
-                cpEntry.RetailerMargin = CPData.RetailerMargin;
-                db.ChannelPartnerManagements.Add(cpEntry);
+                await collection.ReplaceOneAsync(filter, document);
+                return Ok();
             }
             else
             {
-                var cpEntry = entries.First();
-                cpEntry.PTD = CPData.PTD;
-                cpEntry.DistributorMargin = CPData.DistributorMargin;
-                cpEntry.RetailerMargin = CPData.RetailerMargin;
+                await collection.InsertOneAsync(document);
+                return Ok();
             }
-            db.SaveChanges();
+
+            //var update = Builders<BsonDocument>.Update.Set("address.street", "East 31st Street");
+
+
+            //var result = await collection.Find(filter).ToListAsync();
+
+
+            //var fmcgdata = from e in collection.AsQueryable<Employee>()
+            //               where e.FirstName == "John"
+            //               select e;
+
+
+
+
+            ////            return database;
+
+
+            //var user = UserManager.FindById(User.Identity.GetUserId());
+
+            //MSimEntities db = new MSimEntities();
+            //var entries = db.ChannelPartnerManagements.Where(cp => cp.UserId == user.Id);
+            //if (entries.Count() == 0)
+            //{
+            //    var cpEntry = db.ChannelPartnerManagements.Create();
+            //    cpEntry.UserId = user.Id;
+            //    cpEntry.PTD = CPData.PTD;
+            //    cpEntry.DistributorMargin = CPData.DistributorMargin;
+            //    cpEntry.RetailerMargin = CPData.RetailerMargin;
+            //    db.ChannelPartnerManagements.Add(cpEntry);
+            //}
+            //else
+            //{
+            //    var cpEntry = entries.First();
+            //    cpEntry.PTD = CPData.PTD;
+            //    cpEntry.DistributorMargin = CPData.DistributorMargin;
+            //    cpEntry.RetailerMargin = CPData.RetailerMargin;
+            //}
+            //db.SaveChanges();
         }
 
         // PUT api/<controller>/5
