@@ -21,7 +21,6 @@ using Newtonsoft.Json;
 
 namespace MSim.Controllers.Services
 {
-    [Authorize]
     public class FMCGServiceController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -135,6 +134,23 @@ namespace MSim.Controllers.Services
             //}
             //db.SaveChanges();
         }
+
+        [HttpPost]
+        [ActionName("SaveFMCGAdminStaticSheet")]
+        public async Task<IHttpActionResult> SaveFMCGAdminStaticSheet(Object adminStaticData)
+        {
+            var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
+            var client = new MongoClient();
+            var database = client.GetDatabase("MSim");
+
+            var collection = database.GetCollection<BsonDocument>("fmcgAdminStaticSheet");
+            var filter = new BsonDocument();
+            var result = await collection.DeleteManyAsync(filter);
+
+            await collection.InsertOneAsync(document);
+            return Ok();
+        }
+
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)

@@ -481,7 +481,6 @@
     <Content Include="Scripts\bower_components\handsontable\dist\pikaday\pikaday.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.swf" />
-    <Content Include="Scripts\bower_components\handsontable\dist\handsontable.playerdata.js" />
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.all.full.js" />
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.all.full.min.js" />
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.lib.full.js" />

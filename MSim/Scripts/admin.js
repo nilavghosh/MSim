@@ -89,16 +89,51 @@
 //  ]
 //);
 
-var k = 32;
+
 
 angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', function ($scope, $http, $timeout) {
     $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
                     [2009, 0, 2941, 4303, 354, 5814],
-                    [2010, 5, 2905, eval("k"), '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
+                    [2010, 5, 2905, 32, '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
                     [2011, 4, 2517, 4822, 552, 6127, '', '', '', '', '', '', '', ''],
                     [2012, 42, 21, 81, 12, 4151, '', '', '', '', '', '', '', '', ]
     ];
 
+    $scope.StaticSheet = [[1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1]
+    ];
+
+    $scope.PlayerTemplateSheet = [[1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1]
+    ];
+
+    $scope.PlayerData = {
+        "_id": '55bce5a97947cd2130dcee4c',
+        "PTD": 45,
+        "DistributorMargin": "54",
+        "RetailerMargin": "67",
+        "NoOfSalesmen": "",
+        "AvgSalary": "",
+        "Training": "",
+        "TVAds": 0,
+        "NewspaperAds": 0,
+        "HoardingAds": 0,
+        "TotalATLExpense": 0,
+        "Promoters": 0,
+        "Sampling": 0,
+        "InShopBranding": 0,
+        "TotalBTLExpense": 0,
+        "MustardOilPercentage": "",
+        "PalmOilPercentage": "",
+        "PackagingMaterial": "",
+        "userid": "75443be9-9590-4e22-a07c-9b5c79a45397"
+    };
 
     $scope.settings = ({
         minSpareRows: 1,
@@ -110,15 +145,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
     });
 
     $scope.saveAdminSheet = function () {
-        //$('.htCore tr').each(function () {
-        //    $(this, 'tr').each(function (index, tr) {
-        //        var lines = $('td', tr).map(function (index, td) {
-        //            return $(td).text();
-        //        });
-        //        //This assumes that you have a table with an id of tblPurchaseOrders and that you have two cells of data
-        //        alert(lines[0] + ' ' + lines[1]);
-        //    })
-        //});
+        
         var data = [];
         $('.ht_master .htCore tbody tr').each(function (rowIndex, r) {
             var cols = [];
@@ -127,8 +154,45 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
             });
             data.push(cols);
         });
-        alert(data);
+
+        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.StaticSheet })).
+        then(function (response) {
+            pushMessage("data saved",'info');
+        }, function (response) {
+            pushMessage(response.statusText, 'info');
+        });
     };
+
+
+    $scope.savePlayerTemplateSheet = function () {
+
+        var data = [];
+        $('.ht_master .htCore tbody tr').each(function (rowIndex, r) {
+            var cols = [];
+            $(this).find('td').each(function (colIndex, c) {
+                cols.push(c.textContent);
+            });
+            data.push(cols);
+        });
+
+        $http.post('/api/fmcgservice/SaveFMCGPlayerTemplateSheet', angular.toJson({ data: $scope.StaticSheet })).
+        then(function (response) {
+            pushMessage("data saved", 'info');
+        }, function (response) {
+            pushMessage(response.statusText, 'info');
+        });
+    };
+
+
+    function pushMessage(mssg,t) {
+        alert(mssg);
+        //var mes = mssg;
+        //$.Notify({
+        //    caption: mes.split("|")[0],
+        //    content: mes.split("|")[1],
+        //    type: t
+        //});
+    }
 
     //$http.get('/someUrl').
     //success(function (data, status, headers, config) {
