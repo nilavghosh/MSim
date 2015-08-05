@@ -27,9 +27,7 @@
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Static Sheet</a></li>
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Player Template Sheet</a></li>
-                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Final Admin Template</a></li>
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">FMCG Game Designer Sheet</a></li>
                     </ul>
 
                     <!-- Tab panes -->
@@ -37,7 +35,7 @@
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <hot-table id="staticsheet"
                                        colheaders="true"
-                                       datarows="StaticSheet"></hot-table>
+                                       datarows="FMCGGameDesignerSheet"></hot-table>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="profile">
                             <hot-table id="example3"
@@ -56,6 +54,7 @@
         <div class="row">
             <div class="cells12">
                 <button class="btn btn-default" ng-click="saveAdminSheet()" type="submit">Save</button>
+                <button class="btn btn-default" ng-click="getPlayerData()" type="submit">RefreshData</button>
             </div>
         </div>
     </div>

@@ -91,7 +91,10 @@
 
 
 
-angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', function ($scope, $http, $timeout) {
+angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
+}]).controller('DemoCtrl', function ($scope, $http, $timeout) {
+
     $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
                     [2009, 0, 2941, 4303, 354, 5814],
                     [2010, 5, 2905, 32, '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
@@ -99,7 +102,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
                     [2012, 42, 21, 81, 12, 4151, '', '', '', '', '', '', '', '', ]
     ];
 
-    $scope.StaticSheet = [[1, 1, 1, 1, 1, 1],
+    $scope.FMCGGameDesignerSheet = [[1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
@@ -145,7 +148,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
     });
 
     $scope.saveAdminSheet = function () {
-        
+
         var data = [];
         $('.ht_master .htCore tbody tr').each(function (rowIndex, r) {
             var cols = [];
@@ -157,7 +160,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
 
         $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.StaticSheet })).
         then(function (response) {
-            pushMessage("data saved",'info');
+            pushMessage("data saved", 'info');
         }, function (response) {
             pushMessage(response.statusText, 'info');
         });
@@ -183,8 +186,23 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).controller('DemoCtrl', 
         });
     };
 
+    $scope.getPlayerData = function () {
+        $http.get('/api/fmcgservice/GetPlayerInputs').
+        then(function (response) {
+            $scope.PlayerData = response.data;
+            $scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
+            //pushMessage("data recieved", 'info');
+        }, function (response) {
+            pushMessage(response.statusText, 'info');
+        });
+    }
 
-    function pushMessage(mssg,t) {
+    $scope.init = function () {
+        $scope.getPlayerData();
+    }
+    $scope.init();
+
+    function pushMessage(mssg, t) {
         alert(mssg);
         //var mes = mssg;
         //$.Notify({

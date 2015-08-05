@@ -23,6 +23,7 @@
 //}
 
 FMCGDataModel = function () {
+    this.Quarter = ko.observable(0);
     this.PTD = ko.observable(0);
     this.DistributorMargin = ko.observable(0);
     this.RetailerMargin = ko.observable(0);
@@ -124,8 +125,10 @@ function FmcgViewModel(app, dataModel) {
             app.templatename("fmcg-PromotionManagement");
         });
 
-        this.post('#/Save', function (context) {
+        this.post('#/SaveQ1Data', function (context) {
             // Make a call to the protected Web API by passing in a Bearer Authorization Header
+            // Set Quarter
+            self.FMCGData.Quarter(1);
             $.ajax({
                 method: 'post',
                 data: ko.toJSON(self.FMCGData),

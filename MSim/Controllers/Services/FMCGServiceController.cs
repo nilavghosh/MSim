@@ -14,13 +14,16 @@ using Owin;
 using MSim.Models;
 using MSim.DAL;
 using MongoDB.Driver;
+using MongoDB.Driver.Core;
 using MongoDB.Bson;
 using MongoDB.Driver.Linq;
 using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Newtonsoft.Json;
+using MongoDB.Bson.IO;
 
 namespace MSim.Controllers.Services
 {
+    [Authorize]
     public class FMCGServiceController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -67,6 +70,20 @@ namespace MSim.Controllers.Services
             return marketShares;
         }
 
+        [HttpGet]
+        [ActionName("GetPlayerInputs")]
+        public async Task<object> GetPlayerInputs()
+        {
+            //var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
+            var client = new MongoClient();
+            var database = client.GetDatabase("MSim");
+            var filter = new BsonDocument();
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
+            var playersData =  await collection.Find(filter).ToListAsync();
+            string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+            return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+        }
+
 
 
 
@@ -82,7 +99,7 @@ namespace MSim.Controllers.Services
             var client = new MongoClient();
             var database = client.GetDatabase("MSim");
 
-            var collection = database.GetCollection<BsonDocument>("fmcgGameData");
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
             var filter = Builders<BsonDocument>.Filter.Eq("userid", user.Id);
             var userentry = await collection.Find(filter).ToListAsync();
             if (userentry.Count > 0)
