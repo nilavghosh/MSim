@@ -3,11 +3,10 @@
 
     self.myHometown = ko.observable("");
 
-    Sammy(function () {
-        this.get('#home', function () {
-            $(".view").hide();
-            $("#homepage").show();
-            // Make a call to the protected Web API by passing in a Bearer Authorization Header
+    Sammy("#container", function () {
+        this.get('#home', function (context) {
+            app.templatename("fmcgHome");
+
             $.ajax({
                 method: 'get',
                 url: app.dataModel.userInfoUrl,
@@ -21,6 +20,7 @@
             });
         });
         this.get('/', function () { this.app.runRoute('get', '#home') });
+        this.get('#/', function () { this.app.runRoute('get', '#home') });
     });
 
     return self;

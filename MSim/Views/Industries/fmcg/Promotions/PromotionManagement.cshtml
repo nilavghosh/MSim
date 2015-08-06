@@ -1,0 +1,81 @@
+﻿<section>
+    <!-- ko with: fmcg -->
+    <h3>Promotion Management</h3>
+    <br />
+    <div class="row">
+        <div class="col-md-offset-1 col-md-7">
+            <div style="width:480px" id="carousel-Promotions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-Promotions" data-slide-to="0" class=""></li>
+                    <li data-target="#carousel-Promotions" data-slide-to="1" class=""></li>
+                    <li data-target="#carousel-Promotions" data-slide-to="2" class="active"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img alt="First slide [900x500]" src="~/Content/Slides/Industries/fmcg/Promotions/1.jpg" data-holder-rendered="true">
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-Promotions" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-Promotions" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    <div class="col-md-offset-1 col-md-3">
+            <div class="row">
+                <form class="form-horizontal" action="#/Save" method="post">
+                    <div class="form-group">
+                        <label>TV Advertisement</label>
+                        <input type="number" data-bind="value: FMCGData.TVAds" class="form-control" placeholder="in ₹">
+                    </div>
+                    <div class="form-group">
+                        <label>Newspaper</label>
+                        <input type="number" data-bind="value: FMCGData.NewspaperAds" class="form-control" placeholder="in ₹">
+                    </div>
+                    <div class="form-group">
+                        <label>Hoardings</label>
+                        <input type="number" data-bind="value: FMCGData.HoardingAds" class="form-control" placeholder="in ₹">
+                    </div>
+                    <div class="form-group">
+                        <label>Total ATL Expense</label>
+                        <input type="number" data-bind="value: FMCGData.TotalATLExpense" class="form-control" placeholder="in ₹">
+                    </div>
+                </form>
+            </div>
+            <br />
+            <br />
+            <div class="row">
+                <form class="form-horizontal" action="#/Save" method="post">
+                    <div class="form-group">
+                        <label>Promoters</label>
+                        <input type="number" data-bind="value: FMCGData.Promoters" class="form-control" placeholder="in ₹">
+                    </div>
+                    <div class="form-group">
+                        <label>Sampling</label>
+                        <input type="number" data-bind="value: FMCGData.Sampling" class="form-control" placeholder="in ₹">
+                    </div>
+                    <div class="form-group">
+                        <label>In shop branding</label>
+                        <input type="number" data-bind="value: FMCGData.InShopBranding" class="form-control" placeholder="in ₹">
+                    </div>
+                    <div class="form-group">
+                        <label>Total BTL Expense</label>
+                        <input type="number" data-bind="value: FMCGData.TotalBTLExpense" class="form-control" placeholder="in ₹">
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <form class="form-horizontal" action="#/Save" method="post">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</section>

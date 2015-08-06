@@ -1,7 +1,7 @@
 ﻿function AppViewModel(dataModel) {
     // Private state
     var self = this;
-
+    self.templatename = ko.observable("fmcgHome");
     // Private operations
     function cleanUpLocation() {
         window.location.hash = "";
@@ -68,7 +68,7 @@
     };
 
     self.initialize = function () {
-        Sammy().run();
+        Sammy("#container").run("#/");
     }
 }
 

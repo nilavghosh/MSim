@@ -43,5 +43,12 @@ textarea {
 
 .align-center-tiles {
     float: none !important;
-    margin:0 auto !important;
+    margin: 0 auto !important;
+}
+
+.handsontable {
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 12px;
+    font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif !important;
 }

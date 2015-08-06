@@ -1,96 +1,93 @@
-﻿<!-- ko with: home -->
-@*<div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Your information</h2>
-            <p>This section shows how you can call ASP.NET Web API to get the user details.</p>
-            <p data-bind="text: myHometown"></p>
+﻿<!-- Indicates a successful or positive action -->
+<form action="#home" method="get">
+    <button type="submit" class="btn btn-success">Back to Dashboard</button>
+</form>
+<div id="mainbody" data-bind="template: { name: templatename}"></div>
 
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
-        </div>
 
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Single Page Application (SPA) helps you build applications that include significant client-side interactions using HTML, CSS, and JavaScript.
-                It's now easier than ever before to getting started writing highly interactive web applications.
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=273732">Learn more &raquo;</a></p>
+<script type="text/html" id="fmcgHome">
+    <!-- ko with: home -->
+    <section data-bind="page: {id: 'start', title: 'Pager.js Demo Start'}" id="homepage" class="view">
+        <div class="tile-group quadro align-center-tiles">
+            <div class="tile-container">
+                <div class="tile bg-white" data-role="tile">
+                    <div class="tile-content iconic">
+                        <span class="tile-label"><a href="#/ManagingChannelPartner">MANAGING CHANNEL PARTNER</a></span>
+                    </div>
+                </div>
+                <div class="tile bg-violet" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label"><a href="#/ManagingSalesTeam">MANAGING SALES TEAM</a></span>
+                    </div>
+                </div>
+                <div class="tile bg-emerald" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label"><a href="#/ManagingPromotions">MANAGING PROMOTION</a></span>
+                    </div>
+                </div>
+                <div class="tile bg-amber" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label"><a href="#/ManagingProduct">MANAGING PRODUCT</a></span>
+                    </div>
+                </div>
+                <div class="tile bg-cobalt" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">FINANCIAL REPORTS</span>
+                    </div>
+                </div>
+                <div class="tile bg-brown" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">MARKET RESEARCH REPORTS</span>
+                    </div>
+                </div>
+                <div class="tile bg-blue" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">MAILBOX</span>
+                    </div>
+                </div>
+                <div class="tile bg-red" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label">HELP !!!</span>
+                    </div>
+                </div>
+                <div class="tile bg-white" data-role="tile">
+                    <div class="tile-content iconic">
+                        <icon />
+                        <span class="tile-label"><a href="/fmcg/Manage">ADMIN</a></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    <!-- /ko -->
+</script>
 
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
-    </div>*@
-<section id="homepage" class="view">
-    <div class="tile-group quadro align-center-tiles">
-        <div class="tile-container">
-            <div class="tile bg-white" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label"><a href="#/ManagingChannelPartner">MANAGING CHANNEL PARTNER</a></span>
-                </div>
-            </div>
-            <div class="tile bg-violet" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">
-                        <span class="tile-label">MANAGING SALES TEAM</span>
-                        @*@Html.ActionLink("", "Index", "Help", new { area = "HelpPage" }, null)*@
-                    </span>
-                </div>
-            </div>
-            <div class="tile bg-emerald" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MANAGING PROMOTION</span>
-                </div>
-            </div>
-            <div class="tile bg-amber" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MANAGING PRODUCT</span>
-                </div>
-            </div>
-            <div class="tile bg-cobalt" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">FINANCIAL REPORTS</span>
-                </div>
-            </div>
-            <div class="tile bg-brown" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MARKET RESEARCH REPORTS</span>
-                </div>
-            </div>
-            <div class="tile bg-blue" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">MAILBOX</span>
-                </div>
-            </div>
-            <div class="tile bg-red" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">HELP !!!</span>
-                </div>
-            </div>
-            <div class="tile bg-white" data-role="tile">
-                <div class="tile-content iconic">
-                    <icon />
-                    <span class="tile-label">
-                        <a href="#/Admin">ADMIN</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- /ko -->
+
+<script type="text/html" id="fmcg-ChannelPartnerManagement">
+    @Html.Partial("~/Views/Industries/fmcg/ChannelPartners/ChannelPartnerManagement.cshtml")
+</script>
+
+
+<script type="text/html" id="fmcg-SalesTeamManagement">
+    @Html.Partial("~/Views/Industries/fmcg/Sales/SalesTeamManagement.cshtml")
+</script>
+
+
+<script type="text/html" id="fmcg-ProductManagement">
+    @Html.Partial("~/Views/Industries/fmcg/Products/ProductManagement.cshtml")
+</script>
+
+
+<script type="text/html" id="fmcg-PromotionManagement">
+    @Html.Partial("~/Views/Industries/fmcg/Promotions/PromotionManagement.cshtml")
+</script>
+
+    @*@Html.Partial("~/Views/Industries/fmcg/Admin/Manage.cshtml")*@
+

@@ -3,8 +3,8 @@
     // Routes
     self.userInfoUrl = "/api/Me";
     self.siteUrl = "/";
-    self.fmcgApiUrl = "/api/fmcg/SubmitChannelPartner"
-    self.fmcgAdminUrl = "/api/fmcg"
+    self.fmcgDataSaveUrl = "/api/fmcgservice/SaveFMCGData"
+    self.fmcgAdminUrl = "/api/fmcgservice"
     // Route operations
 
     // Other private operations

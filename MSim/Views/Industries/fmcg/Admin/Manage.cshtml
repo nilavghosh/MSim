@@ -1,1 +1,69 @@
-﻿
+﻿<div class="well">
+    <section data-ng-app="ngHandsontableDemo" class="AdminView">
+        <div data-ng-controller="DemoCtrl">
+            <div class="row">
+                <h3>FMCG - Admin - Algo Manage</h3>
+            </div>
+
+            @*<div class="row">
+                    <div class="cells12">
+
+
+                        <hot-table id="example2"
+                                   colheaders="true"
+                                   datarows="data1"></hot-table>
+
+
+                        <h2>Data binding</h2>
+
+                        <p>The below <code>input</code> field is bound to the <code>address</code> property of the first data row.</p>
+
+                        <label>Address <input type="text" data-ng-model="data1[1][3]" style="width: 300px"></label>
+                    </div>
+                </div>*@
+
+            <div class="row">
+                <div class="cells12">
+                    <div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">FMCG Game Designer Sheet</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <hot-table id="staticsheet"
+                                           colheaders="true"
+                                           datarows="FMCGGameDesignerSheet"></hot-table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                <hot-table id="example3"
+                                           colheaders="true"
+                                           datarows="PlayerTemplateSheet"></hot-table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="messages">
+                                <hot-table id="example3"
+                                           colheaders="true"
+                                           datarows="data1"></hot-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cells12">
+                    <button class="btn btn-default" ng-click="saveAdminSheet()" type="submit">Save</button>
+                    <button class="btn btn-default" ng-click="refreshData()" type="submit">RefreshData</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+</div>
+@Scripts.Render("~/bundles/admin")

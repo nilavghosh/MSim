@@ -16,9 +16,9 @@ namespace MSim.DAL
     {
         public int Id { get; set; }
         public string UserId { get; set; }
-        public Nullable<int> PTD { get; set; }
-        public Nullable<int> DistributorMargin { get; set; }
-        public Nullable<int> RetailerMargin { get; set; }
+        public Nullable<decimal> PTD { get; set; }
+        public Nullable<decimal> DistributorMargin { get; set; }
+        public Nullable<decimal> RetailerMargin { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
     }
