@@ -84,6 +84,19 @@ namespace MSim.Controllers.Services
             return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
         }
 
+        [HttpGet]
+        [ActionName("GetFMCGGameDesignerDataSheet")]
+        public async Task<object> GetFMCGGameDesignerDataSheet()
+        {
+            //var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
+            var client = new MongoClient();
+            var database = client.GetDatabase("MSim");
+            var filter = new BsonDocument();
+            var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
+            var playersData = await collection.Find(filter).ToListAsync();
+            string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+            return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+        }
 
 
 
@@ -160,7 +173,7 @@ namespace MSim.Controllers.Services
             var client = new MongoClient();
             var database = client.GetDatabase("MSim");
 
-            var collection = database.GetCollection<BsonDocument>("fmcgAdminStaticSheet");
+            var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
             var filter = new BsonDocument();
             var result = await collection.DeleteManyAsync(filter);
 

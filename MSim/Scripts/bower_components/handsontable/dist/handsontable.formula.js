@@ -34,11 +34,28 @@
                     return;
                 }
                 var item = instance.plugin.matrix.getItem(cellId);
-                //var celldata = eval(instance.getDataAtCell(row, col).substring(1))
-                var controllerElement = document.querySelector("#"+instance.guid);
-                var controllerScope = angular.element(controllerElement).scope();
-                value = eval("controllerScope." + instance.getDataAtCell(row, col).substring(1));
-                console.log(controllerScope.data1);
+
+                if (item) {
+
+                    needUpdate = !!item.needUpdate;
+
+                    if (item.error) {
+                        prevFormula = item.formula;
+                        error = item.error;
+
+                        if (needUpdate) {
+                            error = null;
+                        }
+                    }
+                }
+
+                if ((value && value[0] === '!') || needUpdate) {
+                    //var celldata = eval(instance.getDataAtCell(row, col).substring(1))
+                    var controllerElement = document.querySelector("#" + instance.guid);
+                    var controllerScope = angular.element(controllerElement).scope();
+                    value = eval("controllerScope." + instance.getDataAtCell(row, col).substring(1));
+                    console.log(controllerScope.data1);
+                }
             }
 
             if (instance.formulasEnabled && isFormula(value)) {
@@ -139,9 +156,9 @@
         var afterChange = function (changes, source) {
             var instance = this;
 
-            if (!instance.formulasEnabled) {
-                return;
-            }
+            //if (!instance.formulasEnabled) {
+            //    return;
+            //}
 
             if (source === 'edit' || source === 'undo' || source === 'autofill') {
 
@@ -157,7 +174,7 @@
                     var cellId = instance.plugin.utils.translateCellCoords({ row: row, col: col });
 
                     // if changed value, all references cells should be recalculated
-                    if (value[0] !== '=' || prevValue !== value) {
+                    if (value[0] !== '=' || value[0] !== '!' || prevValue !== value) {
                         instance.plugin.matrix.removeItem(cellId);
 
                         // get referenced cells
@@ -188,7 +205,7 @@
               rlength = data.length, // rows
               clength = data ? data[0].length : 0; //cols
 
-            if (value[0] === '=') { // formula
+            if (value[0] === '=' || value[0] === '!') { // formula
 
                 if (['down', 'up'].indexOf(direction) !== -1) {
                     delta = rlength * iterators.row;

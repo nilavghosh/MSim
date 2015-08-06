@@ -93,6 +93,10 @@
 
 angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
+    $httpProvider.defaults.headers.post = {
+        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
+        'Content-Type': 'application/json'
+    }
 }]).controller('DemoCtrl', function ($scope, $http, $timeout) {
 
     $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
@@ -102,11 +106,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
                     [2012, 42, 21, 81, 12, 4151, '', '', '', '', '', '', '', '', ]
     ];
 
-    $scope.FMCGGameDesignerSheet = [[1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1]
+    $scope.FMCGGameDesignerSheet = [
     ];
 
     $scope.PlayerTemplateSheet = [[1, 1, 1, 1, 1, 1],
@@ -158,7 +158,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
             data.push(cols);
         });
 
-        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.StaticSheet })).
+        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.FMCGGameDesignerSheet })).
         then(function (response) {
             pushMessage("data saved", 'info');
         }, function (response) {
@@ -178,7 +178,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
             data.push(cols);
         });
 
-        $http.post('/api/fmcgservice/SaveFMCGPlayerTemplateSheet', angular.toJson({ data: $scope.StaticSheet })).
+        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.FMCGGameDesignerSheet })).
         then(function (response) {
             pushMessage("data saved", 'info');
         }, function (response) {
@@ -190,11 +190,37 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         $http.get('/api/fmcgservice/GetPlayerInputs').
         then(function (response) {
             $scope.PlayerData = response.data;
-            $scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
+            $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
+            then(function (designerDataSheet)
+            {
+                $scope.FMCGGameDesignerSheet = designerDataSheet.data[0].data;
+            });
+            //$scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
             //pushMessage("data recieved", 'info');
         }, function (response) {
             pushMessage(response.statusText, 'info');
         });
+    }
+
+    $scope.refreshData = function () {
+        $http.get('/api/fmcgservice/GetPlayerInputs').
+        then(function (response) {
+            $scope.PlayerData = response.data;
+            $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
+            then(function (designerDataSheet) {
+                $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0]['PTD']";
+                $timeout(callAtTimeout,10);
+               
+            });
+            //$scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
+            //pushMessage("data recieved", 'info');
+        }, function (response) {
+            pushMessage(response.statusText, 'info');
+        });
+    }
+
+    function callAtTimeout() {
+        $scope.FMCGGameDesignerSheet[0][0] = "";
     }
 
     $scope.init = function () {
