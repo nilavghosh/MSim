@@ -55,7 +55,7 @@ namespace MSim
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 
+                 "~/Content/metro.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css"));
             

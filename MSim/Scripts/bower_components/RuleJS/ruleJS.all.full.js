@@ -22616,8 +22616,15 @@ var ruleJS = (function (root) {
      * @param {Number} number2
      * @returns {*}
      */
-    mathMatch: function (type, number1, number2) {
-      var result;
+    mathMatch: function (type, number1, number2) { 
+        var result;
+      //Changed to accomodate for playerdata
+        if (number1[0] === '!') {
+            number1 = getPlayerData(number1);
+        }
+        if (number2[0] === '!') {
+            number2 = getPlayerData(number2);
+        }
 
       number1 = helper.number(number1);
       number2 = helper.number(number2);
@@ -22823,6 +22830,8 @@ var ruleJS = (function (root) {
   var parse = function (formula, element) {
     var result = null,
         error = null;
+    parser.setObj(element);
+    result = parser.parse(formula);
 
     try {
 

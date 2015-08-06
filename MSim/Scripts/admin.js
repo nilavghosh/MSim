@@ -252,6 +252,33 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
 
 
 
+function getPlayerData(value)
+{
+    var controllerElement = document.querySelector("#staticsheet");
+    var controllerScope = angular.element(controllerElement).scope();
+    value = eval("controllerScope." + value.substring(1));
+    return value;
+}
+
+$(document).ready(function () {
+    $(window).resize(function () {
+        var $c = $('.container'),
+            $w = $('.well'),
+            totalWidth = $('.navbar').outerWidth(),
+            wellWidth = $c.outerWidth(),
+            diff = totalWidth - wellWidth,
+            marg = -Math.floor(diff / 2) + 'px';
+        $w.each(function () {
+            $(this).css({
+                'margin-left': marg,
+                'margin-right': marg
+            });
+        })
+    });
+    $(window).resize();
+});
+
+
 //Handsontable.Dom.addEvent(save, 'click', function () {
 //    // save all cell's data
 //    ajax('scripts/json/save.json', 'GET', JSON.stringify({ data: hot.getData() }), function (res) {

@@ -50,11 +50,7 @@
                 }
 
                 if ((value && value[0] === '!') || needUpdate) {
-                    //var celldata = eval(instance.getDataAtCell(row, col).substring(1))
-                    var controllerElement = document.querySelector("#" + instance.guid);
-                    var controllerScope = angular.element(controllerElement).scope();
-                    value = eval("controllerScope." + instance.getDataAtCell(row, col).substring(1));
-                    console.log(controllerScope.data1);
+                    value = getPlayerData(value);
                 }
             }
 
@@ -122,6 +118,9 @@
 
                         // update cell value in hot
                         value = error || result;
+                        if (value[0] === '!') {
+                            value = getPlayerData(value);
+                        }
                     }
                 }
 

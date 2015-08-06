@@ -17,7 +17,6 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core;
 using MongoDB.Bson;
 using MongoDB.Driver.Linq;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 
