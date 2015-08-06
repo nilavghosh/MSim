@@ -22,8 +22,8 @@ namespace MSim
                 "~/Scripts/knockout.validation.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/metroui").Include(
-                "~/Scripts/metro.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/metroui").Include(
+            //    "~/Scripts/metro.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/sammy-{version}.js",
@@ -55,7 +55,6 @@ namespace MSim
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
-                 "~/Content/metro.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css"));
             

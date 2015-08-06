@@ -261,16 +261,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\handsontable\handsontable.css" />
     <Content Include="Content\handsontable\handsontable.full.css" />
-    <Content Include="Content\metro-icons.css" />
-    <Content Include="Content\metro-icons.min.css" />
-    <Content Include="Content\metro-responsive.css" />
-    <Content Include="Content\metro-responsive.min.css" />
-    <Content Include="Content\metro-rtl.css" />
-    <Content Include="Content\metro-rtl.min.css" />
-    <Content Include="Content\metro-schemes.css" />
-    <Content Include="Content\metro-schemes.min.css" />
     <Content Include="Content\metro.css" />
-    <Content Include="Content\metro.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\1.jpg" />
     <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\2.jpg" />
@@ -281,7 +272,6 @@
     <Content Include="Content\Slides\Industries\fmcg\Sales\1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\metro.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\admin.js" />
     <Content Include="ApplicationInsights.config" />
@@ -292,10 +282,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="fonts\selection.json" />
-    <Content Include="fonts\metro.woff" />
-    <Content Include="fonts\metro.ttf" />
-    <Content Include="fonts\metro.eot" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -468,9 +454,7 @@
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\metro.js" />
-    <Content Include="Scripts\metro.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\pager.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
