@@ -27,10 +27,11 @@ namespace MSim.Controllers.Services
     {
         private ApplicationUserManager _userManager;
 
-
+        public IMongoDatabase database { get; set; }
         public FMCGServiceController()
         {
-
+            var client = new MongoClient(@"mongodb://visualstudio-vm.cloudapp.net:27017");
+            database = client.GetDatabase("MSim");
         }
 
         public FMCGServiceController(ApplicationUserManager userManager)
@@ -74,11 +75,11 @@ namespace MSim.Controllers.Services
         public async Task<object> GetPlayerInputs()
         {
             //var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            var client = new MongoClient();
-            var database = client.GetDatabase("MSim");
+            //var client = new MongoClient();
+            //var database = client.GetDatabase("MSim");
             var filter = new BsonDocument();
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
-            var playersData =  await collection.Find(filter).ToListAsync();
+            var playersData = await collection.Find(filter).ToListAsync();
             string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
             return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
         }
@@ -88,8 +89,8 @@ namespace MSim.Controllers.Services
         public async Task<object> GetFMCGGameDesignerDataSheet()
         {
             //var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            var client = new MongoClient();
-            var database = client.GetDatabase("MSim");
+            //var client = new MongoClient();
+            //var database = client.GetDatabase("MSim");
             var filter = new BsonDocument();
             var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
             var playersData = await collection.Find(filter).ToListAsync();
@@ -108,8 +109,8 @@ namespace MSim.Controllers.Services
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)CPData).ToString());
             document.Add(new BsonElement("userid", user.Id));
 
-            var client = new MongoClient();
-            var database = client.GetDatabase("MSim");
+            //var client = new MongoClient();
+            //var database = client.GetDatabase("MSim");
 
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
             var filter = Builders<BsonDocument>.Filter.Eq("userid", user.Id);
@@ -169,8 +170,8 @@ namespace MSim.Controllers.Services
         public async Task<IHttpActionResult> SaveFMCGAdminStaticSheet(Object adminStaticData)
         {
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            var client = new MongoClient();
-            var database = client.GetDatabase("MSim");
+            //var client = new MongoClient();
+            //var database = client.GetDatabase("MSim");
 
             var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
             var filter = new BsonDocument();
