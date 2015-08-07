@@ -88,7 +88,7 @@ namespace MSim.Controllers.Services
             catch (Exception mssg)
             {
                 int i = 1;
-                return null;
+                return mssg.InnerException;
             }
             
         }
