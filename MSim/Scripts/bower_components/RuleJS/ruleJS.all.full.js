@@ -22830,9 +22830,7 @@ var ruleJS = (function (root) {
   var parse = function (formula, element) {
     var result = null,
         error = null;
-    parser.setObj(element);
-    result = parser.parse(formula);
-
+   
     try {
 
       parser.setObj(element);
