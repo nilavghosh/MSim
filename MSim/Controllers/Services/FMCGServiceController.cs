@@ -79,9 +79,18 @@ namespace MSim.Controllers.Services
             //var database = client.GetDatabase("MSim");
             var filter = new BsonDocument();
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
-            var playersData = await collection.Find(filter).ToListAsync();
-            string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
-            return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            try
+            {
+                var playersData = await collection.Find(filter).ToListAsync();
+                string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            }
+            catch (Exception mssg)
+            {
+                int i = 1;
+                return null;
+            }
+            
         }
 
         [HttpGet]
