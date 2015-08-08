@@ -30,7 +30,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public FMCGServiceController()
         {
-            var client = new MongoClient(@"mongodb://168.61.82.165:27017");
+            var client = new MongoClient(@"mongodb://168.61.82.165:27017/MSim");
             database = client.GetDatabase("MSim");
         }
 
