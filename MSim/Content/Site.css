@@ -52,3 +52,10 @@ textarea {
     font-size: 12px;
     font-family: Verdana, Helvetica, Arial, FreeSans, sans-serif !important;
 }
+
+.scroll-container {
+    width: 900px;
+    height: 500px;
+    overflow: hidden;
+    
+}

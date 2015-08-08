@@ -229,8 +229,8 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
     $scope.init();
 
     function pushMessage(mssg, t) {
-        alert(mssg);
-        //var mes = mssg;
+        var mes = mssg;
+        alert(mes);
         //$.Notify({
         //    caption: mes.split("|")[0],
         //    content: mes.split("|")[1],
