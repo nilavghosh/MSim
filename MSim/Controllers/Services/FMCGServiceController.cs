@@ -79,9 +79,27 @@ namespace MSim.Controllers.Services
             //var database = client.GetDatabase("MSim");
             var filter = new BsonDocument();
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
+
+
+            List<BsonDocument> playersData = new List<BsonDocument>();
+            using (var cursor = await collection.FindAsync(filter))
+            {
+                while (await cursor.MoveNextAsync())
+                {
+                    var batch = cursor.Current;
+                    foreach (var document in batch)
+                    {
+                        // process document
+                        playersData.Add(document);
+                    }
+                }
+            }
+
+            
+            
             try
             {
-                var playersData = await collection.Find(filter).ToListAsync();
+                //var playersData = await collection.Find(filter).ToListAsync();
                 string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                 return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
             }
