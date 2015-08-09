@@ -206,6 +206,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         $http.get('/api/fmcgservice/GetPlayerInputs').
         then(function (response) {
             $scope.PlayerData = response.data;
+            
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
             then(function (designerDataSheet) {
                 $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0]['PTD']";
@@ -229,13 +230,12 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
     $scope.init();
 
     function pushMessage(mssg, t) {
-        var mes = mssg;
-        alert(mes);
-        //$.Notify({
-        //    caption: mes.split("|")[0],
-        //    content: mes.split("|")[1],
-        //    type: t
-        //});
+        var mes = 'Info|' + mssg;
+        $.Notify({
+            caption: mes.split("|")[0],
+            content: mes.split("|")[1],
+            type: t
+        });
     }
 
     //$http.get('/someUrl').
