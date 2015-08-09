@@ -191,8 +191,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         then(function (response) {
             $scope.PlayerData = response.data;
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
-            then(function (designerDataSheet)
-            {
+            then(function (designerDataSheet) {
                 $scope.FMCGGameDesignerSheet = designerDataSheet.data[0].data;
             });
             //$scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
@@ -206,12 +205,37 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         $http.get('/api/fmcgservice/GetPlayerInputs').
         then(function (response) {
             $scope.PlayerData = response.data;
-            
+
+            var dummycount = 10 - $scope.PlayerData.length;
+            for (i = 0; i < dummycount; i++) {
+                var dymmyPlayer = {
+                    Quarter: 0,
+                    PTD: 0,
+                    DistributorMargin: 0,
+                    RetailerMargin: 0,
+                    NoOfSalesmen: 0,
+                    AvgSalary: 0,
+                    Training: 0,
+                    TVAds: 0,
+                    NewspaperAds: 0,
+                    HoardingAds: 0,
+                    TotalATLExpense: 0,
+                    Promoters: 0,
+                    Sampling: 0,
+                    InShopBranding: 0,
+                    TotalBTLExpense: 0,
+                    MustardOilPercentage: 0,
+                    PalmOilPercentage: 0,
+                    PackagingMaterial: 0
+                };
+                $scope.PlayerData.push(dymmyPlayer);
+            }
+
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
             then(function (designerDataSheet) {
                 $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0]['PTD']";
-                $timeout(callAtTimeout,10);
-               
+                $timeout(callAtTimeout, 10);
+
             });
             //$scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
             //pushMessage("data recieved", 'info');
@@ -222,6 +246,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
 
     function callAtTimeout() {
         $scope.FMCGGameDesignerSheet[0][0] = "";
+        pushMessage("Player Data Refreshed", 'info');
     }
 
     $scope.init = function () {
@@ -252,8 +277,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
 
 
 
-function getPlayerData(value)
-{
+function getPlayerData(value) {
     var controllerElement = document.querySelector("#staticsheet");
     var controllerScope = angular.element(controllerElement).scope();
     value = eval("controllerScope." + value.substring(1));
