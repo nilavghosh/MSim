@@ -190,12 +190,11 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         $http.get('/api/fmcgservice/GetPlayerInputs').
         then(function (response) {
             $scope.PlayerData = response.data;
+            addDummyData();
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
             then(function (designerDataSheet) {
                 $scope.FMCGGameDesignerSheet = designerDataSheet.data[0].data;
             });
-            //$scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
-            //pushMessage("data recieved", 'info');
         }, function (response) {
             pushMessage(response.statusText, 'info');
         });
@@ -205,32 +204,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         $http.get('/api/fmcgservice/GetPlayerInputs').
         then(function (response) {
             $scope.PlayerData = response.data;
-
-            var dummycount = 10 - $scope.PlayerData.length;
-            for (i = 0; i < dummycount; i++) {
-                var dymmyPlayer = {
-                    Quarter: 0,
-                    PTD: 0,
-                    DistributorMargin: 0,
-                    RetailerMargin: 0,
-                    NoOfSalesmen: 0,
-                    AvgSalary: 0,
-                    Training: 0,
-                    TVAds: 0,
-                    NewspaperAds: 0,
-                    HoardingAds: 0,
-                    TotalATLExpense: 0,
-                    Promoters: 0,
-                    Sampling: 0,
-                    InShopBranding: 0,
-                    TotalBTLExpense: 0,
-                    MustardOilPercentage: 0,
-                    PalmOilPercentage: 0,
-                    PackagingMaterial: 0
-                };
-                $scope.PlayerData.push(dymmyPlayer);
-            }
-
+            addDummyData();
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
             then(function (designerDataSheet) {
                 $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0]['PTD']";
@@ -263,16 +237,33 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         });
     }
 
-    //$http.get('/someUrl').
-    //success(function (data, status, headers, config) {
-    //    // this callback will be called asynchronously
-    //    // when the response is available
-    //}).
-    //error(function (data, status, headers, config) {
-    //    // called asynchronously if an error occurs
-    //    // or server returns response with an error status.
-    //});
 
+    function addDummyData() {
+        var dummycount = 10 - $scope.PlayerData.length;
+        for (i = 0; i < dummycount; i++) {
+            var dymmyPlayer = {
+                Quarter: 0,
+                PTD: 0,
+                DistributorMargin: 0,
+                RetailerMargin: 0,
+                NoOfSalesmen: 0,
+                AvgSalary: 0,
+                Training: 0,
+                TVAds: 0,
+                NewspaperAds: 0,
+                HoardingAds: 0,
+                TotalATLExpense: 0,
+                Promoters: 0,
+                Sampling: 0,
+                InShopBranding: 0,
+                TotalBTLExpense: 0,
+                MustardOilPercentage: 0,
+                PalmOilPercentage: 0,
+                PackagingMaterial: 0
+            };
+            $scope.PlayerData.push(dymmyPlayer);
+        }
+    }
 });
 
 
