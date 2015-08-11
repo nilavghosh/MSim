@@ -95,8 +95,8 @@ namespace MSim.Controllers.Services
                 }
             }
 
-            
-            
+
+
             try
             {
                 //var playersData = await collection.Find(filter).ToListAsync();
@@ -108,7 +108,7 @@ namespace MSim.Controllers.Services
                 int i = 1;
                 return mssg.InnerException;
             }
-            
+
         }
 
         [HttpGet]
@@ -197,10 +197,23 @@ namespace MSim.Controllers.Services
         public async Task<IHttpActionResult> SaveFMCGAdminStaticSheet(Object adminStaticData)
         {
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            //var client = new MongoClient();
-            //var database = client.GetDatabase("MSim");
-
+            
             var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
+            var filter = new BsonDocument();
+            var result = await collection.DeleteManyAsync(filter);
+
+            await collection.InsertOneAsync(document);
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [ActionName("SaveFMCGStaticData")]
+        public async Task<IHttpActionResult> SaveFMCGStaticData(Object staticData)
+        {
+            var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)staticData).ToString());
+
+            var collection = database.GetCollection<BsonDocument>("fmcgStaticData");
             var filter = new BsonDocument();
             var result = await collection.DeleteManyAsync(filter);
 

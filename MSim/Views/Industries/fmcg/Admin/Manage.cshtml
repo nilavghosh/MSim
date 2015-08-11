@@ -1,36 +1,32 @@
 ﻿<section data-ng-app="ngHandsontableDemo" class="AdminView">
-        <div data-ng-controller="DemoCtrl">
-            <div class="row">
-                <h3>FMCG - Admin - Algo Manage</h3>
-            </div>
+    <div data-ng-controller="DemoCtrl">
+        <div id="adminsheet">
             <div class="row">
                 <div class="cells12">
-                    <div>
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">FMCG Game Designer Sheet</a></li>
-                        </ul>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">FMCG Game Designer Sheet</a></li>
+                    </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                               <div class="scroll-container">
-                                        <hot-table id="staticsheet"
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <div class="scroll-container">
+                                <hot-table id="staticsheet"
                                            colheaders="true"
                                            datarows="FMCGGameDesignerSheet"></hot-table>
-                                </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="profile">
-                                <hot-table id="example3"
-                                           colheaders="true"
-                                           datarows="PlayerTemplateSheet"></hot-table>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="messages">
-                                <hot-table id="example3"
-                                           colheaders="true"
-                                           datarows="data1"></hot-table>
-                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <hot-table id="example3"
+                                       colheaders="true"
+                                       datarows="PlayerTemplateSheet"></hot-table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <hot-table id="example3"
+                                       colheaders="true"
+                                       datarows="data1"></hot-table>
                         </div>
                     </div>
                 </div>
@@ -39,15 +35,12 @@
                 <div class="cells12">
                     <button class="btn btn-default" ng-click="saveAdminSheet()" type="submit">Save</button>
                     <button class="btn btn-default" ng-click="refreshData()" type="submit">RefreshData</button>
+                    <button class="btn btn-default" ng-click="saveStaticData()" type="submit">Save Static Data</button>
                 </div>
             </div>
         </div>
-
-
-
-
-
-    </section>
+    </div>
+</section>
 
 
 
