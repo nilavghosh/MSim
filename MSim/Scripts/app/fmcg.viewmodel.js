@@ -27,6 +27,7 @@ FMCGDataModel = function () {
     this.PTD = ko.observable(0);
     this.DistributorMargin = ko.observable(0);
     this.RetailerMargin = ko.observable(0);
+    this.CompanyMargin = ko.observable(0);
     this.NoOfSalesmen = ko.observable(0);
     this.AvgSalary = ko.observable(0);
     this.Training = ko.observable(0);
@@ -43,7 +44,9 @@ FMCGDataModel = function () {
         return parseInt(this.Promoters()) + parseInt(this.Sampling()) + parseInt(this.InShopBranding());
     }, this);
     this.MustardOilPercentage = ko.observable(0);
-    this.PalmOilPercentage = ko.observable(0);
+    this.PalmOilPercentage = ko.computed(function () {
+        return 100 - parseInt(this.MustardOilPercentage());
+    }, this);
     this.PackagingMaterial = ko.observable(0)
 }
 

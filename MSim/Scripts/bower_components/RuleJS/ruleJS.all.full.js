@@ -19239,17 +19239,19 @@ jStat.extend(jStat.fn, {
     };
 
     Formula.SUMPRODUCT = function () {
-      var arrays = arguments.length + 1;
+        var arrays = arguments.length + 1;
+        var arr = arguments;
       var result = 0;
-      for (var i = 0; i < arguments[0].length; i++) {
-        for (var j = 0; j < arguments[0][i].length; j++) {
-          var product = 1;
-          for (var k = 1; k < arrays; k++) {
-            product *= arguments[k - 1][i][j];
-          }
-          result += product;
-        }
-      }
+      //for (var i = 0; i < arguments[0].length; i++) {
+      //  for (var j = 0; j < arguments[0][i].length; j++) {
+      //    var product = 1;
+      //    for (var k = 1; k < arrays; k++) {
+      //      product *= arguments[k - 1][i][j];
+      //    }
+      //    result += product;
+      //  }
+        //}
+      for (var i = 0; i < arr[0].length; result += arr[0][i] * arr[1][0][i], i++);
       return result;
     };
 

@@ -35,13 +35,13 @@
             <div class="row">
                 <form class="form-horizontal" action="#/Save" method="post">
                     <div class="form-group">
-                        <label>Mustard Oil</label>
+                        <label>Mustard Oil (in %)</label>
                         <input type="text" data-bind="value: FMCGData.MustardOilPercentage" class="form-control" placeholder="in %" />
 
                     </div>
                     <div class="form-group">
-                        <label>Palm Oil</label>
-                        <input type="number" data-bind="value: FMCGData.PalmOilPercentage" class="form-control" placeholder="in %" />
+                        <label>Palm Oil (in %)</label>
+                        <input type="number" data-bind="value: FMCGData.PalmOilPercentage, enable : false" class="form-control" placeholder="in %" />
 
                     </div>
                     <div class="form-group">

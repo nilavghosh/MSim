@@ -35,8 +35,6 @@ namespace MSim
                 "~/Scripts/app/_run.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                "~/Scripts/bower_components/RuleJS/ruleJS.lib.full.js",
-                "~/Scripts/bower_components/RuleJS/ruleJS.parser.full.js",
                 "~/Scripts/bower_components/RuleJS/ruleJS.all.full.js",
                 "~/Scripts/bower_components/angular/angular.js",
                 "~/Scripts/bower_components/handsontable/setSheetDimensions.js",

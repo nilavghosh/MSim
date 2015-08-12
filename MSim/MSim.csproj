@@ -458,9 +458,6 @@
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.swf" />
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.all.full.js" />
-    <Content Include="Scripts\bower_components\RuleJS\ruleJS.all.full.min.js" />
-    <Content Include="Scripts\bower_components\RuleJS\ruleJS.lib.full.js" />
-    <Content Include="Scripts\bower_components\RuleJS\ruleJS.parser.full.js" />
     <Content Include="Scripts\bower_components\handsontable\extensions\angular\ngHandsontable.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -524,7 +521,6 @@
     <Content Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <None Include="Views\Industries\fmcg\ChannelPartners\ChannelPartnerManagement-metroui.cshtml" />
     <Content Include="Views\Industries\fmcg\Admin\Manage.cshtml" />
     <Content Include="Views\Industries\fmcg\Admin\ResultState.cshtml" />
     <Content Include="Views\Industries\fmcg\Sales\SalesTeamManagement.cshtml" />

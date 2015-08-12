@@ -51,7 +51,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
         colHeaders: true,
         rowHeaders: true,
         contextMenu: true,
-        manualColumnResize: true,
+        manualColumnResize: false,
         formulas: true
     });
 
@@ -180,6 +180,7 @@ angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider'
                 PTD: 0,
                 DistributorMargin: 0,
                 RetailerMargin: 0,
+                CompanyMargin : 0,
                 NoOfSalesmen: 0,
                 AvgSalary: 0,
                 Training: 0,
