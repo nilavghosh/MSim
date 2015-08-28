@@ -25,18 +25,31 @@ namespace MSim
             bundles.Add(new ScriptBundle("~/bundles/metroui").Include(
                 "~/Scripts/metro.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                "~/Scripts/bower_components/angular/angular.js",
+                "~/Scripts/bower_components/angular-route/angular-route.js",
+                "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/sammy-{version}.js",
                 "~/Scripts/app/common.js",
                 "~/Scripts/app/app.datamodel.js",
                 "~/Scripts/app/app.viewmodel.js",
                 "~/Scripts/app/home.viewmodel.js",
-                "~/Scripts/app/fmcg.viewmodel.js",
                 "~/Scripts/app/_run.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularapp").Include("~/Scripts/app/app.main.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/games").Include(
+                "~/Scripts/app/fmcg.viewmodel.js"
+                ));
+
+
+
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
                 "~/Scripts/bower_components/RuleJS/ruleJS.all.full.js",
-                "~/Scripts/bower_components/angular/angular.js",
                 "~/Scripts/bower_components/handsontable/setSheetDimensions.js",
                 "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
                 "~/Scripts/bower_components/handsontable/dist/handsontable.formula.js",
@@ -53,11 +66,10 @@ namespace MSim
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                 "~/Content/bootstrap.css",
-                 "~/Content/metro.css",
+                 "~/Scripts/bower_components/metro-bootstrap/dist/css/metro-bootstrap.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css"));
-            
+
             BundleTable.EnableOptimizations = false;
         }
     }

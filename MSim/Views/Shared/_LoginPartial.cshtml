@@ -5,20 +5,12 @@
     {
         @Html.AntiForgeryToken()
 
-        @*<ul class="nav navbar-nav navbar-right">
-                <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage" })
-                </li>
-                <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></li>
-            </ul>*@
-        <button class="image-button icon-right bg-transparent fg-white bg-hover-dark no-border">
-            <span class="sub-header no-margin text-light">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage" })</span>
-            <span class="icon mif-user"></span>
-            @*<a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></span>*@
-        </button>
-        <a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();" class="square-button bg-transparent fg-white bg-hover-dark no-border"><span class="mif-switch"></span></a>
-
-
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">Log off</a></li>
+        </ul>
     }
 }
 else

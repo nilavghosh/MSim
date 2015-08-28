@@ -61,3 +61,16 @@ textarea {
 
 #adminsheet {
 }
+
+.tile h3, .tile h4 {
+    margin-top: 30px !important;
+}
+
+.bsnavbar {
+    margin-bottom: 19px;
+    min-height: 54px;
+}
+
+.progress {
+    height: 30px;
+}

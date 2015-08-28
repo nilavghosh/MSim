@@ -1,92 +1,129 @@
 ﻿<!-- Indicates a successful or positive action -->
-<form action="#home" method="get">
-    <button type="submit" class="btn btn-success">Back to Dashboard</button>
-</form>
-<div id="mainbody" data-bind="template: { name: templatename}"></div>
+<div data-ng-app="appMain">
+    <form action="#/" method="get">
+        <button type="submit" class="btn btn-success">Back to Dashboard</button>
+    </form>
 
+    <div data-ng-controller="fmcgCtrl">
+        <div type="text">
+            <p>Hello <span ng-bind="FMCGDataModel.Quarter"></span>!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+            <div class="col-md-3"><progressbar type="success" value="100"><strong><h4><a href="/">Q1</a></h4></strong></progressbar></div>
+            <div class="col-md-3"><progressbar typeof="info" value="0">Q2</progressbar></div>
+            <div class="col-md-3"><progressbar value="0">Q3</progressbar></div>
+            <div class="col-md-3"><progressbar value="0">Q4</progressbar></div>
 
-<script type="text/html" id="fmcgHome">
-    <!-- ko with: home -->
-    <section data-bind="page: {id: 'start', title: 'Pager.js Demo Start'}" id="homepage" class="view">
-        <div class="tile-group quadro align-center-tiles">
-            <div class="tile-container">
-                <div class="tile bg-white" data-role="tile">
-                    <div class="tile-content iconic">
-                        <span class="tile-label"><a href="#/ManagingChannelPartner">MANAGING CHANNEL PARTNER</a></span>
+            @*<div class="col-md-3"><progressbar class="progress-striped" value="22" type="warning">22%</progressbar></div>
+            <div class="col-md-3"><progressbar class="progress-striped active" max="200" value="166" type="danger"><i>166 / 200</i></progressbar></div>
+            <div class="col-md-3"><progressbar class="progress-striped active" max="200" value="166" type="danger"><i>166 / 200</i></progressbar></div>*@
+          </div>
+    </div>
+    @*<div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: 35%">
+                        <a href="~/Views/Home/Index.cshtml"> <span class="sr-only">35% Complete (success)</span></a>
                     </div>
-                </div>
-                <div class="tile bg-violet" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label"><a href="#/ManagingSalesTeam">MANAGING SALES TEAM</a></span>
+                    <div class="progress-bar progress-bar-warning" style="width: 20%">
+                        <span class="sr-only">20% Complete (warning)</span>
                     </div>
-                </div>
-                <div class="tile bg-emerald" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label"><a href="#/ManagingPromotions">MANAGING PROMOTION</a></span>
-                    </div>
-                </div>
-                <div class="tile bg-amber" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label"><a href="#/ManagingProduct">MANAGING PRODUCT</a></span>
-                    </div>
-                </div>
-                <div class="tile bg-cobalt" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label">FINANCIAL REPORTS</span>
-                    </div>
-                </div>
-                <div class="tile bg-brown" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label">MARKET RESEARCH REPORTS</span>
-                    </div>
-                </div>
-                <div class="tile bg-blue" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label">MAILBOX</span>
-                    </div>
-                </div>
-                <div class="tile bg-red" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label">HELP !!!</span>
-                    </div>
-                </div>
-                <div class="tile bg-white" data-role="tile">
-                    <div class="tile-content iconic">
-                        <icon />
-                        <span class="tile-label"><a href="/fmcg/Manage">ADMIN</a></span>
+                    <div class="progress-bar progress-bar-danger" style="width: 10%">
+                        <span class="sr-only">10% Complete (danger)</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- /ko -->
-</script>
+        </div>*@
+    <div ng-view></div>
+    @*<div id="mainbody" data-bind="template: { name: templatename}"></div>*@
+</div>
+
+@*<script type="text/html" id="fmcgHome">
+        <!-- ko with: home -->
+        <section id="homepage" class="view">
+            <div class="tile-group quadro align-center-tiles">
+                <div class="tile-container">
+                    <div class="tile bg-white" data-role="tile">
+                        <div class="tile-content iconic">
+                            <span class="tile-label"><a href="#/ManagingChannelPartner">MANAGING CHANNEL PARTNER</a></span>
+                        </div>
+                    </div>
+                    <div class="tile bg-violet" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label"><a href="#/ManagingSalesTeam">MANAGING SALES TEAM</a></span>
+                        </div>
+                    </div>
+                    <div class="tile bg-emerald" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label"><a href="#/ManagingPromotions">MANAGING PROMOTION</a></span>
+                        </div>
+                    </div>
+                    <div class="tile bg-amber" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label"><a href="#/ManagingProduct">MANAGING PRODUCT</a></span>
+                        </div>
+                    </div>
+                    <div class="tile bg-cobalt" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label"><a href="#/Q1-Reports">FINANCIAL REPORTS</a></span>
+                        </div>
+                    </div>
+                    <div class="tile bg-brown" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label">MARKET RESEARCH REPORTS</span>
+                        </div>
+                    </div>
+                    <div class="tile bg-blue" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label">MAILBOX</span>
+                        </div>
+                    </div>
+                    <div class="tile bg-red" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label">HELP !!!</span>
+                        </div>
+                    </div>
+                    <div class="tile bg-white" data-role="tile">
+                        <div class="tile-content iconic">
+                            <icon />
+                            <span class="tile-label"><a href="/fmcg/Manage">ADMIN</a></span>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </section>
+        <!-- /ko -->
+    </script>
 
 
-<script type="text/html" id="fmcg-ChannelPartnerManagement">
-    @Html.Partial("~/Views/Industries/fmcg/ChannelPartners/ChannelPartnerManagement.cshtml")
-</script>
+    <script type="text/html" id="fmcg-ChannelPartnerManagement">
+        @Html.Partial("~/Views/Industries/fmcg/ChannelPartners/ChannelPartnerManagement.cshtml")
+    </script>
 
 
-<script type="text/html" id="fmcg-SalesTeamManagement">
-    @Html.Partial("~/Views/Industries/fmcg/Sales/SalesTeamManagement.cshtml")
-</script>
+    <script type="text/html" id="fmcg-SalesTeamManagement">
+        @Html.Partial("~/Views/Industries/fmcg/Sales/SalesTeamManagement.cshtml")
+    </script>
 
 
-<script type="text/html" id="fmcg-ProductManagement">
-    @Html.Partial("~/Views/Industries/fmcg/Products/ProductManagement.cshtml")
-</script>
+    <script type="text/html" id="fmcg-ProductManagement">
+        @Html.Partial("~/Views/Industries/fmcg/Products/ProductManagement.cshtml")
+    </script>
 
 
-<script type="text/html" id="fmcg-PromotionManagement">
-    @Html.Partial("~/Views/Industries/fmcg/Promotions/PromotionManagement.cshtml")
-</script>
+    <script type="text/html" id="fmcg-PromotionManagement">
+        @Html.Partial("~/Views/Industries/fmcg/Promotions/PromotionManagement.cshtml")
+    </script>
 
-  
+    <script type="text/html" id="fmcg-Q1-Reports">
+        @Html.Partial("~/Views/Industries/fmcg/FinancialReports/Q1-Reports.cshtml")
+    </script>*@
