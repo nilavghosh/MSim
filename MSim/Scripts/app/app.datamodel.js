@@ -3,8 +3,6 @@
     // Routes
     self.userInfoUrl = "/api/Me";
     self.siteUrl = "/";
-    self.fmcgDataSaveUrl = "/api/fmcgservice/SaveFMCGData"
-    self.fmcgAdminUrl = "/api/fmcgservice"
     // Route operations
 
     // Other private operations

@@ -61,7 +61,7 @@
 fmcgGame.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
-             when('/', {
+             when('/Dashboard', {
                  templateUrl: 'templates/industries/fmcg/Main.html',
                  controller: 'fmcgCtrl'
              }).
