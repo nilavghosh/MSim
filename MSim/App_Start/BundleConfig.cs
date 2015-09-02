@@ -66,10 +66,10 @@ namespace MSim
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                 "~/Scripts/bower_components/bootstrap/dist/css/bootstrap.css",
                  "~/Scripts/bower_components/metro-bootstrap/dist/css/metro-bootstrap.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css"));
-
             BundleTable.EnableOptimizations = false;
         }
     }

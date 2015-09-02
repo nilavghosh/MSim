@@ -1395,7 +1395,7 @@
     <Content Include="Scripts\app\app.viewmodel.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
-    <Content Include="templates\HtmlPage1.html" />
+    <Content Include="templates\Main.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -1409,7 +1409,7 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Home\_Home.cshtml" />
+    <Content Include="Views\Industries\fmcg\Home\_Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
@@ -1452,6 +1452,7 @@
     <Content Include="templates\Industries\fmcg\Promotions\PromotionManagement.html" />
     <Content Include="templates\Industries\fmcg\Sales\SalesTeamManagement.html" />
     <Content Include="templates\Industries\fmcg\Main.html" />
+    <Content Include="Views\Home\_Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

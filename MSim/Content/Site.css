@@ -74,3 +74,5 @@ textarea {
 .progress {
     height: 30px;
 }
+
+.row-top-buffer { margin-top:20px !important; }
