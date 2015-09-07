@@ -5,27 +5,13 @@
             <div class="col-md-5 col-md-offset-1">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon info" id="sizing-addon3">Pick an Industry : </span>
-                    <select class="form-control">
-                        <option></option>
-                        <option>FMCG</option>
-                        <option>Logistics</option>
-                        <option>Healthcare</option>
-                        <option>Finance</option>
-                        <option>Banking</option>
-                        <option>HR</option>
-                    </select>
+                    <select class="form-control" ng-model="selectedGame" ng-options="game.industry for game in gameCollection"></select>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon info" id="sizing-addon3">Pick Game : </span>
-                    <select class="form-control">
-                        <option></option>
-                        <option>Oil Game</option>
-                        <option>15-Jun-2015</option>
-                        <option>10-Jun-2015</option>
-                        <option>1-Jun-2015</option>
-                    </select>
+                    <select class="form-control" ng-model="selectedChildItem" ng-options="game.name for game in selectedGame.games"></select>
                 </div>
             </div>
         </div>

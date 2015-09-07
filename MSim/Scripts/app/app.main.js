@@ -10,6 +10,27 @@ appmain.controller('appMainCtrl', ['$scope', '$location', '$http', '$timeout', f
     $scope.go = function (hash) {
         $location.path(hash);
     }
+
+    $scope.selectedGame = "";
+
+    $scope.getGames = function () {
+        $http.get('/api/appmain/GetGames').
+        then(function (response) {
+            //$scope.games = Enumerable.From(response.data).
+            //                Select(function (g) { return g.industry }).ToArray();
+            $scope.gameCollection = response.data;
+
+        }, function (response) {
+            //  pushMessage(response.statusText, 'info');
+        });
+    }
+
+
+    $scope.init = function () {
+        $scope.getGames();
+    }
+    $scope.init();
+
 }]);
 
 

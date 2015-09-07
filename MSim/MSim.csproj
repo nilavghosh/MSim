@@ -233,6 +233,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FMCGController.cs" />
+    <Compile Include="Controllers\Services\AppMainController.cs" />
     <Compile Include="Controllers\Services\FMCGServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -261,16 +262,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\handsontable\handsontable.css" />
     <Content Include="Content\handsontable\handsontable.full.css" />
-    <Content Include="Content\metro-icons.css" />
-    <Content Include="Content\metro-icons.min.css" />
-    <Content Include="Content\metro-responsive.css" />
-    <Content Include="Content\metro-responsive.min.css" />
-    <Content Include="Content\metro-rtl.css" />
-    <Content Include="Content\metro-rtl.min.css" />
-    <Content Include="Content\metro-schemes.css" />
-    <Content Include="Content\metro-schemes.min.css" />
-    <Content Include="Content\metro.css" />
-    <Content Include="Content\metro.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\1.jpg" />
     <Content Include="Content\Slides\Industries\fmcg\ChannelPartners\2.jpg" />
@@ -281,7 +272,6 @@
     <Content Include="Content\Slides\Industries\fmcg\Sales\1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\metro.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\admin.js" />
     <Content Include="ApplicationInsights.config" />
@@ -293,10 +283,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="fonts\selection.json" />
-    <Content Include="fonts\metro.woff" />
-    <Content Include="fonts\metro.ttf" />
-    <Content Include="fonts\metro.eot" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -1380,7 +1366,9 @@
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
-    <Content Include="Scripts\metro.js" />
+    <None Include="Scripts\linq-vsdoc.js" />
+    <Content Include="Scripts\linq.js" />
+    <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
