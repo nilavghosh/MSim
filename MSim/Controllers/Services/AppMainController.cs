@@ -56,5 +56,43 @@ namespace MSim.Controllers.Services
             }
         }
 
+        [HttpPost]
+        [ActionName("CheckRegistration")]
+        public async Task<object> CheckRegistration(Object registrationChoice)
+        {
+            var filter = new BsonDocument();
+            var collection = database.GetCollection<BsonDocument>("gameProperties");
+
+
+            List<BsonDocument> games = new List<BsonDocument>();
+            //using (var cursor = await collection.FindAsync(filter))
+            //{
+            //    while (await cursor.MoveNextAsync())
+            //    {
+            //        var batch = cursor.Current;
+            //        foreach (var document in batch)
+            //        {
+            //            // process document
+            //            games.Add(document);
+            //        }
+            //    }
+            //}
+            await Task.Delay(3000);
+
+
+
+            try
+            {
+                string playersDatainJson = games.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                return false; 
+                // Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            }
+            catch (Exception mssg)
+            {
+                int i = 1;
+                return mssg.InnerException;
+            }
+        }
+
     }
 }

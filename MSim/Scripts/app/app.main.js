@@ -6,18 +6,21 @@
     }
 }]);
 
-appmain.controller('appMainCtrl', ['$scope', '$location', '$http', '$timeout', function ($scope, $location, $http, $timeout) {
+appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http', '$timeout', function ($scope, $rootScope, $location, $http, $timeout) {
     $scope.go = function (hash) {
         $location.path(hash);
     }
 
-    $scope.selectedGame = "";
+
+    $rootScope.gameOfChoice = {
+        selectedIndustry: "",
+        selectedGame: "",
+        code: "",
+    }
 
     $scope.getGames = function () {
         $http.get('/api/appmain/GetGames').
         then(function (response) {
-            //$scope.games = Enumerable.From(response.data).
-            //                Select(function (g) { return g.industry }).ToArray();
             $scope.gameCollection = response.data;
 
         }, function (response) {
@@ -41,8 +44,35 @@ appmain.config(['$routeProvider',
                  templateUrl: 'templates/Main.html',
                  controller: 'appMainCtrl'
              }).
-             when('/fmcgGame', {
+             when('/playGame', {
                  templateUrl: 'templates/industries/fmcg/Main.html',
-                 controller: 'fmcgCtrl'
+                 controller: 'fmcgCtrl',
+                 resolve: {
+                     userRegistration: ['registrationService', function (registrationService) {
+                         return registrationService.CheckRegistration()
+                     }]
+                 }
              })
     }]);
+
+
+appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
+    var url = 'api/appmain/CheckRegistration';
+    var service = {};
+    service.CheckRegistration = function () {
+        return $http.post(url, $rootScope.gameOfChoice).then(
+        function (isRegistered) {
+            if (isRegistered.data == true) {
+                return $q.resolve();
+            }
+            else {
+                //$location.path("/");
+                return $q.reject();
+            }
+        },
+        function (error) {
+            alert(error);
+        });
+    }
+    return service;
+}]);

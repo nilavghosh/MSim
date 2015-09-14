@@ -1,4 +1,4 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute"]).controller('fmcgCtrl', function ($scope, $http, $timeout) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute"]).controller('fmcgCtrl', function ($scope, $http, $timeout, userRegistration) {
     $scope.FMCGDataModel = {
         Quarter: 0,
         PTD: 43,

@@ -1,0 +1,11 @@
+﻿message: function (registrationService) {
+                         return registrationService.CheckRegistration();
+                     },
+
+"userRegistration": function ($q, $timeout) {
+                         var checkreg = $q.defer();
+                         $timeout(function () {
+                             checkreg.resolve("not registered");
+                         }, 2000);
+                         return checkreg.promise;
+                     }

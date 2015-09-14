@@ -273,6 +273,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="ScratchPad.txt" />
     <Content Include="Scripts\admin.js" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="Scripts\app\app.main.js" />
