@@ -8,13 +8,13 @@
 
 appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http', '$timeout', function ($scope, $rootScope, $location, $http, $timeout) {
     $scope.go = function (hash) {
-        $location.path(hash);
+        $location.path(hash + '/' + $rootScope.gameOfChoice.selectedIndustry.industry);
     }
 
 
     $rootScope.gameOfChoice = {
         selectedIndustry: "",
-        selectedGame: "",
+        selectedGameId: "",
         code: "",
     }
 
@@ -38,22 +38,23 @@ appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http',
 
 
 appmain.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider.
-             when('/', {
-                 templateUrl: 'templates/Main.html',
-                 controller: 'appMainCtrl'
-             }).
-             when('/playGame', {
-                 templateUrl: 'templates/industries/fmcg/Main.html',
-                 controller: 'fmcgCtrl',
-                 resolve: {
-                     userRegistration: ['registrationService', function (registrationService) {
-                         return registrationService.CheckRegistration()
-                     }]
-                 }
-             })
-    }]);
+function ($routeProvider) {
+    $routeProvider.
+         when('/', {
+             templateUrl: 'templates/Main.html',
+             controller: 'appMainCtrl'
+         }).
+         when('/playGame/:industry', {
+             templateUrl: function (params) {
+                 return 'templates/industries/' + params.industry + '/Main.html'
+             },
+             resolve: {
+                 userRegistration: ['registrationService', function (registrationService) {
+                     return registrationService.CheckRegistration()
+                 }]
+             }
+         })
+}]);
 
 
 appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
@@ -66,8 +67,8 @@ appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location"
                 return $q.resolve();
             }
             else {
-                //$location.path("/");
-                return $q.reject();
+                $location.path("/");
+                //return $q.reject();
             }
         },
         function (error) {

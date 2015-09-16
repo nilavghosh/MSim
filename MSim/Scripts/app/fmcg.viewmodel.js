@@ -1,4 +1,4 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute"]).controller('fmcgCtrl', function ($scope, $http, $timeout, userRegistration) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute"]).controller('fmcgCtrl', function ($scope, $http, $timeout) {
     $scope.FMCGDataModel = {
         Quarter: 0,
         PTD: 43,
@@ -21,36 +21,6 @@
         PackagingMaterial: 0
     };
 
-    $scope.ChannelPartnerDataModel = {
-        PTD: 0,
-        DistributorMargin: 0,
-        RetailerMargin: 0
-    };
-
-    $scope.SalesTeamDataModel = {
-        NoOfSalesmen: 0,
-        AvgSalary: 0,
-        Training: 0
-    };
-
-    $scope.PromotionsDataModel = {
-        TVAds: 0,
-        NewspaperAds: 0,
-        HoardingAds: 0,
-        TotalATLExpense: 0,
-        Promoters: 0,
-        Sampling: 0,
-        InShopBranding: 0,
-        TotalBTLExpense: 0
-    };
-
-
-    $scope.ProductDataModel = {
-        MustardOilPercentage: 0,
-        PalmOilPercentage: 0,
-        PackagingMaterial: 0
-    };
-
 
     $scope.FMCGAdminDataModel = {
         Result: ko.observableArray([])
@@ -66,8 +36,7 @@ fmcgGame.config(['$routeProvider',
                  controller: 'fmcgCtrl'
              }).
             when('/ManagingChannelPartner', {
-                templateUrl: 'templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html',
-                controller: 'fmcgCtrl'
+                templateUrl: 'templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html'
             }).
             when('/ManagingSalesTeam', {
                 templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html',
