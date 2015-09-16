@@ -1,9 +1,7 @@
 ﻿<section>
     <div class="row">
         <div class="col-md-12">
-            <form action="#/Dashboard" method="get">
-                <button type="submit" class="btn btn-success">Back to Dashboard</button>
-            </form>
+            <a type="button" href="#/Dashboard" class="btn btn-success">Back to Dashboard</a>
         </div>
     </div>
     <!-- ko with: fmcg -->
@@ -11,7 +9,7 @@
     <br />
     <div class="row">
         <div class="col-md-offset-1 col-md-7">
-            <div style="width:480px" id="carousel-Products" class="carousel slide" data-ride="carousel">
+            <div style="width:480px" id="carousel-Products" class="carousel slide" ng-non-bindable data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-Products" data-slide-to="0" class=""></li>
                     <li data-target="#carousel-Products" data-slide-to="1" class=""></li>
@@ -43,17 +41,17 @@
                 <form class="form-horizontal" action="#/Save" method="post">
                     <div class="form-group">
                         <label>Mustard Oil (in %)</label>
-                        <input type="text" data-bind="value: FMCGData.MustardOilPercentage" class="form-control" placeholder="in %" />
+                        <input type="text" ng-model="FMCGDataModel.MustardOilPercentage" class="form-control" placeholder="in %" />
 
                     </div>
                     <div class="form-group">
                         <label>Palm Oil (in %)</label>
-                        <input type="number" data-bind="value: FMCGData.PalmOilPercentage, enable : false" class="form-control" placeholder="in %" />
+                        <input type="number" ng-model="FMCGDataModel.PalmOilPercentage, enable : false" class="form-control" placeholder="in %" />
 
                     </div>
                     <div class="form-group">
                         <label>Packaging Material</label>
-                        <select data-bind="optionsText: FMCGData.PakagingMaterial" class="form-control">
+                        <select ng-model="FMCGDataModel.PakagingMaterial" class="form-control">
                             <option>Inferior</option>
                             <option>Normal</option>
                             <option>Premium</option>

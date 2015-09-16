@@ -1,17 +1,14 @@
 ﻿<section>
     <div class="row">
         <div class="col-md-12">
-            <form action="#/Dashboard" method="get">
-                <button type="submit" class="btn btn-success">Back to Dashboard</button>
-            </form>
+            <a type="button" href="#/Dashboard" class="btn btn-success">Back to Dashboard</a>
         </div>
     </div>
-    <!-- ko with: fmcg -->
     <h3>Promotion Management</h3>
     <br />
     <div class="row">
         <div class="col-md-offset-1 col-md-7">
-            <div style="width:480px" id="carousel-Promotions" class="carousel slide" data-ride="carousel">
+            <div style="width:480px" id="carousel-Promotions" class="carousel slide" ng-non-bindable data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-Promotions" data-slide-to="0" class=""></li>
                     <li data-target="#carousel-Promotions" data-slide-to="1" class=""></li>
@@ -37,19 +34,19 @@
                 <form class="form-horizontal" action="#/Save" method="post">
                     <div class="form-group">
                         <label>TV Advertisement</label>
-                        <input type="number" data-bind="value: FMCGData.TVAds" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.TVAds" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Newspaper</label>
-                        <input type="number" data-bind="value: FMCGData.NewspaperAds" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.NewspaperAds" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Hoardings</label>
-                        <input type="number" data-bind="value: FMCGData.HoardingAds" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.HoardingAds" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Total ATL Expense</label>
-                        <input type="number" data-bind="value: FMCGData.TotalATLExpense" class="form-control" placeholder="in ₹">
+                        <input type="number" class="form-control" ng-model="FMCGDataModel.TotalATLExpense()" readonly placeholder="in ₹">
                     </div>
                 </form>
             </div>
@@ -59,19 +56,19 @@
                 <form class="form-horizontal" action="#/Save" method="post">
                     <div class="form-group">
                         <label>Promoters</label>
-                        <input type="number" data-bind="value: FMCGData.Promoters" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.Promoters" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Sampling</label>
-                        <input type="number" data-bind="value: FMCGData.Sampling" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.Sampling" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>In shop branding</label>
-                        <input type="number" data-bind="value: FMCGData.InShopBranding" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.InShopBranding" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Total BTL Expense</label>
-                        <input type="number" data-bind="value: FMCGData.TotalBTLExpense" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.TotalBTLExpense()" readonly class="form-control" placeholder="in ₹">
                     </div>
                 </form>
             </div>
@@ -84,5 +81,4 @@
             </div>
         </div>
     </div>
-    <!-- /ko -->
 </section>

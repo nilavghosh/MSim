@@ -247,6 +247,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FMCG\ChannelPartnerData.cs" />
+    <Compile Include="Models\FMCG\GamePlayerData.cs" />
     <Compile Include="Models\FMCG\UserMarketShare.cs" />
     <Compile Include="Models\FMCG\ResultData.cs" />
     <Compile Include="Models\IdentityModels.cs" />

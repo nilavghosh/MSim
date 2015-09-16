@@ -1,17 +1,14 @@
-﻿<section ng-controller="fmcgCtrl">
+﻿<section>
     <div class="row">
         <div class="col-md-12">
-            <form action="#/Dashboard" method="get">
-                <button type="submit" class="btn btn-success">Back to Dashboard</button>
-            </form>
+            <a type="button" href="#/Dashboard" class="btn btn-success">Back to Dashboard</a>
         </div>
     </div>
-    <!-- ko with: fmcg -->
     <h3>Channel Partner Management</h3>
     <br />
     <div class="row">
         <div class="col-md-offset-1 col-md-7">
-            <div style="width:480px" id="carousel-ChannelPartner" class="carousel slide" data-ride="carousel">
+            <div style="width:480px" id="carousel-ChannelPartner" class="carousel slide" ng-non-bindable data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-ChannelPartner" data-slide-to="0" class=""></li>
                     <li data-target="#carousel-ChannelPartner" data-slide-to="1" class=""></li>
@@ -65,5 +62,4 @@
             </div>
         </div>
     </div>
-    <!-- /ko -->
 </section>

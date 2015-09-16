@@ -19,6 +19,7 @@ using MongoDB.Bson;
 using MongoDB.Driver.Linq;
 using Newtonsoft.Json;
 using MongoDB.Bson.IO;
+using System.Xml.Linq;
 
 namespace MSim.Controllers.Services
 {
@@ -70,6 +71,62 @@ namespace MSim.Controllers.Services
             return marketShares;
         }
 
+        [HttpPost]
+        [ActionName("GetPlayerData")]
+        public async Task<object> GetPlayerData(Object registrationChoice)
+        {
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData2");
+            //var collection = database.GetCollection<GamePlayerData>("fmcgGamePlayerData2");
+
+            //var playedgame = await collection.FindAsync(Builders<GamePlayerData>.Filter.Where(game => game.gamecode == selectedgame.code)).ToListAsync();
+                          
+
+            var builder = Builders<BsonDocument>.Filter;
+            var matchusername = Builders<BsonDocument>.Filter.Eq("username", User.Identity.Name);
+            var matchquarter = Builders<BsonDocument>.Filter.Eq("qtrname", 1);
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code) &
+                         builder.ElemMatch("players", matchusername) &
+                         builder.ElemMatch("players.quarters", matchquarter);
+            //var games = await collection.Find(filter).ToListAsync();
+            var quarterdata = new List<BsonDocument>();
+            using (var cursor = await collection.FindAsync(filter))
+            {
+                while (await cursor.MoveNextAsync())
+                {
+                    var batch = cursor.Current;
+                    foreach (var document in batch)
+                    {
+                        // process document
+                        quarterdata.Add(document);
+                    }
+                }
+            }
+            await Task.Delay(1000);
+
+
+
+            try
+            {
+                //string playersDatainJson = games.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                if (quarterdata.Count == 1)
+                {
+                    string quarterDatainJson = quarterdata.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject(quarterDatainJson);
+                }
+                else
+                {
+                    return false;
+                }
+                // Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            }
+            catch (Exception mssg)
+            {
+                int i = 1;
+                return mssg.InnerException;
+            }
+        }
         [HttpGet]
         [ActionName("GetPlayerInputs")]
         public async Task<object> GetPlayerInputs()
@@ -197,7 +254,7 @@ namespace MSim.Controllers.Services
         public async Task<IHttpActionResult> SaveFMCGAdminStaticSheet(Object adminStaticData)
         {
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            
+
             var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
             var filter = new BsonDocument();
             var result = await collection.DeleteManyAsync(filter);
