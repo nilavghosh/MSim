@@ -20,10 +20,11 @@ using MongoDB.Driver.Linq;
 using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using System.Xml.Linq;
+using MongoDB.Bson.Serialization;
 
 namespace MSim.Controllers.Services
 {
-    [Authorize]
+
     public class FMCGServiceController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -76,20 +77,16 @@ namespace MSim.Controllers.Services
         public async Task<object> GetPlayerData(Object registrationChoice)
         {
             SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
-            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData2");
-            //var collection = database.GetCollection<GamePlayerData>("fmcgGamePlayerData2");
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
 
-            //var playedgame = await collection.FindAsync(Builders<GamePlayerData>.Filter.Where(game => game.gamecode == selectedgame.code)).ToListAsync();
-                          
 
             var builder = Builders<BsonDocument>.Filter;
-            var matchusername = Builders<BsonDocument>.Filter.Eq("username", User.Identity.Name);
-            var matchquarter = Builders<BsonDocument>.Filter.Eq("qtrname", 1);
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
                          builder.Eq("gamecode", selectedgame.code) &
-                         builder.ElemMatch("players", matchusername) &
-                         builder.ElemMatch("players.quarters", matchquarter);
+                         builder.Eq("username", "nilavghosh@gmail.com") &
+                         builder.Eq("qtrname", 1);
             //var games = await collection.Find(filter).ToListAsync();
+
             var quarterdata = new List<BsonDocument>();
             using (var cursor = await collection.FindAsync(filter))
             {
@@ -103,16 +100,11 @@ namespace MSim.Controllers.Services
                     }
                 }
             }
-            await Task.Delay(1000);
-
-
-
             try
             {
-                //string playersDatainJson = games.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                 if (quarterdata.Count == 1)
                 {
-                    string quarterDatainJson = quarterdata.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                    string quarterDatainJson = quarterdata[0].ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                     return Newtonsoft.Json.JsonConvert.DeserializeObject(quarterDatainJson);
                 }
                 else
@@ -127,6 +119,45 @@ namespace MSim.Controllers.Services
                 return mssg.InnerException;
             }
         }
+
+        [HttpPost]
+        [ActionName("SavePlayerData")]
+        public async Task<object> SavePlayerData(Object playerdata)
+        {
+            var playerdatadocument = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)playerdata).ToString());
+
+            GamePlayerData gameplayerdata = Newtonsoft.Json.JsonConvert.DeserializeObject<GamePlayerData>(playerdata.ToString());
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", gameplayerdata.gameid) &
+                         builder.Eq("gamecode", gameplayerdata.gamecode) &
+                         builder.Eq("username", gameplayerdata.username) &
+                         builder.Eq("qtrname", gameplayerdata.qtrname);
+
+            try
+            {
+                await collection.FindOneAndReplaceAsync(filter, playerdatadocument);
+                return playerdatadocument;
+            }
+            catch (Exception mssg)
+            {
+                int i = 1;
+                return mssg.InnerException;
+            }
+        }
+
+        [HttpGet]
+        [ActionName("GetStaticData")]
+        public async Task<object> GetStaticData()
+        {
+            var filter = new BsonDocument();
+            var collection = database.GetCollection<BsonDocument>("fmcgStaticData");
+            var staticData = await collection.Find(filter).ToListAsync();
+            string staticDataInJson = staticData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+            return Newtonsoft.Json.JsonConvert.DeserializeObject(staticDataInJson);
+        }
+
+
         [HttpGet]
         [ActionName("GetPlayerInputs")]
         public async Task<object> GetPlayerInputs()
@@ -172,9 +203,6 @@ namespace MSim.Controllers.Services
         [ActionName("GetFMCGGameDesignerDataSheet")]
         public async Task<object> GetFMCGGameDesignerDataSheet()
         {
-            //var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            //var client = new MongoClient();
-            //var database = client.GetDatabase("MSim");
             var filter = new BsonDocument();
             var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
             var playersData = await collection.Find(filter).ToListAsync();

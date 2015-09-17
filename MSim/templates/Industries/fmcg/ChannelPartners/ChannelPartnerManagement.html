@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-offset-1 col-md-3">
             <div class="row">
-                <form class="form-horizontal" action="#/SaveQ1Data" method="post">
+                <form class="form-horizontal">
                     <div class="form-group">
                         <label>PTD</label>
                         <input type="number" ng-model="FMCGDataModel.PTD" class="form-control" id="inputEmail3">
@@ -56,7 +56,7 @@
                         <input type="text" ng-model="FMCGDataModel.CompanyMargin" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" ng-click="savePlayerData()" class="btn btn-default">Save</button>
                     </div>
                 </form>
             </div>

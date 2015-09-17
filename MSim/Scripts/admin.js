@@ -100,6 +100,20 @@
 
     }
 
+    $scope.Dummy = {
+        Qtr1: {
+            PalmOilPercentage: 34
+        },
+        Qtr2: {
+            PalmOilPercentage: 56
+        },
+        Qtr3: {
+            PalmOilPercentage: 80
+        },
+        Qtr4: {
+        },
+    }
+
     $scope.savePlayerTemplateSheet = function () {
 
         var data = [];
@@ -179,7 +193,7 @@
                 PTD: 0,
                 DistributorMargin: 0,
                 RetailerMargin: 0,
-                CompanyMargin : 0,
+                CompanyMargin: 0,
                 NoOfSalesmen: 0,
                 AvgSalary: 0,
                 Training: 0,
@@ -199,6 +213,8 @@
         }
     }
 });
+
+
 
 
 

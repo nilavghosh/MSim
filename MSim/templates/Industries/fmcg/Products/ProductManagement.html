@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-offset-1 col-md-3">
             <div class="row">
-                <form class="form-horizontal" action="#/Save" method="post">
+                <form class="form-horizontal">
                     <div class="form-group">
                         <label>Mustard Oil (in %)</label>
                         <input type="text" ng-model="FMCGDataModel.MustardOilPercentage" class="form-control" placeholder="in %" />
@@ -46,20 +46,15 @@
                     </div>
                     <div class="form-group">
                         <label>Palm Oil (in %)</label>
-                        <input type="number" ng-model="FMCGDataModel.PalmOilPercentage, enable : false" class="form-control" placeholder="in %" />
+                        <input type="number" ng-model="FMCGDataModel.PalmOilPercentage" readonly class="form-control" placeholder="in %" />
 
                     </div>
                     <div class="form-group">
                         <label>Packaging Material</label>
-                        <select ng-model="FMCGDataModel.PakagingMaterial" class="form-control">
-                            <option>Inferior</option>
-                            <option>Normal</option>
-                            <option>Premium</option>
-                            <option>Royal</option>
-                        </select> 
+                        <select ng-model="FMCGDataModel.PakagingMaterial" ng-options="choice.value as choice.option for choice in PackagingMaterial" class="form-control"></select>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" ng-click="saveplayerdata()" class=" btn btn-default">Save</button>
                     </div>
                 </form>
             </div>

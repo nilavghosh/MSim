@@ -6,8 +6,11 @@ using System.Web;
 namespace MSim.Models.FMCG
 {
 
-    public class Quarter
+    public class GamePlayerData
     {
+        public int gameid { get; set; }
+        public string gamecode { get; set; }
+        public string username { get; set; }
         public int qtrname { get; set; }
         public string PTD { get; set; }
         public int DistributorMargin { get; set; }
@@ -29,16 +32,4 @@ namespace MSim.Models.FMCG
         public int PackagingMaterial { get; set; }
     }
 
-    public class Player
-    {
-        public string username { get; set; }
-        public IList<Quarter> quarters { get; set; }
-    }
-
-    public class GamePlayerData
-    {
-        public int gameid { get; set; }
-        public string gamecode { get; set; }
-        public IList<Player> players { get; set; }
-    }
 }
