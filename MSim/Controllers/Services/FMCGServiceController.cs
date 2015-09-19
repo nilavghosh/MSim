@@ -21,10 +21,11 @@ using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using System.Xml.Linq;
 using MongoDB.Bson.Serialization;
+using System.Text.RegularExpressions;
 
 namespace MSim.Controllers.Services
 {
-
+    [Authorize]
     public class FMCGServiceController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -83,7 +84,7 @@ namespace MSim.Controllers.Services
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
                          builder.Eq("gamecode", selectedgame.code) &
-                         builder.Eq("username", "nilavghosh@gmail.com") &
+                         builder.Eq("username", User.Identity.Name) &
                          builder.Eq("qtrname", 1);
             //var games = await collection.Find(filter).ToListAsync();
 
@@ -198,6 +199,65 @@ namespace MSim.Controllers.Services
             }
 
         }
+
+
+        [HttpPost]
+        [ActionName("GetAllPlayerDataForGame")]
+        public async Task<object> GetAllPlayerDataForGame(Object registrationChoice)
+        {
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
+
+
+            var builder = Builders<BsonDocument>.Filter;
+
+            //Get Data for all players for all quarters
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+
+            List<GamePlayerData> playerdata = new List<GamePlayerData>();
+            using (var cursor = await collection.FindAsync(filter))
+            {
+                while (await cursor.MoveNextAsync())
+                {
+                    var batch = cursor.Current;
+                    foreach (var document in batch)
+                    {
+                        // process document
+                        playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document));
+                    }
+                }
+            }
+            try
+            {
+                var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new {
+                    username = p.Key,
+                    Qtr = p.ToList()
+                }); ;
+
+                if (pgroups.Count() > 0)
+                {
+                    string pquarterDatainJson = pgroups.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject(pquarterDatainJson);
+                    
+                    //return pgroups;
+                }
+                else
+                {
+                    return false;
+                }
+                // Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            }
+            catch (Exception mssg)
+            {
+                int i = 1;
+                return mssg.InnerException;
+            }
+        }
+
+
+
 
         [HttpGet]
         [ActionName("GetFMCGGameDesignerDataSheet")]

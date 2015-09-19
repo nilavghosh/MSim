@@ -50,10 +50,10 @@ namespace MSim
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
                 "~/Scripts/bower_components/RuleJS/ruleJS.all.full.js",
-                "~/Scripts/bower_components/handsontable/setSheetDimensions.js",
+                "~/Scripts/handsontable-extensions/setSheetDimensions.js",
                 "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
-                "~/Scripts/bower_components/handsontable/dist/handsontable.formula.js",
-                "~/Scripts/bower_components/handsontable/extensions/angular/ngHandsontable.js",
+                "~/Scripts/handsontable-extensions/formula/handsontable.formula.js",
+                "~/Scripts/handsontable-extensions/angular/ngHandsontable.js",
                 "~/Scripts/admin.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

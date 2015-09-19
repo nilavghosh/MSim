@@ -1415,6 +1415,13 @@
     <Content Include="Scripts\bower_components\angular-timer\package.json" />
     <Content Include="Scripts\bower_components\angular-timer\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\handsontable-extensions\angular\ngHandsontable.js" />
+    <Content Include="Scripts\handsontable-extensions\formula\handsontable.formula.js" />
+    <Content Include="Scripts\handsontable-extensions\plugins\bootstrap\handsontable.bootstrap.css" />
+    <Content Include="Scripts\handsontable-extensions\plugins\jqueryHandsontable.js" />
+    <Content Include="Scripts\handsontable-extensions\plugins\removeRow\handsontable.removeRow.css" />
+    <Content Include="Scripts\handsontable-extensions\plugins\removeRow\handsontable.removeRow.js" />
+    <Content Include="Scripts\handsontable-extensions\setSheetDimensions.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />

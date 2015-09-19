@@ -5,31 +5,36 @@
     <div data-ng-controller="DemoCtrl">
         <div id="adminsheet">
             <div class="row">
-                <div class="cells12">
+                <div class="col-md-12">
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">FMCG Game Designer Sheet</a></li>
+                        <li role="presentation" class="active"><a href="#Q1" aria-controls="home" role="tab" data-toggle="tab">Quarter1</a></li>
+                        <li role="presentation"><a href="#Q2" aria-controls="home" role="tab" data-toggle="tab">Quarter2</a></li>
+                        <li role="presentation"><a href="#Q3" aria-controls="home" role="tab" data-toggle="tab">Quarter3</a></li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">
+                        <div role="tabpanel" class="tab-pane active" id="Q1">
                             <div class="scroll-container">
-                                <hot-table id="staticsheet"
-                                           colheaders="true"
+                                <hot-table hot-id="Quarter1"
+                                           row-headers="true"
+                                           col-headers="true"
                                            datarows="FMCGGameDesignerSheet"></hot-table>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            @*<hot-table id="example3"
-                                       colheaders="true"
-                                       datarows="PlayerTemplateSheet"></hot-table>*@
+                        <div role="tabpanel" class="tab-pane" id="Q2">
+                            <hot-table hot-id="Quarter2"
+                                       row-headers="true"
+                                       col-headers="true"
+                                       datarows="Quarter2"></hot-table>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="messages">
-                            @*<hot-table id="example3"
-                                       colheaders="true"
-                                       datarows="data1"></hot-table>*@
+                        <div role="tabpanel" class="tab-pane" id="Q3">
+                            <hot-table id="Quarter3"
+                                       row-headers="true"
+                                       col-headers="true"
+                                       datarows="Quarter3"></hot-table>
                         </div>
                     </div>
                 </div>

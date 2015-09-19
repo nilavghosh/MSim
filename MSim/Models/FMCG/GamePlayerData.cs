@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +8,17 @@ using System.Web;
 namespace MSim.Models.FMCG
 {
 
+
+
     public class GamePlayerData
     {
+        [BsonId]
+        public ObjectId _id { get; set; }
         public int gameid { get; set; }
         public string gamecode { get; set; }
         public string username { get; set; }
         public int qtrname { get; set; }
-        public string PTD { get; set; }
+        public int PTD { get; set; }
         public int DistributorMargin { get; set; }
         public int RetailerMargin { get; set; }
         public int CompanyMargin { get; set; }

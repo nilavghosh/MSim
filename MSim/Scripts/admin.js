@@ -4,7 +4,7 @@
         'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
         'Content-Type': 'application/json'
     }
-}]).controller('DemoCtrl', function ($scope, $http, $timeout) {
+}]).controller('DemoCtrl', function ($scope, $http, $timeout, hotRegisterer) {
 
     $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
                     [2009, 0, 2941, 4303, 354, 5814],
@@ -74,31 +74,42 @@
     };
 
     $scope.saveStaticData = function () {
-        var staticData = {};
-        var packagingMaterial = {};
-        packagingMaterial["Inferior"] = 1;
-        packagingMaterial["Normal"] = 2;
-        packagingMaterial["Premium"] = 3;
-        packagingMaterial["Royal"] = 4;
+        //var staticData = {};
+        //var packagingMaterial = {};
+        //packagingMaterial["Inferior"] = 1;
+        //packagingMaterial["Normal"] = 2;
+        //packagingMaterial["Premium"] = 3;
+        //packagingMaterial["Royal"] = 4;
 
-        var trainingType = {};
-        trainingType["No Training"] = 1;
-        trainingType["Sales Training"] = 2;
-        trainingType["Product Training"] = 3;
-        trainingType["S&P Training"] = 4;
+        //var trainingType = {};
+        //trainingType["No Training"] = 1;
+        //trainingType["Sales Training"] = 2;
+        //trainingType["Product Training"] = 3;
+        //trainingType["S&P Training"] = 4;
 
 
-        staticData["packagingMaterial"] = packagingMaterial;
-        staticData["trainingType"] = trainingType;
+        //staticData["packagingMaterial"] = packagingMaterial;
+        //staticData["trainingType"] = trainingType;
 
-        $http.post('/api/fmcgservice/SaveFMCGStaticData', angular.toJson({ data: staticData })).
-        then(function (response) {
-            pushMessage("data saved", 'info');
-        }, function (response) {
-            pushMessage(response.statusText, 'info');
-        });
-
+        //$http.post('/api/fmcgservice/SaveFMCGStaticData', angular.toJson({ data: staticData })).
+        //then(function (response) {
+        //    pushMessage("data saved", 'info');
+        //}, function (response) {
+        //    pushMessage(response.statusText, 'info');
+        //});
+        this.rows = hotRegisterer.getInstance('Quarter1').getColHeader();
+        this.values = hotRegisterer.getInstance('Quarter1').getSourceDataAtCol(2);
+        alert(this.values);
     }
+
+    $scope.Quarter1 = {
+        GetValue: function (column, row) {
+            hotinstance = hotRegisterer.getInstance('Quarter1')
+            colheaders = hotinstance.getColHeader();
+            col = colheaders.indexOf(column);
+            return hotinstance.getDataAtCell(row - 1, col);
+        }
+    };
 
     $scope.Dummy = {
         Qtr1: {
@@ -148,7 +159,12 @@
     }
 
     $scope.refreshData = function () {
-        $http.get('/api/fmcgservice/GetPlayerInputs').
+        var gameOfChoice = {
+            selectedGameId: 1,
+            code: "1234A",
+            username: "nilavghosh@gmail.com"
+        };
+        $http.post('/api/fmcgservice/GetAllPlayerDataForGame', gameOfChoice).
         then(function (response) {
             $scope.PlayerData = response.data;
             addDummyData();
@@ -188,7 +204,7 @@
     function addDummyData() {
         var dummycount = 10 - $scope.PlayerData.length;
         for (i = 0; i < dummycount; i++) {
-            var dymmyPlayer = {
+            var dummyPlayer = {
                 Quarter: 0,
                 PTD: 0,
                 DistributorMargin: 0,
@@ -209,7 +225,7 @@
                 PalmOilPercentage: 0,
                 PackagingMaterial: 0
             };
-            $scope.PlayerData.push(dymmyPlayer);
+            $scope.PlayerData.push(dummyPlayer);
         }
     }
 });
@@ -219,7 +235,7 @@
 
 
 function getPlayerData(value) {
-    var controllerElement = document.querySelector("#staticsheet");
+    var controllerElement = document.querySelector("#adminsheet");
     var controllerScope = angular.element(controllerElement).scope();
     value = eval("controllerScope." + value.substring(1));
     return value;
