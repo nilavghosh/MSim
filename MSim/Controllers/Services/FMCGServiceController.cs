@@ -112,7 +112,6 @@ namespace MSim.Controllers.Services
                 {
                     return false;
                 }
-                // Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
             }
             catch (Exception mssg)
             {
@@ -231,7 +230,8 @@ namespace MSim.Controllers.Services
             }
             try
             {
-                var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new {
+                var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new
+                {
                     username = p.Key,
                     Qtr = p.ToList()
                 }); ;
@@ -240,7 +240,7 @@ namespace MSim.Controllers.Services
                 {
                     string pquarterDatainJson = pgroups.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                     return Newtonsoft.Json.JsonConvert.DeserializeObject(pquarterDatainJson);
-                    
+
                     //return pgroups;
                 }
                 else
