@@ -891,7 +891,6 @@
     <Content Include="Scripts\bower_components\handsontable\dist\README.md" />
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\LICENSE" />
     <Content Include="Scripts\bower_components\handsontable\dist\handsontable.css" />
-    <Content Include="Scripts\bower_components\handsontable\dist\handsontable.formula.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\handsontable.full.css" />
     <Content Include="Scripts\bower_components\handsontable\dist\handsontable.full.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\handsontable.full.min.css" />
@@ -1013,7 +1012,6 @@
     <Content Include="Scripts\bower_components\metro-bootstrap\docs\styles\font-awesome.min.css" />
     <Content Include="Scripts\bower_components\metro-bootstrap\Gruntfile.js" />
     <Content Include="Scripts\bower_components\RuleJS\ruleJS.all.full.js" />
-    <Content Include="Scripts\bower_components\handsontable\extensions\angular\ngHandsontable.js" />
     <Content Include="Scripts\bower_components\angular-chart.js\.bower.json" />
     <Content Include="Scripts\bower_components\angular-chart.js\angular-chart.less" />
     <Content Include="Scripts\bower_components\angular-chart.js\bower.json" />
@@ -1438,7 +1436,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
-    <Content Include="Scripts\bower_components\handsontable\setSheetDimensions.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />
