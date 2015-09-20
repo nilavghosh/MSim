@@ -16,6 +16,21 @@
     $scope.FMCGGameDesignerSheet = [
     ];
 
+    $scope.FMCGGameDesignerSheet = {
+        Quarter1: [
+        ],
+        Quarter2: [
+        ],
+        Quarter3: [
+        ],
+        Quarter4: [
+        ],
+        BrandEquity: [
+        ],
+        Financials: [
+        ]
+    };
+
     $scope.PlayerTemplateSheet = [[1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
@@ -65,7 +80,7 @@
             data.push(cols);
         });
 
-        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.FMCGGameDesignerSheet })).
+        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson($scope.FMCGGameDesignerSheet)).
         then(function (response) {
             pushMessage("data saved", 'info');
         }, function (response) {
@@ -97,6 +112,7 @@
         //}, function (response) {
         //    pushMessage(response.statusText, 'info');
         //});
+        this.savedata = hotRegisterer.getInstance('Quarter1').getData();
         this.rows = hotRegisterer.getInstance('Quarter1').getColHeader();
         this.values = hotRegisterer.getInstance('Quarter1').getSourceDataAtCol(2);
         alert(this.values);
@@ -105,11 +121,24 @@
     $scope.Quarter1 = {
         GetValue: function (column, row) {
             hotinstance = hotRegisterer.getInstance('Quarter1')
-            colheaders = hotinstance.getColHeader();
-            col = colheaders.indexOf(column);
-            return hotinstance.getDataAtCell(row - 1, col);
+            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            //colheaders = hotinstance.getColHeader();
+            //col = colheaders.indexOf(column);
+            //hotinstance.getDataAtCell(row - 1, col);
         }
     };
+
+    $scope.Quarter2 = {
+        GetValue: function (column, row) {
+            hotinstance = hotRegisterer.getInstance('Quarter2')
+            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            //colheaders = hotinstance.getColHeader();
+            //col = colheaders.indexOf(column);
+            //return hotinstance.getDataAtCell(row - 1, col);
+        }
+    };
+
+
 
     $scope.Dummy = {
         Qtr1: {
@@ -136,7 +165,7 @@
             data.push(cols);
         });
 
-        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson({ data: $scope.FMCGGameDesignerSheet })).
+        $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson($scope.FMCGGameDesignerSheet)).
         then(function (response) {
             pushMessage("data saved", 'info');
         }, function (response) {
@@ -151,7 +180,7 @@
             addDummyData();
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
             then(function (designerDataSheet) {
-                $scope.FMCGGameDesignerSheet = designerDataSheet.data[0].data;
+                $scope.FMCGGameDesignerSheet = designerDataSheet.data[0];
             });
         }, function (response) {
             pushMessage(response.statusText, 'info');
@@ -193,11 +222,12 @@
 
     function pushMessage(mssg, t) {
         var mes = 'Info|' + mssg;
-        $.Notify({
-            caption: mes.split("|")[0],
-            content: mes.split("|")[1],
-            type: t
-        });
+        console.log(mes);
+        //$.Notify({
+        //    caption: mes.split("|")[0],
+        //    content: mes.split("|")[1],
+        //    type: t
+        //});
     }
 
 
