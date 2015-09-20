@@ -174,7 +174,12 @@
     };
 
     $scope.getPlayerData = function () {
-        $http.get('/api/fmcgservice/GetPlayerInputs').
+        var gameOfChoice = {
+            selectedGameId: 1,
+            code: "1234A",
+            username: "nilavghosh@gmail.com"
+        };
+        $http.post('/api/fmcgservice/GetAllPlayerDataForGame', gameOfChoice).
         then(function (response) {
             $scope.PlayerData = response.data;
             addDummyData();
@@ -199,7 +204,7 @@
             addDummyData();
             $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
             then(function (designerDataSheet) {
-                $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0]['PTD']";
+                $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0].Qtr[0].PTD";
                 $timeout(callAtTimeout, 10);
 
             });
