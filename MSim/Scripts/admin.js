@@ -42,7 +42,7 @@
     $scope.saveAdminSheet = function () {
 
         var data = [];
-        $('.ht_master .htCore tbody tr').each(function (rowIndex, r) {
+        $("hot-table[hot-id='Quarter2'] .ht_master .htCore tbody tr").each(function (rowIndex, r) {
             var cols = [];
             $(this).find('td').each(function (colIndex, c) {
                 cols.push(c.textContent);
@@ -90,48 +90,55 @@
         alert(this.values);
     }
 
+    $scope.GetValue = function (hotid, column, row) {
+        hotinstance = hotRegisterer.getInstance(hotid)
+        var data = [];
+        $("hot-table[hot-id='" + hotid + "'] .ht_master .htCore tbody tr").each(function (rowIndex, r) {
+            var cols = [];
+            $(this).find('td').each(function (colIndex, c) {
+                cols.push(c.textContent);
+            });
+            data.push(cols);
+        });
+        colheaders = hotinstance.getColHeader();
+        col = colheaders.indexOf(column);
+        return data[row - 1][col];
+    };
+
     $scope.Quarter1 = {
         GetValue: function (column, row) {
-            hotinstance = hotRegisterer.getInstance('Quarter1')
-            return hotinstance.plugin.helper.cellValue(column + row.toString());
-            //colheaders = hotinstance.getColHeader();
-            //col = colheaders.indexOf(column);
-            //hotinstance.getDataAtCell(row - 1, col);
+            return $scope.GetValue('Quarter1', column, row);
         }
     };
 
     $scope.Quarter2 = {
         GetValue: function (column, row) {
-            hotinstance = hotRegisterer.getInstance('Quarter2')
-            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            return $scope.GetValue('Quarter2', column, row);
         }
+        //return hotinstance.plugin.helper.cellValue(column + row.toString());
     };
 
     $scope.Quarter3 = {
         GetValue: function (column, row) {
-            hotinstance = hotRegisterer.getInstance('Quarter3')
-            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            return $scope.GetValue('Quarter3', column, row);
         }
     };
 
     $scope.Quarter4 = {
         GetValue: function (column, row) {
-            hotinstance = hotRegisterer.getInstance('Quarter4')
-            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            return $scope.GetValue('Quarter4', column, row);
         }
     };
 
     $scope.BrandEquity = {
         GetValue: function (column, row) {
-            hotinstance = hotRegisterer.getInstance('BrandEquity')
-            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            return $scope.GetValue('BrandEquity', column, row);
         }
     };
 
     $scope.Financials = {
         GetValue: function (column, row) {
-            hotinstance = hotRegisterer.getInstance('Financials')
-            return hotinstance.plugin.helper.cellValue(column + row.toString());
+            return $scope.GetValue('Financials', column, row);
         }
     };
 
@@ -152,7 +159,7 @@
     $scope.savePlayerTemplateSheet = function () {
 
         var data = [];
-        $('.ht_master .htCore tbody tr').each(function (rowIndex, r) {
+        $("hot-table[hot-id='Quarter2'] .ht_master .htCore tbody tr").each(function (rowIndex, r) {
             var cols = [];
             $(this).find('td').each(function (colIndex, c) {
                 cols.push(c.textContent);

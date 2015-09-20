@@ -71,7 +71,9 @@ namespace MSim
                  "~/Scripts/bower_components/bootstrap/dist/css/bootstrap.css",
                  "~/Scripts/bower_components/metro-bootstrap/dist/css/metro-bootstrap.css",
                  "~/Content/Site.css",
-                 "~/Content/handsontable/handsontable.full.css"));
+                 "~/Content/handsontable/handsontable.full.css",
+                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css"
+                 ));
             BundleTable.EnableOptimizations = false;
         }
     }
