@@ -6,16 +6,6 @@
     }
 }]).controller('DemoCtrl', function ($scope, $http, $timeout, hotRegisterer) {
 
-    $scope.data1 = [['Year', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1", 0, 0],
-                    [2009, 0, 2941, 4303, 354, 5814],
-                    [2010, 5, 2905, 32, '=SUM(A4,2,3)', 32, '', '', '', '', '', '', '', ''],
-                    [2011, 4, 2517, 4822, 552, 6127, '', '', '', '', '', '', '', ''],
-                    [2012, 42, 21, 81, 12, 4151, '', '', '', '', '', '', '', '', ]
-    ];
-
-    $scope.FMCGGameDesignerSheet = [
-    ];
-
     $scope.FMCGGameDesignerSheet = {
         Quarter1: [
         ],
@@ -38,27 +28,7 @@
                     [1, 1, 1, 1, 1, 1]
     ];
 
-    $scope.PlayerData = {
-        "_id": '55bce5a97947cd2130dcee4c',
-        "PTD": 45,
-        "DistributorMargin": "54",
-        "RetailerMargin": "67",
-        "NoOfSalesmen": "",
-        "AvgSalary": "",
-        "Training": "",
-        "TVAds": 0,
-        "NewspaperAds": 0,
-        "HoardingAds": 0,
-        "TotalATLExpense": 0,
-        "Promoters": 0,
-        "Sampling": 0,
-        "InShopBranding": 0,
-        "TotalBTLExpense": 0,
-        "MustardOilPercentage": "",
-        "PalmOilPercentage": "",
-        "PackagingMaterial": "",
-        "userid": "75443be9-9590-4e22-a07c-9b5c79a45397"
-    };
+    $scope.PlayerData = [];
 
     $scope.settings = ({
         minSpareRows: 1,
@@ -82,8 +52,10 @@
 
         $http.post('/api/fmcgservice/SaveFMCGAdminStaticSheet', angular.toJson($scope.FMCGGameDesignerSheet)).
         then(function (response) {
+            alert("Data Saved");
             pushMessage("data saved", 'info');
         }, function (response) {
+            alert("Data Not Saved! Try again.")
             pushMessage(response.statusText, 'info');
         });
     };
@@ -132,13 +104,36 @@
         GetValue: function (column, row) {
             hotinstance = hotRegisterer.getInstance('Quarter2')
             return hotinstance.plugin.helper.cellValue(column + row.toString());
-            //colheaders = hotinstance.getColHeader();
-            //col = colheaders.indexOf(column);
-            //return hotinstance.getDataAtCell(row - 1, col);
         }
     };
 
+    $scope.Quarter3 = {
+        GetValue: function (column, row) {
+            hotinstance = hotRegisterer.getInstance('Quarter3')
+            return hotinstance.plugin.helper.cellValue(column + row.toString());
+        }
+    };
 
+    $scope.Quarter4 = {
+        GetValue: function (column, row) {
+            hotinstance = hotRegisterer.getInstance('Quarter4')
+            return hotinstance.plugin.helper.cellValue(column + row.toString());
+        }
+    };
+
+    $scope.BrandEquity = {
+        GetValue: function (column, row) {
+            hotinstance = hotRegisterer.getInstance('BrandEquity')
+            return hotinstance.plugin.helper.cellValue(column + row.toString());
+        }
+    };
+
+    $scope.Financials = {
+        GetValue: function (column, row) {
+            hotinstance = hotRegisterer.getInstance('Financials')
+            return hotinstance.plugin.helper.cellValue(column + row.toString());
+        }
+    };
 
     $scope.Dummy = {
         Qtr1: {
@@ -208,8 +203,6 @@
                 $timeout(callAtTimeout, 10);
 
             });
-            //$scope.FMCGGameDesignerSheet[0][2] =eval("$scope.PlayerData[0]['PTD']");
-            //pushMessage("data recieved", 'info');
         }, function (response) {
             pushMessage(response.statusText, 'info');
         });

@@ -3,15 +3,6 @@
 
     function HandsontableFormula() {
 
-        var isFormula = function (value) {
-            if (value) {
-                if (value[0] === '=') {
-                    return true;
-                }
-            }
-
-            return false;
-        };
 
         var isPlayerData = function (value) {
             if (value) {
@@ -21,6 +12,27 @@
             }
             return false;
         };
+
+        var isPlayerData2 = function (value) {
+            if (value) {
+                if (value[0] === '=' && value[1] === '!') {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        var isFormula = function (value) {
+            if (value) {
+                if (value[0] === '=' && value[1] != '!') {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+
 
         var formulaRenderer = function (instance, TD, row, col, prop, value, cellProperties) {
             if (isPlayerData(value)) {
@@ -48,6 +60,10 @@
                         }
                     }
                 }
+
+                //if ((value && value[0] === '=' && value[1] === '!') || needUpdate) {
+                //    value = getPlayerData(value.substring(1));
+                //}
 
                 if ((value && value[0] === '!') || needUpdate) {
                     value = getPlayerData(value);
