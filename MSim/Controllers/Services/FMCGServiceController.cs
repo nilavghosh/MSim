@@ -200,7 +200,7 @@ namespace MSim.Controllers.Services
 
         }
 
-
+        [AllowAnonymous]
         [HttpPost]
         [ActionName("GetAllPlayerDataForGame")]
         public async Task<object> GetAllPlayerDataForGame(Object registrationChoice)
@@ -261,7 +261,7 @@ namespace MSim.Controllers.Services
 
 
 
-
+        [AllowAnonymous]
         [HttpGet]
         [ActionName("GetFMCGGameDesignerDataSheet")]
         public async Task<object> GetFMCGGameDesignerDataSheet()

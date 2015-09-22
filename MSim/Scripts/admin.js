@@ -84,10 +84,17 @@
         //}, function (response) {
         //    pushMessage(response.statusText, 'info');
         //});
-        this.savedata = hotRegisterer.getInstance('Quarter1').getData();
-        this.rows = hotRegisterer.getInstance('Quarter1').getColHeader();
-        this.values = hotRegisterer.getInstance('Quarter1').getSourceDataAtCol(2);
-        alert(this.values);
+        //this.savedata = hotRegisterer.getInstance('Quarter1').getData();
+        //this.rows = hotRegisterer.getInstance('Quarter1').getColHeader();
+        //this.values = hotRegisterer.getInstance('Quarter1').getSourceDataAtCol(2);
+        //alert(this.values);
+
+        hotRegisterer.getInstance('Quarter1').render();
+        hotRegisterer.getInstance('Quarter2').render();
+        hotRegisterer.getInstance('Quarter3').render();
+        hotRegisterer.getInstance('Quarter4').render();
+        hotRegisterer.getInstance('BrandEquity').render();
+        hotRegisterer.getInstance('Financials').render();
     }
 
     $scope.GetValue = function (hotid, column, row) {
