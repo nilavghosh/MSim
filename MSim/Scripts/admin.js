@@ -274,8 +274,13 @@
 function getPlayerData(value) {
     var controllerElement = document.querySelector("#adminsheet");
     var controllerScope = angular.element(controllerElement).scope();
-    value = eval("controllerScope." + value.substring(1));
-    return value;
+    try {
+        value = eval("controllerScope." + value.substring(1));
+        return value;
+    }
+    catch (ex) {
+        return "Incorrect formula" + value.substring(1);
+    }
 }
 
 //$(document).ready(function () {
