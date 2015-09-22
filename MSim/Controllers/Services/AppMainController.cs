@@ -20,7 +20,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public AppMainController()
         {
-            var client = new MongoClient(@"mongodb://168.61.82.165:27017/MSim");
+            var client = new MongoClient(@"mongodb://168.61.82.165:27017/");
             database = client.GetDatabase("MSim");
         }
 
@@ -33,18 +33,19 @@ namespace MSim.Controllers.Services
 
 
             List<BsonDocument> games = new List<BsonDocument>();
-            using (var cursor = await collection.FindAsync(filter))
-            {
-                while (await cursor.MoveNextAsync())
-                {
-                    var batch = cursor.Current;
-                    foreach (var document in batch)
-                    {
-                        // process document
-                        games.Add(document);
-                    }
-                }
-            }
+            games = await collection.Find(filter).ToListAsync();
+            //using (var cursor = await collection.FindAsync(filter))
+            //{
+            //    while (await cursor.MoveNextAsync())
+            //    {
+            //        var batch = cursor.Current;
+            //        foreach (var document in batch)
+            //        {
+            //            // process document
+            //            games.Add(document);
+            //        }
+            //    }
+            //}
 
 
 
@@ -71,19 +72,20 @@ namespace MSim.Controllers.Services
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) & builder.Eq("gamecode", selectedgame.code) & builder.ElemMatch("players", matchname);
             //var games = await collection.Find(filter).ToListAsync();
             var games = new List<BsonDocument>();
-            using (var cursor = await collection.FindAsync(filter))
-            {
-                while (await cursor.MoveNextAsync())
-                {
-                    var batch = cursor.Current;
-                    foreach (var document in batch)
-                    {
-                        // process document
-                        games.Add(document);
-                    }
-                }
-            }
-            await Task.Delay(1000);
+            games = await collection.Find(filter).ToListAsync();
+            //using (var cursor = await collection.FindAsync(filter))
+            //{
+            //    while (await cursor.MoveNextAsync())
+            //    {
+            //        var batch = cursor.Current;
+            //        foreach (var document in batch)
+            //        {
+            //            // process document
+            //            games.Add(document);
+            //        }
+            //    }
+            //}
+            //await Task.Delay(1000);
 
 
 

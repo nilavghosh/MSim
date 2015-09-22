@@ -33,7 +33,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public FMCGServiceController()
         {
-            var client = new MongoClient(@"mongodb://168.61.82.165:27017/MSim");
+            var client = new MongoClient(@"mongodb://168.61.82.165:27017/");
             database = client.GetDatabase("MSim");
         }
 
@@ -89,18 +89,19 @@ namespace MSim.Controllers.Services
             //var games = await collection.Find(filter).ToListAsync();
 
             var quarterdata = new List<BsonDocument>();
-            using (var cursor = await collection.FindAsync(filter))
-            {
-                while (await cursor.MoveNextAsync())
-                {
-                    var batch = cursor.Current;
-                    foreach (var document in batch)
-                    {
-                        // process document
-                        quarterdata.Add(document);
-                    }
-                }
-            }
+            quarterdata = await collection.Find(filter).ToListAsync();
+            //using (var cursor = await collection.FindAsync(filter))
+            //{
+            //    while (await cursor.MoveNextAsync())
+            //    {
+            //        var batch = cursor.Current;
+            //        foreach (var document in batch)
+            //        {
+            //            // process document
+            //            quarterdata.Add(document);
+            //        }
+            //    }
+            //}
             try
             {
                 if (quarterdata.Count == 1)
@@ -216,18 +217,20 @@ namespace MSim.Controllers.Services
 
 
             List<GamePlayerData> playerdata = new List<GamePlayerData>();
-            using (var cursor = await collection.FindAsync(filter))
-            {
-                while (await cursor.MoveNextAsync())
-                {
-                    var batch = cursor.Current;
-                    foreach (var document in batch)
-                    {
-                        // process document
-                        playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document));
-                    }
-                }
-            }
+            var tempdata = await collection.Find(filter).ToListAsync();
+            tempdata.ForEach(document => playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document)));
+            //using (var cursor = await collection.FindAsync(filter))
+            //{
+            //    while (await cursor.MoveNextAsync())
+            //    {
+            //        var batch = cursor.Current;
+            //        foreach (var document in batch)
+            //        {
+            //            // process document
+            //            playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document));
+            //        }
+            //    }
+            //}
             try
             {
                 var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new

@@ -204,14 +204,16 @@
         then(function (response) {
             $scope.PlayerData = response.data;
             addDummyData();
-            $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
-            then(function (designerDataSheet) {
-                $scope.FMCGGameDesignerSheet[0][0] = "!PlayerData[0].Qtr[0].PTD";
-                $timeout(callAtTimeout, 10);
-
-            });
+            hotRegisterer.getInstance('Quarter1').render();
+            hotRegisterer.getInstance('Quarter2').render();
+            hotRegisterer.getInstance('Quarter3').render();
+            hotRegisterer.getInstance('Quarter4').render();
+            hotRegisterer.getInstance('BrandEquity').render();
+            hotRegisterer.getInstance('Financials').render();
+            alert("Data Refreshed");
         }, function (response) {
-            pushMessage(response.statusText, 'info');
+            alert("Data not refreshed. Try Again")
+            //pushMessage(response.statusText, 'info');
         });
     }
 
