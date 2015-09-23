@@ -17,16 +17,8 @@
         ],
         BrandEquity: [
         ],
-        Financials: [
-        ]
+        Financials: [["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], ["Q U A R T E R - I", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]]
     };
-
-    $scope.PlayerTemplateSheet = [[1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1]
-    ];
 
     $scope.PlayerData = [];
 
@@ -36,7 +28,7 @@
         rowHeaders: true,
         contextMenu: true,
         manualColumnResize: false,
-        formulas: true
+        formulas: false
     });
 
     $scope.saveAdminSheet = function () {
@@ -188,14 +180,11 @@
             code: "1234A",
             username: "nilavghosh@gmail.com"
         };
-        $http.post('/api/fmcgservice/GetAllPlayerDataForGame', gameOfChoice).
-        then(function (response) {
-            $scope.PlayerData = response.data;
-            addDummyData();
-            $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
-            then(function (designerDataSheet) {
-                $scope.FMCGGameDesignerSheet = designerDataSheet.data[0];
-            });
+        $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
+        then(function (designerDataSheet) {
+            //hotRegisterer.getInstance('Quarter1').loadData(designerDataSheet.data['Quarter1']);
+            $scope.FMCGGameDesignerSheet = designerDataSheet.data;
+
         }, function (response) {
             pushMessage(response.statusText, 'info');
         });

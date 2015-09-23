@@ -22,6 +22,9 @@ using MongoDB.Bson.IO;
 using System.Xml.Linq;
 using MongoDB.Bson.Serialization;
 using System.Text.RegularExpressions;
+using System.IO;
+using OfficeOpenXml;
+using System.Web.Hosting;
 
 namespace MSim.Controllers.Services
 {
@@ -259,18 +262,78 @@ namespace MSim.Controllers.Services
             }
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        [ActionName("Upload")]
+        public async Task<object> Upload()
+        {
+            var file = HttpContext.Current.Request.Files.Count > 0 ?
+            HttpContext.Current.Request.Files[0] : null;
 
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+
+                var path = Path.Combine(
+                    HttpContext.Current.Server.MapPath("~/App_Data/GameModel"),
+                    fileName
+                );
+
+                file.SaveAs(path);
+            }
+
+            return file != null ? "/uploads/kokito" + file.FileName : null;
+        }
 
         [AllowAnonymous]
         [HttpGet]
         [ActionName("GetFMCGGameDesignerDataSheet")]
         public async Task<object> GetFMCGGameDesignerDataSheet()
         {
-            var filter = new BsonDocument();
-            var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
-            var playersData = await collection.Find(filter).ToListAsync();
-            string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
-            return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
+            var FMCGModelFile = new FileInfo(filepath);
+            using (var FMCGModel = new ExcelPackage(FMCGModelFile))
+            {
+                // Get the work book in the file
+                ExcelWorkbook FMCGworkBook = FMCGModel.Workbook;
+                if (FMCGworkBook != null)
+                {
+                    if (FMCGworkBook.Worksheets.Count > 0)
+                    {
+                        var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
+                        IEnumerable<double> arr = new List<double>() { 0.8, 0.2, 1, 0, 0.05, 0.08, 0.15, 0, 12, 12000, 0.5, 0, 250000, 25000, 20000, 0, 15000, 10000, 5000, 0, 300000 };
+                        ExcelAddress address = new ExcelAddress("B5:B25");
+                        Quarter1Sheet.Select(address);
+                        Quarter1Sheet.SelectedRange.LoadFromCollection<double>(arr);
+
+                        Quarter1Sheet.Calculate();
+                        Dictionary<String, List<List<string>>> Quarter1 = new Dictionary<string, List<List<string>>>();
+                        List<List<string>> Q1Values = new List<List<string>>();
+                        int nrows = Quarter1Sheet.Dimension.Rows;
+                        int ncolums = Quarter1Sheet.Dimension.Columns;
+                        for (int i = 1; i <= nrows; i++)
+                        {
+                            List<string> arow = new List<string>();
+                            for (int j = 1; j <= ncolums; j++)
+                            {
+                                arow.Add(Quarter1Sheet.Cells[i, j].Text);
+                            }
+                            Q1Values.Add(arow);
+                        }
+                        Quarter1["Quarter1"] = Q1Values;
+                        string playersDatainJson = Quarter1.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                        return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+                        //Console.WriteLine(Quarter1Sheet.Cells["E8"].Value);
+                        //Console.Read();
+                    }
+                }
+            }
+            //var filter = new BsonDocument();
+            //var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
+            //var playersData = await collection.Find(filter).ToListAsync();
+            //string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+            //return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            return 1;
         }
 
 

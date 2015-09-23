@@ -9,7 +9,8 @@
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#Q1" aria-controls="home" role="tab" data-toggle="tab">Quarter1</a></li>
+                        <li role="presentation" class="active"><a href="#UploadFile" aria-controls="home" role="tab" data-toggle="tab">Upload Excel</a></li>
+                        <li role="presentation"><a href="#Q1" aria-controls="home" role="tab" data-toggle="tab">Quarter1</a></li>
                         <li role="presentation"><a href="#Q2" aria-controls="home" role="tab" data-toggle="tab">Quarter2</a></li>
                         <li role="presentation"><a href="#Q3" aria-controls="home" role="tab" data-toggle="tab">Quarter3</a></li>
                         <li role="presentation"><a href="#Q4" aria-controls="home" role="tab" data-toggle="tab">Quarter4</a></li>
@@ -18,6 +19,13 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
+
+                        <div role="tabpanel" class="tab-pane active" id="UploadFile">
+                            <div class="scroll-container">
+                                <label class="control-label">Select File</label>
+                                <input id="input-1" type="file" data-upload-url="/api/fmcgservice/Upload" class="file">
+                            </div>
+                        </div>
                         <div role="tabpanel" class="tab-pane active" id="Q1">
                             <div class="scroll-container">
                                 <hot-table hot-id="Quarter1"

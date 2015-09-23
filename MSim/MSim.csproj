@@ -53,6 +53,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -305,6 +309,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="App_Data\GameModel\FMCG.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\Local_IIS.pubxml" />
     <None Include="Properties\PublishProfiles\MSim-VisualStudioVM.pubxml" />
     <None Include="Properties\PublishProfiles\MSimulator.pubxml" />
@@ -372,6 +379,39 @@
     <Content Include="Scripts\bower_components\angular\angular.min.js" />
     <Content Include="Scripts\bower_components\angular\angular.min.js.map" />
     <Content Include="Scripts\bower_components\angular\index.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput.min.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_bg.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_cr.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_cz.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_da.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_de.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_el.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_es.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_fa.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_fr.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_hu.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_it.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_ja.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_LANG.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_nl.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_pl.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_pt-BR.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_pt.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_ro.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_ru.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_sk.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_th.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_tr.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_uk.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_zh-TW.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\fileinput_locale_zh.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\plugins\canvas-to-blob.js" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\js\plugins\canvas-to-blob.min.js" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap.css" />
@@ -1412,6 +1452,13 @@
     <Content Include="Scripts\bower_components\angular-timer\examples\angularjs-reset-timer" />
     <Content Include="Scripts\bower_components\angular-timer\package.json" />
     <Content Include="Scripts\bower_components\angular-timer\README.md" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\.bower.json" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\bower.json" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\CHANGE.md" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\LICENSE.md" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\nuget\build.bat" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\nuget\Package.nuspec" />
+    <Content Include="Scripts\bower_components\bootstrap-fileinput\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\handsontable-extensions\angular\ngHandsontable.js" />
     <Content Include="Scripts\handsontable-extensions\formula\handsontable.formula.js" />
@@ -1503,7 +1550,6 @@
     <Content Include="Views\Home\_Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\Slides\Industries\fmcg\Admin\" />
     <Folder Include="Content\Slides\Industries\fmcg\FinancialReports\" />
     <Folder Include="Scripts\dist\" />

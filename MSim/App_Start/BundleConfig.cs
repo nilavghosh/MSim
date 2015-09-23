@@ -49,10 +49,8 @@ namespace MSim
 
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                "~/Scripts/bower_components/RuleJS/ruleJS.all.full.js",
                 "~/Scripts/handsontable-extensions/setSheetDimensions.js",
                 "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
-                "~/Scripts/handsontable-extensions/formula/handsontable.formula.js",
                 "~/Scripts/handsontable-extensions/angular/ngHandsontable.js",
                 "~/Scripts/admin.js"));
 
@@ -62,6 +60,7 @@ namespace MSim
                 "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                "~/Scripts/bower_components/bootstrap-fileinput/js/fileinput.min.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/linq.js"
@@ -70,6 +69,7 @@ namespace MSim
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Scripts/bower_components/bootstrap/dist/css/bootstrap.css",
                  "~/Scripts/bower_components/metro-bootstrap/dist/css/metro-bootstrap.css",
+                 "~/Scripts/bower_components/bootstrap-fileinput/css/fileinput.min.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css",
                  "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css"
