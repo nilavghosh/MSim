@@ -1,5 +1,4 @@
-[
-  {
+{
     "Quarter1": {
       "SheetName": "Qtr-1",
       "PlayerData": [
@@ -15,7 +14,7 @@
               "Cell": "B6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "B7"
             },
            {
@@ -84,7 +83,7 @@
               "Cell": "C6"
             },
             {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "C7"
             },
            {
@@ -153,7 +152,7 @@
               "Cell": "D6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "D7"
             },
            {
@@ -222,7 +221,7 @@
               "Cell": "E6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "E7"
             },
            {
@@ -278,11 +277,423 @@
               "Cell": "E25"
              }
           ]
+        },
+        {
+          "Player": 5,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "F5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "F6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "F7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "F9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "F10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "F11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "F13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "F14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "F15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "F17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "F18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "F19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "F21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "F22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "F23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "F25"
+             }
+          ]
+        },
+        {
+          "Player": 6,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "G5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "G6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "G7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "G9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "G10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "G11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "G13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "G14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "G15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "G17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "G18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "G19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "G21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "G22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "G23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "G25"
+             }
+          ]
+        },
+        {
+          "Player": 7,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "H5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "H6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "H7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "H9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "H10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "H11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "H13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "H14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "H15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "H17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "H18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "H19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "H21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "H22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "H23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "H25"
+             }
+          ]
+        },
+        {
+          "Player": 8,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "I5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "I6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "I7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "I9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "I10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "I11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "I13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "I14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "I15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "I17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "I18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "I19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "I21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "I22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "I23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "I25"
+             }
+          ]
+        },
+        {
+          "Player": 9,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "J5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "J6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "J7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "J9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "J10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "J11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "J13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "J14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "J15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "J17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "J18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "J19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "J21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "J22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "J23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "J25"
+             }
+          ]
+        },
+        {
+          "Player": 10,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "K5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "K6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "K7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "K9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "K10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "K11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "K13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "K14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "K15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "K17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "K18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "K19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "K21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "K22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "K23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "K25"
+             }
+          ]
         }
      ]
-   }
- },
- {
+   },
     "Quarter2": {
       "SheetName": "Qtr-2",
       "PlayerData": [
@@ -298,7 +709,7 @@
               "Cell": "B6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "B7"
             },
            {
@@ -367,7 +778,7 @@
               "Cell": "C6"
             },
             {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "C7"
             },
            {
@@ -436,7 +847,7 @@
               "Cell": "D6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "D7"
             },
            {
@@ -505,7 +916,7 @@
               "Cell": "E6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "E7"
             },
            {
@@ -561,11 +972,423 @@
               "Cell": "E25"
              }
           ]
+        },
+        {
+          "Player": 5,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "F5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "F6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "F7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "F9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "F10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "F11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "F13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "F14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "F15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "F17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "F18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "F19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "F21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "F22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "F23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "F25"
+             }
+          ]
+        },
+        {
+          "Player": 6,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "G5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "G6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "G7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "G9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "G10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "G11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "G13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "G14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "G15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "G17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "G18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "G19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "G21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "G22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "G23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "G25"
+             }
+          ]
+        },
+        {
+          "Player": 7,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "H5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "H6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "H7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "H9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "H10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "H11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "H13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "H14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "H15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "H17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "H18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "H19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "H21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "H22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "H23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "H25"
+             }
+          ]
+        },
+        {
+          "Player": 8,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "I5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "I6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "I7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "I9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "I10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "I11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "I13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "I14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "I15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "I17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "I18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "I19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "I21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "I22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "I23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "I25"
+             }
+          ]
+        },
+        {
+          "Player": 9,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "J5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "J6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "J7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "J9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "J10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "J11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "J13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "J14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "J15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "J17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "J18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "J19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "J21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "J22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "J23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "J25"
+             }
+          ]
+        },
+        {
+          "Player": 10,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "K5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "K6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "K7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "K9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "K10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "K11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "K13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "K14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "K15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "K17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "K18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "K19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "K21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "K22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "K23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "K25"
+             }
+          ]
         }
      ]
-   }
- },
- {
+   },
     "Quarter3": {
       "SheetName": "Qtr-3",
       "PlayerData": [
@@ -581,7 +1404,7 @@
               "Cell": "B6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "B7"
             },
            {
@@ -650,7 +1473,7 @@
               "Cell": "C6"
             },
             {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "C7"
             },
            {
@@ -719,7 +1542,7 @@
               "Cell": "D6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "D7"
             },
            {
@@ -788,7 +1611,7 @@
               "Cell": "E6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "E7"
             },
            {
@@ -844,11 +1667,423 @@
               "Cell": "E25"
              }
           ]
+        },
+        {
+          "Player": 5,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "F5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "F6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "F7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "F9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "F10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "F11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "F13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "F14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "F15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "F17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "F18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "F19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "F21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "F22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "F23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "F25"
+             }
+          ]
+        },
+        {
+          "Player": 6,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "G5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "G6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "G7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "G9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "G10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "G11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "G13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "G14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "G15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "G17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "G18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "G19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "G21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "G22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "G23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "G25"
+             }
+          ]
+        },
+        {
+          "Player": 7,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "H5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "H6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "H7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "H9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "H10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "H11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "H13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "H14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "H15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "H17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "H18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "H19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "H21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "H22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "H23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "H25"
+             }
+          ]
+        },
+        {
+          "Player": 8,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "I5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "I6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "I7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "I9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "I10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "I11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "I13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "I14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "I15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "I17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "I18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "I19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "I21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "I22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "I23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "I25"
+             }
+          ]
+        },
+        {
+          "Player": 9,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "J5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "J6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "J7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "J9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "J10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "J11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "J13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "J14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "J15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "J17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "J18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "J19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "J21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "J22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "J23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "J25"
+             }
+          ]
+        },
+        {
+          "Player": 10,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "K5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "K6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "K7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "K9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "K10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "K11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "K13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "K14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "K15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "K17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "K18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "K19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "K21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "K22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "K23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "K25"
+             }
+          ]
         }
-    ]
- }
-},
-{
+     ]
+ },
     "Quarter4": {
       "SheetName": "Qtr-4",
       "PlayerData": [
@@ -864,7 +2099,7 @@
               "Cell": "B6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "B7"
             },
            {
@@ -933,7 +2168,7 @@
               "Cell": "C6"
             },
             {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "C7"
             },
            {
@@ -1002,7 +2237,7 @@
               "Cell": "D6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "D7"
             },
            {
@@ -1071,7 +2306,7 @@
               "Cell": "E6"
             },
              {
-              "Name": "Packaging Material",
+              "Name": "PackagingMaterial",
               "Cell": "E7"
             },
            {
@@ -1127,8 +2362,422 @@
               "Cell": "E25"
              }
           ]
+        },
+        {
+          "Player": 5,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "F5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "F6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "F7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "F9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "F10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "F11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "F13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "F14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "F15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "F17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "F18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "F19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "F21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "F22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "F23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "F25"
+             }
+          ]
+        },
+        {
+          "Player": 6,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "G5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "G6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "G7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "G9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "G10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "G11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "G13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "G14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "G15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "G17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "G18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "G19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "G21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "G22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "G23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "G25"
+             }
+          ]
+        },
+        {
+          "Player": 7,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "H5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "H6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "H7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "H9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "H10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "H11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "H13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "H14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "H15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "H17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "H18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "H19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "H21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "H22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "H23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "H25"
+             }
+          ]
+        },
+        {
+          "Player": 8,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "I5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "I6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "I7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "I9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "I10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "I11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "I13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "I14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "I15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "I17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "I18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "I19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "I21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "I22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "I23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "I25"
+             }
+          ]
+        },
+        {
+          "Player": 9,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "J5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "J6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "J7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "J9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "J10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "J11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "J13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "J14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "J15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "J17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "J18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "J19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "J21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "J22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "J23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "J25"
+             }
+          ]
+        },
+        {
+          "Player": 10,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "K5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "K6"
+            },
+             {
+              "Name": "PackagingMaterial",
+              "Cell": "K7"
+            },
+           {
+              "Name": "CompanyMargin",
+              "Cell": "K9"
+            },
+            {
+              "Name": "DistributorMargin",
+              "Cell": "K10"
+            },
+             {
+              "Name": "RetailerMargin",
+              "Cell": "K11"
+            }, 
+            {
+              "Name": "NoOfSalesmen",
+              "Cell": "K13"
+            },
+            {
+              "Name": "AvgSalary",
+              "Cell": "K14"
+            },
+             {
+              "Name": "Training",
+              "Cell": "K15"
+            },
+           {
+              "Name": "TVAds",
+              "Cell": "K17"
+            },
+            {
+              "Name": "NewspaperAds",
+              "Cell": "K18"
+            },
+             {
+              "Name": "HoardingAds",
+              "Cell": "K19"
+             },
+             {
+              "Name": "Promoters",
+              "Cell": "K21"
+            },
+            {
+              "Name": "InShopBranding",
+              "Cell": "K22"
+            },
+             {
+              "Name": "Sampling",
+              "Cell": "K23"
+             },
+             {
+              "Name": "PlaceanOrder",
+              "Cell": "K25"
+             }
+          ]
         }
-    ]
+     ]
 }
 }
-]
+

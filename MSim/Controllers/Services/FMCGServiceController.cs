@@ -346,7 +346,7 @@ namespace MSim.Controllers.Services
                         mapping.Quarter1.PlayerData.ToList().ForEach(player => player.CellInfo.ToList().ForEach(cellinfo =>
                         {
                             {
-                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[0].Qtr[0][cellinfo.Name];
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[0].Qtr[0].Contains(cellinfo.Name) == true ? pgroups[0].Qtr[0][cellinfo.Name].RawValue : 0;
                             }
                         })
                         );
