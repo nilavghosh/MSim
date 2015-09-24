@@ -1,0 +1,44 @@
+[
+  {
+    "Quarter1": {
+      "SheetName": "Qtr-1",
+      "PlayerData": [
+        {
+          "Player": 1,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "B5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "B6"
+            }
+          ]
+        },
+        {
+          "Player": 2,
+          "CellInfo": [
+            {
+              "Name": "MustardOilPercentage",
+              "Cell": "C5"
+            },
+            {
+              "Name": "PalmOilPercentage",
+              "Cell": "C6"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "Quarter2": {}
+  },
+  {
+    "Quarter3": {}
+  },
+  {
+    "Quarter4": {}
+  }
+]

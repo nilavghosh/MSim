@@ -285,10 +285,55 @@ namespace MSim.Controllers.Services
             return file != null ? "/uploads/kokito" + file.FileName : null;
         }
 
+
+        public async Task<object> GetAllPlayerDataFromDB(Object registrationChoice)
+        {
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
+
+
+            var builder = Builders<BsonDocument>.Filter;
+
+            //Get Data for all players for all quarters
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+
+            List<GamePlayerData> playerdata = new List<GamePlayerData>();
+            var tempdata = await collection.Find(filter).ToListAsync();
+            tempdata.ForEach(document => playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document)));
+
+            try
+            {
+                var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new
+                {
+                    username = p.Key,
+                    Qtr = p.ToList()
+                }); ;
+
+                if (pgroups.Count() > 0)
+                {
+                    string pquarterDatainJson = pgroups.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject(pquarterDatainJson);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception mssg)
+            {
+                int i = 1;
+                return mssg.InnerException;
+            }
+        }
+
+
+
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [ActionName("GetFMCGGameDesignerDataSheet")]
-        public async Task<object> GetFMCGGameDesignerDataSheet()
+        public async Task<object> GetFMCGGameDesignerDataSheet(Object registrationChoice)
         {
             var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
             var FMCGModelFile = new FileInfo(filepath);
@@ -301,6 +346,16 @@ namespace MSim.Controllers.Services
                     if (FMCGworkBook.Worksheets.Count > 0)
                     {
                         var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
+
+
+                        using (StreamReader r = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGInputMapping.json")))
+                        {
+                            string json = r.ReadToEnd();
+                            List<InputMapping> mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<List<InputMapping>>(json);
+                        }
+
+
+
                         IEnumerable<double> arr = new List<double>() { 0.8, 0.2, 1, 0, 0.05, 0.08, 0.15, 0, 12, 12000, 0.5, 0, 250000, 25000, 20000, 0, 15000, 10000, 5000, 0, 300000 };
                         ExcelAddress address = new ExcelAddress("B5:B25");
                         Quarter1Sheet.Select(address);

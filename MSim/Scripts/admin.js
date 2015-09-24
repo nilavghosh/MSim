@@ -180,7 +180,7 @@
             code: "1234A",
             username: "nilavghosh@gmail.com"
         };
-        $http.get('/api/fmcgservice/GetFMCGGameDesignerDataSheet').
+        $http.post('/api/fmcgservice/GetFMCGGameDesignerDataSheet', gameOfChoice).
         then(function (designerDataSheet) {
             //hotRegisterer.getInstance('Quarter1').loadData(designerDataSheet.data['Quarter1']);
             $scope.FMCGGameDesignerSheet = designerDataSheet.data;
