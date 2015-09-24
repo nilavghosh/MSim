@@ -129,14 +129,13 @@ namespace MSim.Controllers.Services
         public async Task<object> SavePlayerData(Object playerdata)
         {
             var playerdatadocument = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)playerdata).ToString());
-
-            GamePlayerData gameplayerdata = Newtonsoft.Json.JsonConvert.DeserializeObject<GamePlayerData>(playerdata.ToString());
+            //GamePlayerData gameplayerdata = Newtonsoft.Json.JsonConvert.DeserializeObject<GamePlayerData>(playerdata.ToString());
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
             var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Eq("gameid", gameplayerdata.gameid) &
-                         builder.Eq("gamecode", gameplayerdata.gamecode) &
-                         builder.Eq("username", gameplayerdata.username) &
-                         builder.Eq("qtrname", gameplayerdata.qtrname);
+            var filter = builder.Eq("gameid", playerdatadocument["gameid"]) &
+                         builder.Eq("gamecode", playerdatadocument["gamecode"]) &
+                         builder.Eq("username", playerdatadocument["username"]) &
+                         builder.Eq("qtrname", playerdatadocument["qtrname"]);
 
             try
             {

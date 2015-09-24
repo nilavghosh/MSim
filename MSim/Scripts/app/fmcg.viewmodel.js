@@ -86,13 +86,13 @@ fmcgGame.config(['$routeProvider',
 
 
 fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
-    function albumService($http, $q, $rootScope) {
+    function PlayerDataService($http, $q, $rootScope) {
         // interface
         var service = {
             playerData: [],
             staticData: [],
             iscached: false,
-            isstaticdatacached : false,
+            isstaticdatacached: false,
             getPlayerData: getPlayerData,
             savePlayerData: saveplayerData,
             getStaticData: getStaticData
@@ -125,10 +125,12 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
             var def = $q.defer();
             $http.post('/api/fmcgservice/SavePlayerData', playerData).
               success(function (response) {
+                  pushMessage("success", "Data saved.")
                   service.playerData = playerData;
                   def.resolve(response);
 
               }).error(function (response) {
+                  pushMessage("danger", "Data not saved. Try again.")
                   def.reject(response);
               });
             return def.promise;
@@ -199,11 +201,12 @@ fmcgGame.service('PlayerDataService2', ["$rootScope", "$http", function ($rootSc
 
 
 
-function pushMessage(t) {
-    var mes = 'Info|Data Saved!';
-    $.Notify({
-        caption: mes.split("|")[0],
-        content: mes.split("|")[1],
+function pushMessage(t, mess) {
+    $.notify({
+        // options
+        message: mess
+    }, {
+        // settings
         type: t
     });
 }

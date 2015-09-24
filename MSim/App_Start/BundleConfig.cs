@@ -63,6 +63,7 @@ namespace MSim
                 "~/Scripts/bower_components/bootstrap-fileinput/js/fileinput.min.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
+                "~/Scripts/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js",
                 "~/Scripts/linq.js"
                 ));
 
