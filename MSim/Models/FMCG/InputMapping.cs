@@ -6,6 +6,12 @@ using System.Web;
 namespace MSim.Models.FMCG
 {
 
+    public class Quarter
+    {
+        public string SheetName { get; set; }
+        public IList<PlayerData> PlayerData { get; set; }
+    }
+
     public class CellInfo
     {
         public string Name { get; set; }
@@ -17,13 +23,6 @@ namespace MSim.Models.FMCG
         public int Player { get; set; }
         public IList<CellInfo> CellInfo { get; set; }
     }
-
-    public class Quarter
-    {
-        public string SheetName { get; set; }
-        public IList<PlayerData> PlayerData { get; set; }
-    }
-
 
     public class InputMapping
     {

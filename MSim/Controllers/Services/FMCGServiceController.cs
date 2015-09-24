@@ -286,7 +286,7 @@ namespace MSim.Controllers.Services
         }
 
 
-        public async Task<object> GetAllPlayerDataFromDB(Object registrationChoice)
+        public async Task<List<BsonDocument>> GetAllPlayerDataFromDB(Object registrationChoice)
         {
             SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
@@ -299,35 +299,22 @@ namespace MSim.Controllers.Services
                          builder.Eq("gamecode", selectedgame.code);
 
 
-            List<GamePlayerData> playerdata = new List<GamePlayerData>();
-            var tempdata = await collection.Find(filter).ToListAsync();
-            tempdata.ForEach(document => playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document)));
+            //List<GamePlayerData> playerdata = new List<GamePlayerData>();
+            var playerdata = await collection.Find(filter).ToListAsync();
+            //tempdata.ForEach(document => playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document)));
 
-            try
-            {
-                var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new
-                {
-                    username = p.Key,
-                    Qtr = p.ToList()
-                }); ;
-
-                if (pgroups.Count() > 0)
-                {
-                    string pquarterDatainJson = pgroups.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject(pquarterDatainJson);
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception mssg)
-            {
-                int i = 1;
-                return mssg.InnerException;
-            }
+            return playerdata;
         }
 
+        public InputMapping GetMapping()
+        {
+            using (StreamReader r = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGInputMapping.json")))
+            {
+                string json = r.ReadToEnd();
+                InputMapping mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<InputMapping>(json);
+                return mapping;
+            }
+        }
 
 
         [AllowAnonymous]
@@ -347,19 +334,27 @@ namespace MSim.Controllers.Services
                     {
                         var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
 
+                        InputMapping mapping = GetMapping();
 
-                        using (StreamReader r = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGInputMapping.json")))
+                        List<BsonDocument> playerdata = await GetAllPlayerDataFromDB(registrationChoice);
+                        var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
-                            string json = r.ReadToEnd();
-                            List<InputMapping> mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<List<InputMapping>>(json);
-                        }
+                            username = p.Key,
+                            Qtr = p.ToList()
+                        }).ToList();
 
+                        mapping.Quarter1.PlayerData.ToList().ForEach(player => player.CellInfo.ToList().ForEach(cellinfo =>
+                        {
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[0].Qtr[0][cellinfo.Name];
+                            }
+                        })
+                        );
 
-
-                        IEnumerable<double> arr = new List<double>() { 0.8, 0.2, 1, 0, 0.05, 0.08, 0.15, 0, 12, 12000, 0.5, 0, 250000, 25000, 20000, 0, 15000, 10000, 5000, 0, 300000 };
-                        ExcelAddress address = new ExcelAddress("B5:B25");
-                        Quarter1Sheet.Select(address);
-                        Quarter1Sheet.SelectedRange.LoadFromCollection<double>(arr);
+                        //IEnumerable<double> arr = new List<double>() { 0.8, 0.2, 1, 0, 0.05, 0.08, 0.15, 0, 12, 12000, 0.5, 0, 250000, 25000, 20000, 0, 15000, 10000, 5000, 0, 300000 };
+                        //ExcelAddress address = new ExcelAddress("B5:B25");
+                        //Quarter1Sheet.Select(address);
+                        //Quarter1Sheet.SelectedRange.LoadFromCollection<double>(arr);
 
                         Quarter1Sheet.Calculate();
                         Dictionary<String, List<List<string>>> Quarter1 = new Dictionary<string, List<List<string>>>();
