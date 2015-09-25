@@ -1,6 +1,6 @@
 {
     "Quarter1": {
-      "SheetName": "Qtr-1",
+      "SheetName": "Quarter 1",
       "PlayerData": [
         {
           "Player": 1,
@@ -695,7 +695,7 @@
      ]
    },
     "Quarter2": {
-      "SheetName": "Qtr-2",
+      "SheetName": "Quarter 2",
       "PlayerData": [
         {
           "Player": 1,
@@ -1390,7 +1390,7 @@
      ]
    },
     "Quarter3": {
-      "SheetName": "Qtr-3",
+      "SheetName": "Quarter 3",
       "PlayerData": [
         {
           "Player": 1,
@@ -2085,7 +2085,7 @@
      ]
  },
     "Quarter4": {
-      "SheetName": "Qtr-4",
+      "SheetName": "Quarter 4",
       "PlayerData": [
         {
           "Player": 1,

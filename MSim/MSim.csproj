@@ -1028,6 +1028,8 @@
     <Content Include="Scripts\bower_components\handsontable\dist\pikaday\pikaday.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.js" />
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Scripts\bower_components\humanize-duration\humanize-duration.js" />
+    <Content Include="Scripts\bower_components\humanize-duration\LICENSE.txt" />
     <Content Include="Scripts\bower_components\metro-bootstrap\app\fonts\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Scripts\bower_components\metro-bootstrap\app\fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\bower_components\metro-bootstrap\dist\css\metro-bootstrap.css" />
@@ -1053,6 +1055,11 @@
     <Content Include="Scripts\bower_components\metro-bootstrap\docs\styles\font-awesome.css" />
     <Content Include="Scripts\bower_components\metro-bootstrap\docs\styles\font-awesome.min.css" />
     <Content Include="Scripts\bower_components\metro-bootstrap\Gruntfile.js" />
+    <Content Include="Scripts\bower_components\momentjs\min\locales.js" />
+    <Content Include="Scripts\bower_components\momentjs\min\locales.min.js" />
+    <Content Include="Scripts\bower_components\momentjs\min\moment-with-locales.js" />
+    <Content Include="Scripts\bower_components\momentjs\min\moment-with-locales.min.js" />
+    <Content Include="Scripts\bower_components\momentjs\min\moment.min.js" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\bootstrap-notify.js" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\bootstrap-notify.min.js" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\dist\bootstrap-notify.js" />
@@ -1476,6 +1483,12 @@
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\LICENSE" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\package.json" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\README.md" />
+    <Content Include="Scripts\bower_components\humanize-duration\.bower.json" />
+    <Content Include="Scripts\bower_components\humanize-duration\bower.json" />
+    <Content Include="Scripts\bower_components\humanize-duration\CONTRIBUTING.md" />
+    <Content Include="Scripts\bower_components\humanize-duration\HISTORY.md" />
+    <Content Include="Scripts\bower_components\humanize-duration\package.json" />
+    <Content Include="Scripts\bower_components\humanize-duration\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\handsontable-extensions\angular\ngHandsontable.js" />
     <Content Include="Scripts\handsontable-extensions\formula\handsontable.formula.js" />

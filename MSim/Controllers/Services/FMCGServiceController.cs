@@ -332,6 +332,11 @@ namespace MSim.Controllers.Services
                     if (FMCGworkBook.Worksheets.Count > 0)
                     {
                         var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
+                        var Quarter2Sheet = FMCGworkBook.Worksheets["Quarter 2"];
+                        var Quarter3Sheet = FMCGworkBook.Worksheets["Quarter 3"];
+                        var Quarter4Sheet = FMCGworkBook.Worksheets["Quarter 4"];
+                        var BESheet = FMCGworkBook.Worksheets["Brand Equity"];
+                        var FinancialsSheet = FMCGworkBook.Worksheets["Financials"];
 
                         InputMapping mapping = GetMapping();
 
@@ -342,38 +347,49 @@ namespace MSim.Controllers.Services
                             Qtr = p.ToList()
                         }).ToList();
 
-                        mapping.Quarter1.PlayerData.ToList().ForEach(player => player.CellInfo.ToList().ForEach(cellinfo =>
-                        {
-                            {
-                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[0].Qtr[0].Contains(cellinfo.Name) == true ? pgroups[0].Qtr[0][cellinfo.Name].RawValue : 0;
-                            }
-                        })
-                        );
+                        int playercount = 0;
+                        #region Update quarter data
 
-                        //IEnumerable<double> arr = new List<double>() { 0.8, 0.2, 1, 0, 0.05, 0.08, 0.15, 0, 12, 12000, 0.5, 0, 250000, 25000, 20000, 0, 15000, 10000, 5000, 0, 300000 };
-                        //ExcelAddress address = new ExcelAddress("B5:B25");
-                        //Quarter1Sheet.Select(address);
-                        //Quarter1Sheet.SelectedRange.LoadFromCollection<double>(arr);
+
+                        mapping.Quarter1.PlayerData.ToList().ForEach(player =>
+                            {
+                                player.CellInfo.ToList().ForEach(cellinfo =>
+                                 {
+                                     Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[0].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                                 });
+                                playercount++;
+                            });
+                        playercount = 0;
+                        mapping.Quarter2.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        #endregion
+
 
                         Quarter1Sheet.Calculate();
-                        Dictionary<String, List<List<string>>> Quarter1 = new Dictionary<string, List<List<string>>>();
-                        List<List<string>> Q1Values = new List<List<string>>();
-                        int nrows = Quarter1Sheet.Dimension.Rows;
-                        int ncolums = Quarter1Sheet.Dimension.Columns;
-                        for (int i = 1; i <= nrows; i++)
-                        {
-                            List<string> arow = new List<string>();
-                            for (int j = 1; j <= ncolums; j++)
-                            {
-                                arow.Add(Quarter1Sheet.Cells[i, j].Text);
-                            }
-                            Q1Values.Add(arow);
-                        }
-                        Quarter1["Quarter1"] = Q1Values;
-                        string playersDatainJson = Quarter1.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                        FinancialsSheet.Calculate();
+                        BESheet.Calculate();
+                        Quarter2Sheet.Calculate();
+
+                        Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
+                        List<List<string>> Q1Values = GetSheetValues(Quarter1Sheet);
+                        List<List<string>> Q2Values = GetSheetValues(Quarter1Sheet);
+                        List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet);
+                        List<List<string>> BEValues = GetSheetValues(BESheet);
+
+                        book["Quarter1"] = Q1Values;
+                        book["Quarter2"] = Q2Values;
+                        book["BrandEquity"] = FinancialValues;
+                        book["Financials"] = BEValues;
+
+                        string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                         return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
-                        //Console.WriteLine(Quarter1Sheet.Cells["E8"].Value);
-                        //Console.Read();
                     }
                 }
             }
@@ -385,6 +401,22 @@ namespace MSim.Controllers.Services
             return 1;
         }
 
+        public List<List<string>> GetSheetValues(ExcelWorksheet Sheet)
+        {
+            List<List<string>> Values = new List<List<string>>();
+            int nrows = Sheet.Dimension.Rows;
+            int ncolums = Sheet.Dimension.Columns;
+            for (int i = 1; i <= nrows+2; i++)
+            {
+                List<string> arow = new List<string>();
+                for (int j = 1; j <= ncolums+1; j++)
+                {
+                    arow.Add(Sheet.Cells[i, j].Text);
+                }
+                Values.Add(arow);
+            }
+            return Values;
+        }
 
 
         // POST api/<controller>
