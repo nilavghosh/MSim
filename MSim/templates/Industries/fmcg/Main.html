@@ -1,19 +1,38 @@
 ﻿<section id="homepage" class="view" ng-controller="fmcgCtrl">
-   <div class="row">
-       <div class="col-md-12">
-           <timer language="en" end-time="1451628000000">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
-           <br />
-       </div>
-   </div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-2">
-            <div class="col-md-3"><progressbar type="success" value="100"><strong><h4><a href="/">Q1</a></h4></strong></progressbar></div>
-            <div class="col-md-3"><progressbar typeof="info" value="0">Q2</progressbar></div>
-            <div class="col-md-3"><progressbar value="0">Q3</progressbar></div>
-            <div class="col-md-3"><progressbar value="0">Q4</progressbar></div>
+        <div class="col-md-12">
+            <timer language="en" end-time="1451628000000">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+            <br />
         </div>
     </div>
     <div class="row">
+
+        <div class="col-md-6 col-md-offset-4">
+            <br />
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> <strong>QTR-1</strong>
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> <strong> QTR-2</strong>
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> <strong> QTR-3</strong>
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> <strong> QTR-4</strong>
+                </label>
+            </div>
+            <br />
+            <!--<div class="col-md-3"><progressbar type="success" value="100"><strong><h4><a href="/">Q1</a></h4></strong></progressbar></div>
+            <div class="col-md-3"><progressbar typeof="info" value="0">Q2</progressbar></div>
+            <div class="col-md-3"><progressbar value="0">Q3</progressbar></div>
+            <div class="col-md-3"><progressbar value="0">Q4</progressbar></div>-->
+        </div>
+    </div>
+    <div class="row">
+        <br />
+        <br />
         <div class="col-md-9  col-md-offset-1">
             <div class="col-sm-6 col-md-3">
                 <div class="thumbnail tile tile-medium tile-teal">
