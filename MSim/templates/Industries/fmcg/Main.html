@@ -1,7 +1,7 @@
 ﻿<section id="homepage" class="view" ng-controller="fmcgCtrl">
     <div class="row">
         <div class="col-md-12">
-            <timer language="en" end-time="1451628000000">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+            <timer language="en" countdown="q1time" interval="1000" finish-callback="Q1finished()" autostart="false">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
             <br />
         </div>
     </div>

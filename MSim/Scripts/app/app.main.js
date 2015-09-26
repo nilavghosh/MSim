@@ -4,6 +4,8 @@
         'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
         'Content-Type': 'application/json'
     }
+    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+    $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
 }]);
 
 appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http', '$timeout', function ($scope, $rootScope, $location, $http, $timeout) {

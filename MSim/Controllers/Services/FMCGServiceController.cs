@@ -385,8 +385,8 @@ namespace MSim.Controllers.Services
 
                         book["Quarter1"] = Q1Values;
                         book["Quarter2"] = Q2Values;
-                        book["BrandEquity"] = FinancialValues;
-                        book["Financials"] = BEValues;
+                        book["BrandEquity"] = BEValues;
+                        book["Financials"] = FinancialValues;
 
                         string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                         return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
@@ -401,21 +401,175 @@ namespace MSim.Controllers.Services
             return 1;
         }
 
-        public List<List<string>> GetSheetValues(ExcelWorksheet Sheet)
+        [AllowAnonymous]
+        [HttpPost]
+        [ActionName("GetFinancialReport")]
+        public async Task<object> GetFinancialReport(Object registrationChoice)
         {
-            List<List<string>> Values = new List<List<string>>();
-            int nrows = Sheet.Dimension.Rows;
-            int ncolums = Sheet.Dimension.Columns;
-            for (int i = 1; i <= nrows+2; i++)
+            var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
+            var FMCGModelFile = new FileInfo(filepath);
+            using (var FMCGModel = new ExcelPackage(FMCGModelFile))
             {
-                List<string> arow = new List<string>();
-                for (int j = 1; j <= ncolums+1; j++)
+                // Get the work book in the file
+                ExcelWorkbook FMCGworkBook = FMCGModel.Workbook;
+                if (FMCGworkBook != null)
                 {
-                    arow.Add(Sheet.Cells[i, j].Text);
+                    if (FMCGworkBook.Worksheets.Count > 0)
+                    {
+                        var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
+                        var Quarter2Sheet = FMCGworkBook.Worksheets["Quarter 2"];
+                        var Quarter3Sheet = FMCGworkBook.Worksheets["Quarter 3"];
+                        var Quarter4Sheet = FMCGworkBook.Worksheets["Quarter 4"];
+                        var BESheet = FMCGworkBook.Worksheets["Brand Equity"];
+                        var FinancialsSheet = FMCGworkBook.Worksheets["Financials"];
+
+                        InputMapping mapping = GetMapping();
+
+                        List<BsonDocument> playerdata = await GetAllPlayerDataFromDB(registrationChoice);
+                        var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
+                        {
+                            username = p.Key,
+                            Qtr = p.ToList()
+                        }).ToList();
+
+                        int playercount = 0;
+                        #region Update quarter data
+
+
+                        mapping.Quarter1.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[0].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter2.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        #endregion
+
+
+                        Quarter1Sheet.Calculate();
+                        FinancialsSheet.Calculate();
+                        BESheet.Calculate();
+                        Quarter2Sheet.Calculate();
+
+                        Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
+                        List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet, "A4:B24");
+                        book["Financials"] = FinancialValues;
+
+                        string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                        return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+                    }
                 }
-                Values.Add(arow);
             }
-            return Values;
+            //var filter = new BsonDocument();
+            //var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
+            //var playersData = await collection.Find(filter).ToListAsync();
+            //string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+            //return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+            return 1;
+        }
+
+
+
+
+
+
+        public List<List<string>> GetSheetValues(ExcelWorksheet Sheet, String range=null)
+        {
+            if (range == null)
+            {
+                List<List<string>> Values = new List<List<string>>();
+                int nrows = Sheet.Dimension.Rows;
+                int ncolums = Sheet.Dimension.Columns;
+                for (int i = 1; i <= nrows + 2; i++)
+                {
+                    List<string> arow = new List<string>();
+                    for (int j = 1; j <= ncolums + 1; j++)
+                    {
+                        arow.Add(Sheet.Cells[i, j].Text);
+                    }
+                    Values.Add(arow);
+                }
+                return Values;
+            }
+            else
+            {
+             ExcelRange reportRange  = Sheet.Cells[range];
+             var rangevalues = reportRange.ToList();
+             List<List<string>> Values = new List<List<string>>();
+             int nrows = reportRange.Rows;
+             int ncolums = reportRange.Columns;
+             for (int i = 0; i < nrows; i++)
+             {
+                 List<string> arow = new List<string>();
+                 for (int j = 0; j < ncolums; j++)
+                 {
+                     arow.Add(rangevalues[ncolums*i + j].Text);
+                 }
+                 Values.Add(arow);
+             }
+             return Values;
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [ActionName("StartQuarter")]
+        public async Task<object> StartQuarter(object registrationChoice)
+        {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+
+            //List<GamePlayerData> playerdata = new List<GamePlayerData>();
+            var game = await collection.Find(filter).FirstAsync();
+            game["q1starttime"] = DateTime.UtcNow;
+            game["q1started"] = true;
+            await collection.ReplaceOneAsync(filter, game);
+            return game;
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [ActionName("GetTimeLeft")]
+        public async Task<object> GetTimeLeft(Object registrationChoice)
+        {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+
+            //List<GamePlayerData> playerdata = new List<GamePlayerData>();
+            var game = await collection.Find(filter).FirstAsync();
+            Dictionary<String, object> gameInfo = new Dictionary<string, object>();
+            gameInfo["q1started"] = game["q1started"];
+           int q1timeleft = (Int32)game["q1starttime"].ToUniversalTime().AddMinutes(game["q1duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds;
+           if (q1timeleft < 0)
+           {
+               gameInfo["q1timeleft"] = 0;
+           }
+           else
+           {
+               gameInfo["q1timeleft"] = q1timeleft;
+           }
+            return gameInfo;
         }
 
 

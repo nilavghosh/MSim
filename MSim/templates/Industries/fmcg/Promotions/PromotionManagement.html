@@ -4,6 +4,12 @@
             <a type="button" href="#/Dashboard" class="btn btn-success">Back to Dashboard</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <timer language="en" countdown="q1time" interval="1000" finish-callback="Q1finished()" autostart="false">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+            <br />
+        </div>
+    </div>
     <h3>Promotion Management</h3>
     <br />
     <div class="row">
@@ -34,19 +40,19 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label>TV Advertisement</label>
-                        <input type="number" ng-model="FMCGDataModel.TVAds" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.TVAds" ng-disabled="isQuarter1Over" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Newspaper</label>
-                        <input type="number" ng-model="FMCGDataModel.NewspaperAds" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isQuarter1Over" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Hoardings</label>
-                        <input type="number" ng-model="FMCGDataModel.HoardingAds" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.HoardingAds" ng-disabled="isQuarter1Over" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Total ATL Expense</label>
-                        <input type="number" class="form-control" ng-model="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
+                        <input type="number" class="form-control" ng-disabled="isQuarter1Over" ng-model="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
                     </div>
                 </form>
             </div>
@@ -56,26 +62,26 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label>Promoters</label>
-                        <input type="number" ng-model="FMCGDataModel.Promoters" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.Promoters" ng-disabled="isQuarter1Over" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Sampling</label>
-                        <input type="number" ng-model="FMCGDataModel.Sampling" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.Sampling" ng-disabled="isQuarter1Over" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>In shop branding</label>
-                        <input type="number" ng-model="FMCGDataModel.InShopBranding" class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.InShopBranding" ng-disabled="isQuarter1Over" class="form-control" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Total BTL Expense</label>
-                        <input type="number" ng-model="FMCGDataModel.TotalBTLExpenseCalculated()" readonly class="form-control" placeholder="in ₹">
+                        <input type="number" ng-model="FMCGDataModel.TotalBTLExpenseCalculated()" ng-disabled="isQuarter1Over" readonly class="form-control" placeholder="in ₹">
                     </div>
                 </form>
             </div>
             <div class="row">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <button type="submit" ng-click="savePlayerData()" class="btn btn-default">Save</button>
+                        <button type="submit" ng-click="savePlayerData()" ng-disabled="isQuarter1Over" class="btn btn-default">Save</button>
                     </div>
                 </form>
             </div>

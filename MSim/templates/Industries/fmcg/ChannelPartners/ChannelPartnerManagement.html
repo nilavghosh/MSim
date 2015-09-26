@@ -4,6 +4,12 @@
             <a type="button" href="#/Dashboard" class="btn btn-success">Back to Dashboard</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <timer language="en" countdown="q1time" interval="1000" finish-callback="Q1finished()" autostart="false">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+            <br />
+        </div>
+    </div>
     <h3>Channel Partner Management</h3>
     <br />
     <div class="row">
@@ -40,23 +46,23 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label>PTD</label>
-                        <input type="number" ng-model="FMCGDataModel.PTD" class="form-control" id="inputEmail3">
+                        <input type="number" ng-model="FMCGDataModel.PTD" ng-disabled="isQuarter1Over" class="form-control" id="inputEmail3">
 
                     </div>
                     <div class="form-group">
                         <label>Distributor Margin</label>
-                        <input type="text" ng-model="FMCGDataModel.DistributorMargin" class="form-control" />
+                        <input type="text" ng-model="FMCGDataModel.DistributorMargin" ng-disabled="isQuarter1Over" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label>Retailer Margin</label>
-                        <input type="text" ng-model="FMCGDataModel.RetailerMargin" class="form-control" />
+                        <input type="text" ng-model="FMCGDataModel.RetailerMargin" ng-disabled="isQuarter1Over" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label>Company Margin</label>
-                        <input type="text" ng-model="FMCGDataModel.CompanyMargin" class="form-control" />
+                        <input type="text" ng-model="FMCGDataModel.CompanyMargin" ng-disabled="isQuarter1Over" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" ng-click="savePlayerData()" class="btn btn-default">Save</button>
+                        <button type="submit" ng-click="savePlayerData()" ng-disabled="isQuarter1Over" class="btn btn-default">Save</button>
                     </div>
                 </form>
             </div>

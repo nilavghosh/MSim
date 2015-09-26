@@ -6,7 +6,7 @@
         </div>
     </div>
     <!-- ko with: fmcg -->
-    <h3>Promotion Management</h3>
+    <h3>Financial Reports</h3>
     <br />
     <div class="row">
         <div class="col-md-offset-1 col-md-9">
@@ -14,13 +14,18 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Parameter</th>
+                        <th>Value</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr ng-repeat="row in items">
+                        <td>{{$index + 1}}</td>
+                        <td ng-repeat="col in row">
+                            {{col}}
+                        </td>
+                    </tr>
+                    <!--<tr>
                         <th scope="row">1</th>
                         <td>
                             Mark
@@ -41,7 +46,7 @@
                         </td>
                         <td>the Bird</td>
                         <td>*twitter</td>
-                    </tr>
+                    </tr>-->
                 </tbody>
             </table>
         </div>

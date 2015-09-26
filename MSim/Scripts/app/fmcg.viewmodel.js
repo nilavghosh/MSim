@@ -1,12 +1,33 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "timer"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$timeout', "PlayerDataService",
-    function ($scope, $rootScope, $http, $timeout, PlayerDataService) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "timer"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$timeout', "PlayerDataService", "TimerService",
+    function ($scope, $rootScope, $http, $timeout, PlayerDataService, TimerService) {
 
         $scope.FMCGAdminDataModel = {
             Result: ko.observableArray([])
         }
 
+        //$scope.timer = TimerService;
+        $scope.q1time = 1800;
+        $scope.items = [];
+        $scope.isQuarter1Over = TimerService.isQuarter1Over;
+        $scope.isQuarter2Over = false;
+        $scope.isQuarter3Over = false;
+        $scope.isQuarter4Over = false;
+
         $scope.PackagingMaterial = [];
         $scope.TrainingType = [];
+
+        $scope.Q1finished = function () {
+            TimerService.setQuarter1State(true);
+            $scope.isQuarter1Over = TimerService.isQuarter1Over
+            $scope.$apply();
+            pushMessage("danger", "Quarter 1 Completed! Proceed to Quarter 2.")
+
+            //$scope.isQuarter1Over = true;
+        }
+
+        //$scope.$watch('TimerService.isQuarter1Over', function (newval) {
+        //     $scope.$apply();
+        //});
 
         $scope.getPlayerData = function () {
             PlayerDataService.getPlayerData().then(function (response) {
@@ -31,7 +52,7 @@
 
                 console.log("static data returned");
             }).error(function () {
-                consol.log("cant fetch static data");
+                console.log("cant fetch static data");
             })
 
         };
@@ -48,9 +69,43 @@
 
         $scope.init = function () {
             $scope.getPlayerData();
+            var poller = function () {
+                choice = {
+                    selectedGameId: 1,
+                    code: "1234A",
+                }
+                $http.post("api/fmcgservice/GetTimeLeft", choice).then(function (game) {
+                    if (game.data["q1started"] == false) {
+                        $scope.$broadcast('timer-set-countdown', 1800);
+                        $scope.$broadcast('timer-stop');
+                    }
+                    else {
+                        var t = game.data["q1timeleft"];
+                        if (t < 1) {
+                            TimerService.setQuarter1State(true);
+                            $scope.isQuarter1Over = TimerService.isQuarter1Over;
+                            choice = {
+                                selectedGameId: 1,
+                                code: "1234A",
+                            }
+                            $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
+                                $scope.items = report.data["Financials"];
+
+                            });
+                            $scope.$broadcast('timer-stop');
+                        }
+                        else {
+                            TimerService.setQuarter1State(false);
+                            $scope.isQuarter1Over = TimerService.isQuarter1Over;
+                            $scope.$broadcast('timer-set-countdown', t);
+                            $scope.$broadcast('timer-start');
+                        }
+                    }
+                });
+            }
+            poller();
+            setInterval(poller, 5000);
         }
-
-
         $scope.init();
     }]);
 
@@ -78,12 +133,68 @@ fmcgGame.config(['$routeProvider',
             }).
             when('/Q1-Reports', {
                 templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
-                controller: 'fmcgCtrl'
+                controller: 'fmcgCtrl',
+
             })
     }]);
 
 //http://stackoverflow.com/questions/18274976/make-bootstrap-well-semi-transparent
 
+
+fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerService($http, $q, $rootScope) {
+    var service = {
+        isQuarter1Over: false,
+        q1timeleft: 0,
+        isQuarter2Over: false,
+        isQuarter3Over: false,
+        isQuarter4Over: false,
+        getQuarter1State: getQuarter1State,
+        setQuarter1State: setQuarter1State,
+        startPolling: startPolling,
+        getQ1TimeLeft: getQ1TimeLeft,
+
+    };
+    return service;
+
+    function getQuarter1State() {
+        return service.isQuarter1Over;
+    }
+
+    function setQuarter1State(state) {
+        service.isQuarter1Over = state;
+    }
+
+    function startPolling() {
+        // Check to make sure poller doesn't already exist
+
+        var poller = function () {
+            choice = {
+                selectedGameId: 1,
+                code: "1234A",
+            }
+            $http.post("api/fmcgservice/GetTimeLeft", choice).then(function (game) {
+                service.q1timeleft = 50;// game.data["q1timeleft"];
+            });
+        }
+        setInterval(poller, 5000);
+    }
+
+    function getQ1TimeLeft() {
+        choice = {
+            selectedGameId: 1,
+            code: "1234A",
+        }
+        $http.post("api/fmcgservice/GetTimeLeft", choice).then(function (game) {
+            if (game.data["q1started"] == false) {
+                return 1800;
+            }
+            else {
+                return game.data["q1timeleft"];
+            }
+        });
+    }
+
+}]);
 
 fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
     function PlayerDataService($http, $q, $rootScope) {
@@ -147,57 +258,6 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
 
 
 
-fmcgGame.service('PlayerDataService2', ["$rootScope", "$http", function ($rootScope, $http) {
-    this.playerData = {
-        Quarter: 0,
-        PTD: 43,
-        DistributorMargin: 0,
-        RetailerMargin: 0,
-        CompanyMargin: 0,
-        NoOfSalesmen: 0,
-        AvgSalary: 0,
-        Training: 0,
-        TVAds: 21,
-        NewspaperAds: 0,
-        HoardingAds: 0,
-        TotalATLExpense: 0,
-        Promoters: 0,
-        Sampling: 0,
-        InShopBranding: 0,
-        TotalBTLExpense: 0,
-        MustardOilPercentage: 0,
-        PalmOilPercentage: 0,
-        PackagingMaterial: 0
-    };
-
-    //$http.post('/api/fmcgservice/GetPlayerData', $rootScope.gameOfChoice).
-    //    then(function (response) {
-    //        playerData = response.data;
-    //    }, function (response) {
-    //        //  pushMessage(response.statusText, 'info');
-    //    });
-
-    this.cached = false;
-    this.getPlayerData = function () {
-        if (this.cached == true) {
-            return this.playerData;
-        }
-        else {
-            $http.post('/api/fmcgservice/GetPlayerData', $rootScope.gameOfChoice).
-                then(function (response) {
-
-                    return response.data;
-
-                }, function (response) {
-                    //  pushMessage(response.statusText, 'info');
-                });
-        }
-    }
-
-    this.savePlayerData = function (pdata) {
-        this.playerData = pdata;
-    }
-}]);
 
 
 
