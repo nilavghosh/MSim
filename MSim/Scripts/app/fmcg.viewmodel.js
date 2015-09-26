@@ -84,14 +84,7 @@
                         if (t < 1) {
                             TimerService.setQuarter1State(true);
                             $scope.isQuarter1Over = TimerService.isQuarter1Over;
-                            choice = {
-                                selectedGameId: 1,
-                                code: "1234A",
-                            }
-                            $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
-                                $scope.items = report.data["Financials"];
-
-                            });
+                           
                             $scope.$broadcast('timer-stop');
                         }
                         else {
@@ -105,6 +98,17 @@
             }
             poller();
             setInterval(poller, 5000);
+            if (TimerService.isQuarter1Over == true)
+            {
+                choice = {
+                    selectedGameId: 1,
+                    code: "1234A",
+                }
+                $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
+                    $scope.items = report.data["Financials"];
+
+                });
+            }
         }
         $scope.init();
     }]);
