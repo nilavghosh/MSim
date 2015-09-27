@@ -111,16 +111,16 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Users\Nilav\Downloads\CSharpDriver-2.1.0-rc0\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Driver.2.0.1\lib\net45\MongoDB.Driver.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Users\Nilav\Downloads\CSharpDriver-2.1.0-rc0\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver.Core, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Users\Nilav\Downloads\CSharpDriver-2.1.0-rc0\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -249,6 +249,7 @@
     <Compile Include="Models\FMCG\ChannelPartnerData.cs" />
     <Compile Include="Models\FMCG\GamePlayerData.cs" />
     <Compile Include="Models\FMCG\InputMapping.cs" />
+    <Compile Include="Models\FMCG\ReportMapping.cs" />
     <Compile Include="Models\FMCG\UserMarketShare.cs" />
     <Compile Include="Models\FMCG\ResultData.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -261,6 +262,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\GameModel\FMCGReportMapping.json" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -418,7 +420,10 @@
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap.css" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\bower_components\bootstrap\dist\js\bootstrap.js" />
     <Content Include="Scripts\bower_components\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="Scripts\bower_components\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -1379,9 +1384,6 @@
     <Content Include="Scripts\bower_components\bootstrap\bower.json" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
     <Content Include="Scripts\bower_components\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Scripts\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Scripts\bower_components\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\bower_components\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Scripts\bower_components\bootstrap\fonts\glyphicons-halflings-regular.woff" />

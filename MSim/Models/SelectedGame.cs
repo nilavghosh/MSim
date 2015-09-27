@@ -10,5 +10,6 @@ namespace MSim.Models
         public int selectedGameId { get; set; }
         public string code { get; set; }
         public string username { get; set; }
+        public int selectedquarter { get; set; }
     }
 }

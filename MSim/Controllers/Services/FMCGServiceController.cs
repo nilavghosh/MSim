@@ -25,6 +25,8 @@ using System.Text.RegularExpressions;
 using System.IO;
 using OfficeOpenXml;
 using System.Web.Hosting;
+using MSim.Models.FMCG.Input;
+using MSim.Models.FMCG.Report;
 
 namespace MSim.Controllers.Services
 {
@@ -88,23 +90,10 @@ namespace MSim.Controllers.Services
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
                          builder.Eq("gamecode", selectedgame.code) &
                          builder.Eq("username", User.Identity.Name) &
-                         builder.Eq("qtrname", 1);
-            //var games = await collection.Find(filter).ToListAsync();
-
+                         builder.Eq("qtrname", selectedgame.selectedquarter);
             var quarterdata = new List<BsonDocument>();
             quarterdata = await collection.Find(filter).ToListAsync();
-            //using (var cursor = await collection.FindAsync(filter))
-            //{
-            //    while (await cursor.MoveNextAsync())
-            //    {
-            //        var batch = cursor.Current;
-            //        foreach (var document in batch)
-            //        {
-            //            // process document
-            //            quarterdata.Add(document);
-            //        }
-            //    }
-            //}
+
             try
             {
                 if (quarterdata.Count == 1)
@@ -160,47 +149,27 @@ namespace MSim.Controllers.Services
             return Newtonsoft.Json.JsonConvert.DeserializeObject(staticDataInJson);
         }
 
-
-        [HttpGet]
-        [ActionName("GetPlayerInputs")]
-        public async Task<object> GetPlayerInputs()
+        [HttpPost]
+        [ActionName("GetStartedQuarters")]
+        public async Task<object> GetStartedQuarters(Object registrationChoice)
         {
-            //var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
-            //var client = new MongoClient();
-            //var database = client.GetDatabase("MSim");
-            var filter = new BsonDocument();
-            var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
 
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
 
-            List<BsonDocument> playersData = new List<BsonDocument>();
-            using (var cursor = await collection.FindAsync(filter))
-            {
-                while (await cursor.MoveNextAsync())
-                {
-                    var batch = cursor.Current;
-                    foreach (var document in batch)
-                    {
-                        // process document
-                        playersData.Add(document);
-                    }
-                }
-            }
-
-
-
-            try
-            {
-                //var playersData = await collection.Find(filter).ToListAsync();
-                string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
-                return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
-            }
-            catch (Exception mssg)
-            {
-                int i = 1;
-                return mssg.InnerException;
-            }
-
+            var game = await collection.Find(filter).FirstAsync();
+            Dictionary<String, object> gameInfo = new Dictionary<string, object>();
+            gameInfo["q1started"] = game["q1started"];
+            gameInfo["q2started"] = game["q2started"];
+            gameInfo["q3started"] = game["q3started"];
+            gameInfo["q4started"] = game["q4started"];
+            return gameInfo;
         }
+
+
 
         [AllowAnonymous]
         [HttpPost]
@@ -221,18 +190,7 @@ namespace MSim.Controllers.Services
             List<GamePlayerData> playerdata = new List<GamePlayerData>();
             var tempdata = await collection.Find(filter).ToListAsync();
             tempdata.ForEach(document => playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document)));
-            //using (var cursor = await collection.FindAsync(filter))
-            //{
-            //    while (await cursor.MoveNextAsync())
-            //    {
-            //        var batch = cursor.Current;
-            //        foreach (var document in batch)
-            //        {
-            //            // process document
-            //            playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document));
-            //        }
-            //    }
-            //}
+
             try
             {
                 var pgroups = playerdata.GroupBy(pdata => pdata.username).Select(p => new
@@ -297,10 +255,7 @@ namespace MSim.Controllers.Services
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
                          builder.Eq("gamecode", selectedgame.code);
 
-
-            //List<GamePlayerData> playerdata = new List<GamePlayerData>();
             var playerdata = await collection.Find(filter).ToListAsync();
-            //tempdata.ForEach(document => playerdata.Add(BsonSerializer.Deserialize<GamePlayerData>(document)));
 
             return playerdata;
         }
@@ -311,7 +266,23 @@ namespace MSim.Controllers.Services
             {
                 string json = r.ReadToEnd();
                 InputMapping mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<InputMapping>(json);
+                //using (StreamReader reg = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGReportMapping.json")))
+                //{
+                //    string jkon = reg.ReadToEnd();
+                //    ReportMapping mapping2 = Newtonsoft.Json.JsonConvert.DeserializeObject<ReportMapping>(jkon);
+                //    int i = 1;
+                //}
                 return mapping;
+            }
+        }
+
+        public String GetReportDataRange(int quarter, int player)
+        {
+            using (StreamReader r = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGReportMapping.json")))
+            {
+                string json = r.ReadToEnd();
+                ReportMapping mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<ReportMapping>(json);
+                return mapping["Quarter" + quarter.ToString()].PlayerReport.Where(pr => pr.Player == player).First().CellInfo;
             }
         }
 
@@ -401,11 +372,23 @@ namespace MSim.Controllers.Services
             return 1;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [ActionName("GetFinancialReport")]
         public async Task<object> GetFinancialReport(Object registrationChoice)
         {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+            var game = await collection.Find(filter).FirstAsync();
+            var players = game["players"].AsBsonArray.AsQueryable().Select(g => g["username"]);
+
+            int playerindex = players.ToList().IndexOf(User.Identity.Name)+1;
+
+        
             var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
             var FMCGModelFile = new FileInfo(filepath);
             using (var FMCGModel = new ExcelPackage(FMCGModelFile))
@@ -463,7 +446,8 @@ namespace MSim.Controllers.Services
                         Quarter2Sheet.Calculate();
 
                         Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
-                        List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet, "A4:B24");
+
+                        List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet, GetReportDataRange(selectedgame.selectedquarter, playerindex));
                         book["Financials"] = FinancialValues;
 
                         string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
@@ -479,12 +463,7 @@ namespace MSim.Controllers.Services
             return 1;
         }
 
-
-
-
-
-
-        public List<List<string>> GetSheetValues(ExcelWorksheet Sheet, String range=null)
+        public List<List<string>> GetSheetValues(ExcelWorksheet Sheet, String range = null)
         {
             if (range == null)
             {
@@ -504,21 +483,22 @@ namespace MSim.Controllers.Services
             }
             else
             {
-             ExcelRange reportRange  = Sheet.Cells[range];
-             var rangevalues = reportRange.ToList();
-             List<List<string>> Values = new List<List<string>>();
-             int nrows = reportRange.Rows;
-             int ncolums = reportRange.Columns;
-             for (int i = 0; i < nrows; i++)
-             {
-                 List<string> arow = new List<string>();
-                 for (int j = 0; j < ncolums; j++)
-                 {
-                     arow.Add(rangevalues[ncolums*i + j].Text);
-                 }
-                 Values.Add(arow);
-             }
-             return Values;
+                ExcelRange reportRange = Sheet.Cells[range];
+                var rangevalues = reportRange.ToList();
+                List<List<string>> Values = new List<List<string>>();
+                int nrows = reportRange.Rows;
+                int ncolums = rangevalues.Count() / nrows; //reportRange.Columns;
+                for (int i = 0; i < nrows; i++)
+                {
+                    List<string> arow = new List<string>();
+                    for (int j = 0; j < ncolums; j++)
+                    {
+                       // arow.Add(rangevalues[ncolums * i + j].Text);
+                        arow.Add(rangevalues[i + nrows * j].Text);
+                    }
+                    Values.Add(arow);
+                }
+                return Values;
             }
         }
 
@@ -535,10 +515,13 @@ namespace MSim.Controllers.Services
                          builder.Eq("gamecode", selectedgame.code);
 
 
-            //List<GamePlayerData> playerdata = new List<GamePlayerData>();
             var game = await collection.Find(filter).FirstAsync();
-            game["q1starttime"] = DateTime.UtcNow;
-            game["q1started"] = true;
+
+            string qstarttime = "q" + selectedgame.selectedquarter.ToString() + "starttime";
+            string qstarted = "q" + selectedgame.selectedquarter.ToString() + "started";
+
+            game[qstarttime] = DateTime.UtcNow;
+            game[qstarted] = true;
             await collection.ReplaceOneAsync(filter, game);
             return game;
         }
@@ -555,20 +538,23 @@ namespace MSim.Controllers.Services
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
                          builder.Eq("gamecode", selectedgame.code);
 
-
-            //List<GamePlayerData> playerdata = new List<GamePlayerData>();
             var game = await collection.Find(filter).FirstAsync();
             Dictionary<String, object> gameInfo = new Dictionary<string, object>();
-            gameInfo["q1started"] = game["q1started"];
-           int q1timeleft = (Int32)game["q1starttime"].ToUniversalTime().AddMinutes(game["q1duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds;
-           if (q1timeleft < 0)
-           {
-               gameInfo["q1timeleft"] = 0;
-           }
-           else
-           {
-               gameInfo["q1timeleft"] = q1timeleft;
-           }
+
+            string qstarted = "q" + selectedgame.selectedquarter.ToString() + "started";
+            string qstarttime = "q" + selectedgame.selectedquarter.ToString() + "starttime";
+            string qduration = "q" + selectedgame.selectedquarter.ToString() + "duration";
+
+            gameInfo["qstarted"] = game[qstarted];
+            int qtimeleft = (Int32)game[qstarttime].ToUniversalTime().AddMinutes(game[qduration].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds;
+            if (qtimeleft < 0)
+            {
+                gameInfo["qtimeleft"] = 0;
+            }
+            else
+            {
+                gameInfo["qtimeleft"] = qtimeleft;
+            }
             return gameInfo;
         }
 
@@ -581,9 +567,6 @@ namespace MSim.Controllers.Services
             var user = UserManager.FindById(User.Identity.GetUserId());
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)CPData).ToString());
             document.Add(new BsonElement("userid", user.Id));
-
-            //var client = new MongoClient();
-            //var database = client.GetDatabase("MSim");
 
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData");
             var filter = Builders<BsonDocument>.Filter.Eq("userid", user.Id);
@@ -598,44 +581,6 @@ namespace MSim.Controllers.Services
                 await collection.InsertOneAsync(document);
                 return Ok();
             }
-
-            //var update = Builders<BsonDocument>.Update.Set("address.street", "East 31st Street");
-
-
-            //var result = await collection.Find(filter).ToListAsync();
-
-
-            //var fmcgdata = from e in collection.AsQueryable<Employee>()
-            //               where e.FirstName == "John"
-            //               select e;
-
-
-
-
-            ////            return database;
-
-
-            //var user = UserManager.FindById(User.Identity.GetUserId());
-
-            //MSimEntities db = new MSimEntities();
-            //var entries = db.ChannelPartnerManagements.Where(cp => cp.UserId == user.Id);
-            //if (entries.Count() == 0)
-            //{
-            //    var cpEntry = db.ChannelPartnerManagements.Create();
-            //    cpEntry.UserId = user.Id;
-            //    cpEntry.PTD = CPData.PTD;
-            //    cpEntry.DistributorMargin = CPData.DistributorMargin;
-            //    cpEntry.RetailerMargin = CPData.RetailerMargin;
-            //    db.ChannelPartnerManagements.Add(cpEntry);
-            //}
-            //else
-            //{
-            //    var cpEntry = entries.First();
-            //    cpEntry.PTD = CPData.PTD;
-            //    cpEntry.DistributorMargin = CPData.DistributorMargin;
-            //    cpEntry.RetailerMargin = CPData.RetailerMargin;
-            //}
-            //db.SaveChanges();
         }
 
         [HttpPost]
@@ -665,17 +610,6 @@ namespace MSim.Controllers.Services
 
             await collection.InsertOneAsync(document);
             return Ok();
-        }
-
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }

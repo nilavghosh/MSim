@@ -5,29 +5,18 @@
             <br />
         </div>
     </div>
+
     <div class="row">
 
         <div class="col-md-6 col-md-offset-4">
             <br />
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active">
-                    <input type="radio" name="options" id="option1" autocomplete="off" checked> <strong>QTR-1</strong>
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option2" autocomplete="off"> <strong> QTR-2</strong>
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> <strong> QTR-3</strong>
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> <strong> QTR-4</strong>
-                </label>
+                <label class="btn btn-primary active" btn-radio="1" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(1)" ng-class="{'disabled': !isQuarter1Started}"><strong>QTR-1</strong></label>
+                <label class="btn btn-primary" btn-radio="2" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(2)" ng-class="{'disabled': !isQuarter2Started}"><strong>QTR-2</strong></label>
+                <label class="btn btn-primary" btn-radio="3" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(3)" ng-class="{'disabled': !isQuarter3Started}"><strong>QTR-3</strong></label>
+                <label class="btn btn-primary" btn-radio="4" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(4)" ng-class="{'disabled': !isQuarter4Started}"><strong>QTR-4</strong></label>
             </div>
             <br />
-            <!--<div class="col-md-3"><progressbar type="success" value="100"><strong><h4><a href="/">Q1</a></h4></strong></progressbar></div>
-            <div class="col-md-3"><progressbar typeof="info" value="0">Q2</progressbar></div>
-            <div class="col-md-3"><progressbar value="0">Q3</progressbar></div>
-            <div class="col-md-3"><progressbar value="0">Q4</progressbar></div>-->
         </div>
     </div>
     <div class="row">
@@ -87,6 +76,11 @@
                     <a href="/fmcg/Manage"><h4>ADMIN</h4></a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+            <pre style="text-align:center">Do not refresh the browser when playing the game!</pre>
         </div>
     </div>
 </section>

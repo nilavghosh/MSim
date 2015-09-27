@@ -7,22 +7,31 @@
 
         //$scope.timer = TimerService;
         $scope.q1time = 1800;
+        $scope.selectedquarter = TimerService.selectedquarter;
         $scope.items = [];
+        $scope.isQuarter1Started = TimerService.isQuarter1Started;
+        $scope.isQuarter2Started = TimerService.isQuarter2Started;
+        $scope.isQuarter3Started = TimerService.isQuarter3Started;
+        $scope.isQuarter4Started = TimerService.isQuarter4Started;
         $scope.isQuarter1Over = TimerService.isQuarter1Over;
-        $scope.isQuarter2Over = false;
-        $scope.isQuarter3Over = false;
-        $scope.isQuarter4Over = false;
-
+        $scope.isQuarter2Over = TimerService.isQuarter2Over;
+        $scope.isQuarter3Over = TimerService.isQuarter3Over;
+        $scope.isQuarter4Over = TimerService.isQuarter4Over;
+        $scope.isSelectedQuarterOver =  $scope["isQuarter" + $scope.selectedquarter + "Over"];
         $scope.PackagingMaterial = [];
         $scope.TrainingType = [];
 
         $scope.Q1finished = function () {
-            TimerService.setQuarter1State(true);
-            $scope.isQuarter1Over = TimerService.isQuarter1Over
+            TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
+            $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
+            $scope.isSelectedQuarterOver = true;
             $scope.$apply();
-            pushMessage("danger", "Quarter 1 Completed! Proceed to Quarter 2.")
-
-            //$scope.isQuarter1Over = true;
+            pushMessage("danger", "Quarter " + $scope.selectedquarter + " Completed! Proceed to Quarter " + ($scope.selectedquarter + 1) + ".");
+        }
+        $scope.setServiceSelectedQuarter = function (qtr) {
+            $scope.selectedquarter = qtr;
+            TimerService.selectedquarter = $scope.selectedquarter;
+            $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
         }
 
         //$scope.$watch('TimerService.isQuarter1Over', function (newval) {
@@ -65,51 +74,65 @@
                 console.log("Failed to save data");
             });
         }
-
-
         $scope.init = function () {
             $scope.getPlayerData();
             var poller = function () {
                 choice = {
                     selectedGameId: 1,
                     code: "1234A",
+                    selectedquarter: $scope.selectedquarter
                 }
                 $http.post("api/fmcgservice/GetTimeLeft", choice).then(function (game) {
-                    if (game.data["q1started"] == false) {
+                    if (game.data["qstarted"] == false) {
                         $scope.$broadcast('timer-set-countdown', 1800);
                         $scope.$broadcast('timer-stop');
                     }
                     else {
-                        var t = game.data["q1timeleft"];
+                        TimerService["isQuarter" + $scope.selectedquarter + "Started"] = true;
+                        $scope["isQuarter" + $scope.selectedquarter + "Started"] = true;
+                        var t = game.data["qtimeleft"];
                         if (t < 1) {
-                            TimerService.setQuarter1State(true);
-                            $scope.isQuarter1Over = TimerService.isQuarter1Over;
-                           
+                            TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
+                            $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
                             $scope.$broadcast('timer-stop');
                         }
                         else {
-                            TimerService.setQuarter1State(false);
-                            $scope.isQuarter1Over = TimerService.isQuarter1Over;
+                            TimerService["isQuarter" + $scope.selectedquarter + "Over"] = false;
+                            $scope["isQuarter" + $scope.selectedquarter + "Over"] = false;
                             $scope.$broadcast('timer-set-countdown', t);
                             $scope.$broadcast('timer-start');
                         }
                     }
+                    var choice = {
+                        selectedGameId: 1,
+                        code: "1234A",
+                        selectedquarter: $scope.selectedquarter
+                    }
+                    $http.post("api/fmcgservice/GetStartedQuarters", choice).then(function (startedquarters) {
+                        $scope.isQuarter1Started = startedquarters.data["q1started"];
+                        $scope.isQuarter2Started = startedquarters.data["q2started"];
+                        $scope.isQuarter3Started = startedquarters.data["q3started"];
+                        $scope.isQuarter4Started = startedquarters.data["q4started"];
+                        TimerService.isQuarter1Started = startedquarters.data["q1started"];
+                        TimerService.isQuarter2Started = startedquarters.data["q2started"];
+                        TimerService.isQuarter3Started = startedquarters.data["q3started"];
+                        TimerService.isQuarter4Started = startedquarters.data["q4started"];
+                    });
                 });
             }
             poller();
             setInterval(poller, 5000);
-            if (TimerService.isQuarter1Over == true)
-            {
+            if (TimerService["isQuarter" + $scope.selectedquarter + "Over"] == true) {
                 choice = {
                     selectedGameId: 1,
                     code: "1234A",
+                    selectedquarter: $scope.selectedquarter
                 }
                 $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
                     $scope.items = report.data["Financials"];
-
                 });
             }
-        }
+            }
         $scope.init();
     }]);
 
@@ -147,11 +170,19 @@ fmcgGame.config(['$routeProvider',
 
 fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerService($http, $q, $rootScope) {
     var service = {
-        isQuarter1Over: false,
         q1timeleft: 0,
-        isQuarter2Over: false,
-        isQuarter3Over: false,
-        isQuarter4Over: false,
+        q2timeleft: 0,
+        q3timeleft: 0,
+        q4timeleft: 0,
+        selectedquarter: 1,
+        isQuarter1Over: true,
+        isQuarter2Over: true,
+        isQuarter3Over: true,
+        isQuarter4Over: true,
+        isQuarter1Started: false,
+        isQuarter2Started: false,
+        isQuarter3Started: false,
+        isQuarter4Started: false,
         getQuarter1State: getQuarter1State,
         setQuarter1State: setQuarter1State,
         startPolling: startPolling,
@@ -189,11 +220,11 @@ fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerSer
             code: "1234A",
         }
         $http.post("api/fmcgservice/GetTimeLeft", choice).then(function (game) {
-            if (game.data["q1started"] == false) {
+            if (game.data["qstarted"] == false) {
                 return 1800;
             }
             else {
-                return game.data["q1timeleft"];
+                return game.data["qtimeleft"];
             }
         });
     }
@@ -208,6 +239,7 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
             staticData: [],
             iscached: false,
             isstaticdatacached: false,
+            selectedquarter: 1,
             getPlayerData: getPlayerData,
             savePlayerData: saveplayerData,
             getStaticData: getStaticData
@@ -218,7 +250,9 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
         function getPlayerData() {
             var def = $q.defer();
             if (service.iscached == false) {
-                $http.post('/api/fmcgservice/GetPlayerData', $rootScope.gameOfChoice).
+                var gameinfo = $rootScope.gameOfChoice;
+                gameinfo["selectedquarter"] = service.selectedquarter;
+                $http.post('/api/fmcgservice/GetPlayerData', gameinfo).
                   success(function (response) {
                       service.playerData = response;
                       service.iscached = true;

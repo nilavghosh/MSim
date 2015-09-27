@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MSim.Models.FMCG
+namespace MSim.Models.FMCG.Input
 {
 
     public class Quarter
@@ -24,7 +24,7 @@ namespace MSim.Models.FMCG
         public IList<CellInfo> CellInfo { get; set; }
     }
 
-    public class InputMapping
+    public class InputMapping 
     {
         public Quarter Quarter1 { get; set; }
         public Quarter Quarter2 { get; set; }

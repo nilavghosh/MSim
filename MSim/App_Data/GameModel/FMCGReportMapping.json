@@ -1,0 +1,182 @@
+﻿{
+  "Quarter1": {
+    "SheetName": "Financials",
+    "PlayerReport": [
+      {
+        "Player": 1,
+        "CellInfo": "A4:A24,B4:B24"
+      },
+      {
+        "Player": 2,
+        "CellInfo": "A4:A24,C4:C24"
+      },
+      {
+        "Player": 3,
+        "CellInfo": "A4:A24,D4:D24"
+      },
+      {
+        "Player": 4,
+        "CellInfo": "A4:A24,E4:E24"
+      },
+      {
+        "Player": 5,
+        "CellInfo": "A4:A24,F4:F24"
+      },
+      {
+        "Player": 6,
+        "CellInfo": "A4:A24,G4:G24"
+      },
+      {
+        "Player": 7,
+        "CellInfo": "A4:A24,H4:H24"
+      },
+      {
+        "Player": 8,
+        "CellInfo": "A4:A24,I4:I24"
+      },
+      {
+        "Player": 9,
+        "CellInfo": "A4:A24,J4:J24"
+      },
+      {
+        "Player": 10,
+        "CellInfo": "A4:A24,K4:K24"
+      }
+    ]
+  },
+  "Quarter2": {
+    "SheetName": "Financials",
+    "PlayerReport": [
+      {
+        "Player": 1,
+        "CellInfo": "A28:A48,B28:B48"
+      },
+      {
+        "Player": 2,
+        "CellInfo": "A28:A48,C28:C48"
+      },
+      {
+        "Player": 3,
+        "CellInfo": "A28:A48,D28:D48"
+      },
+      {
+        "Player": 4,
+        "CellInfo": "A28:A48,E28:E48"
+      },
+      {
+        "Player": 5,
+        "CellInfo": "A28:A48,F28:F48"
+      },
+      {
+        "Player": 6,
+        "CellInfo": "A28:A48,G28:G48"
+      },
+      {
+        "Player": 7,
+        "CellInfo": "A28:A48,H28:H48"
+      },
+      {
+        "Player": 8,
+        "CellInfo": "A28:A48,I28:I48"
+      },
+      {
+        "Player": 9,
+        "CellInfo": "A28:A48,J28:J48"
+      },
+      {
+        "Player": 10,
+        "CellInfo": "A28:A48,K28:K48"
+      }
+    ]
+  },
+  "Quarter3": {
+    "SheetName": "Financials",
+    "PlayerReport": [
+      {
+        "Player": 1,
+        "CellInfo": "A52:A76,B52:B76"
+      },
+      {
+        "Player": 2,
+        "CellInfo": "A52:A76,C52:C76"
+      },
+      {
+        "Player": 3,
+        "CellInfo": "A52:A76,D52:D76"
+      },
+      {
+        "Player": 4,
+        "CellInfo": "A52:A76,E52:E76"
+      },
+      {
+        "Player": 5,
+        "CellInfo": "A52:A76,F52:F76"
+      },
+      {
+        "Player": 6,
+        "CellInfo": "A52:A76,G52:G76"
+      },
+      {
+        "Player": 7,
+        "CellInfo": "A52:A76,H52:H76"
+      },
+      {
+        "Player": 8,
+        "CellInfo": "A52:A76,I52:I76"
+      },
+      {
+        "Player": 9,
+        "CellInfo": "A52:A76,J52:J76"
+      },
+      {
+        "Player": 10,
+        "CellInfo": "A52:A76,K52:K76"
+      }
+    ]
+  },
+  "Quarter4": {
+    "SheetName": "Financials",
+    "PlayerReport": [
+      {
+        "Player": 1,
+        "CellInfo": "A80:A104,B80:B104"
+      },
+      {
+        "Player": 2,
+        "CellInfo": "A80:A104,C80:C104"
+      },
+      {
+        "Player": 3,
+        "CellInfo": "A80:A104,D80:D104"
+      },
+      {
+        "Player": 4,
+        "CellInfo": "A80:A104,E80:E104"
+      },
+      {
+        "Player": 5,
+        "CellInfo": "A80:A104,F80:F104"
+      },
+      {
+        "Player": 6,
+        "CellInfo": "A80:A104,G80:G104"
+      },
+      {
+        "Player": 7,
+        "CellInfo": "A80:A104,H80:H104"
+      },
+      {
+        "Player": 8,
+        "CellInfo": "A80:A104,I80:I104"
+      },
+      {
+        "Player": 9,
+        "CellInfo": "A80:A104,J80:J104"
+      },
+      {
+        "Player": 10,
+        "CellInfo": "A80:A104,K80:K104"
+      }
+    ]
+  }
+}

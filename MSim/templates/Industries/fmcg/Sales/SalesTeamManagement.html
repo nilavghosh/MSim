@@ -40,21 +40,21 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="inputEmail3">Salesmen</label>
-                        <input type="number" ng-model="FMCGDataModel.NoOfSalesmen" ng-disabled="isQuarter1Over" class="form-control" id="inputEmail3">
+                        <input type="number" ng-model="FMCGDataModel.NoOfSalesmen" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
 
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3">Avg. Salary</label>
-                        <input type="number" ng-model="FMCGDataModel.AvgSalary" ng-disabled="isQuarter1Over" class="form-control" id="inputPassword3" placeholder="in %">
+                        <input type="number" ng-model="FMCGDataModel.AvgSalary" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
 
                     </div>
                     <div class="form-group">
                         <label for="inputRetailerMargin3">Training</label>
-                        <select ng-model="FMCGDataModel.Training" ng-disabled="isQuarter1Over" ng-options="choice.value as choice.option for choice in TrainingType" class="form-control"></select>
+                        <select ng-model="FMCGDataModel.Training" ng-disabled="isSelectedQuarterOver" ng-options="choice.value as choice.option for choice in TrainingType" class="form-control"></select>
 
                     </div>
                     <div class="form-group">
-                        <button type="submit" ng-click="savePlayerData()" ng-disabled="isQuarter1Over" class="btn btn-default">Save</button>
+                        <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver" class="btn btn-default">Save</button>
                     </div>
                 </form>
             </div>
