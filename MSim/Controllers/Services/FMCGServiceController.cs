@@ -59,24 +59,6 @@ namespace MSim.Controllers.Services
             }
         }
 
-        // GET api/<controller>
-        public List<UserMarketShare> Get()
-        {
-            MSimEntities db = new MSimEntities();
-            ResultData res = new ResultData();
-            List<UserMarketShare> marketShares = new List<UserMarketShare>();
-            var entries = db.ChannelPartnerManagements;
-            double totalSum = 0.0;
-            entries.ToList().ForEach(entry => totalSum += (double)entry.PTD);
-            entries.ToList().ForEach(cpData =>
-            {
-                UserMarketShare mshare = new UserMarketShare();
-                mshare.UserName = cpData.AspNetUser.UserName;
-                mshare.MarketShare = ((int)cpData.PTD / totalSum) * 100.0;
-                marketShares.Add(mshare);
-            });
-            return marketShares;
-        }
 
         [HttpPost]
         [ActionName("GetPlayerData")]
@@ -168,10 +150,7 @@ namespace MSim.Controllers.Services
             gameInfo["q4started"] = game["q4started"];
             return gameInfo;
         }
-
-
-
-        [AllowAnonymous]
+      
         [HttpPost]
         [ActionName("GetAllPlayerDataForGame")]
         public async Task<object> GetAllPlayerDataForGame(Object registrationChoice)
@@ -219,7 +198,6 @@ namespace MSim.Controllers.Services
             }
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [ActionName("Upload")]
         public async Task<object> Upload()
@@ -287,7 +265,6 @@ namespace MSim.Controllers.Services
         }
 
 
-        [AllowAnonymous]
         [HttpPost]
         [ActionName("GetFMCGGameDesignerDataSheet")]
         public async Task<object> GetFMCGGameDesignerDataSheet(Object registrationChoice)
@@ -502,7 +479,6 @@ namespace MSim.Controllers.Services
             }
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [ActionName("StartQuarter")]
         public async Task<object> StartQuarter(object registrationChoice)
@@ -526,7 +502,6 @@ namespace MSim.Controllers.Services
             return game;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [ActionName("GetTimeLeft")]
         public async Task<object> GetTimeLeft(Object registrationChoice)
