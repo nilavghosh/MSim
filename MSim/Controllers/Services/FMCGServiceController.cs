@@ -150,7 +150,7 @@ namespace MSim.Controllers.Services
             gameInfo["q4started"] = game["q4started"];
             return gameInfo;
         }
-      
+
         [HttpPost]
         [ActionName("GetAllPlayerDataForGame")]
         public async Task<object> GetAllPlayerDataForGame(Object registrationChoice)
@@ -312,27 +312,45 @@ namespace MSim.Controllers.Services
                         {
                             player.CellInfo.ToList().ForEach(cellinfo =>
                             {
-                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[1][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter3.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter3Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[2].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[2][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter4.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter4Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[3].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[3][cellinfo.Name].RawValue : 0;
                             });
                             playercount++;
                         });
                         playercount = 0;
                         #endregion
 
-
-                        Quarter1Sheet.Calculate();
-                        FinancialsSheet.Calculate();
-                        BESheet.Calculate();
-                        Quarter2Sheet.Calculate();
+                        FMCGworkBook.Calculate();
 
                         Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
                         List<List<string>> Q1Values = GetSheetValues(Quarter1Sheet);
-                        List<List<string>> Q2Values = GetSheetValues(Quarter1Sheet);
+                        List<List<string>> Q2Values = GetSheetValues(Quarter2Sheet);
+                        List<List<string>> Q3Values = GetSheetValues(Quarter3Sheet);
+                        List<List<string>> Q4Values = GetSheetValues(Quarter4Sheet);
                         List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet);
                         List<List<string>> BEValues = GetSheetValues(BESheet);
 
                         book["Quarter1"] = Q1Values;
                         book["Quarter2"] = Q2Values;
+                        book["Quarter3"] = Q3Values;
+                        book["Quarter4"] = Q4Values;
                         book["BrandEquity"] = BEValues;
                         book["Financials"] = FinancialValues;
 
@@ -341,11 +359,6 @@ namespace MSim.Controllers.Services
                     }
                 }
             }
-            //var filter = new BsonDocument();
-            //var collection = database.GetCollection<BsonDocument>("fmcgGameDesignerDataSheet");
-            //var playersData = await collection.Find(filter).ToListAsync();
-            //string playersDatainJson = playersData.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
-            //return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
             return 1;
         }
 
@@ -363,9 +376,9 @@ namespace MSim.Controllers.Services
             var game = await collection.Find(filter).FirstAsync();
             var players = game["players"].AsBsonArray.Select(g => g["username"]);
 
-            int playerindex = players.ToList().IndexOf(User.Identity.Name)+1;
+            int playerindex = players.ToList().IndexOf(User.Identity.Name) + 1;
 
-        
+
             var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
             var FMCGModelFile = new FileInfo(filepath);
             using (var FMCGModel = new ExcelPackage(FMCGModelFile))
@@ -470,7 +483,7 @@ namespace MSim.Controllers.Services
                     List<string> arow = new List<string>();
                     for (int j = 0; j < ncolums; j++)
                     {
-                       // arow.Add(rangevalues[ncolums * i + j].Text);
+                        // arow.Add(rangevalues[ncolums * i + j].Text);
                         arow.Add(rangevalues[i + nrows * j].Text);
                     }
                     Values.Add(arow);
