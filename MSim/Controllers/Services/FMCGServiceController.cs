@@ -361,7 +361,7 @@ namespace MSim.Controllers.Services
                          builder.Eq("gamecode", selectedgame.code);
 
             var game = await collection.Find(filter).FirstAsync();
-            var players = game["players"].AsBsonArray.AsQueryable().Select(g => g["username"]);
+            var players = game["players"].AsBsonArray.Select(g => g["username"]);
 
             int playerindex = players.ToList().IndexOf(User.Identity.Name)+1;
 
