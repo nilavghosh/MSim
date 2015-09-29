@@ -22,10 +22,11 @@
         $scope.TrainingType = [];
 
         $scope.Q1finished = function () {
-            TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
-            $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
-            $scope.isSelectedQuarterOver = true;
-            $scope.$apply();
+            $scope.$apply(function () {
+                TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
+                $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
+                $scope.isSelectedQuarterOver = true;
+            });
             pushMessage("danger", "Quarter " + $scope.selectedquarter + " Completed! Proceed to Quarter " + ($scope.selectedquarter + 1) + ".");
         }
         $scope.setServiceSelectedQuarter = function (qtr) {
