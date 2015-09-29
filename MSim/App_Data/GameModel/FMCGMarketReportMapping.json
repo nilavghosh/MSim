@@ -1,0 +1,26 @@
+﻿{
+  "Quarter1": {
+    "SheetName": "Financials",
+    "RevenueReport": "B7:K7",
+    "SalesReport" : "B4:K4",
+    "PATReport" : "B24:K24"
+  },
+  "Quarter2": {
+    "SheetName": "Financials",
+    "RevenueReport": "B31:K31",
+    "SalesReport" : "B28:K28",
+    "PATReport" : "B48:K48"
+  },
+  "Quarter3": {
+    "SheetName": "Financials",
+    "RevenueReport": "B59:K59",
+    "SalesReport" : "B52:K52",
+    "PATReport" : "B76:K76"
+  },
+  "Quarter4": {
+    "SheetName": "Financials",
+    "RevenueReport": "B87:K87",
+    "SalesReport" : "B80:80",
+    "PATReport" : "B104:K104"
+  }
+}

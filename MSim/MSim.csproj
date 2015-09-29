@@ -249,6 +249,7 @@
     <Compile Include="Models\FMCG\ChannelPartnerData.cs" />
     <Compile Include="Models\FMCG\GamePlayerData.cs" />
     <Compile Include="Models\FMCG\InputMapping.cs" />
+    <Compile Include="Models\FMCG\MarketReportMapping.cs" />
     <Compile Include="Models\FMCG\ReportMapping.cs" />
     <Compile Include="Models\FMCG\UserMarketShare.cs" />
     <Compile Include="Models\FMCG\ResultData.cs" />
@@ -318,6 +319,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\GameModel\FMCGInputMapping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\GameModel\FMCGMarketReportMapping.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\Local_IIS.pubxml" />
