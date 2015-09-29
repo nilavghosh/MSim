@@ -340,6 +340,9 @@
     <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.js" />
     <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.min.js" />
     <Content Include="Scripts\bower_components\angular-chart.js\gulpfile.js" />
+    <Content Include="Scripts\bower_components\angular-nvd3\dist\angular-nvd3.js" />
+    <Content Include="Scripts\bower_components\angular-nvd3\dist\angular-nvd3.min.js" />
+    <Content Include="Scripts\bower_components\angular-nvd3\Gruntfile.js" />
     <Content Include="Scripts\bower_components\angular-route\angular-route.js" />
     <Content Include="Scripts\bower_components\angular-route\angular-route.min.js" />
     <Content Include="Scripts\bower_components\angular-route\index.js" />
@@ -468,6 +471,9 @@
     <Content Include="Scripts\bower_components\Chart.js\src\Chart.Line.js" />
     <Content Include="Scripts\bower_components\Chart.js\src\Chart.PolarArea.js" />
     <Content Include="Scripts\bower_components\Chart.js\src\Chart.Radar.js" />
+    <Content Include="Scripts\bower_components\d3\d3.js" />
+    <Content Include="Scripts\bower_components\d3\d3.min.js" />
+    <Content Include="Scripts\bower_components\d3\package.js" />
     <Content Include="Scripts\bower_components\font-awesome\css\font-awesome.css" />
     <Content Include="Scripts\bower_components\font-awesome\css\font-awesome.min.css" />
     <Content Include="Scripts\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -1073,6 +1079,11 @@
     <Content Include="Scripts\bower_components\momentjs\min\moment-with-locales.js" />
     <Content Include="Scripts\bower_components\momentjs\min\moment-with-locales.min.js" />
     <Content Include="Scripts\bower_components\momentjs\min\moment.min.js" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.css" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.js" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.min.css" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.min.js" />
+    <Content Include="Scripts\bower_components\nvd3\package.js" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\bootstrap-notify.js" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\bootstrap-notify.min.js" />
     <Content Include="Scripts\bower_components\remarkable-bootstrap-notify\dist\bootstrap-notify.js" />
@@ -1084,7 +1095,6 @@
     <Content Include="Scripts\bower_components\angular-chart.js\.bower.json" />
     <Content Include="Scripts\bower_components\angular-chart.js\angular-chart.less" />
     <Content Include="Scripts\bower_components\angular-chart.js\bower.json" />
-    <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.css.map" />
     <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.js.tar.gz" />
     <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.min.js.map" />
     <Content Include="Scripts\bower_components\angular-chart.js\LICENSE" />
@@ -1499,6 +1509,19 @@
     <Content Include="Scripts\bower_components\humanize-duration\HISTORY.md" />
     <Content Include="Scripts\bower_components\humanize-duration\package.json" />
     <Content Include="Scripts\bower_components\humanize-duration\README.md" />
+    <Content Include="Scripts\bower_components\d3\.bower.json" />
+    <Content Include="Scripts\bower_components\d3\.gitattributes" />
+    <Content Include="Scripts\bower_components\d3\bower.json" />
+    <Content Include="Scripts\bower_components\d3\CONTRIBUTING.md" />
+    <Content Include="Scripts\bower_components\d3\LICENSE" />
+    <Content Include="Scripts\bower_components\d3\README.md" />
+    <Content Include="Scripts\bower_components\nvd3\.bower.json" />
+    <Content Include="Scripts\bower_components\nvd3\bower.json" />
+    <Content Include="Scripts\bower_components\angular-nvd3\.bower.json" />
+    <Content Include="Scripts\bower_components\angular-nvd3\bower.json" />
+    <Content Include="Scripts\bower_components\angular-nvd3\LICENSE" />
+    <Content Include="Scripts\bower_components\angular-nvd3\package.json" />
+    <Content Include="Scripts\bower_components\angular-nvd3\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\handsontable-extensions\angular\ngHandsontable.js" />
     <Content Include="Scripts\handsontable-extensions\formula\handsontable.formula.js" />
@@ -1530,6 +1553,7 @@
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
     <Content Include="templates\Industries\banking\Main.html" />
+    <Content Include="templates\Industries\fmcg\MarketReports\MarketReports.html" />
     <Content Include="templates\Main.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />

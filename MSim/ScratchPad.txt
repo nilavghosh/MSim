@@ -9,3 +9,11 @@
                          }, 2000);
                          return checkreg.promise;
                      }
+
+
+
+Charts: (Angular compatible)
+chartjs
+NVD3
+Epoch
+n3

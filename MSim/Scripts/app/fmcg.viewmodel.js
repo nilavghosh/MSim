@@ -1,9 +1,34 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "timer"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$timeout', "PlayerDataService", "TimerService",
-    function ($scope, $rootScope, $http, $timeout, PlayerDataService, TimerService) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "timer", "chart.js"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', "PlayerDataService", "TimerService",
+    function ($scope, $rootScope, $http, $interval, PlayerDataService, TimerService) {
 
         $scope.FMCGAdminDataModel = {
             Result: ko.observableArray([])
         }
+
+        $scope.doughlabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
+        $scope.doughdata = [300, 500, 100];
+
+        $scope.revenuebarlabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+        //$scope.barseries = ['Series A', 'Series B'];
+        $scope.revenuebardata = [
+          [65, 59, 80, 81, 56, 55, 40],
+          [28, 48, 40, 19, 86, 27, 90]
+        ];
+
+        $scope.barlabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+        //$scope.barseries = ['Series A', 'Series B'];
+        $scope.bardata = [
+          [65, 59, 80, 81, 56, 55, 40],
+          [28, 48, 40, 19, 86, 27, 90]
+        ];
+
+        $scope.radarlabels = ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"];
+
+        $scope.radardata = [
+          [65, 59, 90, 81, 56, 55, 40],
+          [28, 48, 40, 19, 96, 27, 100]
+        ];
+
 
         //$scope.timer = TimerService;
         $scope.q1time = 1800;
@@ -17,7 +42,7 @@
         $scope.isQuarter2Over = TimerService.isQuarter2Over;
         $scope.isQuarter3Over = TimerService.isQuarter3Over;
         $scope.isQuarter4Over = TimerService.isQuarter4Over;
-        $scope.isSelectedQuarterOver =  $scope["isQuarter" + $scope.selectedquarter + "Over"];
+        $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
         $scope.PackagingMaterial = [];
         $scope.TrainingType = [];
 
@@ -96,10 +121,12 @@
                             TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
                             $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
                             $scope.$broadcast('timer-stop');
+                            $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                         }
                         else {
                             TimerService["isQuarter" + $scope.selectedquarter + "Over"] = false;
                             $scope["isQuarter" + $scope.selectedquarter + "Over"] = false;
+                            $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                             $scope.$broadcast('timer-set-countdown', t);
                             $scope.$broadcast('timer-start');
                         }
@@ -122,7 +149,7 @@
                 });
             }
             poller();
-            setInterval(poller, 5000);
+            $interval(poller, 5000);
             if (TimerService["isQuarter" + $scope.selectedquarter + "Over"] == true) {
                 choice = {
                     selectedGameId: 1,
@@ -132,8 +159,19 @@
                 $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
                     $scope.items = report.data["Financials"];
                 });
+
+                $http.post("api/fmcgservice/GetMarketReport", choice).then(function (report) {
+                    $scope.doughlabels = report.data["Players"][0];
+                    $scope.doughdata = report.data["SalesReportValues"][0];
+                    $scope.barlabels = report.data["Players"][0];
+                    $scope.bardata = report.data["PATReportValues"];
+                    $scope.revenuebarlabels = report.data["Players"][0];
+                    $scope.revenuebardata = report.data["RevenueReportValues"];
+                    $scope.radarlabels = report.data["Players"][0];
+                    $scope.radardata = report.data["SalesReportValues"];
+                });
             }
-            }
+        }
         $scope.init();
     }]);
 
@@ -161,8 +199,12 @@ fmcgGame.config(['$routeProvider',
             }).
             when('/Q1-Reports', {
                 templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
-                controller: 'fmcgCtrl',
+                controller: 'fmcgCtrl'
 
+            }).
+            when('/MarketReports', {
+                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
+                controller: 'fmcgCtrl'
             })
     }]);
 

@@ -32,7 +32,9 @@ namespace MSim
                 "~/Scripts/bower_components/momentjs/min/locales.min.js",
                 "~/Scripts/bower_components/humanize-duration/humanize-duration.js",
                 "~/Scripts/bower_components/angular-timer/dist/angular-timer.min.js",
-                "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"
+                "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+                "~/Scripts/bower_components/Chart.js/chart.min.js",
+                 "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
@@ -77,7 +79,8 @@ namespace MSim
                  "~/Scripts/bower_components/bootstrap-fileinput/css/fileinput.min.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css",
-                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css"
+                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
+                 "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js"
                  ));
             BundleTable.EnableOptimizations = false;
         }

@@ -343,10 +343,21 @@ namespace MSim.Controllers.Services
                         List<List<string>> RevenueReportValues = GetSheetValues(FinancialsSheet, GetMarketReportMapping()["Quarter" + selectedgame.selectedquarter.ToString()].RevenueReport);
                         List<List<string>> SalesReportValues = GetSheetValues(FinancialsSheet, GetMarketReportMapping()["Quarter" + selectedgame.selectedquarter.ToString()].SalesReport);
                         List<List<string>> PATReportValues = GetSheetValues(FinancialsSheet, GetMarketReportMapping()["Quarter" + selectedgame.selectedquarter.ToString()].PATReport);
-
+                        List<List<string>> PlayerNames = new List<List<string>>();
+                        List<string> Players = new List<string>();
+                        
+                        int pcount = 0;
+                        SalesReportValues[0].ForEach(sv =>
+                        {
+                            Players.Add("Player" + (pcount + 1).ToString());
+                            pcount++;
+                        });
+                        PlayerNames.Add(Players);
                         book["RevenueReportValues"] = RevenueReportValues;
                         book["SalesReportValues"] = SalesReportValues;
                         book["PATReportValues"] = PATReportValues;
+                        book["Players"] = PlayerNames;
+
 
                         string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                         return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
