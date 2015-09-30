@@ -10,7 +10,7 @@
                          return checkreg.promise;
                      }
 
-
+ git checkout master && git pull && git checkout - && git rebase master
 
 Charts: (Angular compatible)
 chartjs
