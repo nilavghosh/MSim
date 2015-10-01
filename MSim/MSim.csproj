@@ -341,6 +341,9 @@
     <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.js" />
     <Content Include="Scripts\bower_components\angular-chart.js\dist\angular-chart.min.js" />
     <Content Include="Scripts\bower_components\angular-chart.js\gulpfile.js" />
+    <Content Include="Scripts\bower_components\angular-knob\app\index.html" />
+    <Content Include="Scripts\bower_components\angular-knob\app\scripts\controllers\example.js" />
+    <Content Include="Scripts\bower_components\angular-knob\src\angular-knob.js" />
     <Content Include="Scripts\bower_components\angular-nvd3\dist\angular-nvd3.js" />
     <Content Include="Scripts\bower_components\angular-nvd3\dist\angular-nvd3.min.js" />
     <Content Include="Scripts\bower_components\angular-nvd3\Gruntfile.js" />
@@ -1050,6 +1053,11 @@
     <Content Include="Scripts\bower_components\handsontable\dist\zeroclipboard\ZeroClipboard.swf" />
     <Content Include="Scripts\bower_components\humanize-duration\humanize-duration.js" />
     <Content Include="Scripts\bower_components\humanize-duration\LICENSE.txt" />
+    <Content Include="Scripts\bower_components\jquery-knob\dist\jquery.knob.min.js" />
+    <Content Include="Scripts\bower_components\jquery-knob\excanvas.js" />
+    <Content Include="Scripts\bower_components\jquery-knob\index.html" />
+    <Content Include="Scripts\bower_components\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Scripts\bower_components\jquery-knob\secretplan.jpg" />
     <Content Include="Scripts\bower_components\metro-bootstrap\app\fonts\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Scripts\bower_components\metro-bootstrap\app\fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\bower_components\metro-bootstrap\dist\css\metro-bootstrap.css" />
@@ -1519,6 +1527,15 @@
     <Content Include="Scripts\bower_components\angular-nvd3\LICENSE" />
     <Content Include="Scripts\bower_components\angular-nvd3\package.json" />
     <Content Include="Scripts\bower_components\angular-nvd3\README.md" />
+    <Content Include="Scripts\bower_components\angular-knob\.bower.json" />
+    <Content Include="Scripts\bower_components\angular-knob\bower.json" />
+    <Content Include="Scripts\bower_components\angular-knob\README.md" />
+    <Content Include="Scripts\bower_components\jquery-knob\.bower.json" />
+    <Content Include="Scripts\bower_components\jquery-knob\.gitignore" />
+    <Content Include="Scripts\bower_components\jquery-knob\bower.json" />
+    <Content Include="Scripts\bower_components\jquery-knob\knob.jquery.json" />
+    <Content Include="Scripts\bower_components\jquery-knob\LICENSE" />
+    <Content Include="Scripts\bower_components\jquery-knob\README.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\handsontable-extensions\angular\ngHandsontable.js" />
     <Content Include="Scripts\handsontable-extensions\formula\handsontable.formula.js" />

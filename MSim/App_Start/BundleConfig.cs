@@ -11,7 +11,8 @@ namespace MSim
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jquery-{version}.js"));
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bower_components/jquery-knob/dist/jquery.knob.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.unobtrusive*",
@@ -28,14 +29,17 @@ namespace MSim
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/bower_components/angular/angular.js",
                 "~/Scripts/bower_components/angular-route/angular-route.js",
-                "~/Scripts/bower_components/momentjs/min/moment.min.js",
-                "~/Scripts/bower_components/momentjs/min/locales.min.js",
-                "~/Scripts/bower_components/humanize-duration/humanize-duration.js",
-                "~/Scripts/bower_components/angular-timer/dist/angular-timer.min.js",
                 "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
                 "~/Scripts/bower_components/Chart.js/chart.min.js",
-                 "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js"
+                 "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js",
+                 "~/Scripts/bower_components/angular-knob/src/angular-knob.js"
                 ));
+
+            //"~/Scripts/bower_components/momentjs/min/moment.min.js",
+            //    "~/Scripts/bower_components/momentjs/min/locales.min.js",
+            //    "~/Scripts/bower_components/humanize-duration/humanize-duration.js",
+            //    "~/Scripts/bower_components/angular-timer/dist/angular-timer.min.js",
+
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/sammy-{version}.js",

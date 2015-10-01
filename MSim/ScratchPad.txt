@@ -17,3 +17,9 @@ chartjs
 NVD3
 Epoch
 n3
+
+Dispose off $timeout and $interval when destroying controller
+http://www.bennadel.com/blog/2548-don-t-forget-to-cancel-timeout-timers-in-your-destroy-events-in-angularjs.htm
+
+Angular Knob
+https://github.com/yunlzheng/angular-knob

@@ -1,5 +1,79 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "timer", "chart.js"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', "PlayerDataService", "TimerService",
-    function ($scope, $rootScope, $http, $interval, PlayerDataService, TimerService) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
+    function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
+
+        $scope.max = 1000;
+
+        $scope.data = TimerService.timervalue;
+
+        $scope.$watch(
+                   "data",
+                   function handleFooChange(newValue, oldValue) {
+                       if (newValue == 0 && oldValue != 0) {
+                           TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
+                           $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
+                           $scope.isSelectedQuarterOver = true;
+                           pushMessage("danger", "Quarter " + $scope.selectedquarter + " Completed! Proceed to Quarter " + ($scope.selectedquarter + 1) + ".");
+                       }
+                   }
+               );
+
+        $scope.$on(
+                       "$destroy",
+                       function (event) {
+                           $interval.cancel(timer);
+                       }
+                   );
+
+
+        $scope.knobOptions = {
+            'width': 100,
+            'displayInput': false
+        };
+
+        //02
+
+        $scope.data2 = 0;
+
+        $scope.options2 = {
+            'width': 150,
+            'cursor': true,
+            'thickness': 0.3,
+            'fgColor': '#222'
+        };
+
+        $scope.options3 = {
+            'displayPrevious': true,
+            'min': -100
+        };
+
+        $scope.options4 = {
+            'angleOffset': 90,
+            'linecap': 'round'
+        };
+
+        $scope.options5 = {
+            'fgColor': '#66CC66',
+            'angleOffset': '-125',
+            'angleArc': 250
+        };
+
+        $scope.options7 = {
+            'width': 90,
+            'height': 90,
+            'skin': 'tron',
+            'thickness': .3,
+            'displayPrevious': true,
+            'readOnly': true
+        };
+
+        $scope.options14 = {
+            'readOnly': true
+        };
+
+        $scope.options18 = {
+            'width': 700
+        };
+
 
         $scope.startQtr = function () {
             var choice = {
@@ -41,6 +115,16 @@
           [28, 48, 40, 19, 96, 27, 100]
         ];
 
+        (function tick() {
+            if ($scope.data > 0) {
+                $scope.data = $scope.data - 1;
+                $timeout(tick, 1000);
+            }
+            else {
+                TimerService.timervalue = 0;
+                $timeout(tick, 1000);
+            }
+        })();
 
         //$scope.timer = TimerService;
         $scope.q1time = 1800;
@@ -141,8 +225,9 @@
                             $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                             $scope.$broadcast('timer-set-countdown', t);
                             $scope.$broadcast('timer-start');
-                            if (t <= 15 && t >= 10)
-                            {
+                            TimerService.timervalue = t;
+                            $scope.data = t;
+                            if (t <= 15 && t >= 10) {
                                 pushMessage("warning", "Quarter " + $scope.selectedquarter + " will finish shortly. Save your data!");
                             }
                         }
@@ -165,7 +250,7 @@
                 });
             }
             poller();
-            $interval(poller, 5000);
+            timer = $interval(poller, 5000);
             if (TimerService["isQuarter" + $scope.selectedquarter + "Over"] == true) {
                 choice = {
                     selectedGameId: 1,
@@ -246,6 +331,7 @@ fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerSer
         isQuarter2Started: false,
         isQuarter3Started: false,
         isQuarter4Started: false,
+        timervalue: 0,
         getQuarter1State: getQuarter1State,
         setQuarter1State: setQuarter1State,
         startPolling: startPolling,
