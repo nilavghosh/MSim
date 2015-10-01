@@ -42,7 +42,7 @@
         $scope.isQuarter2Over = TimerService.isQuarter2Over;
         $scope.isQuarter3Over = TimerService.isQuarter3Over;
         $scope.isQuarter4Over = TimerService.isQuarter4Over;
-        $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
+        $scope.isSelectedQuarterOver = false; //$scope["isQuarter" + $scope.selectedquarter + "Over"];
         $scope.PackagingMaterial = [];
         $scope.TrainingType = [];
 
@@ -57,7 +57,7 @@
         $scope.setServiceSelectedQuarter = function (qtr) {
             $scope.selectedquarter = qtr;
             TimerService.selectedquarter = $scope.selectedquarter;
-            $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
+            $scope.isSelectedQuarterOver = false; //$scope["isQuarter" + $scope.selectedquarter + "Over"];
         }
 
         //$scope.$watch('TimerService.isQuarter1Over', function (newval) {
@@ -129,6 +129,10 @@
                             $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                             $scope.$broadcast('timer-set-countdown', t);
                             $scope.$broadcast('timer-start');
+                            if (t <= 15 && t >= 10)
+                            {
+                                pushMessage("warning", "Quarter " + $scope.selectedquarter + " will finish shortly. Save your data!");
+                            }
                         }
                     }
                     var choice = {
