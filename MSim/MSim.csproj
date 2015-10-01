@@ -1550,6 +1550,7 @@
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
     <Content Include="templates\Industries\banking\Main.html" />
+    <Content Include="templates\Industries\fmcg\Admin\StartQuarter.html" />
     <Content Include="templates\Industries\fmcg\MarketReports\MarketReports.html" />
     <Content Include="templates\Main.html" />
     <Content Include="Views\_ViewStart.cshtml" />

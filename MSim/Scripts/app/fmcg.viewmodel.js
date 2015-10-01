@@ -1,6 +1,18 @@
 ﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "timer", "chart.js"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, PlayerDataService, TimerService) {
 
+        $scope.startQtr = function () {
+            var choice = {
+                "selectedGameId": 1,
+                "code": "1234A",
+                "username": "nilavghosh@gmail.com",
+                "selectedquarter": 1
+            }
+            $http.post("api/fmcgservice/StartQuarter", choice).then(function (report) {
+                alert("started");
+            });
+        }
+
         $scope.FMCGAdminDataModel = {
             Result: ko.observableArray([])
         }
@@ -208,6 +220,10 @@ fmcgGame.config(['$routeProvider',
             }).
             when('/MarketReports', {
                 templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
+                controller: 'fmcgCtrl'
+            }).
+            when('/StartQuarter', {
+                templateUrl: 'templates/industries/fmcg/Admin/StartQuarter.html',
                 controller: 'fmcgCtrl'
             })
     }]);
