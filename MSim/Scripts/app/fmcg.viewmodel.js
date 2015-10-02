@@ -21,8 +21,8 @@
                        "$destroy",
                        function (event) {
                            $interval.cancel(timer);
-                           $timeout.cancel(timeoutticks);
-                           $timeout.cancel(timeoutticks2);
+                           //$timeout.cancel(timeoutticks);
+                           //$timeout.cancel(timeoutticks2);
                        }
                    );
 
