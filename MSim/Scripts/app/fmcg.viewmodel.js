@@ -21,6 +21,8 @@
                        "$destroy",
                        function (event) {
                            $interval.cancel(timer);
+                           $timeout.cancel(timeoutticks);
+                           $timeout.cancel(timeoutticks2);
                        }
                    );
 
@@ -63,7 +65,8 @@
             'skin': 'tron',
             'thickness': .3,
             'displayPrevious': true,
-            'readOnly': true
+            'readOnly': true,
+            'max' : 120
         };
 
         $scope.options14 = {
@@ -118,11 +121,12 @@
         (function tick() {
             if ($scope.data > 0) {
                 $scope.data = $scope.data - 1;
-                $timeout(tick, 1000);
+                TimerService.timervalue = $scope.data;
+                timeoutticks = $timeout(tick, 1000);
             }
             else {
                 TimerService.timervalue = 0;
-                $timeout(tick, 1000);
+                timeoutticks2 = $timeout(tick, 1000);
             }
         })();
 
