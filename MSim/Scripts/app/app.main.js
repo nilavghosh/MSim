@@ -43,7 +43,7 @@ appmain.config(['$routeProvider',
 function ($routeProvider) {
     $routeProvider.
          when('/', {
-             templateUrl: 'templates/Main.html',
+             templateUrl: 'templates/admin/Index.html',
              controller: 'appMainCtrl'
          }).
          when('/playGame/:industry', {
