@@ -1,6 +1,12 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob", "n3-pie-chart"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
+        $scope.piedata = [
+  { label: "one", value: 12.2, color: "red" },
+  { label: "two", value: 45, color: "#00ff00" },
+  { label: "three", value: 10, color: "rgb(0, 0, 255)" }
+        ];
+        $scope.pieoptions = { thickness: 10 };
         $scope.max = 1000;
 
         $scope.data = TimerService.timervalue;

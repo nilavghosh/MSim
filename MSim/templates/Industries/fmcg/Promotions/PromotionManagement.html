@@ -18,28 +18,6 @@
     <h3>Promotion Management</h3>
     <br />
     <div class="row">
-        <div class="col-md-offset-1 col-md-7">
-            <div style="width:480px" id="carousel-Promotions" class="carousel slide" ng-non-bindable data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-Promotions" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel-Promotions" data-slide-to="1" class=""></li>
-                    <li data-target="#carousel-Promotions" data-slide-to="2" class="active"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img alt="First slide [900x500]" src="Content/Slides/Industries/fmcg/Promotions/1.jpg" data-holder-rendered="true">
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#carousel-Promotions" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-Promotions" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
     <div class="col-md-offset-1 col-md-3">
             <div class="row">
                 <form class="form-horizontal">
@@ -55,10 +33,10 @@
                         <label>Hoardings</label>
                         <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label>Total ATL Expense</label>
                         <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver" ng-model="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
-                    </div>
+                    </div>-->
                 </form>
             </div>
             <br />
@@ -77,10 +55,10 @@
                         <label>In shop branding</label>
                         <input type="number" required ng-model="FMCGDataModel.InShopBranding" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label>Total BTL Expense</label>
                         <input type="number" ng-model="FMCGDataModel.TotalBTLExpenseCalculated()" ng-disabled="isSelectedQuarterOver" readonly class="form-control" placeholder="in ₹">
-                    </div>
+                    </div>-->
                 </form>
             </div>
             <div class="row">
@@ -91,5 +69,19 @@
                 </form>
             </div>
         </div>
+    <div class="col-md-offset-1 col-md-7">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-4">
+                <strong><pre style="text-align:center">Sales - Quarter {{selectedquarter}}</pre></strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!--<canvas id="doughnut" class="chart chart-doughnut"
+                        chart-data="doughdata" chart-legend="true" chart-labels="doughlabels"></canvas>-->
+                <pie-chart data="piedata" options="pieoptions" class="chart"></pie-chart>
+            </div>
+        </div>
+     </div>
     </div>
 </section>

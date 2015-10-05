@@ -27,12 +27,14 @@ namespace MSim
                 "~/Scripts/metro.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                 "~/Scripts/bower_components/d3/d3.min.js",
                 "~/Scripts/bower_components/angular/angular.js",
                 "~/Scripts/bower_components/angular-route/angular-route.js",
                 "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
                 "~/Scripts/bower_components/Chart.js/chart.min.js",
                  "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js",
-                 "~/Scripts/bower_components/angular-knob/src/angular-knob.js"
+                 "~/Scripts/bower_components/angular-knob/src/angular-knob.js",
+                 "~/Scripts/bower_components/pie-chart/dist/pie-chart.min.js"
                 ));
 
             //"~/Scripts/bower_components/momentjs/min/moment.min.js",
@@ -83,9 +85,7 @@ namespace MSim
                  "~/Scripts/bower_components/bootstrap-fileinput/css/fileinput.min.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css",
-                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
-                 "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js"
-                 ));
+                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css"));
             BundleTable.EnableOptimizations = false;
         }
     }
