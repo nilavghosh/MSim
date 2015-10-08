@@ -1,12 +1,68 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob", "n3-pie-chart"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
+﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
-        $scope.piedata = [
-  { label: "one", value: 12.2, color: "red" },
-  { label: "two", value: 45, color: "#00ff00" },
-  { label: "three", value: 10, color: "rgb(0, 0, 255)" }
+        var colorArray = ['#1f77b4', '#d62728', '#ff7f0e', '#2ca02c', '#9467bd', '#FF6666', '#FFE6E6'];
+        $scope.colorFunction = function () {
+            return function (d, i) {
+                return colorArray[i];
+            };
+        }
+
+        $scope.nvoptions = {
+            chart: {
+                type: 'pieChart',
+                height: 275,
+                x: function (d) { return d.key; },
+                y: function (d) { return d.y; },
+                color: $scope.colorFunction(),
+                showLabels: true,
+                transitionDuration: 500,
+                labelThreshold: 0.01,
+                donutRatio: 0.4,
+                donut : true,
+                legend: {
+                    margin: {
+                        top: 5,
+                        right: 35,
+                        bottom: 5,
+                        left: 0
+                    }
+                }
+            }
+        };
+
+        $scope.nvdata = [
+            {
+                key: "One",
+                y: 5
+            },
+            {
+                key: "Two",
+                y: 2
+            },
+            {
+                key: "Three",
+                y: 9
+            }
         ];
-        $scope.pieoptions = { thickness: 10 };
+
+        $scope.tvPiedata = [
+        { value: 78, color: "#d62728", suffix: "%" }
+        ];
+        $scope.tvPieoptions = { thickness: 10, mode: "gauge", total: 100 };
+
+        $scope.onPromotionsDataChange = function () {
+            $scope.ATLpieData = [
+         { label: "TVAds", value: $scope.FMCGDataModel.TVAds, color: "steelblue" },
+         { label: "NewspaperAds", value: $scope.FMCGDataModel.NewspaperAds, color: "orange" },
+         { label: "HoardingAds", value: $scope.FMCGDataModel.HoardingAds, color: "gold" }
+            ];
+            $scope.pieOptions = {
+                thickness: 10
+            };
+        }
+
+
         $scope.max = 1000;
 
         $scope.data = TimerService.timervalue;
@@ -72,7 +128,7 @@
             'thickness': .3,
             'displayPrevious': true,
             'readOnly': true,
-            'max' : 120
+            'max': 120
         };
 
         $scope.options14 = {
@@ -173,6 +229,16 @@
         $scope.getPlayerData = function () {
             PlayerDataService.getPlayerData().then(function (response) {
                 $scope.FMCGDataModel = response;
+
+                $scope.ATLpieData = [
+        { label: "TVAds", value: $scope.FMCGDataModel.TVAds, color: "steelblue" },
+        { label: "NewspaperAds", value: $scope.FMCGDataModel.NewspaperAds, color: "orange" },
+        { label: "HoardingAds", value: $scope.FMCGDataModel.HoardingAds, color: "gold" }
+                ];
+                $scope.pieOptions = {
+                    thickness: 10
+                };
+
                 $scope.FMCGDataModel.TotalATLExpenseCalculated = function () {
                     return $scope.FMCGDataModel.TVAds +
                         $scope.FMCGDataModel.NewspaperAds +

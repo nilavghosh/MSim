@@ -34,7 +34,9 @@ namespace MSim
                 "~/Scripts/bower_components/Chart.js/chart.min.js",
                  "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js",
                  "~/Scripts/bower_components/angular-knob/src/angular-knob.js",
-                 "~/Scripts/bower_components/pie-chart/dist/pie-chart.min.js"
+                 "~/Scripts/bower_components/pie-chart/dist/pie-chart.min.js",
+                 "~/Scripts/bower_components/nvd3/build/nv.d3.min.js",
+                 "~/Scripts/bower_components/angular-nvd3/dist/angular-nvd3.min.js"
                 ));
 
             //"~/Scripts/bower_components/momentjs/min/moment.min.js",
@@ -85,7 +87,10 @@ namespace MSim
                  "~/Scripts/bower_components/bootstrap-fileinput/css/fileinput.min.css",
                  "~/Content/Site.css",
                  "~/Content/handsontable/handsontable.full.css",
-                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css"));
+                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
+                 "~/Scripts/bower_components/nvd3/build/nv.d3.min.css"
+                 ));
+
             BundleTable.EnableOptimizations = false;
         }
     }
