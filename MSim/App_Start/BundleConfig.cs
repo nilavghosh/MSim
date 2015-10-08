@@ -36,7 +36,7 @@ namespace MSim
                  "~/Scripts/bower_components/angular-knob/src/angular-knob.js",
                  "~/Scripts/bower_components/pie-chart/dist/pie-chart.min.js",
                  "~/Scripts/app/admin/components/angular-ui-router/release/angular-ui-router.min.js",
-                 "~/Scripts/app/admin/components/angular-cookies/angular-cookies.min.js"
+                 "~/Scripts/app/admin/components/angular-cookies/angular-cookies.min.js",
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.js",
                  "~/Scripts/bower_components/angular-nvd3/dist/angular-nvd3.min.js"
                 ));

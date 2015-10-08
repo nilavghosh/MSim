@@ -606,6 +606,7 @@ namespace MSim.Controllers.Services
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ActionName("StartQuarter")]
         public async Task<object> StartQuarter(object registrationChoice)

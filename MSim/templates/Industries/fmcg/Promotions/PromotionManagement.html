@@ -5,7 +5,6 @@
         </div>
         <div class="col-md-3 col-md-offset-3">
             <knob knob-data="data" knob-options="options7"></knob>
-            <br />
         </div>
     </div>
     <!--<div class="row">
@@ -21,41 +20,39 @@
         <div class="col-md-offset-1 col-md-3">
             <div class="row">
                 <form class="form-horizontal">
-
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">Rs.</div>
-                            <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label>TV Advertisement</label>
-                        <div class="col-md-10">
+                        <div class="input-group">
+                            <div class="input-group-addon">₹</div>
                             <input type="number" required ng-model="FMCGDataModel.TVAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                        </div>
-                        <div class="col-md-2">
-                            <div style="height:40px ; width:40px">
-                                <pie-chart data="tvPiedata" options="tvPieoptions" class="chart"></pie-chart>
-                            </div>
+                            <div class="input-group-addon">.00</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Newspaper</label>
                         <div class="input-group">
-                            <div class="input-group-addon">Rs.</div>
+                            <div class="input-group-addon">₹</div>
                             <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
                             <div class="input-group-addon">.00</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Hoardings</label>
-                        <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                        <div class="input-group">
+                            <div class="input-group-addon">₹</div>
+                            <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                            <div class="input-group-addon">.00</div>
+                        </div>
                     </div>
-                    <!--<div class="form-group">
+
+                    <div class="form-group">
                         <label>Total ATL Expense</label>
-                        <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver" ng-model="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
-                    </div>-->
+                        <div class="input-group">
+                            <div class="input-group-addon">₹</div>
+                            <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver" ng-model="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <br />
@@ -91,12 +88,14 @@
         <div class="col-md-offset-1 col-md-7">
             <div class="row">
                 <div class="col-md-12">
-                    <!--<canvas id="doughnut" class="chart chart-doughnut"
-                            chart-data="doughdata" chart-legend="true" chart-labels="doughlabels"></canvas>-->
-                    <nvd3 options="nvoptions" data="nvdata"></nvd3>
-                    <div style="height:300px ; width:300px">
-                        <pie-chart data="ATLpieData" options="pieOptions" class="chart"></pie-chart>
+                    <div style="height:300px">
+                        <nvd3 options="nvoptions" data="nvdata">
+                            <svg height="300"></svg>
+                        </nvd3>
                     </div>
+                    <!--<div style="height:250px ; width:250px">
+                        <pie-chart data="ATLpieData" options="pieOptions" class="chart"></pie-chart>
+                    </div>-->
                     <!--<pie-chart data="piedata" options="pieoptions" class="chart"></pie-chart>-->
                 </div>
             </div>
@@ -104,4 +103,3 @@
     </div>
 </section>
 
-<pie-chart data="pieData" options="pieOptions"></pie-chart>
