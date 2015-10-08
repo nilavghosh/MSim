@@ -18,20 +18,39 @@
     <h3>Promotion Management</h3>
     <br />
     <div class="row">
-    <div class="col-md-offset-1 col-md-3">
+        <div class="col-md-offset-1 col-md-3">
             <div class="row">
                 <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Rs.</div>
+                            <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label>TV Advertisement</label>
-                        <input type="number" required ng-model="FMCGDataModel.TVAds" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
+                        <div class="col-md-10">
+                            <input type="number" required ng-model="FMCGDataModel.TVAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                        </div>
+                        <div class="col-md-2">
+                            <div style="height:40px ; width:40px">
+                                <pie-chart data="tvPiedata" options="tvPieoptions" class="chart"></pie-chart>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Newspaper</label>
-                        <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
+                        <div class="input-group">
+                            <div class="input-group-addon">Rs.</div>
+                            <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                            <div class="input-group-addon">.00</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Hoardings</label>
-                        <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
+                        <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
                     </div>
                     <!--<div class="form-group">
                         <label>Total ATL Expense</label>
@@ -45,15 +64,15 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label>Promoters</label>
-                        <input type="number" required ng-model="FMCGDataModel.Promoters" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
+                        <input type="number" required ng-model="FMCGDataModel.Promoters" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>Sampling</label>
-                        <input type="number" required ng-model="FMCGDataModel.Sampling" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
+                        <input type="number" required ng-model="FMCGDataModel.Sampling" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
                     </div>
                     <div class="form-group">
                         <label>In shop branding</label>
-                        <input type="number" required ng-model="FMCGDataModel.InShopBranding" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in ₹">
+                        <input type="number" required ng-model="FMCGDataModel.InShopBranding" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
                     </div>
                     <!--<div class="form-group">
                         <label>Total BTL Expense</label>
@@ -69,19 +88,20 @@
                 </form>
             </div>
         </div>
-    <div class="col-md-offset-1 col-md-7">
-        <div class="row">
-            <div class="col-md-5 col-md-offset-4">
-                <strong><pre style="text-align:center">Sales - Quarter {{selectedquarter}}</pre></strong>
+        <div class="col-md-offset-1 col-md-7">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--<canvas id="doughnut" class="chart chart-doughnut"
+                            chart-data="doughdata" chart-legend="true" chart-labels="doughlabels"></canvas>-->
+                    <nvd3 options="nvoptions" data="nvdata"></nvd3>
+                    <div style="height:300px ; width:300px">
+                        <pie-chart data="ATLpieData" options="pieOptions" class="chart"></pie-chart>
+                    </div>
+                    <!--<pie-chart data="piedata" options="pieoptions" class="chart"></pie-chart>-->
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <!--<canvas id="doughnut" class="chart chart-doughnut"
-                        chart-data="doughdata" chart-legend="true" chart-labels="doughlabels"></canvas>-->
-                <pie-chart data="piedata" options="pieoptions" class="chart"></pie-chart>
-            </div>
-        </div>
-     </div>
     </div>
 </section>
+
+<pie-chart data="pieData" options="pieOptions"></pie-chart>

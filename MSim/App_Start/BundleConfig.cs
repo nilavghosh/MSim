@@ -37,6 +37,8 @@ namespace MSim
                  "~/Scripts/bower_components/pie-chart/dist/pie-chart.min.js",
                  "~/Scripts/app/admin/components/angular-ui-router/release/angular-ui-router.min.js",
                  "~/Scripts/app/admin/components/angular-cookies/angular-cookies.min.js"
+                 "~/Scripts/bower_components/nvd3/build/nv.d3.min.js",
+                 "~/Scripts/bower_components/angular-nvd3/dist/angular-nvd3.min.js"
                 ));
 
             //"~/Scripts/bower_components/momentjs/min/moment.min.js",
@@ -88,7 +90,10 @@ namespace MSim
                  "~/Content/Site.css",
                  "~/Content/rdash-ui/dist/css/rdash.min.css",
                  "~/Content/handsontable/handsontable.full.css",
-                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css"));
+                 "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
+
+                 "~/Scripts/bower_components/nvd3/build/nv.d3.min.css"
+                 ));
 
             BundleTable.EnableOptimizations = false;
         }

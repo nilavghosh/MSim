@@ -18,7 +18,6 @@
 //    { label: "two", value: 45, color: "orange" },
 //    { label: "three", value: 10, color: "gold" }
 //    ];
-
 //    $rootScope.gameOfChoice = {
 //        selectedIndustry: "",
 //        selectedGameId: "",

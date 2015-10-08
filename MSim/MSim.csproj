@@ -1251,6 +1251,10 @@
     <Content Include="Scripts\bower_components\momentjs\min\moment-with-locales.js" />
     <Content Include="Scripts\bower_components\momentjs\min\moment-with-locales.min.js" />
     <Content Include="Scripts\bower_components\momentjs\min\moment.min.js" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.css" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.js" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.min.css" />
+    <Content Include="Scripts\bower_components\nvd3\build\nv.d3.min.js" />
     <Content Include="Scripts\bower_components\nvd3\package.js" />
     <Content Include="Scripts\bower_components\pie-chart\css\kube.min.css" />
     <Content Include="Scripts\bower_components\pie-chart\css\pie-chart.css" />
@@ -2276,7 +2280,6 @@
     <Folder Include="Content\Slides\Industries\fmcg\FinancialReports\" />
     <Folder Include="Scripts\app\admin\components\rdash-ui\fonts\" />
     <Folder Include="Scripts\app\admin\components\rdash-ui\less\" />
-    <Folder Include="Scripts\bower_components\nvd3\build\" />
     <Folder Include="Scripts\dist\" />
     <Folder Include="templates\admin\components\rdash-ui\fonts\" />
     <Folder Include="templates\admin\components\rdash-ui\less\" />
