@@ -1,97 +1,97 @@
-﻿var appmain = angular.module("appMain", ["ngRoute", "fmcgGame", "ui.bootstrap"]).config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
-    $httpProvider.defaults.headers.post = {
-        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
-        'Content-Type': 'application/json'
-    }
-    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
-    $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
-}]);
+﻿//var appmain = angular.module("appMain", ["ngRoute", "fmcgGame", "ui.bootstrap"]).config(['$httpProvider', function ($httpProvider) {
+//    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
+//    $httpProvider.defaults.headers.post = {
+//        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
+//        'Content-Type': 'application/json'
+//    }
+//    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+//    $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
+//}]);
 
-appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http', '$timeout', function ($scope, $rootScope, $location, $http, $timeout) {
-    $scope.go = function (hash) {
-        $location.path(hash + '/' + $rootScope.gameOfChoice.selectedIndustry.industry);
-    }
+//appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http', '$timeout', function ($scope, $rootScope, $location, $http, $timeout) {
+//    $scope.go = function (hash) {
+//        $location.path(hash + '/' + $rootScope.gameOfChoice.selectedIndustry.industry);
+//    }
 
-    $scope.pieData = [
-    { label: "one", value: 12.2, color: "steelblue" },
-    { label: "two", value: 45, color: "orange" },
-    { label: "three", value: 10, color: "gold" }
-    ];
+//    $scope.pieData = [
+//    { label: "one", value: 12.2, color: "steelblue" },
+//    { label: "two", value: 45, color: "orange" },
+//    { label: "three", value: 10, color: "gold" }
+//    ];
 
-    $rootScope.gameOfChoice = {
-        selectedIndustry: "",
-        selectedGameId: "",
-        code: "",
-    }
-    $scope.pieOptions = {
-        thickness: 10
-    };
+//    $rootScope.gameOfChoice = {
+//        selectedIndustry: "",
+//        selectedGameId: "",
+//        code: "",
+//    }
+//    $scope.pieOptions = {
+//        thickness: 10
+//    };
 
-    $scope.getGames = function () {
-        $http.get('/api/appmain/GetGames').
-        then(function (response) {
-            $scope.gameCollection = response.data;
+//    $scope.getGames = function () {
+//        $http.get('/api/appmain/GetGames').
+//        then(function (response) {
+//            $scope.gameCollection = response.data;
 
-        }, function (response) {
-            //  pushMessage(response.statusText, 'info');
-        });
-    }
-
-
-    $scope.init = function () {
-        $scope.getGames();
-    }
-    $scope.init();
-
-}]);
+//        }, function (response) {
+//            //  pushMessage(response.statusText, 'info');
+//        });
+//    }
 
 
-appmain.config(['$routeProvider',
-function ($routeProvider) {
-    $routeProvider.
-         when('/', {
-             templateUrl: 'templates/Main.html',
-             controller: 'appMainCtrl'
-         }).
-         when('/playGame/:industry', {
-             templateUrl: function (params) {
-                 return 'templates/industries/' + params.industry + '/Main.html'
-             },
-             resolve: {
-                 userRegistration: ['registrationService', function (registrationService) {
-                     return registrationService.CheckRegistration()
-                 }]
-             }
-         })
-}]);
+//    $scope.init = function () {
+//        $scope.getGames();
+//    }
+//    $scope.init();
+
+//}]);
 
 
-appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
-    var url = 'api/appmain/CheckRegistration';
-    var service = {};
-    service.CheckRegistration = function () {
-        return $http.post(url, $rootScope.gameOfChoice).then(
-        function (isRegistered) {
-            if (isRegistered.data == true) {
-                return $q.resolve();
-            }
-            else {
-                $location.path("/");
-                //return $q.reject();
-            }
-        },
-        function (error) {
-            alert(error);
-        });
-    }
-    return service;
-}]);
+//appmain.config(['$routeProvider',
+//function ($routeProvider) {
+//    $routeProvider.
+//         when('/', {
+//             templateUrl: 'templates/Main.html',
+//             controller: 'appMainCtrl'
+//         }).
+//         when('/playGame/:industry', {
+//             templateUrl: function (params) {
+//                 return 'templates/industries/' + params.industry + '/Main.html'
+//             },
+//             resolve: {
+//                 userRegistration: ['registrationService', function (registrationService) {
+//                     return registrationService.CheckRegistration()
+//                 }]
+//             }
+//         })
+//}]);
+
+
+//appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
+//    var url = 'api/appmain/CheckRegistration';
+//    var service = {};
+//    service.CheckRegistration = function () {
+//        return $http.post(url, $rootScope.gameOfChoice).then(
+//        function (isRegistered) {
+//            if (isRegistered.data == true) {
+//                return $q.resolve();
+//            }
+//            else {
+//                $location.path("/");
+//                //return $q.reject();
+//            }
+//        },
+//        function (error) {
+//            alert(error);
+//        });
+//    }
+//    return service;
+//}]);
 
 
 
 angular.module("RDash", ["ui.bootstrap", "ui.router", "ngCookies"]);
-"use strict"; angular.module("RDash").config(["$stateProvider", "$urlRouterProvider", function (t, e) { e.otherwise("/"), t.state("index", { url: "/", templateUrl: "templates/dashboard.html" }).state("tables", { url: "/tables", templateUrl: "templates/tables.html" }) }]);
+"use strict"; angular.module("RDash").config(["$stateProvider", "$urlRouterProvider", function (t, e) { e.otherwise("/"), t.state("index", { url: "/", templateUrl: "templates/admin/index.html" }).state("tables", { url: "/tables", templateUrl: "templates/tables.html" }) }]);
 function rdLoading() { var d = { restrict: "AE", template: '<div class="loading"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>' }; return d } angular.module("RDash").directive("rdLoading", rdLoading);
 function rdWidgetBody() { var d = { requires: "^rdWidget", scope: { loading: "@?", classes: "@?" }, transclude: !0, template: '<div class="widget-body" ng-class="classes"><rd-loading ng-show="loading"></rd-loading><div ng-hide="loading" class="widget-content" ng-transclude></div></div>', restrict: "E" }; return d } angular.module("RDash").directive("rdWidgetBody", rdWidgetBody);
 function rdWidgetFooter() { var e = { requires: "^rdWidget", transclude: !0, template: '<div class="widget-footer" ng-transclude></div>', restrict: "E" }; return e } angular.module("RDash").directive("rdWidgetFooter", rdWidgetFooter);
