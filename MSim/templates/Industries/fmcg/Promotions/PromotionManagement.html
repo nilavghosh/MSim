@@ -20,12 +20,23 @@
         <div class="col-md-offset-1 col-md-3">
             <div class="row">
                 <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Rs.</div>
+                            <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label>TV Advertisement</label>
                         <div class="input-group">
                             <div class="input-group-addon">₹</div>
                             <input type="number" required ng-model="FMCGDataModel.TVAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
                             <div class="input-group-addon">.00</div>
+                        </div>
+                                <pie-chart data="tvPiedata" options="tvPieoptions" class="chart"></pie-chart>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -102,4 +113,5 @@
         </div>
     </div>
 </section>
+
 

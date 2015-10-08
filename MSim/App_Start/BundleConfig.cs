@@ -91,9 +91,9 @@ namespace MSim
                  "~/Content/rdash-ui/dist/css/rdash.min.css",
                  "~/Content/handsontable/handsontable.full.css",
                  "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
-
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.css"
                  ));
+
 
             BundleTable.EnableOptimizations = false;
         }

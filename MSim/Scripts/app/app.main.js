@@ -13,19 +13,12 @@ appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http',
         $location.path(hash + '/' + $rootScope.gameOfChoice.selectedIndustry.industry);
     }
 
-    $scope.pieData = [
-    { label: "one", value: 12.2, color: "steelblue" },
-    { label: "two", value: 45, color: "orange" },
-    { label: "three", value: 10, color: "gold" }
-    ];
     $rootScope.gameOfChoice = {
         selectedIndustry: "",
         selectedGameId: "",
         code: "",
     }
-    $scope.pieOptions = {
-        thickness: 10
-    };
+
 
     $scope.getGames = function () {
         $http.get('/api/appmain/GetGames').
