@@ -479,6 +479,7 @@
     <Content Include="Content\rdash-ui\dist\fonts\montserrat-regular-webfont.woff" />
     <Content Include="Content\rdash-ui\LICENSE" />
     <Content Include="Content\rdash-ui\README.md" />
+    <Content Include="App_Data\GameModel\FMCG Game.pptx" />
     <None Include="Properties\PublishProfiles\Local_IIS.pubxml" />
     <None Include="Properties\PublishProfiles\MSim-VisualStudioVM.pubxml" />
     <None Include="Properties\PublishProfiles\MSimulator.pubxml" />

@@ -1,18 +1,6 @@
 ﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
-        $scope.xFunction = function () {
-            return function (d) {
-                return d.key;
-            };
-        }
-
-        $scope.yFunction = function () {
-            return function (d) {
-                return d.y;
-            };
-        }
-
         var colorArray = ['#1f77b4', '#d62728', '#ff7f0e', '#2ca02c', '#9467bd', '#FF6666', '#FFE6E6'];
         $scope.colorFunction = function () {
             return function (d, i) {
@@ -20,7 +8,7 @@
             };
         }
 
-        $scope.nvoptions = {
+        $scope.atlbtloptions = {
             chart: {
                 type: 'pieChart',
                 height: 400,
@@ -30,7 +18,7 @@
                 showLabels: true,
                 transitionDuration: 500,
                 pieLabelsOutside: true,
-                donutLabelsOutside : true,
+                donutLabelsOutside: true,
                 labelThreshold: 0.01,
                 donutRatio: 0.4,
                 donut: true,
@@ -46,50 +34,72 @@
             }
         };
 
-        $scope.nvdata = [
+        $scope.atldata = [
             {
-                key: "TVAds",
+                key: "TVAds(%)",
                 y: 5
             },
             {
-                key: "NewsAds",
+                key: "NewsAds(%)",
                 y: 2
             },
             {
-                key: "HoardAds",
+                key: "HoardAds(%)",
                 y: 9
             }
         ];
 
-        $scope.tvPiedata = [
-        { value: 78, color: "#d62728", suffix: "%" }
+        $scope.btldata = [
+            {
+                key: "Promoters(%)",
+                y: 5
+            },
+            {
+                key: "Sampling(%)",
+                y: 2
+            },
+            {
+                key: "Branding(%)",
+                y: 9
+            }
         ];
-        $scope.tvPieoptions = { thickness: 15, mode: "gauge", total: 100 };
+
+        //$scope.tvPiedata = [
+        //{ value: 78, color: "#d62728", suffix: "%" }
+        //];
+        //$scope.tvPieoptions = { thickness: 15, mode: "gauge", total: 100 };
 
         $scope.onPromotionsDataChange = function () {
-            var sum = $scope.FMCGDataModel.TotalATLExpense;
-            $scope.ATLpieData = [
-         { label: "TVAds", value: $scope.FMCGDataModel.TVAds * 100 / sum, color: "steelblue" },
-         { label: "NewspaperAds", value: $scope.FMCGDataModel.NewspaperAds * 100 / sum, color: "orange" },
-         { label: "HoardingAds", value: $scope.FMCGDataModel.HoardingAds * 100 / sum, color: "gold" }
+            var atlsum = $scope.FMCGDataModel.TotalATLExpense;
+            var btlsum = $scope.FMCGDataModel.TotalBTLExpense;
+
+            $scope.atldata = [
+             {
+                 key: "TVAds(%)",
+                 y: $scope.FMCGDataModel.TVAds * 100 / atlsum
+             },
+             {
+                 key: "NewsAds(%)",
+                 y: $scope.FMCGDataModel.NewspaperAds * 100 / atlsum
+             },
+             {
+                 key: "HoardAds(%)",
+                 y: $scope.FMCGDataModel.HoardingAds * 100 / atlsum
+             }
             ];
-            $scope.pieOptions = {
-                thickness: 15
-            };
 
-
-            $scope.nvdata = [
+            $scope.btldata = [
                 {
-                    key: "TVAds",
-                    y: $scope.FMCGDataModel.TVAds * 100 / sum
+                    key: "Promoters(%)",
+                    y: $scope.FMCGDataModel.Promoters * 100 / btlsum
                 },
                 {
-                    key: "NewsAds",
-                    y: $scope.FMCGDataModel.NewspaperAds * 100 / sum
+                    key: "Sampling(%)",
+                    y: $scope.FMCGDataModel.Sampling * 100 / btlsum
                 },
                 {
-                    key: "HoardAds",
-                    y: $scope.FMCGDataModel.HoardingAds * 100 / sum
+                    key: "Branding(%)",
+                    y: $scope.FMCGDataModel.InShopBranding * 100 / btlsum
                 }
             ];
         }
@@ -262,26 +272,38 @@
             PlayerDataService.getPlayerData().then(function (response) {
                 $scope.FMCGDataModel = response;
 
-                var sum = $scope.FMCGDataModel.TotalATLExpense;
-                $scope.ATLpieData = [
-             { label: "TVAds", value: $scope.FMCGDataModel.TVAds * 100 / sum, color: "steelblue" },
-             { label: "NewspaperAds", value: $scope.FMCGDataModel.NewspaperAds * 100 / sum, color: "orange" },
-             { label: "HoardingAds", value: $scope.FMCGDataModel.HoardingAds * 100 / sum, color: "gold" }
+                var atlsum = $scope.FMCGDataModel.TotalATLExpense;
+                var btlsum = $scope.FMCGDataModel.TotalBTLExpense;
+                $scope.atldata = [
+                            {
+                                key: "TVAds(%)",
+                                y: $scope.FMCGDataModel.TVAds * 100 / atlsum
+                            },
+                            {
+                                key: "NewsAds(%)",
+                                y: $scope.FMCGDataModel.NewspaperAds * 100 / atlsum
+                            },
+                            {
+                                key: "HoardAds(%)",
+                                y: $scope.FMCGDataModel.HoardingAds * 100 / atlsum
+                            }
+                    ];
+
+                $scope.btldata = [
+                    {
+                        key: "Promoters(%)",
+                        y: $scope.FMCGDataModel.Promoters * 100 / btlsum
+                    },
+                    {
+                        key: "Sampling(%)",
+                        y: $scope.FMCGDataModel.Sampling * 100 / btlsum
+                    },
+                    {
+                        key: "Branding(%)",
+                        y: $scope.FMCGDataModel.InShopBranding * 100 / btlsum
+                    }
                 ];
-                $scope.nvdata = [
-                {
-                    key: "TVAds",
-                    y: $scope.FMCGDataModel.TVAds * 100 / sum
-                },
-                {
-                    key: "NewsAds",
-                    y: $scope.FMCGDataModel.NewspaperAds * 100 / sum
-                },
-                {
-                    key: "HoardAds",
-                    y: $scope.FMCGDataModel.HoardingAds * 100 / sum
-                }
-                ];
+
 
                 $scope.FMCGDataModel.TotalATLExpenseCalculated = function () {
                     return $scope.FMCGDataModel.TVAds +

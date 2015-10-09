@@ -17,6 +17,55 @@
     <h3>Channel Partner Management</h3>
     <br />
     <div class="row">
+        <div class="col-md-offset-2 col-md-4">
+            <form name="form" class="form-horizontal">
+                <!--<div class="form-group">
+            <label>PTD</label>
+            <input type="number" ng-model="FMCGDataModel.PTD" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
+        </div>-->
+                <div class="form-group" ng-class="{ 'has-error': form.dbmargin.$invalid}">
+                    <label>Price to Company</label>
+                    <input name="dbmargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.DistributorMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.retailmargin.$invalid}">
+                    <label>Company Margin</label>
+                    <input name="retailmargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.RetailerMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.companymargin.$invalid}">
+                    <label>VAT @ 5%</label>
+                    <input name="companymargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.CompanyMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.companymargin.$invalid}">
+                    <label>Price to Distributor</label>
+                    <input name="companymargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.CompanyMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver || form.dbmargin.$invalid || form.retailmargin.$invalid || form.companymargin.$invalid" class="btn btn-default">Save</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form name="form" class="form-horizontal">
+                <div class="form-group" ng-class="{ 'has-error': form.dbmargin.$invalid}">
+                    <label>Distributor Margin (in %)</label>
+                    <input name="dbmargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.DistributorMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.companymargin.$invalid}">
+                    <label>Price to Retailer</label>
+                    <input name="companymargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.CompanyMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.retailmargin.$invalid}">
+                    <label>Retailer Margin (in %)</label>
+                    <input name="retailmargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.RetailerMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error': form.companymargin.$invalid}">
+                    <label>Proce to Customer</label>
+                    <input name="companymargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.CompanyMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--<div class="row">
         <div class="col-md-offset-1 col-md-7">
             <div style="width:480px" id="carousel-ChannelPartner" class="carousel slide" ng-non-bindable data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -48,10 +97,6 @@
         <div class="col-md-offset-1 col-md-3">
             <div class="row">
                 <form name="form" class="form-horizontal">
-                    <!--<div class="form-group">
-                        <label>PTD</label>
-                        <input type="number" ng-model="FMCGDataModel.PTD" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
-                    </div>-->
                     <div class="form-group" ng-class="{ 'has-error': form.dbmargin.$invalid}">
                         <label>Distributor Margin (in %)</label>
                         <input name="dbmargin" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" required ng-model="FMCGDataModel.DistributorMargin" ng-disabled="isSelectedQuarterOver" class="form-control" />
@@ -70,5 +115,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
 </section>
