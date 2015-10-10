@@ -314,8 +314,6 @@
     <Content Include="Scripts\app\admin\components\angular-ui-router\CONTRIBUTING.md" />
     <Content Include="Scripts\app\admin\components\angular-ui-router\LICENSE" />
     <Content Include="Scripts\app\admin\components\angular-ui-router\README.md" />
-    <Content Include="Scripts\app\admin\components\angular-ui-router\release\angular-ui-router.js" />
-    <Content Include="Scripts\app\admin\components\angular-ui-router\release\angular-ui-router.min.js" />
     <Content Include="Scripts\app\admin\components\angular-ui-router\src\common.js" />
     <Content Include="Scripts\app\admin\components\angular-ui-router\src\resolve.js" />
     <Content Include="Scripts\app\admin\components\angular-ui-router\src\state.js" />
