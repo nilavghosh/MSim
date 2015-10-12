@@ -104,3 +104,36 @@ textarea {
     border-color: rgb(212, 63, 58);
 }
 
+#flashy {
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 2s;
+}
+
+
+/*.progress-bar,uib-bar{
+ background:  rgb(255, 215, 109);
+-webkit-animation-name: pulse; 
+-webkit-animation-duration: 2s; 
+-webkit-animation-iteration-count: infinite;
+animation-name: pulse;
+animation-duration: 2s;
+animation-iteration-count: infinite;
+}
+
+
+@-webkit-keyframes pulse { 
+0%   {background: rgb(255, 215, 109);}
+25%   {background: rgb(255, 215, 109);}
+50%   {background: rgb(255, 215, 109);}
+75%  {background: rgb(255, 231, 167);}
+85%{background: rgb(255, 215, 109);}
+100% {background: rgb(255, 215, 109);}
+}
+
+@keyframes pulse {
+0%   {background: rgb(255, 215, 109);}
+25%   {background: rgb(255, 215, 109);}
+50%   {background: rgb(255, 215, 109);}
+75%  {background: rgb(255, 231, 167);}
+100% {background: rgb(255, 215, 109);}
+}*/

@@ -27,3 +27,6 @@ https://github.com/yunlzheng/angular-knob
 Show slides in bootstrap lightbox
 http://www.jasonbutz.info/bootstrap-lightbox/#demo
 http://untame.net/2013/02/twitter-bootstrap-build-a-responsive-lightbox-gallery/
+
+Round progressbar
+http://crisbeto.github.io/angular-svg-round-progressbar/

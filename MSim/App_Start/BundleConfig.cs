@@ -27,8 +27,9 @@ namespace MSim
                 "~/Scripts/metro.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                 "~/Scripts/bower_components/d3/d3.min.js",
+                "~/Scripts/bower_components/d3/d3.min.js",
                 "~/Scripts/bower_components/angular/angular.js",
+                "~/Scripts/bower_components/angular-animate/angular-animate.min.js",
                 "~/Scripts/bower_components/angular-route/angular-route.js",
                 "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
                 "~/Scripts/bower_components/Chart.js/chart.min.js",
@@ -92,7 +93,8 @@ namespace MSim
                  "~/Content/handsontable/handsontable.full.css",
                  "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.css",
-                 "~/Scripts/bower_components/font-awesome/css/font-awesome.min.css"
+                 "~/Scripts/bower_components/font-awesome/css/font-awesome.min.css",
+                 "~/Scripts/bower_components/animate/animate.min.css"
                  ));
 
 
