@@ -1,6 +1,18 @@
 ﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
+        $scope.calculateFMCGClient = function () {
+            $scope.FMCGClient.ExMILL = function () { FMCGDataModel.MustardOilPercentage * 2 };
+        }
+
+       
+
+        //$scope.$watch("x*y", function (result) {
+        //    console.log('new result', result);
+        //    $scope.r = result;
+        //});
+
+
         var colorArray = ['#1f77b4', '#d62728', '#ff7f0e', '#2ca02c', '#9467bd', '#FF6666', '#FFE6E6'];
         $scope.colorFunction = function () {
             return function (d, i) {
@@ -271,6 +283,19 @@
         $scope.getPlayerData = function () {
             PlayerDataService.getPlayerData().then(function (response) {
                 $scope.FMCGDataModel = response;
+                $scope.FMCGClient = {};
+                $scope.FMCGClient.ExMILL = function () {
+                    return $scope.FMCGDataModel.MustardOilPercentage * 120 +
+                           $scope.FMCGDataModel.PalmOilPercentage * 60 + $scope.FMCGDataModel.PakagingMaterial
+                };
+
+                $scope.FMCGClient.CST = function () {
+                    return $scope.FMCGClient.ExMILL() * .02;
+                };
+
+                $scope.FMCGClient.Freight = 1;
+
+                $scope.FMCGClient.PriceToCompany = function () { return $scope.FMCGClient.ExMILL() + $scope.FMCGClient.Freight + $scope.FMCGClient.CST() };
 
                 var atlsum = $scope.FMCGDataModel.TotalATLExpense;
                 var btlsum = $scope.FMCGDataModel.TotalBTLExpense;

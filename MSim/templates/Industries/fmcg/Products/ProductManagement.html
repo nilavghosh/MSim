@@ -49,42 +49,46 @@
             </div>
         </div>
     </div>
-    <br/>
+    <br />
     <div class="row">
         <div class="col-md-3">
-            <!--<form class="form-horizontal">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Ex-Mill Price (in %)</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">CST @ 2%</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                </div>
-            </form>-->
-            <div class="form-group" ng-class="{ 'has-error': form.mustardpercentage.$invalid}">
+            <div class="form-group">
                 <label>Ex-Mill Price</label>
-                <input name="mustardpercentage" type="number" step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" ng-model="FMCGDataModel.MustardOilPercentage" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in %" />
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                    <input name="exmillprice" type="number" readonly step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" class="form-control" placeholder="in %" ng-value="FMCGClient.ExMILL()" />
+                    <div class="input-group-addon">.00</div>
+                </div>
             </div>
 
 
             <div class="form-group">
                 <label>CST @ 2%</label>
-                <input name="palmpercentage" type="number" ng-model="FMCGDataModel.PalmOilPercentage" ng-disabled="isSelectedQuarterOver" readonly class="form-control" placeholder="in %" />
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                    <input name="cstpercentage" type="number" readonly ng-value="FMCGClient.CST()" class="form-control" />
+                    <div class="input-group-addon">.00</div>
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Freight</label>
-                <select ng-model="FMCGDataModel.PakagingMaterial" ng-disabled="isSelectedQuarterOver" ng-options="choice.value as choice.option for choice in PackagingMaterial" class="form-control"></select>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                    <input name="freight" type="number" readonly ng-value="FMCGClient.Freight" class="form-control" />
+                    <div class="input-group-addon">.00</div>
+                </div>
             </div>
+
             <div class="form-group">
                 <label>Price to Company</label>
-                <select ng-model="FMCGDataModel.PakagingMaterial" ng-disabled="isSelectedQuarterOver" ng-options="choice.value as choice.option for choice in PackagingMaterial" class="form-control"></select>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                    <input name="pricetocompany" type="number" readonly ng-value="FMCGClient.PriceToCompany()" class="form-control" />
+                    <div class="input-group-addon">.00</div>
+                </div>
             </div>
+
             <div class="form-group">
                 <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver || form.mustardpercentage.$invalid" class=" btn btn-default">Save</button>
             </div>

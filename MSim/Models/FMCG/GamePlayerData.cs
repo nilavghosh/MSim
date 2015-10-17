@@ -36,6 +36,7 @@ namespace MSim.Models.FMCG
         public int MustardOilPercentage { get; set; }
         public int PalmOilPercentage { get; set; }
         public int PackagingMaterial { get; set; }
+        public float PlaceanOrder { get; set; }
     }
 
 }

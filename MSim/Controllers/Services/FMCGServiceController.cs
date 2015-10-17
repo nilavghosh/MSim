@@ -345,7 +345,7 @@ namespace MSim.Controllers.Services
                         List<List<string>> PATReportValues = GetSheetValues(FinancialsSheet, GetMarketReportMapping()["Quarter" + selectedgame.selectedquarter.ToString()].PATReport);
                         List<List<string>> PlayerNames = new List<List<string>>();
                         List<string> Players = new List<string>();
-                        
+
                         int pcount = 0;
                         SalesReportValues[0].ForEach(sv =>
                         {
@@ -426,7 +426,7 @@ namespace MSim.Controllers.Services
                         {
                             player.CellInfo.ToList().ForEach(cellinfo =>
                             {
-                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[1][cellinfo.Name].RawValue : 0;
+                                Quarter2Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[1][cellinfo.Name].RawValue : 0;
                             });
                             playercount++;
                         });
