@@ -718,6 +718,7 @@
     <Content Include="Scripts\bower_components\angular\angular.min.js" />
     <Content Include="Scripts\bower_components\angular\angular.min.js.map" />
     <Content Include="Scripts\bower_components\angular\index.js" />
+    <Content Include="Scripts\bower_components\animate\animate.min.css" />
     <Content Include="Scripts\bower_components\bootstrap-fileinput\css\fileinput.css" />
     <Content Include="Scripts\bower_components\bootstrap-fileinput\css\fileinput.min.css" />
     <Content Include="Scripts\bower_components\bootstrap-fileinput\img\loading-sm.gif" />
