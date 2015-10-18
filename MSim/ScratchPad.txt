@@ -30,3 +30,6 @@ http://untame.net/2013/02/twitter-bootstrap-build-a-responsive-lightbox-gallery/
 
 Round progressbar
 http://crisbeto.github.io/angular-svg-round-progressbar/
+
+Colors
+https://colorlib.com/etc/metro-colors/	

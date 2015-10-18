@@ -139,3 +139,9 @@ animation-iteration-count: infinite;
 75%  {background: rgb(255, 231, 167);}
 100% {background: rgb(255, 215, 109);}
 }*/
+
+
+pre {
+    font-size: 18px;
+    color: #00aba9;
+}

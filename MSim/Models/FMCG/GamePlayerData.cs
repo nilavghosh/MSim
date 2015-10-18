@@ -22,6 +22,9 @@ namespace MSim.Models.FMCG
         public int DistributorMargin { get; set; }
         public int RetailerMargin { get; set; }
         public int CompanyMargin { get; set; }
+        public int DistributorMargin5L { get; set; }
+        public int RetailerMargin5L { get; set; }
+        public int CompanyMargin5L { get; set; }
         public int NoOfSalesmen { get; set; }
         public int AvgSalary { get; set; }
         public int Training { get; set; }
@@ -37,6 +40,7 @@ namespace MSim.Models.FMCG
         public int PalmOilPercentage { get; set; }
         public int PackagingMaterial { get; set; }
         public float PlaceanOrder { get; set; }
+        public float PlaceanOrder5L { get; set; }
     }
 
 }
