@@ -145,3 +145,8 @@ pre {
     font-size: 18px;
     color: #00aba9;
 }
+
+.navbar-default {
+background-color: #30426a;
+border-color: #30426a;
+}
