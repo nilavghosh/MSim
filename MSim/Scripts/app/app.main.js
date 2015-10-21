@@ -146,14 +146,17 @@
 appMain = angular.module("appMain", ["ngRoute", "ui.bootstrap", "ui.router", "ngCookies"]);
 "use strict";
 
-angular.module("appMain").config(["$stateProvider", "$urlRouterProvider", function (t, e, $locationProvider) {
-    
+angular.module("appMain").config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function (t, e, $locationProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
     t.state("admin", {
-        url: "/",
+        url: "/logindash",
         templateUrl: "templates/admin/index.html"
     })
     .state("admin.tables", {
-        url: "/tables",
+        url: "tables",
         templateUrl: "templates/admin/templates/tables.html"
     }),
     e.otherwise("/")
