@@ -590,6 +590,7 @@
     <Content Include="Scripts\app\admin\components\rdash-ui\README.md" />
     <Content Include="Scripts\app\admin\js\dashboard.min.js" />
     <Content Include="Scripts\app\app.main.js" />
+    <Content Include="Scripts\app\appbasic.main.js" />
     <Content Include="Scripts\app\fmcg.viewmodel.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
