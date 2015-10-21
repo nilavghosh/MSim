@@ -72,5 +72,5 @@
     }
 }
 
-var app = new AppViewModel(new AppDataModel());
+var app = new AppViewModel();
 

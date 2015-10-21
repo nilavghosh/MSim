@@ -1,4 +1,5 @@
-﻿//var appmain = angular.module("appMain", ["ngRoute", "fmcgGame", "ui.bootstrap"]).config(['$httpProvider', function ($httpProvider) {
+﻿//var appmain = angular.module("appMain", ["ngRoute", "fmcgGame", "ui.bootstrap"]);
+//appmain.config(['$httpProvider', function ($httpProvider) {
 //    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
 //    $httpProvider.defaults.headers.post = {
 //        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
@@ -142,25 +143,20 @@
 //}]);
 
 
-appMain=angular.module("appMain", ["ngRoute","ui.bootstrap", "ui.router", "ngCookies"]);
+appMain = angular.module("appMain", ["ngRoute", "ui.bootstrap", "ui.router", "ngCookies"]);
 "use strict";
 
-//appMain.config(['$routeProvider',
-//function ($routeProvider) {
-//    $routeProvider.
-//         when('/', {
-//             templateUrl: "templates/admin/index.html"
-//         })
-//}]);
-
-angular.module("appMain").config(["$stateProvider", "$urlRouterProvider", function (t, e) {
-    e.otherwise("/"), t.state("admin", {
+angular.module("appMain").config(["$stateProvider", "$urlRouterProvider", function (t, e, $locationProvider) {
+    
+    t.state("admin", {
         url: "/",
         templateUrl: "templates/admin/index.html"
-    }).state("admin.tables", {
+    })
+    .state("admin.tables", {
         url: "/tables",
         templateUrl: "templates/admin/templates/tables.html"
-    })
+    }),
+    e.otherwise("/")
 }]);
 
 function rdLoading() {

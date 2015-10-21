@@ -1,14 +1,11 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="appMain">
 <head>
     <meta charset="utf-8" />
     <title>MSim</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/angular")
+    
     @*<script type="text/javascript">
             var appInsights = window.appInsights || function (config) {
                 function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
@@ -21,6 +18,7 @@
         </script>*@
 </head>
 <body>
+    @Styles.Render("~/Content/css")
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -52,37 +50,41 @@
             </div>
             <div class="navbar-collapse collapse">
                 @*<ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/Help">API</a></li>
-                </ul>*@
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Help">API</a></li>
+                    </ul>*@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
         @*<div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html"><h1>MSim</h1></a>
-            </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><h1>MSim</h1></a>
+                </div>
 
-            <div class="collapse navbar-collapse">
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>*@
+                <div class="collapse navbar-collapse">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>*@
 
-      </div>
-
-    <div class="container body-content">
-        <div class="row">
-            @RenderBody()
-            @RenderSection("SPAViews", required: false)
-        </div>
     </div>
 
+    <div ui-view class="container body-content">
+        <div class="row">
+            @RenderBody()
+            @*@RenderSection("SPAViews", required: false)*@
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/games")
+    @Scripts.Render("~/bundles/angularapp")
     @RenderSection("Scripts", required: false)
 </body>
 </html>
