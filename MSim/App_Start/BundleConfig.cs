@@ -29,6 +29,7 @@ namespace MSim
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/bower_components/d3/d3.min.js",
                 "~/Scripts/bower_components/angular/angular.js",
+                "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.js",
                 "~/Scripts/bower_components/angular-animate/angular-animate.min.js",
                 "~/Scripts/bower_components/angular-ui-router/release/angular-ui-router.min.js",
                 "~/Scripts/bower_components/angular-route/angular-route.js",
@@ -43,15 +44,6 @@ namespace MSim
                  "~/Scripts/app/appbasic.main.js"
                 ));
 
-            //"~/Scripts/bower_components/momentjs/min/moment.min.js",
-            //    "~/Scripts/bower_components/momentjs/min/locales.min.js",
-            //    "~/Scripts/bower_components/humanize-duration/humanize-duration.js",
-            //    "~/Scripts/bower_components/angular-timer/dist/angular-timer.min.js",
-
-
-            //bundles.Add(new ScriptBundle("~/bundles/app").Include(
-            //    "~/Scripts/app/common.js",
-            //    "~/Scripts/app/app.viewmodel.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularapp").Include("~/Scripts/app/app.main.js"));
 
@@ -91,8 +83,9 @@ namespace MSim
                  "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.css",
                  "~/Scripts/bower_components/font-awesome/css/font-awesome.min.css",
-                 "~/Scripts/bower_components/animate/animate.min.css"
-                 ));
+                 "~/Scripts/bower_components/animate/animate.min.css",
+                 "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.css"
+                  ));
 
 
             BundleTable.EnableOptimizations = false;

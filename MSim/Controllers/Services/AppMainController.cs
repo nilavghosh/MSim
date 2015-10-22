@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Newtonsoft.Json;
+using MSim.Models.FMCG;
 
 namespace MSim.Controllers.Services
 {
@@ -60,6 +61,18 @@ namespace MSim.Controllers.Services
                 return mssg.InnerException;
             }
         }
+
+        [HttpPost]
+        [ActionName("GetGamesForDate")]
+        public object GetGamesForDate(object date)
+        {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            var registeredgames = collection.AsQueryable().Where(game => game["players.username"] == User.Identity.Name && game["startdate"] < DateTime.Parse(date.ToString())).ToList();
+
+            return new List<RegisteredGame>() { new RegisteredGame() { Game = "Oil" } };
+        }
+
+
 
         [HttpPost]
         [ActionName("CheckRegistration")]

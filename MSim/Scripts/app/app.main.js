@@ -144,19 +144,36 @@
 
 
 
+appmain.config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
+    $httpProvider.defaults.headers.post = {
+        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
+        'Content-Type': 'application/json'
+    }
+    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+    $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
+}]);
 
 angular.module("appMain").config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function (t, e, $locationProvider) {
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
-    t.state("admin", {
+    //$locationProvider.html5Mode({
+    //    enabled: true,
+    //    requireBase: false
+    //});
+    t.state("index", {
         url: "/",
         templateUrl: "templates/admin/index.html"
     })
-    .state("admin.tables", {
-        url: "tables",
-        templateUrl: "templates/admin/templates/tables.html"
+    .state("index.admin", {
+        url: "admin",
+        templateUrl: "templates/admin/templates/admin.html"
+    })
+    .state("index.playgames", {
+        url: "playgames",
+        templateUrl: "templates/admin/templates/playgames.html"
+    })
+    .state("index.editprofile", {
+        url: "editprofile",
+        templateUrl: "templates/admin/templates/editprofile.html"
     }),
     e.otherwise("/")
 }]);
@@ -238,19 +255,44 @@ function AlertsCtrl(e) {
 }
 angular.module("appMain").controller("AlertsCtrl", ["$scope", AlertsCtrl]);
 
-function MasterCtrl(t, e) {
+function MasterCtrl($scope, e, $http) {
     var o = 992;
-    t.getWidth = function () {
+    $scope.getWidth = function () {
         return window.innerWidth
     },
-    t.$watch(t.getWidth, function (g) {
-        t.toggle = g >= o ? angular.isDefined(e.get("toggle")) ? e.get("toggle") ? !0 : !1 : !0 : !1
+    $scope.$watch($scope.getWidth, function (g) {
+        $scope.toggle = g >= o ? angular.isDefined(e.get("toggle")) ? e.get("toggle") ? !0 : !1 : !0 : !1
     }),
-    t.toggleSidebar = function () {
-        t.toggle = !t.toggle, e.put("toggle", t.toggle)
+    $scope.toggleSidebar = function () {
+        $scope.toggle = !$scope.toggle, e.put("toggle", $scope.toggle)
     },
     window.onresize = function () {
-        t.$apply()
+        $scope.$apply()
+    }
+    $scope.dt = new Date();
+    $scope.gridOptions = {
+        enableRowSelection: true,
+        enableSelectAll: true,
+        selectionRowHeaderWidth: 20,
+        rowHeight: 35,
+        showGridFooter: true
+    };
+
+    $scope.gridOptions.columnDefs = [
+      { name: 'Industry', field: 'game' },
+      { name: 'Game', field: 'game' },
+      { name: 'Status', field: 'game' }
+    ];
+
+    
+    $scope.getGames = function () {
+         $http.post('/api/appmain/GetGamesForDate', $scope.dt).
+        then(function (response) {
+            $scope.gridOptions.data = response.data;
+
+        }, function (response) {
+            //  pushMessage(response.statusText, 'info');
+        });
     }
 }
-angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", MasterCtrl]);
+angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", MasterCtrl]);
