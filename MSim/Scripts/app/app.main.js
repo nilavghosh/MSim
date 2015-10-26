@@ -121,26 +121,26 @@
 //}]);
 
 
-//appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
-//    var url = 'api/appmain/CheckRegistration';
-//    var service = {};
-//    service.CheckRegistration = function () {
-//        return $http.post(url, $rootScope.gameOfChoice).then(
-//        function (isRegistered) {
-//            if (isRegistered.data == true) {
-//                return $q.resolve();
-//            }
-//            else {
-//                $location.path("/");
-//                //return $q.reject();
-//            }
-//        },
-//        function (error) {
-//            alert(error);
-//        });
-//    }
-//    return service;
-//}]);
+appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
+    var url = 'api/appmain/CheckRegistration';
+    var service = {};
+    service.CheckRegistration = function () {
+        return $http.post(url, $rootScope.selectedgame).then(
+        function (isRegistered) {
+            if (isRegistered.data == true) {
+                return $q.resolve();
+            }
+            else {
+                $location.path("/");
+                //return $q.reject();
+            }
+        },
+        function (error) {
+            alert(error);
+        });
+    }
+    return service;
+}]);
 
 
 
@@ -154,28 +154,33 @@ appmain.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
 }]);
 
-angular.module("appMain").config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function (t, e, $locationProvider) {
-    //$locationProvider.html5Mode({
-    //    enabled: true,
-    //    requireBase: false
-    //});
+angular.module("appMain").config(["$stateProvider", function (t) {
     t.state("index", {
-        url: "/",
-        templateUrl: "templates/admin/index.html"
+        templateUrl: "/templates/admin/index.html"
     })
     .state("index.admin", {
-        url: "admin",
-        templateUrl: "templates/admin/templates/admin.html"
+        url: "/admin",
+        templateUrl: "/templates/admin/templates/admin.html"
     })
     .state("index.playgames", {
-        url: "playgames",
-        templateUrl: "templates/admin/templates/playgames.html"
+        url: "/playgames",
+        templateUrl: "/templates/admin/templates/playgames.html"
     })
     .state("index.editprofile", {
         url: "editprofile",
-        templateUrl: "templates/admin/templates/editprofile.html"
-    }),
-    e.otherwise("/")
+        templateUrl: "/templates/admin/templates/editprofile.html"
+    })
+    .state('playgame', {
+        url: "/playGame/:industry",
+        templateUrl: function (stateParams) {
+            return '/templates/industries/' + stateParams.industry + '/Main2.html'
+        },
+        resolve: {
+            userRegistration: ['registrationService', function (registrationService) {
+                return registrationService.CheckRegistration()
+            }]
+        }
+    })
 }]);
 
 function rdLoading() {
@@ -255,7 +260,7 @@ function AlertsCtrl(e) {
 }
 angular.module("appMain").controller("AlertsCtrl", ["$scope", AlertsCtrl]);
 
-function MasterCtrl($scope, e, $http) {
+function MasterCtrl($scope, e, $http, $location, $rootScope) {
     var o = 992;
     $scope.getWidth = function () {
         return window.innerWidth
@@ -273,26 +278,37 @@ function MasterCtrl($scope, e, $http) {
     $scope.gridOptions = {
         enableRowSelection: true,
         enableSelectAll: true,
-        selectionRowHeaderWidth: 20,
         rowHeight: 35,
-        showGridFooter: true
+        showGridFooter: true,
+        onRegisterApi: function (gridApi) {
+            $scope.myGridApi = gridApi;
+            gridApi.selection.on.rowSelectionChanged($scope, $scope.gameSelected);
+        }
     };
 
     $scope.gridOptions.columnDefs = [
-      { name: 'Industry', field: 'game' },
+      { name: 'Industry', field: 'industry' },
       { name: 'Game', field: 'game' },
-      { name: 'Status', field: 'game' }
+      { name: 'Status', field: 'status' }
     ];
 
-    
-    $scope.getGames = function () {
-         $http.post('/api/appmain/GetGamesForDate', $scope.dt).
-        then(function (response) {
-            $scope.gridOptions.data = response.data;
+    $scope.go = function (hash) {
+        $location.path(hash + '/' + $scope.selectedgame.industry);
+    }
 
-        }, function (response) {
-            //  pushMessage(response.statusText, 'info');
-        });
+    $scope.gameSelected = function (row) {
+        $rootScope.selectedgame = $scope.myGridApi.selection.getSelectedRows()[0];
+    }
+
+    $scope.getGames = function () {
+
+        $http.post('/api/appmain/GetGamesForDate', $scope.dt).
+       then(function (response) {
+           $scope.gridOptions.data = response.data;
+
+       }, function (response) {
+           //  pushMessage(response.statusText, 'info');
+       });
     }
 }
-angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", MasterCtrl]);
+angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", "$location", "$rootScope", MasterCtrl]);

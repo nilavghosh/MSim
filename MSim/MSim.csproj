@@ -1978,6 +1978,8 @@
     <Content Include="templates\admin\templates\playgames.html" />
     <Content Include="templates\Industries\banking\Main.html" />
     <Content Include="templates\Industries\fmcg\Admin\StartQuarter.html" />
+    <Content Include="templates\Industries\fmcg\Dashboard.html" />
+    <Content Include="templates\Industries\fmcg\Main2.html" />
     <Content Include="templates\Industries\fmcg\MarketReports\MarketReports.html" />
     <Content Include="templates\Main.html" />
     <Content Include="templates\admin\img\avatar.jpg" />

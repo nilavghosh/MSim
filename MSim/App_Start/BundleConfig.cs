@@ -32,7 +32,6 @@ namespace MSim
                 "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.js",
                 "~/Scripts/bower_components/angular-animate/angular-animate.min.js",
                 "~/Scripts/bower_components/angular-ui-router/release/angular-ui-router.min.js",
-                "~/Scripts/bower_components/angular-route/angular-route.js",
                 "~/Scripts/bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
                 "~/Scripts/bower_components/Chart.js/chart.min.js",
                  "~/Scripts/bower_components/angular-chart.js/dist/angular-chart.min.js",

@@ -3,7 +3,6 @@
     }*@
 
 @section Scripts {
-    @Scripts.Render("~/bundles/games")
     @Scripts.Render("~/bundles/angularapp")
 }
 
@@ -57,7 +56,7 @@
 
             if (fragment.access_token) {
                 // returning with access token, restore old hash, or at least hide token
-                window.location.hash = fragment.state || '';
+                window.location.hash = fragment.state || '/admin';
                 sessionStorage.setItem("accessToken", fragment.access_token);
             } else {
                 // no token - so bounce to Authorize endpoint in AccountController to sign in or register

@@ -67,9 +67,26 @@ namespace MSim.Controllers.Services
         public object GetGamesForDate(object date)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
-            var registeredgames = collection.AsQueryable().Where(game => game["players.username"] == User.Identity.Name && game["startdate"] < DateTime.Parse(date.ToString())).ToList();
+            var gameProperties = database.GetCollection<BsonDocument>("gameProperties");
+            
+            var selectedDate = new BsonDateTime(DateTime.Parse(date.ToString()));
+            List<RegisteredGame> registeredGames = new List<RegisteredGame>();
 
-            return new List<RegisteredGame>() { new RegisteredGame() { Game = "Oil" } };
+            collection.AsQueryable().Where(game => game["players.username"] == User.Identity.Name && game["startdate"] < selectedDate).ToList().ForEach(game => {
+                registeredGames.Add(new RegisteredGame() {
+                    Id = game["gameid"].AsInt32,
+                    Status = game["completed"].AsBoolean,
+                    _id = game["_id"].AsObjectId.ToString()
+                });
+            });
+
+            registeredGames.ForEach(regGame =>{
+                var gprop =  gameProperties.AsQueryable().Where(g => g["id"] == regGame.Id).First();
+                regGame.Industry = gprop["industry"].AsString;
+                regGame.Game = gprop["name"].AsString;
+                });
+
+            return registeredGames;
         }
 
 
@@ -78,30 +95,14 @@ namespace MSim.Controllers.Services
         [ActionName("CheckRegistration")]
         public async Task<object> CheckRegistration(Object registrationChoice)
         {
-            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+             RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(registrationChoice.ToString());
             var collection = database.GetCollection<BsonDocument>("registeredGames");
             var builder = Builders<BsonDocument>.Filter;
             var matchname = Builders<BsonDocument>.Filter.Eq("username", User.Identity.Name);
-            var filter = builder.Eq("gameid", selectedgame.selectedGameId) & builder.Eq("gamecode", selectedgame.code) & builder.ElemMatch("players", matchname);
+            var filter = builder.Eq("_id", ObjectId.Parse(selectedgame._id)) & builder.Eq("gamecode", selectedgame.GameCode) & builder.ElemMatch("players", matchname);
             //var games = await collection.Find(filter).ToListAsync();
             var games = new List<BsonDocument>();
             games = await collection.Find(filter).ToListAsync();
-            //using (var cursor = await collection.FindAsync(filter))
-            //{
-            //    while (await cursor.MoveNextAsync())
-            //    {
-            //        var batch = cursor.Current;
-            //        foreach (var document in batch)
-            //        {
-            //            // process document
-            //            games.Add(document);
-            //        }
-            //    }
-            //}
-            //await Task.Delay(1000);
-
-
-
             try
             {
                 //string playersDatainJson = games.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });

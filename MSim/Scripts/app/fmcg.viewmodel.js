@@ -1,11 +1,11 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ngRoute", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
         $scope.calculateFMCGClient = function () {
             $scope.FMCGClient.ExMILL = function () { FMCGDataModel.MustardOilPercentage * 2 };
         }
 
-       
+
 
         //$scope.$watch("x*y", function (result) {
         //    console.log('new result', result);
@@ -207,7 +207,7 @@
         }
 
         $scope.FMCGAdminDataModel = {
-            Result: ko.observableArray([])
+            //Result: ko.observableArray([])
         }
 
         $scope.doughlabels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
@@ -313,7 +313,7 @@
                                 key: "HoardAds(%)",
                                 y: $scope.FMCGDataModel.HoardingAds * 100 / atlsum
                             }
-                    ];
+                ];
 
                 $scope.btldata = [
                     {
@@ -444,42 +444,84 @@
         $scope.init();
     }]);
 
-fmcgGame.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider.
-             when('/Dashboard', {
-                 templateUrl: 'templates/industries/fmcg/Main.html'
-             }).
-            when('/ManagingChannelPartner', {
-                templateUrl: 'templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html',
+fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $stateProvider.
+            state('fmcgAdmin', {
+                templateUrl: 'templates/industries/fmcg/Main2.html'
+            }).
+            state('Dashboard', {
+                url: "/Dashboard",
+                templateUrl: 'templates/industries/fmcg/Main.html'
+            }).
+            state('playgame.ManagingChannelPartner', {
+                url: '/ManagingChannelPartner',
+                templateUrl: '/templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html',
                 controller: 'fmcgCtrl'
             }).
-            when('/ManagingSalesTeam', {
+            state('playgame.ManagingSalesTeam', {
                 templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html',
                 controller: 'fmcgCtrl'
             }).
-            when('/ManagingPromotions', {
+            state('playgame.ManagingPromotions', {
                 templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html',
                 controller: 'fmcgCtrl'
             }).
-            when('/ManagingProduct', {
+            state('playgame.ManagingProduct', {
                 templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html',
                 controller: 'fmcgCtrl'
             }).
-            when('/Q1-Reports', {
+            state('playgame.Q1-Reports', {
                 templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
                 controller: 'fmcgCtrl'
-
             }).
-            when('/MarketReports', {
+            state('playgame.MarketReports', {
                 templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
                 controller: 'fmcgCtrl'
             }).
-            when('/StartQuarter', {
+            state('/StartQuarter', {
                 templateUrl: 'templates/industries/fmcg/Admin/StartQuarter.html',
                 controller: 'fmcgCtrl'
             })
-    }]);
+}]);
+
+
+
+//fmcgGame.config(['$routeProvider',
+//    function ($routeProvider) {
+//        $routeProvider.
+//             when('/Dashboard', {
+//                 templateUrl: 'templates/industries/fmcg/Main.html'
+//             }).
+//            when('/ManagingChannelPartner', {
+//                templateUrl: 'templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html',
+//                controller: 'fmcgCtrl'
+//            }).
+//            when('/ManagingSalesTeam', {
+//                templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html',
+//                controller: 'fmcgCtrl'
+//            }).
+//            when('/ManagingPromotions', {
+//                templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html',
+//                controller: 'fmcgCtrl'
+//            }).
+//            when('/ManagingProduct', {
+//                templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html',
+//                controller: 'fmcgCtrl'
+//            }).
+//            when('/Q1-Reports', {
+//                templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
+//                controller: 'fmcgCtrl'
+
+//            }).
+//            when('/MarketReports', {
+//                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
+//                controller: 'fmcgCtrl'
+//            }).
+//            when('/StartQuarter', {
+//                templateUrl: 'templates/industries/fmcg/Admin/StartQuarter.html',
+//                controller: 'fmcgCtrl'
+//            })
+//    }]);
 
 //http://stackoverflow.com/questions/18274976/make-bootstrap-well-semi-transparent
 
@@ -567,7 +609,7 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
         function getPlayerData() {
             var def = $q.defer();
             if (service.iscached == false) {
-                var gameinfo = $rootScope.gameOfChoice;
+                var gameinfo = $rootScope.selectedgame;
                 gameinfo["selectedquarter"] = service.selectedquarter;
                 $http.post('/api/fmcgservice/GetPlayerData', gameinfo).
                   success(function (response) {
