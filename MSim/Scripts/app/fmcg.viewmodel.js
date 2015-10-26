@@ -5,7 +5,7 @@
             $scope.FMCGClient.ExMILL = function () { FMCGDataModel.MustardOilPercentage * 2 };
         }
 
-
+       
 
         //$scope.$watch("x*y", function (result) {
         //    console.log('new result', result);
@@ -444,88 +444,48 @@
         $scope.init();
     }]);
 
+
+//http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router
 fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider.
             state('fmcgAdmin', {
                 templateUrl: 'templates/industries/fmcg/Main2.html'
             }).
-            state('Dashboard', {
+            state('playgame.Dashboard', {
                 url: "/Dashboard",
-                templateUrl: 'templates/industries/fmcg/Main.html'
+                templateUrl: 'templates/industries/fmcg/Dashboard.html'
             }).
             state('playgame.ManagingChannelPartner', {
                 url: '/ManagingChannelPartner',
-                templateUrl: '/templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html',
-                controller: 'fmcgCtrl'
+                templateUrl: '/templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html'
             }).
             state('playgame.ManagingSalesTeam', {
-                templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html',
-                controller: 'fmcgCtrl'
+                url: '/ManagingSalesTeam',
+                templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html'
             }).
             state('playgame.ManagingPromotions', {
-                templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html',
-                controller: 'fmcgCtrl'
+                url: '/ManagingPromotions',
+                templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html'
             }).
             state('playgame.ManagingProduct', {
-                templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html',
-                controller: 'fmcgCtrl'
+                url: '/ManagingProduct',
+                templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html'
             }).
             state('playgame.Q1-Reports', {
-                templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
-                controller: 'fmcgCtrl'
+                url: '/Q1-Reports',
+                templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html'
             }).
             state('playgame.MarketReports', {
-                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
-                controller: 'fmcgCtrl'
+                url: '/MarketReports',
+                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html'
             }).
             state('/StartQuarter', {
-                templateUrl: 'templates/industries/fmcg/Admin/StartQuarter.html',
-                controller: 'fmcgCtrl'
+                url: '/StartQuarter',
+                templateUrl: 'templates/industries/fmcg/Admin/StartQuarter.html'
             })
 }]);
 
-
-
-//fmcgGame.config(['$routeProvider',
-//    function ($routeProvider) {
-//        $routeProvider.
-//             when('/Dashboard', {
-//                 templateUrl: 'templates/industries/fmcg/Main.html'
-//             }).
-//            when('/ManagingChannelPartner', {
-//                templateUrl: 'templates/industries/fmcg/channelpartners/ChannelPartnerManagement.html',
-//                controller: 'fmcgCtrl'
-//            }).
-//            when('/ManagingSalesTeam', {
-//                templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html',
-//                controller: 'fmcgCtrl'
-//            }).
-//            when('/ManagingPromotions', {
-//                templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html',
-//                controller: 'fmcgCtrl'
-//            }).
-//            when('/ManagingProduct', {
-//                templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html',
-//                controller: 'fmcgCtrl'
-//            }).
-//            when('/Q1-Reports', {
-//                templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
-//                controller: 'fmcgCtrl'
-
-//            }).
-//            when('/MarketReports', {
-//                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
-//                controller: 'fmcgCtrl'
-//            }).
-//            when('/StartQuarter', {
-//                templateUrl: 'templates/industries/fmcg/Admin/StartQuarter.html',
-//                controller: 'fmcgCtrl'
-//            })
-//    }]);
-
 //http://stackoverflow.com/questions/18274976/make-bootstrap-well-semi-transparent
-
-
 fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerService($http, $q, $rootScope) {
     var service = {
         q1timeleft: 0,

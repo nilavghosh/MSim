@@ -38,7 +38,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public FMCGServiceController()
         {
-            var client = new MongoClient(@"mongodb://visualstudio-vm.cloudapp.net:27017/");
+            var client = new MongoClient(@"mongodb://127.0.0.1:27017/");
             database = client.GetDatabase("MSim");
         }
 
@@ -64,13 +64,13 @@ namespace MSim.Controllers.Services
         [ActionName("GetPlayerData")]
         public async Task<object> GetPlayerData(Object registrationChoice)
         {
-            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+            RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(registrationChoice.ToString());
             var collection = database.GetCollection<BsonDocument>("fmcgGamePlayerData3");
 
 
             var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
-                         builder.Eq("gamecode", selectedgame.code) &
+            var filter = builder.Eq("gameid", selectedgame.Id) &
+                         builder.Eq("gamecode", selectedgame.GameCode) &
                          builder.Eq("username", User.Identity.Name) &
                          builder.Eq("qtrname", selectedgame.selectedquarter);
             var quarterdata = new List<BsonDocument>();

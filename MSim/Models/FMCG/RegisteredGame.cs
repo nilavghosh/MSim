@@ -15,5 +15,6 @@ namespace MSim.Models.FMCG
         public int Id { get; set; }
         public bool Status { get; set; }
         public string GameCode { get; set; }
+        public int selectedquarter { get; set; }
     }
 }
