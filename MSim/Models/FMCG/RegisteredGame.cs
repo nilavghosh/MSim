@@ -13,7 +13,7 @@ namespace MSim.Models.FMCG
         public string Game { get; set; }
         public string Industry { get; set; }
         public int Id { get; set; }
-        public bool Status { get; set; }
+        public string Status { get; set; }
         public string GameCode { get; set; }
         public int selectedquarter { get; set; }
     }

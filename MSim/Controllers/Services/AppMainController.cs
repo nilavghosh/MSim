@@ -35,20 +35,6 @@ namespace MSim.Controllers.Services
 
             List<BsonDocument> games = new List<BsonDocument>();
             games = await collection.Find(filter).ToListAsync();
-            //using (var cursor = await collection.FindAsync(filter))
-            //{
-            //    while (await cursor.MoveNextAsync())
-            //    {
-            //        var batch = cursor.Current;
-            //        foreach (var document in batch)
-            //        {
-            //            // process document
-            //            games.Add(document);
-            //        }
-            //    }
-            //}
-
-
 
             try
             {
@@ -68,23 +54,27 @@ namespace MSim.Controllers.Services
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
             var gameProperties = database.GetCollection<BsonDocument>("gameProperties");
-            
+
             var selectedDate = new BsonDateTime(DateTime.Parse(date.ToString()));
             List<RegisteredGame> registeredGames = new List<RegisteredGame>();
 
-            collection.AsQueryable().Where(game => game["players.username"] == User.Identity.Name && game["startdate"] < selectedDate).ToList().ForEach(game => {
-                registeredGames.Add(new RegisteredGame() {
-                    Id = game["gameid"].AsInt32,
-                    Status = game["completed"].AsBoolean,
-                    _id = game["_id"].AsObjectId.ToString()
-                });
+            collection.AsQueryable().Where(game => game["players.username"] == User.Identity.Name && game["startdate"] < selectedDate).ToList().ForEach(game =>
+            {
+                var reggame = new RegisteredGame();
+                reggame.Id = game["gameid"].AsInt32;
+                if (game["started"].AsBoolean == true && game["completed"].AsBoolean == false) reggame.Status = "In Progress";
+                if (game["started"].AsBoolean == true && game["completed"].AsBoolean == true) reggame.Status = "Completed";
+                if (game["started"].AsBoolean == false && game["completed"].AsBoolean == false) reggame.Status = "Registered";
+                reggame._id = game["_id"].AsObjectId.ToString();
+                registeredGames.Add(reggame);
             });
 
-            registeredGames.ForEach(regGame =>{
-                var gprop =  gameProperties.AsQueryable().Where(g => g["id"] == regGame.Id).First();
+            registeredGames.ForEach(regGame =>
+            {
+                var gprop = gameProperties.AsQueryable().Where(g => g["id"] == regGame.Id).First();
                 regGame.Industry = gprop["industry"].AsString;
                 regGame.Game = gprop["name"].AsString;
-                });
+            });
 
             return registeredGames;
         }
@@ -95,7 +85,7 @@ namespace MSim.Controllers.Services
         [ActionName("CheckRegistration")]
         public async Task<object> CheckRegistration(Object registrationChoice)
         {
-             RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(registrationChoice.ToString());
+            RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(registrationChoice.ToString());
             var collection = database.GetCollection<BsonDocument>("registeredGames");
             var builder = Builders<BsonDocument>.Filter;
             var matchname = Builders<BsonDocument>.Filter.Eq("username", User.Identity.Name);
