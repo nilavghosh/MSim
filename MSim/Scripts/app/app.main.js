@@ -160,7 +160,8 @@ angular.module("appMain").config(["$stateProvider", function (t) {
     })
     .state("index.admin", {
         url: "/admin",
-        templateUrl: "/templates/admin/templates/admin.html"
+        templateUrl: "/templates/admin/templates/admin.html",
+        controller: "adminCtrl"
     })
     .state("index.playgames", {
         url: "/playgames",
@@ -278,6 +279,7 @@ function MasterCtrl($scope, e, $http, $location, $rootScope) {
     $scope.gridOptions = {
         enableRowSelection: true,
         enableSelectAll: true,
+        multiSelect: false,
         rowHeight: 35,
         showGridFooter: true,
         onRegisterApi: function (gridApi) {
@@ -310,5 +312,46 @@ function MasterCtrl($scope, e, $http, $location, $rootScope) {
            //  pushMessage(response.statusText, 'info');
        });
     }
+
+
 }
 angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", "$location", "$rootScope", MasterCtrl]);
+
+
+angular.module("app.controllers", [])
+
+    //Admin Controller
+    .controller("adminCtrl", ["$scope", "$http", "$rootScope", function ($scope, $http, $rootScope) {
+        $scope.admingridOptions = {
+            enableRowSelection: true,
+            enableSelectAll: false,
+            multiSelect: false,
+            rowHeight: 35,
+            showGridFooter: true,
+            onRegisterApi: function (gridApi) {
+                $scope.adminGridApi = gridApi;
+                gridApi.selection.on.rowSelectionChanged($scope, $scope.admingameSelected);
+            }
+        };
+        $scope.admingridOptions.columnDefs = [
+         { name: 'Industry', field: 'industry' },
+         { name: 'Game', field: 'game' },
+         { name: 'Status', field: 'status' }
+        ];
+
+        $scope.admingameSelected = function (row) {
+            $rootScope.selectedgame = $scope.adminGridApi.selection.getSelectedRows()[0];
+        }
+
+        $scope.init = function () {
+            $http.post('/api/appmain/GetAdminGamesForToday').
+           then(function (response) {
+               $scope.admingridOptions.data = response.data;
+
+           }, function (response) {
+               //  pushMessage(response.statusText, 'info');
+           });
+        };
+
+        $scope.init();
+    }]);

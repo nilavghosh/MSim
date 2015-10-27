@@ -79,6 +79,46 @@ namespace MSim.Controllers.Services
             return registeredGames;
         }
 
+        [HttpPost]
+        [ActionName("GetAdminGamesForToday")]
+        public object GetAdminGamesForToday()
+        {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            var gameProperties = database.GetCollection<BsonDocument>("gameProperties");
+
+            var selectedDate = new BsonDateTime(DateTime.Today);
+            List<RegisteredGame> registeredGames = new List<RegisteredGame>();
+
+            collection.AsQueryable().Where(game => game["players.username"] == User.Identity.Name && game["startdate"] < selectedDate).ToList().ForEach(game =>
+            {
+                var reggame = new RegisteredGame();
+                reggame.Id = game["gameid"].AsInt32;
+                if (game["started"].AsBoolean == true && game["completed"].AsBoolean == false) reggame.Status = "In Progress";
+                if (game["started"].AsBoolean == true && game["completed"].AsBoolean == true) reggame.Status = "Completed";
+                if (game["started"].AsBoolean == false && game["completed"].AsBoolean == false) reggame.Status = "Start Now";
+                reggame._id = game["_id"].AsObjectId.ToString();
+                registeredGames.Add(reggame);
+            });
+
+            registeredGames.ForEach(regGame =>
+            {
+                var gprop = gameProperties.AsQueryable().Where(g => g["id"] == regGame.Id).First();
+                regGame.Industry = gprop["industry"].AsString;
+                regGame.Game = gprop["name"].AsString;
+            });
+
+            return registeredGames;
+        }
+
+
+        [HttpPost]
+        [ActionName("GetPlayerStatusForGame")]
+        public object GetPlayerStatusForGame(object selected)
+        {
+            return null;
+        }
+
+
 
 
         [HttpPost]
