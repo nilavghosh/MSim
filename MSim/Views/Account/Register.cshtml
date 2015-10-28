@@ -22,7 +22,7 @@
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Hometown, new { @class = "form-control" })
         </div>
-    </div>    
+    </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -41,29 +41,7 @@
         </div>
     </div>
 }
-
-<!doctype html>
-<head>
-    <meta charset="utf-8">
-    <title>AngularJS Plunker</title>
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="https://rawgit.com/n3-charts/pie-chart/master/dist/pie-chart.min.js"></script>
-    <script src="app.js"></script>
-
-</head>
-<body ng-controller="appMainCtrl">
-    <div>
-        <pie-chart data="pieData" options="pieOptions"></pie-chart>
-    </div>
-</body>
-
-
-
-
-
-
-
+    
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

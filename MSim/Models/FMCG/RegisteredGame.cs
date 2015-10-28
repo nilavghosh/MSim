@@ -17,4 +17,10 @@ namespace MSim.Models.FMCG
         public string GameCode { get; set; }
         public int selectedquarter { get; set; }
     }
+
+    public class Player
+    {
+        public string username { get; set; }
+        public bool joined { get; set; }
+    }
 }

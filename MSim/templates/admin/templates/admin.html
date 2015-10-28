@@ -73,21 +73,56 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr><th class="text-center">ID</th><th>Username</th><th>Role</th><th>Account</th></tr>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Name</th>
+                                    <th>Joined</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="text-center">1</td><td>Joe Bloggs</td><td>Super Admin</td><td>AZ23045</td></tr>
-                                <tr><td class="text-center">2</td><td>Timothy Hernandez</td><td>Admin</td><td>AU24783</td></tr>
-                                <tr><td class="text-center">3</td><td>Joe Bickham</td><td>User</td><td>AM23781</td></tr>
+                                <tr ng-repeat="player in players">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{player.username}}</td>
+                                    <td><button type="button" class="btn btn-circle" ng-class="player.joined ? 'btn-success' : 'btn-danger'"></button></td>
+                                </tr>
                             </tbody>
+                            <!--<tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td>Joe Bloggs</td>
+                                    <td>Super Admin</td>
+                                    <td><button type="button" class="btn btn-danger btn-circle"></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">2</td>
+                                    <td>Timothy Hernandez</td>
+                                    <td>Admin</td>
+                                    <td><button type="button" class="btn btn-success btn-circle"></button></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">3</td>
+                                    <td>Joe Bickham</td>
+                                    <td>User</td>
+                                    <td><button type="button" class="btn btn-success btn-circle"></button></td>
+                                </tr>
+                            </tbody>-->
                         </table>
                     </div>
                 </rd-widget-body>
                 <rd-widget>
         </div>
+        <div class="row row-top-buffer well well-lg">
+            <div class="col-md-7 col-md-offset-3">
+                <form method="get">
+                    <button class="btn-lg btn-success" ng-disabled="selectedgame == null" ng-click="startGame()" type="button">Start &nbsp; Game!</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row">
+
+
+<!--<div class="row">
     <div class="col-lg-6">
         <rd-widget>
             <rd-widget-header icon="fa-plus" title="Extras">
@@ -114,4 +149,4 @@
             </rd-widget-body>
         </rd-widget>
     </div>
-</div>
+</div>-->

@@ -21,7 +21,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public AppMainController()
         {
-            var client = new MongoClient(@"mongodb://visualstudio-vm.cloudapp.net:27017/");
+            var client = new MongoClient(@"mongodb://127.0.0.1:27017/");
             database = client.GetDatabase("MSim");
         }
 
@@ -113,10 +113,33 @@ namespace MSim.Controllers.Services
 
         [HttpPost]
         [ActionName("GetPlayerStatusForGame")]
-        public object GetPlayerStatusForGame(object selected)
+        public object GetPlayerStatusForGame(object selgame)
         {
-            return null;
+            RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(selgame.ToString());
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            ObjectId gameid = ObjectId.Parse(selectedgame._id);
+            var players = collection.AsQueryable().Where(game => game["_id"] == gameid).First()["players"];
+            string quarterDatainJson = players.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+            return Newtonsoft.Json.JsonConvert.DeserializeObject(quarterDatainJson);
         }
+
+        [HttpPost]
+        [ActionName("StartGame")]
+        public async Task<object> StartGame(object selgame)
+        {
+            RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(selgame.ToString());
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            ObjectId gameid = ObjectId.Parse(selectedgame._id);
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", gameid);
+            var update = Builders<BsonDocument>.Update.Set("started", true);
+            var result = await collection.UpdateOneAsync(filter, update);
+            return true;
+        }
+
+
+
+
+
 
 
 
