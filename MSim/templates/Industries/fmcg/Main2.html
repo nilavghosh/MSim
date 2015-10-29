@@ -1,6 +1,6 @@
 ﻿<section id="homepage" class="view" ng-controller="fmcgCtrl">
     <div class="row">
-        <div id="flashy" class="animated flash infinite col-md-3 col-md-offset-5">
+        <div class="col-md-3 col-md-offset-5">
             <knob knob-data="data" knob-options="options7"></knob>
         </div>
     </div>
@@ -16,6 +16,59 @@
             <br />
         </div>
     </div>
+
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': selectedquarter == 1}">
+                <a href="#home" data-toggle="tab" title="welcome">
+                    <div ng-class="{'animated flash infinite': data > 0 && isQuarter1Started && !isQuarter1Over}">
+                        <span class="round-tabs one">
+                            Q1
+                        </span>
+                    </div>
+                </a>
+            </li>
+
+
+            <li ng-class="{'active': selectedquarter == 2}">
+                <a href=" #profile" data-toggle="tab" title="profile">
+                    <div ng-class="{'animated flash infinite': data > 0 && isQuarter2Started && !isQuarter2Over}">
+                        <span class="round-tabs two">
+                            Q2
+                        </span>
+                    </div>
+                </a>
+            </li>
+
+
+            <li ng-class="{'active': selectedquarter == 3}">
+                <a href="#messages" data-toggle="tab" title="bootsnipp goodies">
+                    <span class="round-tabs three">
+                        Q3
+                    </span>
+                </a>
+            </li>
+
+            <li class="disabled" ng-class="{'disabled': !isQuarter4Started}">
+                <a href="#settings" data-toggle="tab" title="blah blah">
+                    <span class="round-tabs four">
+                        Q4
+                    </span>
+                </a>
+            </li>
+
+            <li class="disabled">
+                <a href="#doner" data-toggle="tab" title="completed">
+                    <span class="round-tabs five">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
     <div class="row">
         <div class="col-md-2">
             <a type="button" ui-sref="playgame.Dashboard" href="" class="btn btn-success">Back to Dashboard</a>
