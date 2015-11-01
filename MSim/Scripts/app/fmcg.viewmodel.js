@@ -1,11 +1,13 @@
 ﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
+        $scope.startedquarter = 1;
+
         $scope.calculateFMCGClient = function () {
             $scope.FMCGClient.ExMILL = function () { FMCGDataModel.MustardOilPercentage * 2 };
         }
 
-       
+
 
         //$scope.$watch("x*y", function (result) {
         //    console.log('new result', result);
@@ -370,7 +372,8 @@
                 choice = {
                     selectedGameId: 1,
                     code: "1234A",
-                    selectedquarter: $scope.selectedquarter
+                    selectedquarter: $scope.selectedquarter,
+                    startedquarter: $scope.startedquarter
                 }
                 $http.post("api/fmcgservice/GetTimeLeft", choice).then(function (game) {
                     if (game.data["qstarted"] == false) {
@@ -385,12 +388,10 @@
                             TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
                             $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
                             $scope.$broadcast('timer-stop');
-                            $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                         }
                         else {
                             TimerService["isQuarter" + $scope.selectedquarter + "Over"] = false;
                             $scope["isQuarter" + $scope.selectedquarter + "Over"] = false;
-                            $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                             $scope.$broadcast('timer-set-countdown', t);
                             $scope.$broadcast('timer-start');
                             TimerService.timervalue = t;
@@ -403,7 +404,8 @@
                     var choice = {
                         selectedGameId: 1,
                         code: "1234A",
-                        selectedquarter: $scope.selectedquarter
+                        selectedquarter: $scope.selectedquarter,
+                        startedquarter: $scope.startedquarter
                     }
                     $http.post("api/fmcgservice/GetStartedQuarters", choice).then(function (startedquarters) {
                         $scope.isQuarter1Started = startedquarters.data["q1started"];
@@ -414,6 +416,29 @@
                         TimerService.isQuarter2Started = startedquarters.data["q2started"];
                         TimerService.isQuarter3Started = startedquarters.data["q3started"];
                         TimerService.isQuarter4Started = startedquarters.data["q4started"];
+
+                        $scope.isQuarter1Over = startedquarters.data["q1over"];
+                        $scope.isQuarter2Over = startedquarters.data["q2over"];
+                        $scope.isQuarter3Over = startedquarters.data["q3over"];
+                        $scope.isQuarter4Over = startedquarters.data["q4over"];
+                        TimerService.isQuarter1Over = startedquarters.data["q1over"];
+                        TimerService.isQuarter2Over = startedquarters.data["q2over"];
+                        TimerService.isQuarter3Over = startedquarters.data["q3over"];
+                        TimerService.isQuarter4Over = startedquarters.data["q4over"];
+                        if ($scope.isQuarter1Started == true && $scope.isQuarter1Over == false)
+                        {
+                           $scope.startedquarter = 1
+                        }
+                        if ($scope.isQuarter2Started == true && $scope.isQuarter2Over == false) {
+                            $scope.startedquarter = 2
+                        }
+                        if ($scope.isQuarter3Started == true && $scope.isQuarter3Over == false) {
+                            $scope.startedquarter = 3
+                        }
+                        if ($scope.isQuarter4Started == true && $scope.isQuarter4Over == false) {
+                            $scope.startedquarter = 4
+                        }
+                        $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                     });
                 });
             }

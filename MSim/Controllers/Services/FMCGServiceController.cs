@@ -38,7 +38,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public FMCGServiceController()
         {
-            var client = new MongoClient(@"mongodb://127.0.0.1:27017/");
+            var client = new MongoClient(@"mongodb://visualstudio-vm.cloudapp.net:27017/");
             database = client.GetDatabase("MSim");
         }
 
@@ -144,10 +144,17 @@ namespace MSim.Controllers.Services
 
             var game = await collection.Find(filter).FirstAsync();
             Dictionary<String, object> gameInfo = new Dictionary<string, object>();
+          
             gameInfo["q1started"] = game["q1started"];
             gameInfo["q2started"] = game["q2started"];
             gameInfo["q3started"] = game["q3started"];
             gameInfo["q4started"] = game["q4started"];
+
+            gameInfo["q1over"] = (Int32)game["q1starttime"].ToUniversalTime().AddMinutes(game["q1duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+            gameInfo["q2over"] = (Int32)game["q2starttime"].ToUniversalTime().AddMinutes(game["q2duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+            gameInfo["q3over"] = (Int32)game["q3starttime"].ToUniversalTime().AddMinutes(game["q3duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+            gameInfo["q4over"] = (Int32)game["q4starttime"].ToUniversalTime().AddMinutes(game["q4duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+
             return gameInfo;
         }
 
@@ -644,9 +651,9 @@ namespace MSim.Controllers.Services
             var game = await collection.Find(filter).FirstAsync();
             Dictionary<String, object> gameInfo = new Dictionary<string, object>();
 
-            string qstarted = "q" + selectedgame.selectedquarter.ToString() + "started";
-            string qstarttime = "q" + selectedgame.selectedquarter.ToString() + "starttime";
-            string qduration = "q" + selectedgame.selectedquarter.ToString() + "duration";
+            string qstarted = "q" + selectedgame.startedquarter.ToString() + "started";
+            string qstarttime = "q" + selectedgame.startedquarter.ToString() + "starttime";
+            string qduration = "q" + selectedgame.startedquarter.ToString() + "duration";
 
             gameInfo["qstarted"] = game[qstarted];
             int qtimeleft = (Int32)game[qstarttime].ToUniversalTime().AddMinutes(game[qduration].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds;

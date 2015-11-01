@@ -348,6 +348,7 @@ angular.module("app.controllers").controller("adminCtrl", ["$scope", "$http", fu
         });
     }
 
+
     $scope.startGame = function () {
         $http.post('/api/appmain/StartGame', $scope.selectedgame).
         then(function (response) {

@@ -21,7 +21,7 @@ namespace MSim.Controllers.Services
         public IMongoDatabase database { get; set; }
         public AppMainController()
         {
-            var client = new MongoClient(@"mongodb://127.0.0.1:27017/");
+            var client = new MongoClient(@"mongodb://visualstudio-vm.cloudpp.net:27017/");
             database = client.GetDatabase("MSim");
         }
 
