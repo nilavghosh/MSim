@@ -252,6 +252,7 @@
     <Compile Include="Models\FMCG\GamePlayerData.cs" />
     <Compile Include="Models\FMCG\InputMapping.cs" />
     <Compile Include="Models\FMCG\MarketReportMapping.cs" />
+    <Compile Include="Models\FMCG\PlayerRank.cs" />
     <Compile Include="Models\FMCG\RegisteredGame.cs" />
     <Compile Include="Models\FMCG\ReportMapping.cs" />
     <Compile Include="Models\FMCG\UserMarketShare.cs" />
@@ -1981,6 +1982,7 @@
     <Content Include="templates\Industries\fmcg\Dashboard.html" />
     <Content Include="templates\Industries\fmcg\Main2.html" />
     <Content Include="templates\Industries\fmcg\MarketReports\MarketReports.html" />
+    <Content Include="templates\Industries\fmcg\Rankings\Ranking.html" />
     <Content Include="templates\Main.html" />
     <Content Include="templates\admin\img\avatar.jpg" />
     <Content Include="templates\admin\index.html" />

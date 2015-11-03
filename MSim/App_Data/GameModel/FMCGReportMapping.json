@@ -42,7 +42,8 @@
         "Player": 10,
         "CellInfo": "A4:A24,K4:K24"
       }
-    ]
+    ],
+    "PATRanking": "B24:K24"
   },
   "Quarter2": {
     "SheetName": "Financials",
@@ -87,7 +88,8 @@
         "Player": 10,
         "CellInfo": "A28:A48,K28:K48"
       }
-    ]
+    ],
+    "PATRanking": "B48:K48"
   },
   "Quarter3": {
     "SheetName": "Financials",
@@ -132,7 +134,8 @@
         "Player": 10,
         "CellInfo": "A52:A76,K52:K76"
       }
-    ]
+    ],
+    "PATRanking": "B76:K76"
   },
   "Quarter4": {
     "SheetName": "Financials",
@@ -177,6 +180,7 @@
         "Player": 10,
         "CellInfo": "A80:A104,K80:K104"
       }
-    ]
+    ],
+    "PATRanking": "B104:K104"
   }
 }

@@ -17,6 +17,7 @@ namespace MSim.Models.FMCG.Report
     {
         public string SheetName { get; set; }
         public IList<PlayerReport> PlayerReport { get; set; }
+        public string PATRanking { get; set; }
     }
 
     public class ReportMapping : Dictionary<String, Quarter>

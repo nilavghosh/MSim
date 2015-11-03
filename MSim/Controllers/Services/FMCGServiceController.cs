@@ -144,7 +144,7 @@ namespace MSim.Controllers.Services
 
             var game = await collection.Find(filter).FirstAsync();
             Dictionary<String, object> gameInfo = new Dictionary<string, object>();
-          
+
             gameInfo["q1started"] = game["q1started"];
             gameInfo["q2started"] = game["q2started"];
             gameInfo["q3started"] = game["q3started"];
@@ -251,12 +251,6 @@ namespace MSim.Controllers.Services
             {
                 string json = r.ReadToEnd();
                 InputMapping mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<InputMapping>(json);
-                //using (StreamReader reg = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGReportMapping.json")))
-                //{
-                //    string jkon = reg.ReadToEnd();
-                //    ReportMapping mapping2 = Newtonsoft.Json.JsonConvert.DeserializeObject<ReportMapping>(jkon);
-                //    int i = 1;
-                //}
                 return mapping;
             }
         }
@@ -384,6 +378,17 @@ namespace MSim.Controllers.Services
                 return mapping["Quarter" + quarter.ToString()].PlayerReport.Where(pr => pr.Player == player).First().CellInfo;
             }
         }
+
+        public String GetRankingReportRange(int quarter)
+        {
+            using (StreamReader r = new StreamReader(HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCGReportMapping.json")))
+            {
+                string json = r.ReadToEnd();
+                ReportMapping mapping = Newtonsoft.Json.JsonConvert.DeserializeObject<ReportMapping>(json);
+                return mapping["Quarter" + quarter.ToString()].PATRanking;
+            }
+        }
+
 
 
         [HttpPost]
@@ -559,7 +564,7 @@ namespace MSim.Controllers.Services
                         Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
 
                         List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet, GetReportDataRange(selectedgame.selectedquarter, playerindex));
-                        book["Financials"] = FinancialValues;
+                        book["Rankings"] = FinancialValues;
 
                         string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                         return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
@@ -636,6 +641,125 @@ namespace MSim.Controllers.Services
             await collection.ReplaceOneAsync(filter, game);
             return game;
         }
+
+        [HttpPost]
+        [ActionName("GetPlayerRankings")]
+        public async Task<object> GetPlayerRankings(Object registrationChoice)
+        {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+            var game = await collection.Find(filter).FirstAsync();
+            var players = game["players"].AsBsonArray.Select(g => g["username"]);
+
+            int playerindex = players.ToList().IndexOf(User.Identity.Name) + 1;
+
+
+            var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
+            var FMCGModelFile = new FileInfo(filepath);
+            using (var FMCGModel = new ExcelPackage(FMCGModelFile))
+            {
+                // Get the work book in the file
+                ExcelWorkbook FMCGworkBook = FMCGModel.Workbook;
+                if (FMCGworkBook != null)
+                {
+                    if (FMCGworkBook.Worksheets.Count > 0)
+                    {
+                        var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
+                        var Quarter2Sheet = FMCGworkBook.Worksheets["Quarter 2"];
+                        var Quarter3Sheet = FMCGworkBook.Worksheets["Quarter 3"];
+                        var Quarter4Sheet = FMCGworkBook.Worksheets["Quarter 4"];
+                        var BESheet = FMCGworkBook.Worksheets["Brand Equity"];
+                        var FinancialsSheet = FMCGworkBook.Worksheets["Financials"];
+
+                        InputMapping mapping = GetMapping();
+
+                        List<BsonDocument> playerdata = await GetAllPlayerDataFromDB(registrationChoice);
+                        var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
+                        {
+                            username = p.Key,
+                            Qtr = p.ToList()
+                        }).ToList();
+
+                        #region Update quarter data
+                        int playercount = 0;
+                        mapping.Quarter1.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[0].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter2.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter2Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[1][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter3.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter3Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[2].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[2][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter4.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter4Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[3].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[3][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        #endregion
+
+                        FMCGworkBook.Calculate();
+                        //Quarter1Sheet.Calculate();
+                        //FinancialsSheet.Calculate();
+                        //BESheet.Calculate();
+                        //Quarter2Sheet.Calculate();
+
+                        Dictionary<String, List<PlayerRank>> book = new Dictionary<string,List<PlayerRank>>();
+
+                        List<List<string>> PATValues = GetSheetValues(FinancialsSheet, GetRankingReportRange(selectedgame.selectedquarter));
+
+                        List<PlayerRank> RankingValues = new List<PlayerRank>();
+
+                        for (int i = 0; i < players.Count(); i++)
+                        {
+                            RankingValues.Add(new PlayerRank()
+                            {
+                                playername = players.ToList()[i].AsString,
+                                pat = Double.Parse(PATValues[0][i]),
+                                rank = i + 1
+                            });
+                        }
+
+
+                        book["Financials"] = RankingValues;
+
+                        string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                        return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+                    }
+                }
+            }
+            return 1;
+        }
+
+
+
+
 
         [HttpPost]
         [ActionName("GetTimeLeft")]

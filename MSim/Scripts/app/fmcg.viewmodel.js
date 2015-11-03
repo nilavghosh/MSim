@@ -425,9 +425,8 @@
                         TimerService.isQuarter2Over = startedquarters.data["q2over"];
                         TimerService.isQuarter3Over = startedquarters.data["q3over"];
                         TimerService.isQuarter4Over = startedquarters.data["q4over"];
-                        if ($scope.isQuarter1Started == true && $scope.isQuarter1Over == false)
-                        {
-                           $scope.startedquarter = 1
+                        if ($scope.isQuarter1Started == true && $scope.isQuarter1Over == false) {
+                            $scope.startedquarter = 1
                         }
                         if ($scope.isQuarter2Started == true && $scope.isQuarter2Over == false) {
                             $scope.startedquarter = 2
@@ -503,6 +502,28 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
             state('playgame.MarketReports', {
                 url: '/MarketReports',
                 templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html'
+            }).
+            state('playgame.Rankings', {
+                url: '/Rankings',
+                templateUrl: 'templates/industries/fmcg/Rankings/Ranking.html',
+                params: {
+                    selectedquarter: null,
+                },
+                resolve: {
+                    rankings: function ($http, $stateParams) {
+                        var choice = {
+                            selectedGameId: 1,
+                            code: "1234A",
+                            selectedquarter: $stateParams.selectedquarter
+                        }
+                        return $http.post("api/fmcgservice/GetPlayerRankings", choice).then(function (data) {
+                            return data;
+                        });
+                    }
+                },
+                controller: function ($scope, rankings) {
+                    $scope.Rankings = rankings.data.Financials;
+                }
             }).
             state('/StartQuarter', {
                 url: '/StartQuarter',
