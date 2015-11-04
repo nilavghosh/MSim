@@ -1,6 +1,25 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "angular-spinkit", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
+        $rootScope.spinner = {
+            active: false,
+            on: function () {
+                this.active = true;
+            },
+            off: function () {
+                this.active = false;
+            }
+        }
+        $rootScope.$on('$stateChangeStart', function () {
+            $rootScope.spinner.on();
+        });
+        $rootScope.$on('$stateChangeSuccess', function () {
+            $rootScope.spinner.off();
+        });
+
+        $scope.notStartedAlert = function (qtr) {
+            pushMessage("danger", "Quarter " + qtr + " not started yet.");
+        }
         $scope.startedquarter = 1;
 
         $scope.calculateFMCGClient = function () {
@@ -449,9 +468,9 @@
                     code: "1234A",
                     selectedquarter: $scope.selectedquarter
                 }
-                $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
-                    $scope.items = report.data["Financials"];
-                });
+                //$http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
+                //    $scope.items = report.data["Financials"];
+                //});
 
                 $http.post("api/fmcgservice/GetMarketReport", choice).then(function (report) {
                     $scope.doughlabels = report.data["Players"][0];
@@ -468,6 +487,29 @@
         $scope.init();
     }]);
 
+fmcgGame.directive('stateLoadingIndicator', function ($rootScope) {
+    return {
+        restrict: 'E',
+        template: "<div ng-show='isStateLoading' class='loading-indicator'>" +
+        "<div class='loading-indicator-body'>" +
+        "<h3 class='loading-title'>Loading...</h3>" +
+        "<div class='spinner'><chasing-dots-spinner></chasing-dots-spinner></div>" +
+        "</div>" +
+        "</div>",
+        replace: true,
+        link: function (scope, elem, attrs) {
+            scope.isStateLoading = false;
+            $rootScope.$on('$stateChangeStart', function () {
+                scope.isStateLoading = true;
+                $rootScope.spinner.on();
+            });
+            $rootScope.$on('$stateChangeSuccess', function () {
+                scope.isStateLoading = false;
+                $rootScope.spinner.off();
+            });
+        }
+    };
+});
 
 //http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router
 fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -497,7 +539,25 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
             }).
             state('playgame.Q1-Reports', {
                 url: '/Q1-Reports',
-                templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html'
+                templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
+                params: {
+                    selectedquarter: null,
+                },
+                resolve: {
+                    financials: function ($http, $stateParams) {
+                        var choice = {
+                            selectedGameId: 1,
+                            code: "1234A",
+                            selectedquarter: $stateParams.selectedquarter
+                        }
+                        return $http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
+                            return report.data["Financials"];
+                        });
+                    }
+                },
+                controller: function ($scope, financials) {
+                    $scope.items = financials;
+                }
             }).
             state('playgame.MarketReports', {
                 url: '/MarketReports',
@@ -658,9 +718,6 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
         }
 
     }]);
-
-
-
 
 
 

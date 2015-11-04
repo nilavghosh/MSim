@@ -18,6 +18,8 @@
         </script>*@
 </head>
 <body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
     @Styles.Render("~/Content/css")
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -80,8 +82,6 @@
         </div>
     </div>
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/games")
     @RenderSection("Scripts", required: false)

@@ -390,7 +390,7 @@ namespace MSim.Controllers.Services
         }
 
 
-
+        [AllowAnonymous]
         [HttpPost]
         [ActionName("GetFMCGGameDesignerDataSheet")]
         public async Task<object> GetFMCGGameDesignerDataSheet(Object registrationChoice)
@@ -564,7 +564,7 @@ namespace MSim.Controllers.Services
                         Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
 
                         List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet, GetReportDataRange(selectedgame.selectedquarter, playerindex));
-                        book["Rankings"] = FinancialValues;
+                        book["Financials"] = FinancialValues;
 
                         string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                         return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
@@ -741,7 +741,7 @@ namespace MSim.Controllers.Services
                             RankingValues.Add(new PlayerRank()
                             {
                                 playername = players.ToList()[i].AsString,
-                                pat = Double.Parse(PATValues[0][i]),
+                                pat = PATValues[0][i],
                                 rank = i + 1
                             });
                         }

@@ -259,6 +259,7 @@ function AlertsCtrl(e) {
         e.alerts.splice(t, 1)
     }
 }
+
 angular.module("appMain").controller("AlertsCtrl", ["$scope", AlertsCtrl]);
 
 function MasterCtrl($scope, e, $http, $location, $rootScope) {

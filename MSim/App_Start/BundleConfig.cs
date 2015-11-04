@@ -40,7 +40,11 @@ namespace MSim
                  "~/Scripts/bower_components/angular-cookies/angular-cookies.min.js",
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.js",
                  "~/Scripts/bower_components/angular-nvd3/dist/angular-nvd3.min.js",
-                 "~/Scripts/app/appbasic.main.js"
+                 "~/Scripts/bower_components/angular-spinkit/build/angular-spinkit.min.js",
+                 "~/Scripts/bower_components/angular-treasure-overlay-spinner/dist/treasure-overlay-spinner.min.js",
+                 "~/Scripts/app/appbasic.main.js",
+                 "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
+                 "~/Scripts/handsontable-extensions/angular/ngHandsontable.js"
                 ));
 
 
@@ -54,9 +58,7 @@ namespace MSim
 
 
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                "~/Scripts/handsontable-extensions/setSheetDimensions.js",
-                "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
-                "~/Scripts/handsontable-extensions/angular/ngHandsontable.js",
+                 "~/Scripts/handsontable-extensions/setSheetDimensions.js",
                 "~/Scripts/admin.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -83,7 +85,9 @@ namespace MSim
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.css",
                  "~/Scripts/bower_components/font-awesome/css/font-awesome.min.css",
                  "~/Scripts/bower_components/animate/animate.min.css",
-                 "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.css"
+                 "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.css",
+                 "~/Scripts/bower_components/angular-spinkit/build/angular-spinkit.min.css",
+                 "~/Scripts/bower_components/angular-treasure-overlay-spinner/dist/treasure-overlay-spinner.min.css"
                   ));
 
 

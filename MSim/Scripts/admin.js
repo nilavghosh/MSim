@@ -1,4 +1,4 @@
-﻿angular.module("ngHandsontableDemo", ['ngHandsontable']).config(['$httpProvider', function ($httpProvider) {
+﻿angular.module("ngHandsontableDemo").config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
     $httpProvider.defaults.headers.post = {
         'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),

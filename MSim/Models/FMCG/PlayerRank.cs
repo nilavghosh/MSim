@@ -9,6 +9,6 @@ namespace MSim.Models.FMCG
     {
         public String playername { get; set; }
         public int rank { get; set; }
-        public double pat { get; set; }
+        public string pat { get; set; }
     }
 }
