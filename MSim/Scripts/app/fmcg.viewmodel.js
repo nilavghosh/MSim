@@ -1,4 +1,4 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "angular-spinkit", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
 
         $rootScope.spinner = {
@@ -486,30 +486,6 @@
         }
         $scope.init();
     }]);
-
-fmcgGame.directive('stateLoadingIndicator', function ($rootScope) {
-    return {
-        restrict: 'E',
-        template: "<div ng-show='isStateLoading' class='loading-indicator'>" +
-        "<div class='loading-indicator-body'>" +
-        "<h3 class='loading-title'>Loading...</h3>" +
-        "<div class='spinner'><chasing-dots-spinner></chasing-dots-spinner></div>" +
-        "</div>" +
-        "</div>",
-        replace: true,
-        link: function (scope, elem, attrs) {
-            scope.isStateLoading = false;
-            $rootScope.$on('$stateChangeStart', function () {
-                scope.isStateLoading = true;
-                $rootScope.spinner.on();
-            });
-            $rootScope.$on('$stateChangeSuccess', function () {
-                scope.isStateLoading = false;
-                $rootScope.spinner.off();
-            });
-        }
-    };
-});
 
 //http://stackoverflow.com/questions/27696612/how-do-i-share-scope-data-between-states-in-angularjs-ui-router
 fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
