@@ -75,7 +75,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-md-offset-4">
-                                <input type="text" class="form-control input-lg text-center" id="gameCode" ng-disabled="selectedgame.status != 'Registered'" ng-model="selectedgame.gamecode" placeholder="CODE">
+                                <!--ng-disabled="selectedgame.status != 'Registered'"-->
+                                <input type="text" class="form-control input-lg text-center" id="gameCode" ng-model="selectedgame.gamecode" placeholder="CODE">
                             </div>
                         </div>
                     </div>
@@ -85,7 +86,8 @@
         <div class="row row-top-buffer">
             <div class="col-md-7 col-md-offset-5">
                 <form method="get">
-                    <button class="btn-lg btn-success" ng-disabled="selectedgame.status != 'Registered'" ng-click="go('/playGame')" type="button">Play &nbsp; Now!</button>
+                    <!--ng-disabled="selectedgame.status != 'Registered'"-->
+                    <button class="btn-lg btn-success" ng-click="go('/playGame')" type="button">Play &nbsp; Now!</button>
                 </form>
             </div>
         </div>
