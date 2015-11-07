@@ -144,17 +144,31 @@ namespace MSim.Controllers.Services
 
             var game = await collection.Find(filter).FirstAsync();
             Dictionary<String, object> gameInfo = new Dictionary<string, object>();
+            if (game["started"] == true)
+            {
+                gameInfo["q1started"] = game["q1started"];
+                gameInfo["q2started"] = game["q2started"];
+                gameInfo["q3started"] = game["q3started"];
+                gameInfo["q4started"] = game["q4started"];
 
-            gameInfo["q1started"] = game["q1started"];
-            gameInfo["q2started"] = game["q2started"];
-            gameInfo["q3started"] = game["q3started"];
-            gameInfo["q4started"] = game["q4started"];
+                gameInfo["q1over"] = (Int32)game["q1starttime"].ToUniversalTime().AddMinutes(game["q1duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+                gameInfo["q2over"] = (Int32)game["q2starttime"].ToUniversalTime().AddMinutes(game["q2duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+                gameInfo["q3over"] = (Int32)game["q3starttime"].ToUniversalTime().AddMinutes(game["q3duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+                gameInfo["q4over"] = (Int32)game["q4starttime"].ToUniversalTime().AddMinutes(game["q4duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
+            }
+            else
+            {
+                gameInfo["q1started"] = false;
+                gameInfo["q2started"] = false;
+                gameInfo["q3started"] = false;
+                gameInfo["q4started"] = false;
 
-            gameInfo["q1over"] = (Int32)game["q1starttime"].ToUniversalTime().AddMinutes(game["q1duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
-            gameInfo["q2over"] = (Int32)game["q2starttime"].ToUniversalTime().AddMinutes(game["q2duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
-            gameInfo["q3over"] = (Int32)game["q3starttime"].ToUniversalTime().AddMinutes(game["q3duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
-            gameInfo["q4over"] = (Int32)game["q4starttime"].ToUniversalTime().AddMinutes(game["q4duration"].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds > 0 ? false : true;
-
+                gameInfo["q1over"] = false;
+                gameInfo["q2over"] = false;
+                gameInfo["q3over"] = false;
+                gameInfo["q4over"] = false;
+            }
+            gameInfo["started"] = game["started"];
             return gameInfo;
         }
 
@@ -621,10 +635,10 @@ namespace MSim.Controllers.Services
         [AllowAnonymous]
         [HttpPost]
         [ActionName("StartQuarter")]
-        public async Task<object> StartQuarter(object registrationChoice)
+        public async Task<object> StartQuarter(SelectedGame selectedgame)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
-            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+            //SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
 
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
@@ -633,8 +647,8 @@ namespace MSim.Controllers.Services
 
             var game = await collection.Find(filter).FirstAsync();
 
-            string qstarttime = "q" + selectedgame.selectedquarter.ToString() + "starttime";
-            string qstarted = "q" + selectedgame.selectedquarter.ToString() + "started";
+            string qstarttime = "q" + selectedgame.startedquarter.ToString() + "starttime";
+            string qstarted = "q" + selectedgame.startedquarter.ToString() + "started";
 
             game[qstarttime] = DateTime.UtcNow;
             game[qstarted] = true;
@@ -730,7 +744,7 @@ namespace MSim.Controllers.Services
                         //BESheet.Calculate();
                         //Quarter2Sheet.Calculate();
 
-                        Dictionary<String, List<PlayerRank>> book = new Dictionary<string,List<PlayerRank>>();
+                        Dictionary<String, List<PlayerRank>> book = new Dictionary<string, List<PlayerRank>>();
 
                         List<List<string>> PATValues = GetSheetValues(FinancialsSheet, GetRankingReportRange(selectedgame.selectedquarter));
 
@@ -781,13 +795,18 @@ namespace MSim.Controllers.Services
 
             gameInfo["qstarted"] = game[qstarted];
             int qtimeleft = (Int32)game[qstarttime].ToUniversalTime().AddMinutes(game[qduration].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds;
-            if (qtimeleft < 0)
+            if (game["started"].AsBoolean == true)
             {
-                gameInfo["qtimeleft"] = 0;
-            }
-            else
-            {
-                gameInfo["qtimeleft"] = qtimeleft;
+                if (qtimeleft < 0 && selectedgame.startedquarter < 4)
+                {
+                    gameInfo["qtimeleft"] = 0;
+                    selectedgame.startedquarter += 1;
+                    StartQuarter(selectedgame);
+                }
+                else
+                {
+                    gameInfo["qtimeleft"] = qtimeleft;
+                }
             }
             return gameInfo;
         }

@@ -17,6 +17,8 @@
             $rootScope.spinner.off();
         });
 
+        $scope.gameStarted = false;
+
         $scope.notStartedAlert = function (qtr) {
             pushMessage("danger", "Quarter " + qtr + " not started yet.");
         }
@@ -318,6 +320,13 @@
                 $scope.FMCGClient.PriceToRetailer = function () { return $scope.FMCGClient.PriceToDistributor() * (1 + $scope.FMCGDataModel.DistributorMargin) }
                 $scope.FMCGClient.PriceToCustomer = function () { return $scope.FMCGClient.PriceToRetailer() * (1 + $scope.FMCGDataModel.RetailerMargin) }
 
+                $scope.FMCGClient.VAT5L = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin5L) * .05 }
+                $scope.FMCGClient.PriceToDistributor5L = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin5L) + $scope.FMCGClient.VAT() }
+                $scope.FMCGClient.PriceToRetailer5L = function () { return $scope.FMCGClient.PriceToDistributor5L() * (1 + $scope.FMCGDataModel.DistributorMargin5L) }
+                $scope.FMCGClient.PriceToCustomer5L = function () { return $scope.FMCGClient.PriceToRetailer5L() * (1 + $scope.FMCGDataModel.RetailerMargin5L) }
+
+
+
 
                 var atlsum = $scope.FMCGDataModel.TotalATLExpense;
                 var btlsum = $scope.FMCGDataModel.TotalBTLExpense;
@@ -444,6 +453,7 @@
                         TimerService.isQuarter2Over = startedquarters.data["q2over"];
                         TimerService.isQuarter3Over = startedquarters.data["q3over"];
                         TimerService.isQuarter4Over = startedquarters.data["q4over"];
+                        TimerService.gameStarted = startedquarters.data["started"];
                         if ($scope.isQuarter1Started == true && $scope.isQuarter1Over == false) {
                             $scope.startedquarter = 1
                         }
@@ -456,6 +466,7 @@
                         if ($scope.isQuarter4Started == true && $scope.isQuarter4Over == false) {
                             $scope.startedquarter = 4
                         }
+                        $scope.gameStarted = startedquarters.data["started"];
                         $scope.isSelectedQuarterOver = $scope["isQuarter" + $scope.selectedquarter + "Over"];
                     });
                 });
@@ -583,6 +594,7 @@ fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerSer
         isQuarter2Started: false,
         isQuarter3Started: false,
         isQuarter4Started: false,
+        gameStarted : false,
         timervalue: 0,
         getQuarter1State: getQuarter1State,
         setQuarter1State: setQuarter1State,

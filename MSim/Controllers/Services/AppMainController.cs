@@ -130,9 +130,25 @@ namespace MSim.Controllers.Services
             RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(selgame.ToString());
             var collection = database.GetCollection<BsonDocument>("registeredGames");
             ObjectId gameid = ObjectId.Parse(selectedgame._id);
+
+            //var builder = Builders<BsonDocument>.Filter;
             var filter = Builders<BsonDocument>.Filter.Eq("_id", gameid);
-            var update = Builders<BsonDocument>.Update.Set("started", true);
-            var result = await collection.UpdateOneAsync(filter, update);
+
+
+            var game = await collection.Find(filter).FirstAsync();
+            game["started"] = true;
+            game["q1starttime"] = DateTime.UtcNow;
+            game["q1started"] = true;
+            game["q2started"] = false;
+            game["q3started"] = false;
+            game["q4started"] = false;
+
+            await collection.ReplaceOneAsync(filter, game);
+
+            //var filter = Builders<BsonDocument>.Filter.Eq("_id", gameid);
+            //var update = Builders<BsonDocument>.Update.Set("started", true);
+
+            //var result = await collection.UpdateOneAsync(filter, update);
             return true;
         }
 

@@ -167,69 +167,77 @@ pre {
     border-radius: 15px;
 }
 
-.btn-circle.btn-lg {
- width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-.btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
-}
+    .btn-circle.btn-lg {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        font-size: 24px;
+        line-height: 1.33;
+        border-radius: 35px;
+    }
 
 
 
 
 .hexagon {
-  position: relative;
-  width: 300px; 
-  height: 173.21px;
-  background-color: #64C7CC;
-  margin: 86.60px 0;
-  box-shadow: 0 0 20px rgba(0,0,0,0.65);
+    position: relative;
+    width: 300px;
+    height: 173.21px;
+    background-color: #64C7CC;
+    margin: 86.60px 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.65);
 }
 
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  width: 212.13px;
-  height: 212.13px;
-  -webkit-transform: scaleY(0.5774) rotate(-45deg);
-  -ms-transform: scaleY(0.5774) rotate(-45deg);
-  transform: scaleY(0.5774) rotate(-45deg);
-  background-color: inherit;
-  left: 43.9340px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.65);
+    .hexagon:before,
+    .hexagon:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        width: 212.13px;
+        height: 212.13px;
+        -webkit-transform: scaleY(0.5774) rotate(-45deg);
+        -ms-transform: scaleY(0.5774) rotate(-45deg);
+        transform: scaleY(0.5774) rotate(-45deg);
+        background-color: inherit;
+        left: 43.9340px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.65);
+    }
+
+    .hexagon:before {
+        top: -106.0660px;
+    }
+
+    .hexagon:after {
+        bottom: -106.0660px;
+    }
+
+    /*cover up extra shadows*/
+    .hexagon span {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0;
+        width: 300px;
+        height: 173.2051px;
+        z-index: 2;
+        background: inherit;
+    }
+
+
+.hideme {
+    visibility: hidden;
 }
 
-.hexagon:before {
-  top: -106.0660px;
+.notstartedmessage {
+    display: none;
 }
-
-.hexagon:after {
-  bottom: -106.0660px;
-}
-
-/*cover up extra shadows*/
-.hexagon span {
-  display: block;
-  position: absolute;
-  top:0px;
-  left: 0;
-  width:300px;
-  height:173.2051px;
-  z-index: 2;
-  background: inherit;
-}
-
-
