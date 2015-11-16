@@ -138,6 +138,9 @@ namespace MSim.Controllers.Services
             var game = await collection.Find(filter).FirstAsync();
             game["started"] = true;
             game["q1starttime"] = DateTime.UtcNow;
+            game["q2starttime"] = DateTime.UtcNow.AddMinutes(game["q1duration"].AsInt32);
+            game["q3starttime"] = DateTime.UtcNow.AddMinutes(game["q2duration"].AsInt32 + game["q1duration"].AsInt32); ;
+            game["q4starttime"] = DateTime.UtcNow.AddMinutes(game["q1duration"].AsInt32 + game["q1duration"].AsInt32 + game["q3duration"].AsInt32); ;
             game["q1started"] = true;
             game["q2started"] = false;
             game["q3started"] = false;

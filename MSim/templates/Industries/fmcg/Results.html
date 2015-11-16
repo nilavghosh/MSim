@@ -1,0 +1,21 @@
+﻿<span ng-class="{'hideme' : !gameStarted}">
+    <div class="row">
+        <div class="col-md-9  col-md-offset-1">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail tile tile-medium tile-teal">
+                    <a ui-sref="playgame.Q1-Reports({selectedquarter : selectedquarter})" href=""><h4>FINANCIAL REPORTS</h4></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail tile tile-medium">
+                    <a ui-sref="playgame.MarketReports" href=""><h4>MARKET RESEARCH REPORTS</h4></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail tile tile-medium">
+                    <a ui-sref="playgame.Rankings({selectedquarter : selectedquarter})" href=""><h4>PLAYER RANKINGS AFTER QUARTER {{selectedquarter}} !</h4></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</span>

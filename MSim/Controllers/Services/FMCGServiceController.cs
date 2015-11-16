@@ -27,6 +27,9 @@ using OfficeOpenXml;
 using System.Web.Hosting;
 using MSim.Models.FMCG.Input;
 using MSim.Models.FMCG.Report;
+using System.Net.Http;
+using System.Net;
+using System.Net.Http.Headers;
 
 namespace MSim.Controllers.Services
 {
@@ -794,6 +797,7 @@ namespace MSim.Controllers.Services
             string qduration = "q" + selectedgame.startedquarter.ToString() + "duration";
 
             gameInfo["qstarted"] = game[qstarted];
+
             int qtimeleft = (Int32)game[qstarttime].ToUniversalTime().AddMinutes(game[qduration].AsInt32).Subtract(DateTime.UtcNow).TotalSeconds;
             if (game["started"].AsBoolean == true)
             {
@@ -863,6 +867,103 @@ namespace MSim.Controllers.Services
 
             await collection.InsertOneAsync(document);
             return Ok();
+        }
+
+        [HttpPost]
+        [ActionName("GetFinancialsasExcel")]
+        public async Task<HttpResponseMessage> GetFinancialsasExcel(Object registrationChoice)
+        {
+            var collection = database.GetCollection<BsonDocument>("registeredGames");
+            SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
+
+            var builder = Builders<BsonDocument>.Filter;
+            var filter = builder.Eq("gameid", selectedgame.selectedGameId) &
+                         builder.Eq("gamecode", selectedgame.code);
+
+            var game = await collection.Find(filter).FirstAsync();
+            var players = game["players"].AsBsonArray.Select(g => g["username"]);
+
+            int playerindex = players.ToList().IndexOf(User.Identity.Name) + 1;
+
+
+            var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
+            var FMCGModelFile = new FileInfo(filepath);
+            using (var FMCGModel = new ExcelPackage(FMCGModelFile))
+            {
+                // Get the work book in the file
+                ExcelWorkbook FMCGworkBook = FMCGModel.Workbook;
+                if (FMCGworkBook != null)
+                {
+                    if (FMCGworkBook.Worksheets.Count > 0)
+                    {
+                        var Quarter1Sheet = FMCGworkBook.Worksheets["Quarter 1"];
+                        var Quarter2Sheet = FMCGworkBook.Worksheets["Quarter 2"];
+                        var Quarter3Sheet = FMCGworkBook.Worksheets["Quarter 3"];
+                        var Quarter4Sheet = FMCGworkBook.Worksheets["Quarter 4"];
+                        var BESheet = FMCGworkBook.Worksheets["Brand Equity"];
+                        var FinancialsSheet = FMCGworkBook.Worksheets["Financials"];
+
+                        InputMapping mapping = GetMapping();
+
+                        List<BsonDocument> playerdata = await GetAllPlayerDataFromDB(registrationChoice);
+                        var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
+                        {
+                            username = p.Key,
+                            Qtr = p.ToList()
+                        }).ToList();
+
+                        int playercount = 0;
+                        #region Update quarter data
+
+
+                        mapping.Quarter1.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[0].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        mapping.Quarter2.PlayerData.ToList().ForEach(player =>
+                        {
+                            player.CellInfo.ToList().ForEach(cellinfo =>
+                            {
+                                Quarter1Sheet.Cells[cellinfo.Cell].Value = pgroups[playercount].Qtr[1].Contains(cellinfo.Name) == true ? pgroups[playercount].Qtr[0][cellinfo.Name].RawValue : 0;
+                            });
+                            playercount++;
+                        });
+                        playercount = 0;
+                        #endregion
+
+
+                        Quarter1Sheet.Calculate();
+                        FinancialsSheet.Calculate();
+                        BESheet.Calculate();
+                        Quarter2Sheet.Calculate();
+
+                        //var path = @"C:\Temp\test.exe";
+                        HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+                        var stream = FMCGModel.Stream;
+                        FileStream fs= new FileStream("Fin.xlsx",FileMode.CreateNew);
+                        stream.Position = 0;
+                        stream.CopyTo(fs);
+                        result.Content = new StreamContent(fs);
+                        result.Content.Headers.ContentType =
+                            new MediaTypeHeaderValue("application/octet-stream");
+                        return result;
+
+                        //Dictionary<String, List<List<string>>> book = new Dictionary<string, List<List<string>>>();
+
+                        //List<List<string>> FinancialValues = GetSheetValues(FinancialsSheet, GetReportDataRange(selectedgame.selectedquarter, playerindex));
+                        //book["Financials"] = FinancialValues;
+
+                        //string playersDatainJson = book.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
+                        //return Newtonsoft.Json.JsonConvert.DeserializeObject(playersDatainJson);
+                    }
+                }
+            }
+            return new HttpResponseMessage();
         }
     }
 }

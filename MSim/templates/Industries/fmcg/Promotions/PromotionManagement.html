@@ -36,7 +36,13 @@
                         <label>Total ATL Expense</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver" ng-value="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
+                            <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver"
+                                   ng-value="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹"
+                                   uib-tooltip="CFO: The complete budget for your ATL activities is 50 lacs for this quarter."
+                                   tooltip-placement="right"
+                                   tooltip-is-open="FMCGDataModel.TotalATLExpenseCalculated() > 5000000"
+                                   tooltip-trigger="none"
+                                   tooltip-enable="true">
                             <div class="input-group-addon">.00</div>
                         </div>
                     </div>

@@ -1,5 +1,16 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "PlayerDataService", "TimerService",
-    function ($scope, $rootScope, $http, $interval, $timeout, PlayerDataService, TimerService) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
+    function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService) {
+
+        $scope.exportFinancials = function () {
+            var choice = {
+                selectedGameId: 1,
+                code: "1234A",
+                selectedquarter: $scope.selectedquarter
+            }
+            return $http.post("api/fmcgservice/GetFinancialsasExcel", choice).then(function (data) {
+                return data;
+            });
+        }
 
         $rootScope.spinner = {
             active: false,
@@ -22,6 +33,15 @@
         $scope.notStartedAlert = function (qtr) {
             pushMessage("danger", "Quarter " + qtr + " not started yet.");
         }
+        $scope.notCompletedAlert = function () {
+            pushMessage("danger", "Game not completed yet.");
+        }
+        $scope.setCompletedandActive = function () {
+            $scope.gamecompletedactive = true;
+            $state.go('playgame.Results');
+            $scope.selectedquarter = 4;
+        }
+
         $scope.startedquarter = 1;
 
         $scope.calculateFMCGClient = function () {
@@ -294,9 +314,13 @@
             pushMessage("danger", "Quarter " + $scope.selectedquarter + " Completed! Proceed to Quarter " + ($scope.selectedquarter + 1) + ".");
         }
         $scope.setServiceSelectedQuarter = function (qtr) {
+            $scope.gamecompletedactive = false;
             $scope.selectedquarter = qtr;
             TimerService.selectedquarter = $scope.selectedquarter;
+            PlayerDataService.selectedquarter = $scope.selectedquarter;
             $scope.isSelectedQuarterOver = false; //$scope["isQuarter" + $scope.selectedquarter + "Over"];
+            $scope.getPlayerData();
+
         }
 
         //$scope.$watch('TimerService.isQuarter1Over', function (newval) {
@@ -304,12 +328,17 @@
         //});
 
         $scope.getPlayerData = function () {
+            $rootScope.spinner.on();
             PlayerDataService.getPlayerData().then(function (response) {
+                $rootScope.spinner.off();
                 $scope.FMCGDataModel = response;
                 $scope.FMCGClient = {};
+                $scope.FMCGClient.PalmOilPercentage = function () {
+                    return (1 - $scope.FMCGDataModel.MustardOilPercentage).toFixed(2)
+                }
                 $scope.FMCGClient.ExMILL = function () {
                     return $scope.FMCGDataModel.MustardOilPercentage * 120 +
-                           $scope.FMCGDataModel.PalmOilPercentage * 60 + $scope.FMCGDataModel.PackagingMaterial
+                           $scope.FMCGClient.PalmOilPercentage() * 60 + $scope.FMCGDataModel.PackagingMaterial
                 };
 
                 $scope.FMCGClient.CST = function () { return $scope.FMCGClient.ExMILL() * .02 };
@@ -388,6 +417,7 @@
         $scope.savePlayerData = function () {
             $scope.FMCGDataModel.TotalATLExpense = $scope.FMCGDataModel.TotalATLExpenseCalculated();
             $scope.FMCGDataModel.TotalBTLExpense = $scope.FMCGDataModel.TotalBTLExpenseCalculated();
+            $scope.FMCGDataModel.PalmOilPercentage = $scope.FMCGClient.PalmOilPercentage();
             PlayerDataService.savePlayerData($scope.FMCGDataModel).then(function (response) {
                 console.log("player data saved to server")
             }, function (response) {
@@ -424,8 +454,8 @@
                             $scope.$broadcast('timer-start');
                             TimerService.timervalue = t;
                             $scope.data = t;
-                            if (t <= 15 && t >= 10) {
-                                pushMessage("warning", "Quarter " + $scope.selectedquarter + " will finish shortly. Save your data!");
+                            if (t <= 30 && t > 25) {
+                                pushMessage("warning", "You have " + t + " seconds remaining for this Quarter.Save your inputs!");
                             }
                         }
                     }
@@ -445,14 +475,15 @@
                         TimerService.isQuarter3Started = startedquarters.data["q3started"];
                         TimerService.isQuarter4Started = startedquarters.data["q4started"];
 
-                        $scope.isQuarter1Over = startedquarters.data["q1over"];
-                        $scope.isQuarter2Over = startedquarters.data["q2over"];
-                        $scope.isQuarter3Over = startedquarters.data["q3over"];
-                        $scope.isQuarter4Over = startedquarters.data["q4over"];
                         TimerService.isQuarter1Over = startedquarters.data["q1over"];
                         TimerService.isQuarter2Over = startedquarters.data["q2over"];
                         TimerService.isQuarter3Over = startedquarters.data["q3over"];
                         TimerService.isQuarter4Over = startedquarters.data["q4over"];
+                        $scope.isQuarter1Over = startedquarters.data["q1over"];
+                        $scope.isQuarter2Over = startedquarters.data["q2over"];
+                        $scope.isQuarter3Over = startedquarters.data["q3over"];
+                        $scope.isQuarter4Over = startedquarters.data["q4over"];
+                        
                         TimerService.gameStarted = startedquarters.data["started"];
                         if ($scope.isQuarter1Started == true && $scope.isQuarter1Over == false) {
                             $scope.startedquarter = 1
@@ -524,6 +555,10 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
                 url: '/ManagingProduct',
                 templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html'
             }).
+            state('playgame.Results', {
+                url: '/Results',
+                templateUrl: 'templates/industries/fmcg/Results.html'
+            }).
             state('playgame.Q1-Reports', {
                 url: '/Q1-Reports',
                 templateUrl: 'templates/industries/fmcg/FinancialReports/Q1-Reports.html',
@@ -586,15 +621,15 @@ fmcgGame.factory("TimerService", ['$http', '$q', "$rootScope", function TimerSer
         q3timeleft: 0,
         q4timeleft: 0,
         selectedquarter: 1,
-        isQuarter1Over: true,
-        isQuarter2Over: true,
-        isQuarter3Over: true,
-        isQuarter4Over: true,
+        isQuarter1Over: false,
+        isQuarter2Over: false,
+        isQuarter3Over: false,
+        isQuarter4Over: false,
         isQuarter1Started: false,
         isQuarter2Started: false,
         isQuarter3Started: false,
         isQuarter4Started: false,
-        gameStarted : false,
+        gameStarted: false,
         timervalue: 0,
         getQuarter1State: getQuarter1State,
         setQuarter1State: setQuarter1State,
@@ -662,6 +697,7 @@ fmcgGame.factory('PlayerDataService', ['$http', '$q', '$rootScope',
         // implementation
         function getPlayerData() {
             var def = $q.defer();
+            service.iscached = false;
             if (service.iscached == false) {
                 var gameinfo = $rootScope.selectedgame;
                 gameinfo["selectedquarter"] = service.selectedquarter;
