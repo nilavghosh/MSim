@@ -7,9 +7,26 @@
                 code: "1234A",
                 selectedquarter: $scope.selectedquarter
             }
-            return $http.post("api/fmcgservice/GetFinancialsasExcel", choice).then(function (data) {
-                return data;
+            //return $http.post("api/fmcgservice/GetFinancialsasExcel", choice).then(function (data) {
+            //    return data;
+            //});
+            $http({
+                url: 'api/fmcgservice/GetFinancialsasExcel2',
+                data: choice,
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                responseType: 'arraybuffer'
+            }).success(function (data, status, headers, config) {
+                var blob = new Blob([data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+                //headers('Content-Disposition').split("=")[1]
+                var objectUrl = URL.createObjectURL(blob);
+                window.open(objectUrl);
+            }).error(function (data, status, headers, config) {
+                //upload failed
             });
+
         }
 
         $rootScope.spinner = {
