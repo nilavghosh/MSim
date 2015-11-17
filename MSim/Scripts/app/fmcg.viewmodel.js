@@ -500,7 +500,7 @@
                         $scope.isQuarter2Over = startedquarters.data["q2over"];
                         $scope.isQuarter3Over = startedquarters.data["q3over"];
                         $scope.isQuarter4Over = startedquarters.data["q4over"];
-                        
+
                         TimerService.gameStarted = startedquarters.data["started"];
                         if ($scope.isQuarter1Started == true && $scope.isQuarter1Over == false) {
                             $scope.startedquarter = 1
@@ -521,27 +521,24 @@
             }
             poller();
             timer = $interval(poller, 5000);
-            if (TimerService["isQuarter" + $scope.selectedquarter + "Over"] == true) {
-                choice = {
-                    selectedGameId: 1,
-                    code: "1234A",
-                    selectedquarter: $scope.selectedquarter
-                }
-                //$http.post("api/fmcgservice/GetFinancialReport", choice).then(function (report) {
-                //    $scope.items = report.data["Financials"];
-                //});
+            //if (TimerService["isQuarter" + $scope.selectedquarter + "Over"] == true) {
+            //    choice = {
+            //        selectedGameId: 1,
+            //        code: "1234A",
+            //        selectedquarter: $scope.selectedquarter
+            //    }
 
-                $http.post("api/fmcgservice/GetMarketReport", choice).then(function (report) {
-                    $scope.doughlabels = report.data["Players"][0];
-                    $scope.doughdata = report.data["SalesReportValues"][0];
-                    $scope.barlabels = report.data["Players"][0];
-                    $scope.bardata = report.data["PATReportValues"];
-                    $scope.revenuebarlabels = report.data["Players"][0];
-                    $scope.revenuebardata = report.data["RevenueReportValues"];
-                    $scope.radarlabels = report.data["Players"][0];
-                    $scope.radardata = report.data["SalesReportValues"];
-                });
-            }
+            //    $http.post("api/fmcgservice/GetMarketReport", choice).then(function (report) {
+            //        $scope.doughlabels = report.data["Players"][0];
+            //        $scope.doughdata = report.data["SalesReportValues"][0];
+            //        $scope.barlabels = report.data["Players"][0];
+            //        $scope.bardata = report.data["PATReportValues"];
+            //        $scope.revenuebarlabels = report.data["Players"][0];
+            //        $scope.revenuebardata = report.data["RevenueReportValues"];
+            //        $scope.radarlabels = report.data["Players"][0];
+            //        $scope.radardata = report.data["SalesReportValues"];
+            //    });
+            //}
         }
         $scope.init();
     }]);
@@ -600,7 +597,32 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
             }).
             state('playgame.MarketReports', {
                 url: '/MarketReports',
-                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html'
+                templateUrl: 'templates/industries/fmcg/MarketReports/MarketReports.html',
+                params: {
+                    selectedquarter: null,
+                },
+                resolve: {
+                    mreports: function ($http, $stateParams) {
+                        var choice = {
+                            selectedGameId: 1,
+                            code: "1234A",
+                            selectedquarter: $stateParams.selectedquarter
+                        }
+                        return $http.post("api/fmcgservice/GetMarketReport", choice).then(function (report) {
+                            return report.data;
+                        });
+                    }
+                },
+                controller: function ($scope, mreports) {
+                    $scope.doughlabels = mreports["Players"][0];
+                    $scope.doughdata = mreports["SalesReportValues"][0];
+                    $scope.barlabels = mreports["Players"][0];
+                    $scope.bardata = mreports["PATReportValues"];
+                    $scope.revenuebarlabels = mreports["Players"][0];
+                    $scope.revenuebardata = mreports["RevenueReportValues"];
+                    $scope.radarlabels = mreports["Players"][0];
+                    $scope.radardata = mreports["SalesReportValues"];
+                }
             }).
             state('playgame.Rankings', {
                 url: '/Rankings',
