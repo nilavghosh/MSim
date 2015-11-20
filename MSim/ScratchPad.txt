@@ -36,3 +36,6 @@ https://colorlib.com/etc/metro-colors/
 
 AngularJS Cookies vs Tokens
 https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/
+
+Free business icons
+http://www.freepik.com/index.php?goto=41&idd=742795&url=aHR0cDovL3d3dy5mbGF0aWNvbi5jb20vZnJlZS1pY29uL2JpbGxib2FyZF8yOTYyMw==

@@ -278,6 +278,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\handsontable\handsontable.css" />
     <Content Include="Content\handsontable\handsontable.full.css" />
+    <Content Include="Content\icons\channelpartners.png" />
+    <Content Include="Content\icons\financialreport.png" />
+    <Content Include="Content\icons\marketresearch.png" />
+    <Content Include="Content\icons\product.png" />
+    <Content Include="Content\icons\promotions.png" />
+    <Content Include="Content\icons\promotions_4.png" />
+    <Content Include="Content\icons\rankings.png" />
+    <Content Include="Content\icons\sales.png" />
     <Content Include="Content\rdash-ui\dist\css\rdash.css" />
     <Content Include="Content\rdash-ui\dist\css\rdash.min.css" />
     <Content Include="Content\rdash-ui\dist\fonts\montserrat-regular-webfont.svg" />

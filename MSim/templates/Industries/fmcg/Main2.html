@@ -88,23 +88,38 @@
                     <br />
                     <div class="col-md-9  col-md-offset-1">
                         <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium tile-teal">
-                                <a ui-sref="playgame.ManagingChannelPartner" href=""><h4>MANAGING CHANNEL PARTNER</h4></a>
+                            <div class="thumbnail tile tile-medium tile-teal" ng-class="{'animated bounce':hover1}" ng-mouseenter="hover1 = true" ng-mouseleave="hover1=false">
+                                <a ui-sref=" playgame.ManagingChannelPartner" href="">
+                                    <img class="tile-img" src="/Content/icons/channelpartners.png" />
+                                    <h4>MANAGING CHANNEL PARTNER</h4>
+
+                                </a>
+
+
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.ManagingSalesTeam" href=""><h4>MANAGING SALES TEAM</h4></a>
+                            <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover2}" ng-mouseenter="hover2 = true" ng-mouseleave="hover2=false">
+                                <a ui-sref="playgame.ManagingSalesTeam" href="">
+                                    <img class="tile-img" src="/Content/icons/sales.png" />
+                                    <h4>MANAGING SALES TEAM</h4>
+                                </a>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.ManagingPromotions" href=""><h4>MANAGING PROMOTIONS</h4></a>
+                            <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover3}" ng-mouseenter="hover3 = true" ng-mouseleave="hover3=false">
+                                <a ui-sref="playgame.ManagingPromotions" href="">
+                                    <img class="tile-img" src="/Content/icons/promotions.png" />
+                                    <h4>MANAGING PROMOTIONS</h4>
+                                </a>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.ManagingProduct" href=""><h4>MANAGING PRODUCT</h4></a>
+                            <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover4}" ng-mouseenter="hover4 = true" ng-mouseleave="hover4=false">
+                                <a ui-sref="playgame.ManagingProduct" href="">
+                                    <img class="tile-img" src="/Content/icons/product.png" />
+                                    <h4>MANAGING PRODUCT</h4>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -112,18 +127,27 @@
                 <div class="row">
                     <div class="col-md-9  col-md-offset-1">
                         <div ng-show="selectedquarter > 1" class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium tile-teal">
-                                <a ui-sref="playgame.Q1-Reports({selectedquarter : selectedquarter-1})" href=""><h4>FINANCIAL REPORTS - Q{{selectedquarter-1}}</h4></a>
+                            <div class="thumbnail tile tile-medium tile-teal" ng-class="{'animated bounce':hover4}" ng-mouseenter="hover4 = true" ng-mouseleave="hover4=false">
+                                <a ui-sref="playgame.Q1-Reports({selectedquarter : selectedquarter-1})" href="">
+                                    <img class="tile-img" src="/Content/icons/financialreport.png" />
+                                    <h4>FINANCIAL REPORTS - Q{{selectedquarter-1}}</h4>
+                                </a>
                             </div>
                         </div>
                         <div ng-show="selectedquarter > 1" class="col-sm-6 col-md-3">
                             <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.MarketReports({selectedquarter : selectedquarter-1})" href=""><h4>MARKET RESEARCH REPORTS - Q{{selectedquarter-1}}</h4></a>
+                                <a ui-sref="playgame.MarketReports({selectedquarter : selectedquarter-1})" href="">
+                                    <img class="tile-img" src="/Content/icons/marketresearch.png" />
+                                    <h4>MARKET RESEARCH REPORTS - Q{{selectedquarter-1}}</h4>
+                                </a>
                             </div>
                         </div>
                         <div ng-show="isSelectedQuarterOver" class="col-sm-6 col-md-3">
                             <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.Rankings({selectedquarter : selectedquarter})" href=""><h4>PLAYER RANKINGS AFTER QUARTER {{selectedquarter}} !</h4></a>
+                                <a ui-sref="playgame.Rankings({selectedquarter : selectedquarter})" href="">
+                                    <img class="tile-img" src="/Content/icons/rankings.png" />
+                                    <h4>PLAYER RANKINGS AFTER Q{{selectedquarter}} !</h4>
+                                </a>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">

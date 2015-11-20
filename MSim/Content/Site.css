@@ -64,7 +64,12 @@ textarea {
 }
 
 .tile h3, .tile h4 {
-    margin-top: 30px !important;
+    margin-top: 5px !important;
+}
+
+.tile-img {
+    margin-top: 5px;
+    width: 55px;
 }
 
 .bsnavbar {
@@ -243,15 +248,23 @@ pre {
 }
 
 .panel-heading {
-padding: 10px !important;
+    padding: 10px !important;
 }
 
-.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
-.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+.btn-glyphicon {
+    padding: 8px;
+    background: #ffffff;
+    margin-right: 4px;
+}
+
+.icon-btn {
+    padding: 1px 15px 3px 2px;
+    border-radius: 50px;
+}
 
 .panel-header-title {
-margin-top: 0px;
-margin-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .panel-header-button {
