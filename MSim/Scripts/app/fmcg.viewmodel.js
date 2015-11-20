@@ -1,6 +1,19 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
-    function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService", "$uibModal",
+    function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService, $uibModal) {
 
+        $scope.animationsEnabled = true;
+
+        $scope.open = function (size) {
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'myModalContent.html',
+                size: size,
+            });
+        };
+
+        $scope.toggleAnimation = function () {
+            $scope.animationsEnabled = !$scope.animationsEnabled;
+        };
         $scope.exportFinancials = function () {
             var choice = {
                 selectedGameId: 1,
