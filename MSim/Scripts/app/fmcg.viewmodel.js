@@ -1,6 +1,7 @@
 ﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService) {
 
+        $scope.$state = $state;
         $scope.animationsEnabled = true;
 
         $scope.toggleAnimation = function () {
