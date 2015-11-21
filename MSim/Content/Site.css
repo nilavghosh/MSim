@@ -74,6 +74,7 @@ textarea {
 
 .tile {
     box-shadow: 0 4px 29px -2px gray;
+    border-radius: 20px;
 }
 
 .bsnavbar {
