@@ -72,6 +72,10 @@ textarea {
     width: 55px;
 }
 
+.tile {
+    box-shadow: 0 4px 29px -2px gray;
+}
+
 .bsnavbar {
     margin-bottom: 19px;
     min-height: 54px;
