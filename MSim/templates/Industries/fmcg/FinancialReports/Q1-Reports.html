@@ -1,30 +1,48 @@
-﻿<section>
-    <h3>Financial Reports</h3>
-    <br />
-    <div class="row">
-        <div class="col-md-offset-1 col-md-9">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Parameter</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in items">
-                        <td>{{$index + 1}}</td>
-                        <td ng-repeat="col in row">
-                            {{col}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="panel-header-title">Financial Reports</h2>
+            </div>
+            <div class="col-md-1">
+                <i style="padding-top:3px" uib-tooltip="Guide" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-bars fa-2x"></i>
+            </div>
+            <div class="col-md-1">
+                <i style="padding-top:3px" ng-click='open("lg")' uib-tooltip="Help" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-question-circle fa-2x"></i>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-2">
-            <a type="button" ng-click="exportFinancials()" href="" class="btn btn-success">Export as excel</a>
-        </div>
+    <div class="panel-body">
+
+        <section>
+            <br />
+            <div class="row">
+                <div class="col-md-offset-1 col-md-9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Parameter</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in items">
+                                <td>{{$index + 1}}</td>
+                                <td ng-repeat="col in row">
+                                    {{col}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <a type="button" ng-click="exportFinancials()" href="" class="btn btn-success">Export as excel</a>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
+    <div class="panel-footer"></div>
+</div>

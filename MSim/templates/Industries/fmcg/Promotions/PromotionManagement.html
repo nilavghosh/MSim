@@ -1,125 +1,140 @@
-﻿<section>
-    <h3>Promotion Management</h3>
-    <br />
-    <div class="row">
-        <div class="col-md-offset-1 col-md-3">
-            <div class="row">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label>TV Advertisement</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" required ng-model="FMCGDataModel.TVAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                        <!-- <pie-chart data="tvPiedata" options="tvPieoptions" class="chart"></pie-chart>-->
-                    </div>
-
-                    <div class="form-group">
-                        <label>Newspaper</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Hoardings</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Total ATL Expense</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver"
-                                   ng-value="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹"
-                                   uib-tooltip="CFO: The complete budget for your ATL activities is 50 lacs for this quarter."
-                                   tooltip-placement="right"
-                                   tooltip-is-open="FMCGDataModel.TotalATLExpenseCalculated() > 5000000"
-                                   tooltip-trigger="none"
-                                   tooltip-enable="true">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-                </form>
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="panel-header-title">Promotion Management</h2>
             </div>
-            <br />
-            <br />
-            <div class="row">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label>Promoters</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" required ng-model="FMCGDataModel.Promoters" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Sampling</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" required ng-model="FMCGDataModel.Sampling" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>In shop branding</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" required ng-model="FMCGDataModel.InShopBranding" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Total BTL Expense</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input type="number" ng-value="FMCGDataModel.TotalBTLExpenseCalculated()" ng-disabled="isSelectedQuarterOver" readonly class="form-control" placeholder="in ₹">
-                            <div class="input-group-addon">.00</div>
-                        </div>
-                    </div>
-                </form>
+            <div class="col-md-1">
+                <i style="padding-top:3px" uib-tooltip="Guide" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-bars fa-2x"></i>
             </div>
-            <div class="row">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver" class="btn btn-default">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-md-offset-1 col-md-7">
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="height:300px">
-                        <nvd3 options="atlbtloptions" data="atldata">
-                            <svg height="300"></svg>
-                        </nvd3>
-                    </div>
-                    <!--<div style="height:250px ; width:250px">
-                        <pie-chart data="ATLpieData" options="pieOptions" class="chart"></pie-chart>
-                    </div>-->
-                    <!--<pie-chart data="piedata" options="pieoptions" class="chart"></pie-chart>-->
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="height:300px">
-                        <nvd3 options="atlbtloptions" data="btldata">
-                            <svg height="300"></svg>
-                        </nvd3>
-                    </div>
-                </div>
+            <div class="col-md-1">
+                <i style="padding-top:3px" ng-click='open("lg")' uib-tooltip="Help" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-question-circle fa-2x"></i>
             </div>
         </div>
     </div>
-</section>
+    <div class="panel-body">
+        <section>
+            <br />
+            <div class="row">
+                <div class="col-md-offset-1 col-md-3">
+                    <div class="row">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label>TV Advertisement</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" required ng-model="FMCGDataModel.TVAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                                <!-- <pie-chart data="tvPiedata" options="tvPieoptions" class="chart"></pie-chart>-->
+                            </div>
 
+                            <div class="form-group">
+                                <label>Newspaper</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" required ng-model="FMCGDataModel.NewspaperAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Hoardings</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" required ng-model="FMCGDataModel.HoardingAds" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label>Total ATL Expense</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver"
+                                           ng-value="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹"
+                                           uib-tooltip="CFO: The complete budget for your ATL activities is 50 lacs for this quarter."
+                                           tooltip-placement="right"
+                                           tooltip-is-open="FMCGDataModel.TotalATLExpenseCalculated() > 5000000"
+                                           tooltip-trigger="none"
+                                           tooltip-enable="true">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label>Promoters</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" required ng-model="FMCGDataModel.Promoters" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Sampling</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" required ng-model="FMCGDataModel.Sampling" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>In shop branding</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" required ng-model="FMCGDataModel.InShopBranding" ng-disabled="isSelectedQuarterOver" class="form-control" ng-change="onPromotionsDataChange()" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Total BTL Expense</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" ng-value="FMCGDataModel.TotalBTLExpenseCalculated()" ng-disabled="isSelectedQuarterOver" readonly class="form-control" placeholder="in ₹">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver" class="btn btn-default">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-7">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="height:300px">
+                                <nvd3 options="atlbtloptions" data="atldata">
+                                    <svg height="300"></svg>
+                                </nvd3>
+                            </div>
+                            <!--<div style="height:250px ; width:250px">
+                                <pie-chart data="ATLpieData" options="pieOptions" class="chart"></pie-chart>
+                            </div>-->
+                            <!--<pie-chart data="piedata" options="pieoptions" class="chart"></pie-chart>-->
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="height:300px">
+                                <nvd3 options="atlbtloptions" data="btldata">
+                                    <svg height="300"></svg>
+                                </nvd3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="panel-footer"></div>
+</div>

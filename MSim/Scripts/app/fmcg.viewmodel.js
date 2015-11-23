@@ -357,7 +357,7 @@
                 $scope.FMCGDataModel = response;
                 $scope.FMCGClient = {};
                 $scope.FMCGClient.PalmOilPercentage = function () {
-                    return (1 - $scope.FMCGDataModel.MustardOilPercentage).toFixed(2)
+                    return (100 - $scope.FMCGDataModel.MustardOilPercentage).toFixed(2)
                 }
                 $scope.FMCGClient.ExMILL = function () {
                     return $scope.FMCGDataModel.MustardOilPercentage * 120 +

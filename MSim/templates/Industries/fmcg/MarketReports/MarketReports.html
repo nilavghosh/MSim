@@ -1,63 +1,81 @@
-﻿<section id="fmcg-salesteammanagement" class="view">
-    <h3>Market Reports</h3>
-    <br />
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-9 col-md-offset-2">
-                    <strong><pre style="text-align:center">Revenue - Quarter {{selectedquarter-1}}</pre></strong>
-                </div>
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="panel-header-title">Market Reports</h2>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <canvas id="revenuebar" class="chart chart-bar"
-                            chart-data="revenuebardata" chart-labels="revenuebarlabels"></canvas>
-                </div>
+            <div class="col-md-1">
+                <i style="padding-top:3px" uib-tooltip="Guide" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-bars fa-2x"></i>
             </div>
-
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-9 col-md-offset-2">
-                    <strong><pre style="text-align:center">Profit After Tax - Quarter {{selectedquarter-1}}</pre></strong>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <canvas id="bar" class="chart chart-bar"
-                            chart-data="bardata" chart-labels="barlabels"></canvas>
-                </div>
+            <div class="col-md-1">
+                <i style="padding-top:3px" ng-click='open("lg")' uib-tooltip="Help" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-question-circle fa-2x"></i>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="panel-body">
 
-        <div class="col-md-6">
+        <section id="fmcg-salesteammanagement" class="view">
+            <br />
             <div class="row">
-                <div class="col-md-9 col-md-offset-2">
-                    <strong><pre style="text-align:center">Sales - Quarter {{selectedquarter-1}}</pre></strong>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <canvas id="doughnut" class="chart chart-doughnut"
-                            chart-data="doughdata" chart-labels="doughlabels"></canvas>
-                </div>
-            </div>
-        </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-2">
+                            <strong><pre style="text-align:center">Revenue - Quarter {{selectedquarter-1}}</pre></strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="revenuebar" class="chart chart-bar"
+                                    chart-data="revenuebardata" chart-labels="revenuebarlabels"></canvas>
+                        </div>
+                    </div>
 
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-9 col-md-offset-2">
-                    <strong><pre style="text-align:center">Sales (Radar) - Quarter {{selectedquarter-1}}</pre></strong>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-2">
+                            <strong><pre style="text-align:center">Profit After Tax - Quarter {{selectedquarter-1}}</pre></strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="bar" class="chart chart-bar"
+                                    chart-data="bardata" chart-labels="barlabels"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <canvas id="radar" class="chart chart-radar"
-                            chart-data="radardata" chart-labels="radarlabels"></canvas>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-2">
+                            <strong><pre style="text-align:center">Sales - Quarter {{selectedquarter-1}}</pre></strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="doughnut" class="chart chart-doughnut"
+                                    chart-data="doughdata" chart-labels="doughlabels"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-2">
+                            <strong><pre style="text-align:center">Sales (Radar) - Quarter {{selectedquarter-1}}</pre></strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <canvas id="radar" class="chart chart-radar"
+                                    chart-data="radardata" chart-labels="radarlabels"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</section>
+    <div class="panel-footer"></div>
+</div>

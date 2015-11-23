@@ -1,52 +1,69 @@
-﻿<section id="fmcg-salesteammanagement" class="view">
-    <h3>Sales Team Management</h3>
-    <br />
-    <div class="row">
-        <div class="col-md-offset-1 col-md-7">
-            <div style="width:480px" id="carousel-Sales" class="carousel slide" ng-non-bindable data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-Sales" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel-Sales" data-slide-to="1" class=""></li>
-                    <li data-target="#carousel-Sales" data-slide-to="2" class="active"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img alt="First slide [900x500]" src="Content/Slides/Industries/fmcg/Sales/1.jpg" data-holder-rendered="true">
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#carousel-Sales" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-Sales" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="panel-header-title">Sales Team Management</h2>
             </div>
-        </div>
-        <div class="col-md-offset-1 col-md-3">
-            <div class="row">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputEmail3">Salesmen</label>
-                        <input type="number" ng-model="FMCGDataModel.NoOfSalesmen" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3">Avg. Salary</label>
-                        <input type="number" ng-model="FMCGDataModel.AvgSalary" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="inputRetailerMargin3">Training</label>
-                        <select ng-model="FMCGDataModel.Training" ng-disabled="isSelectedQuarterOver" ng-options="choice.value as choice.option for choice in TrainingType" class="form-control"></select>
-
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver" class="btn btn-default">Submit</button>
-                    </div>
-                </form>
+            <div class="col-md-1">
+                <i style="padding-top:3px" uib-tooltip="Guide" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-bars fa-2x"></i>
+            </div>
+            <div class="col-md-1">
+                <i style="padding-top:3px" ng-click='open("lg")' uib-tooltip="Help" tooltip-placement="top" tooltip-trigger="mouseenter" class="fa fa-question-circle fa-2x"></i>
             </div>
         </div>
     </div>
-</section>
+    <div class="panel-body">
+        <section id="fmcg-salesteammanagement" class="view">
+            <br />
+            <div class="row">
+                <div class="col-md-offset-1 col-md-7">
+                    <div style="width:480px" id="carousel-Sales" class="carousel slide" ng-non-bindable data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-Sales" data-slide-to="0" class=""></li>
+                            <li data-target="#carousel-Sales" data-slide-to="1" class=""></li>
+                            <li data-target="#carousel-Sales" data-slide-to="2" class="active"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img alt="First slide [900x500]" src="Content/Slides/Industries/fmcg/Sales/1.jpg" data-holder-rendered="true">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-Sales" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-Sales" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-offset-1 col-md-3">
+                    <div class="row">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3">Salesmen</label>
+                                <input type="number" ng-model="FMCGDataModel.NoOfSalesmen" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3">Avg. Salary</label>
+                                <input type="number" ng-model="FMCGDataModel.AvgSalary" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRetailerMargin3">Training</label>
+                                <select ng-model="FMCGDataModel.Training" ng-disabled="isSelectedQuarterOver" ng-options="choice.value as choice.option for choice in TrainingType" class="form-control"></select>
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" ng-click="savePlayerData()" ng-disabled="isSelectedQuarterOver" class="btn btn-default">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="panel-footer"></div>
+</div>
