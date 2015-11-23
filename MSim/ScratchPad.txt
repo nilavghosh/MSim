@@ -11,7 +11,7 @@
                      }
 
  git checkout master && git pull && git checkout - && git rebase master
-
+ http://www.workwithcolor.com/color-chart-full-01.htm
 Charts: (Angular compatible)
 chartjs
 NVD3
