@@ -275,3 +275,16 @@ pre {
 .panel-header-button {
     margin-top: 3px;
 }
+
+.popover-red {
+    color : rgb(212, 63, 58) 
+}
+
+.popover-amber {
+    color : rgb(238, 162, 54)
+}
+
+
+.popover-green {
+    color : rgb(76, 174, 76)
+}
