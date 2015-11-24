@@ -222,6 +222,7 @@ namespace MSim.Controllers.Services
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ActionName("Upload")]
         public async Task<object> Upload()
