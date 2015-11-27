@@ -570,20 +570,50 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
                             size: size,
                         });
                     };
-                    $scope.open();
+                    $scope.open("lg");
                 }
             }).
             state('playgame.ManagingSalesTeam', {
                 url: '/ManagingSalesTeam',
-                templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html'
+                templateUrl: 'templates/industries/fmcg/sales/SalesTeamManagement.html',
+                controller: function ($scope, $uibModal) {
+                    $scope.open = function (size) {
+                        var modalInstance = $uibModal.open({
+                            animation: $scope.animationsEnabled,
+                            templateUrl: 'salesMgmt.html',
+                            size: size,
+                        });
+                    };
+                    $scope.open("lg");
+                }
             }).
             state('playgame.ManagingPromotions', {
                 url: '/ManagingPromotions',
-                templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html'
+                templateUrl: 'templates/industries/fmcg/Promotions/PromotionManagement.html',
+                controller: function ($scope, $uibModal) {
+                    $scope.open = function (size) {
+                        var modalInstance = $uibModal.open({
+                            animation: $scope.animationsEnabled,
+                            templateUrl: 'promMgmt.html',
+                            size: size,
+                        });
+                    };
+                    $scope.open("lg");
+                }
             }).
             state('playgame.ManagingProduct', {
                 url: '/ManagingProduct',
-                templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html'
+                templateUrl: 'templates/industries/fmcg/Products/ProductManagement.html',
+                controller: function ($scope, $uibModal) {
+                    $scope.open = function (size) {
+                        var modalInstance = $uibModal.open({
+                            animation: $scope.animationsEnabled,
+                            templateUrl: 'prodMgmt.html',
+                            size: size,
+                        });
+                    };
+                    $scope.open("lg");
+                }
             }).
             state('playgame.Results', {
                 url: '/Results',
