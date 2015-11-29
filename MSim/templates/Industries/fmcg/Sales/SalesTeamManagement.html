@@ -43,13 +43,16 @@
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <label for="inputEmail3">Salesmen</label>
-                                <input type="number" ng-model="FMCGDataModel.NoOfSalesmen" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
+                                <input type="number" ng-model="FMCGDataModel.NoOfSalesmen" popover-trigger="focus" uib-popover-template="FMCGDataModel.NoOfSalesmen < 12 || FMCGDataModel.NoOfSalesmen > 20 ? 'salesman.html' : ''" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputEmail3">
 
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3">Avg. Salary</label>
-                                <input type="number" ng-model="FMCGDataModel.AvgSalary" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
-
+                                <div class="input-group">
+                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                    <input type="number" ng-model="FMCGDataModel.AvgSalary" popover-trigger="focus" uib-popover-template="FMCGDataModel.AvgSalary < 8000 || FMCGDataModel.AvgSalary > 15000 ? 'salary.html' : null" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
+                                    <div class="input-group-addon">.00</div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputRetailerMargin3">Training</label>
@@ -67,6 +70,45 @@
     </div>
     <div class="panel-footer"></div>
 </div>
+
+
+<script type="text/ng-template" id="salesman.html">
+    <div ng-show="FMCGDataModel.NoOfSalesmen <= 0">
+        <div><strong>Sales Head :</strong></div>
+        <div class="popover-red">Are you going to a battle without an army? Hire some PSMs.</div>
+    </div>
+    <div ng-show="FMCGDataModel.NoOfSalesmen > 0 && FMCGDataModel.NoOfSalesmen <= 11">
+        <div><strong>Sales Head:</strong></div>
+        <div class="popover-amber">Go through the market research report before finalizing the PSMs.</div>
+    </div>
+    <div ng-show="FMCGDataModel.NoOfSalesmen > 20 && FMCGDataModel.NoOfSalesmen < 50">
+        <div><strong>Sales Head: </strong></div>
+        <div class="popover-amber">We know there is a problem of unemployment. But you need to make sense while hiring so many PSMs.</div>
+    </div>
+    <div ng-show="FMCGDataModel.NoOfSalesmen >= 50">
+        <div><strong>HR: </strong></div>
+        <div class="popover-red">Are you hiring your relatives? The maximum people you can hire is 30, which is also high I think.</div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="salary.html">
+    <div ng-show="FMCGDataModel.AvgSalary <= 5000">
+        <div><strong>Sales Head :</strong></div>
+        <div class="popover-red">At this salary you can only hire JUNK.</div>
+    </div>
+    <div ng-show="FMCGDataModel.AvgSalary > 5000 && FMCGDataModel.AvgSalary <= 8000">
+        <div><strong>Sales Head:</strong></div>
+        <div class="popover-amber">PSMs are the soldiers in this war. If you hire good soldiers you need to pay them accordingly.</div>
+    </div>
+    <div ng-show="FMCGDataModel.AvgSalary > 15000 && FMCGDataModel.AvgSalary < 25000">
+        <div><strong>HR:</strong></div>
+        <div class="popover-amber">I can authorize you the avg  salary. However, I strongly recommend you to give it a second thought.</div>
+    </div>
+    <div ng-show="FMCGDataModel.AvgSalary >= 25000">
+        <div><strong>HR: </strong></div>
+        <div class="popover-red">Are you hiring PSMs or Scientists. Keep the average salary below 25K.</div>
+    </div>
+</script>
 
 
 <script type="text/ng-template" id="salesMgmt.html">

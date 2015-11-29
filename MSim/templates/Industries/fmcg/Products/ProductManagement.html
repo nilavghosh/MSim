@@ -19,7 +19,8 @@
                 <div class="col-md-3 col-md-offset-1">
                     <div class="form-group" ng-class="{ 'has-error': form.mustardpercentage.$invalid}">
                         <label>Mustard Oil (in %)</label>
-                        <input name="mustardpercentage" type="number" step="0.01" min="1" max="100" popover-trigger="focus" ng-model="FMCGDataModel.MustardOilPercentage" uib-popover-template="FMCGDataModel.MustardOilPercentage < 50 ? 'mustard1.html' : (FMCGDataModel.MustardOilPercentage < 90 ? 'mustard2.html' : 'mustard3.html')" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in %" />
+                        <!--<input name="mustardpercentage" type="number" step="0.01" min="1" max="100" popover-trigger="focus" ng-model="FMCGDataModel.MustardOilPercentage" uib-popover-template="FMCGDataModel.MustardOilPercentage < 50 ? 'mustard1.html' : (FMCGDataModel.MustardOilPercentage < 90 ? 'mustard2.html' : 'mustard3.html')" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in %" />-->
+                        <input name="mustardpercentage" type="number" step="0.01" popover-trigger="focus" ng-model="FMCGDataModel.MustardOilPercentage" uib-popover-template="FMCGDataModel.MustardOilPercentage < 80 || FMCGDataModel.MustardOilPercentage > 90 ? 'mustard.html' : null" ng-disabled="isSelectedQuarterOver" class="form-control" placeholder="in %" />
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -163,7 +164,7 @@
 
 <script type="text/ng-template" id="mustard1.html">
     <div><strong>Quality Team :</strong></div>
-    <div class="popover-red">This is violation of quality norms increase the mustard oil percentage.</div>
+    <div class="popover-red">This is {{selectedquarter}} violation of quality norms increase the mustard oil percentage.</div>
 </script>
 
 <script type="text/ng-template" id="mustard2.html">
@@ -174,6 +175,26 @@
 <script type="text/ng-template" id="mustard3.html">
     <div><strong>Sales Head:</strong></div>
     <div class="popover-amber">FSSAI alows us of mixing upto 20%. This will help in cost reduction. Please give it a thought.</div>
+</script>
+
+
+<script type="text/ng-template" id="mustard.html">
+    <div ng-show="FMCGDataModel.MustardOilPercentage < 50">
+        <div><strong>Quality Team :</strong></div>
+        <div class="popover-red">This is {{selectedquarter}} violation of quality norms increase the mustard oil percentage.</div>
+    </div>
+    <div ng-show="FMCGDataModel.MustardOilPercentage >= 50 && FMCGDataModel.MustardOilPercentage <= 80">
+        <div><strong>Quality Team :</strong></div>
+        <div class="popover-amber">As per FSSAI norms mixing cannot be more than 20%. However, the probability of checking is 0.1.</div>
+    </div>
+    <div ng-show="FMCGDataModel.MustardOilPercentage >= 90 && FMCGDataModel.MustardOilPercentage <= 100">
+        <div><strong>Sales Head:</strong></div>
+        <div class="popover-amber">FSSAI alows us of mixing upto 20%. This will help in cost reduction. Please give it a thought.</div>
+    </div>
+    <div ng-show="FMCGDataModel.MustardOilPercentage > 100">
+        <div><strong>Author:</strong></div>
+        <div class="popover-red">Hi Dear, Please check the mustard Oil %age once more.</div>
+    </div>
 </script>
 
 <script type="text/ng-template" id="prodMgmt.html">

@@ -48,16 +48,12 @@
 
                             <div class="form-group">
                                 <label>Total ATL Expense</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver"
-                                           ng-value="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹"
-                                           uib-tooltip="CFO: The complete budget for your ATL activities is 50 lacs for this quarter."
-                                           tooltip-placement="right"
-                                           tooltip-is-open="FMCGDataModel.TotalATLExpenseCalculated() > 5000000"
-                                           tooltip-trigger="none"
-                                           tooltip-enable="true">
-                                    <div class="input-group-addon">.00</div>
+                                <div style="display: inline-block" uib-popover="CFO : The complete budget for your ATL activities is 50 lacs for this quarter." popover-placement="bottom" popover-is-open="FMCGDataModel.TotalATLExpenseCalculated() > 5000000">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                        <input type="number" class="form-control" ng-disabled="isSelectedQuarterOver" ng-value="FMCGDataModel.TotalATLExpenseCalculated()" readonly placeholder="in ₹">
+                                        <div class="input-group-addon">.00</div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -92,10 +88,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Total BTL Expense</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input type="number" ng-value="FMCGDataModel.TotalBTLExpenseCalculated()" ng-disabled="isSelectedQuarterOver" readonly class="form-control" placeholder="in ₹">
-                                    <div class="input-group-addon">.00</div>
+                                <div style="display: inline-block" uib-popover="CFO : The complete budget for your BTL activities is 3 lacs for this quarter." popover-placement="bottom" popover-is-open="FMCGDataModel.TotalBTLExpenseCalculated() > 300000">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                        <input type="number" ng-value="FMCGDataModel.TotalBTLExpenseCalculated()" ng-disabled="isSelectedQuarterOver" readonly class="form-control" placeholder="in ₹">
+                                        <div class="input-group-addon">.00</div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -139,6 +137,12 @@
     <div class="panel-footer"></div>
 </div>
 
+<script type="text/ng-template" id="atlmargin.html">
+    <div ng-show="true">
+        <div><strong>CFO: </strong></div>
+        <div class="popover-red">The complete budget for your ATL activities is 50 lacs for this quarter.</div>
+    </div>
+</script>
 
 <script type="text/ng-template" id="promMgmt.html">
 
