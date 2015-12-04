@@ -248,7 +248,7 @@
             'thickness': .3,
             'displayPrevious': true,
             'readOnly': true,
-            'max': 120
+            'max': 300
         };
 
         $scope.options14 = {
