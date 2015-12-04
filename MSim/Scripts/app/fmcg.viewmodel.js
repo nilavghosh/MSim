@@ -367,10 +367,10 @@
                 $scope.FMCGClient.CST = function () { return $scope.FMCGClient.ExMILL() * .02 };
                 $scope.FMCGClient.Freight = 1;
                 $scope.FMCGClient.PriceToCompany = function () { return $scope.FMCGClient.ExMILL() + $scope.FMCGClient.Freight + $scope.FMCGClient.CST() };
-                $scope.FMCGClient.VAT = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin) * .05 }
-                $scope.FMCGClient.PriceToDistributor = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin) + $scope.FMCGClient.VAT() }
-                $scope.FMCGClient.PriceToRetailer = function () { return $scope.FMCGClient.PriceToDistributor() * (1 + $scope.FMCGDataModel.DistributorMargin) }
-                $scope.FMCGClient.PriceToCustomer = function () { return $scope.FMCGClient.PriceToRetailer() * (1 + $scope.FMCGDataModel.RetailerMargin) }
+                $scope.FMCGClient.VAT = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin/100) * .05 }
+                $scope.FMCGClient.PriceToDistributor = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin/100) + $scope.FMCGClient.VAT() }
+                $scope.FMCGClient.PriceToRetailer = function () { return $scope.FMCGClient.PriceToDistributor() * (1 + $scope.FMCGDataModel.DistributorMargin/100) }
+                $scope.FMCGClient.PriceToCustomer = function () { return $scope.FMCGClient.PriceToRetailer() * (1 + $scope.FMCGDataModel.RetailerMargin/100) }
 
                 $scope.FMCGClient.VAT5L = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin5L) * .05 }
                 $scope.FMCGClient.PriceToDistributor5L = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin5L) + $scope.FMCGClient.VAT() }
