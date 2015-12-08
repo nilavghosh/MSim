@@ -324,7 +324,7 @@ namespace MSim.Controllers.Services
                         var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
                             username = p.Key,
-                            Qtr = p.ToList()
+                            Qtr = p.OrderBy(qtrdata => qtrdata["qtrname"]).ToList()
                         }).ToList();
 
                         int playercount = 0;
@@ -436,7 +436,7 @@ namespace MSim.Controllers.Services
                         var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
                             username = p.Key,
-                            Qtr = p.ToList()
+                            Qtr = p.OrderBy(qtrdata => qtrdata["qtrname"]).ToList()
                         }).ToList();
 
                         int playercount = 0;
@@ -546,7 +546,7 @@ namespace MSim.Controllers.Services
                         var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
                             username = p.Key,
-                            Qtr = p.ToList()
+                            Qtr = p.OrderBy(qtrdata => qtrdata["qtrname"]).ToList()
                         }).ToList();
 
                         int playercount = 0;
@@ -722,7 +722,7 @@ namespace MSim.Controllers.Services
                         var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
                             username = p.Key,
-                            Qtr = p.ToList()
+                            Qtr = p.OrderBy(qtrdata => qtrdata["qtrname"]).ToList()
                         }).ToList();
 
                         #region Update quarter data
@@ -932,7 +932,7 @@ namespace MSim.Controllers.Services
                         var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
                             username = p.Key,
-                            Qtr = p.ToList()
+                            Qtr = p.OrderBy(qtrdata => qtrdata["qtrname"]).ToList()
                         }).ToList();
 
                         int playercount = 0;
@@ -1029,7 +1029,7 @@ namespace MSim.Controllers.Services
                         var pgroups = playerdata.GroupBy(tdata => tdata["username"]).Select(p => new
                         {
                             username = p.Key,
-                            Qtr = p.ToList()
+                            Qtr = p.OrderBy(qtrdata => qtrdata["qtrname"]).ToList()
                         }).ToList();
 
                         int playercount = 0;
