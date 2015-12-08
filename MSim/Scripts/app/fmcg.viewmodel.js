@@ -1,4 +1,4 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner","ui.utils.masks"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
     function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService) {
 
         $scope.$state = $state;
@@ -194,6 +194,7 @@
                            TimerService["isQuarter" + $scope.selectedquarter + "Over"] = true;
                            $scope["isQuarter" + $scope.selectedquarter + "Over"] = true;
                            $scope.isSelectedQuarterOver = true;
+                           $scope.savePlayerData();
                            pushMessage("danger", "Quarter " + $scope.selectedquarter + " Completed! Proceed to Quarter " + ($scope.selectedquarter + 1) + ".");
                        }
                    }

@@ -20,7 +20,7 @@
         <ul class="nav nav-tabs">
             <li ng-click="isQuarter1Started ? setServiceSelectedQuarter(1) : notStartedAlert(1)" ng-class="{'active': selectedquarter == 1 && isQuarter1Started,  'disabled': !isQuarter1Started}">
                 <a href=" #home" data-toggle="tab" title="Quarter 1">
-                    <span class="round-tabs" ng-class="{'animated flash infinite': isQuarter1Started && !isQuarter1Over, 'one' : isQuarter1Started}">
+                    <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter1Started && !isQuarter1Over, 'four' : isQuarter1Started && isQuarter1Over}">
                         Q1
                     </span>
                 </a>
@@ -29,7 +29,7 @@
 
             <li ng-click="isQuarter2Started ? setServiceSelectedQuarter(2) :notStartedAlert(2)" ng-class="{'active': selectedquarter == 2 && isQuarter2Started,  'disabled': !isQuarter2Started}">
                 <a href=" #profile" data-toggle="tab" title="Quarter 2">
-                    <span class="round-tabs" ng-class="{'animated flash infinite': isQuarter2Started && !isQuarter2Over, 'two' : isQuarter2Started}">
+                    <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter2Started && !isQuarter2Over, 'four' : isQuarter2Started && isQuarter2Over}">
                         Q2
                     </span>
                 </a>
@@ -38,7 +38,7 @@
 
             <li ng-click="isQuarter3Started ? setServiceSelectedQuarter(3):notStartedAlert(3)" ng-class="{'active': selectedquarter == 3 && isQuarter3Started,  'disabled': !isQuarter3Started}">
                 <a href="#messages" data-toggle="tab" title="Quarter 3">
-                    <span class="round-tabs" ng-class="{'animated flash infinite': isQuarter3Started && !isQuarter3Over, 'three' : isQuarter3Started}">
+                    <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter3Started && !isQuarter3Over, 'four' : isQuarter3Started && isQuarter3Over}">
                         Q3
                     </span>
                 </a>
@@ -46,7 +46,7 @@
 
             <li ng-click="isQuarter4Started ? setServiceSelectedQuarter(4):notStartedAlert(4)" ng-class="{'active': selectedquarter == 4 && isQuarter4Started,  'disabled': !isQuarter4Started}">
                 <a href="#settings" data-toggle="tab" title="Quarter 4">
-                    <span class="round-tabs" ng-class="{'animated flash infinite': isQuarter4Started && !isQuarter4Over, 'four' : isQuarter4Started}">
+                    <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter4Started && !isQuarter4Over, 'four' : isQuarter4Started && isQuarter4Over}">
                         Q4
                     </span>
                 </a>
