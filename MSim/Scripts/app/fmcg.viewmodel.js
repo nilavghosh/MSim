@@ -570,7 +570,7 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
                             size: size,
                         });
                     };
-                    $scope.open("lg");
+                    //$scope.open("lg");
                 }
             }).
             state('playgame.ManagingSalesTeam', {
@@ -584,7 +584,7 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
                             size: size,
                         });
                     };
-                    $scope.open("lg");
+                    //$scope.open("lg");
                 }
             }).
             state('playgame.ManagingPromotions', {
@@ -598,7 +598,7 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
                             size: size,
                         });
                     };
-                    $scope.open("lg");
+                    //$scope.open("lg");
                 }
             }).
             state('playgame.ManagingProduct', {
@@ -612,7 +612,7 @@ fmcgGame.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", fu
                             size: size,
                         });
                     };
-                    $scope.open("lg");
+                    //$scope.open("lg");
                 }
             }).
             state('playgame.Results', {

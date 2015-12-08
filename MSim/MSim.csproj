@@ -304,6 +304,7 @@
     <Content Include="ScratchPad.txt" />
     <Content Include="Scripts\admin.js" />
     <Content Include="ApplicationInsights.config" />
+    <Content Include="Scripts\angular-autoNumeric.js" />
     <Content Include="Scripts\app\admin\components\angular-bootstrap\.bower.json" />
     <Content Include="Scripts\app\admin\components\angular-bootstrap\bower.json" />
     <Content Include="Scripts\app\admin\components\angular-bootstrap\ui-bootstrap-tpls.js" />

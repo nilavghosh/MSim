@@ -39,3 +39,18 @@ https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token
 
 Free business icons
 http://www.freepik.com/index.php?goto=41&idd=742795&url=aHR0cDovL3d3dy5mbGF0aWNvbi5jb20vZnJlZS1pY29uL2JpbGxib2FyZF8yOTYyMw==
+
+
+Currency Formatter
+https://gist.github.com/kwokhou/5964296
+http://jsfiddle.net/y5VXq/
+http://www.decorplanit.com/plugin/
+https://github.com/ilovezy/autoNumeric
+
+
+http://jsfiddle.net/KPeBD/64/
+http://jsfiddle.net/KPeBD/2/
+http://stackoverflow.com/questions/19094150/using-angularjs-directive-to-format-input-field-while-leaving-scope-variable-unc
+https://docs.angularjs.org/api/ng/filter
+https://docs.angularjs.org/api/ng/filter/currency
+http://stackoverflow.com/questions/9372624/formatting-a-number-as-currency-using-css
