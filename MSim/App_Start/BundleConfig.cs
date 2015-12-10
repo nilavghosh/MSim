@@ -42,6 +42,7 @@ namespace MSim
                  "~/Scripts/bower_components/angular-nvd3/dist/angular-nvd3.min.js",
                  "~/Scripts/bower_components/angular-treasure-overlay-spinner/dist/treasure-overlay-spinner.min.js",
                  "~/Scripts/bower_components/angular-locale_en-in.js",
+                 "~/Scripts/bower_components/ng-currency/dist/ng-currency.js",
                  "~/Scripts/bower_components/angular-input-masks-standalone.min.js",
                  "~/Scripts/app/appbasic.main.js",
                  "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",

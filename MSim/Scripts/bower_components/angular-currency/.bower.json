@@ -1,0 +1,39 @@
+{
+  "name": "angular-currency",
+  "main": "angular-currency.js",
+  "version": "1.0.6",
+  "authors": [
+    "Brandon Krueger <brandon.c.krueger@gmail.com>"
+  ],
+  "description": "An angular directive that utilizes autoNumeric to format an input field as currency as a user types",
+  "keywords": [
+    "angular",
+    "autonumeric",
+    "currency",
+    "formatter"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "autoNumeric": "~1.9.39",
+    "jquery": "~2.1.4"
+  },
+  "homepage": "https://github.com/BrandonCKrueger/angular-currency",
+  "_release": "1.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.6",
+    "commit": "ea520107def6693c65dfb356336462cf95874acf"
+  },
+  "_source": "git://github.com/BrandonCKrueger/angular-currency.git",
+  "_target": "~1.0.6",
+  "_originalSource": "angular-currency",
+  "_direct": true
+}

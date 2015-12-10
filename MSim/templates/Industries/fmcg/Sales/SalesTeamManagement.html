@@ -50,7 +50,7 @@
                                 <label for="inputPassword3">Avg. Salary</label>
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input type="number" ng-model="FMCGDataModel.AvgSalary" popover-trigger="focus" uib-popover-template="FMCGDataModel.AvgSalary < 8000 || FMCGDataModel.AvgSalary > 15000 ? 'salary.html' : null" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
+                                    <input type="text" ng-currency fraction="0" currency-symbol="" ng-model="FMCGDataModel.AvgSalary" popover-trigger="focus" uib-popover-template="FMCGDataModel.AvgSalary < 8000 || FMCGDataModel.AvgSalary > 15000 ? 'salary.html' : null" ng-disabled="isSelectedQuarterOver" class="form-control" id="inputPassword3" placeholder="in %">
                                     <div class="input-group-addon">.00</div>
                                 </div>
                             </div>

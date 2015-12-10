@@ -1,5 +1,11 @@
-﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner","ui.utils.masks"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
-    function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService) {
+﻿var fmcgGame = angular.module("fmcgGame", ["ui.router", "chart.js", "ui.knob", "n3-pie-chart", "nvd3", "treasure-overlay-spinner", "ng-currency"]).controller('fmcgCtrl', ['$scope', '$rootScope', '$http', '$interval', '$timeout', "$state", "PlayerDataService", "TimerService",
+    function ($scope, $rootScope, $http, $interval, $timeout, $state, PlayerDataService, TimerService)   {
+
+        $scope.coptions = {
+            aSign: '',
+            dGroup: 2,
+            mDec : 0
+        };
 
         $scope.$state = $state;
         $scope.animationsEnabled = true;
@@ -154,15 +160,15 @@
             $scope.atldata = [
              {
                  key: "TVAds(%)",
-                 y: $scope.FMCGDataModel.TVAds * 100 / atlsum
+                 y: parseInt($scope.FMCGDataModel.TVAds) * 100 / atlsum
              },
              {
                  key: "NewsAds(%)",
-                 y: $scope.FMCGDataModel.NewspaperAds * 100 / atlsum
+                 y: parseInt($scope.FMCGDataModel.NewspaperAds) * 100 / atlsum
              },
              {
                  key: "HoardAds(%)",
-                 y: $scope.FMCGDataModel.HoardingAds * 100 / atlsum
+                 y: parseInt($scope.FMCGDataModel.HoardingAds) * 100 / atlsum
              }
             ];
 
@@ -361,17 +367,17 @@
                     return (100 - $scope.FMCGDataModel.MustardOilPercentage).toFixed(2)
                 }
                 $scope.FMCGClient.ExMILL = function () {
-                    return $scope.FMCGDataModel.MustardOilPercentage * 120/100 +
-                           $scope.FMCGClient.PalmOilPercentage() * 60/100 + $scope.FMCGDataModel.PackagingMaterial
+                    return $scope.FMCGDataModel.MustardOilPercentage * 120 / 100 +
+                           $scope.FMCGClient.PalmOilPercentage() * 60 / 100 + $scope.FMCGDataModel.PackagingMaterial
                 };
 
                 $scope.FMCGClient.CST = function () { return $scope.FMCGClient.ExMILL() * .02 };
                 $scope.FMCGClient.Freight = 1;
                 $scope.FMCGClient.PriceToCompany = function () { return $scope.FMCGClient.ExMILL() + $scope.FMCGClient.Freight + $scope.FMCGClient.CST() };
-                $scope.FMCGClient.VAT = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin/100) * .05 }
-                $scope.FMCGClient.PriceToDistributor = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin/100) + $scope.FMCGClient.VAT() }
-                $scope.FMCGClient.PriceToRetailer = function () { return $scope.FMCGClient.PriceToDistributor() * (1 + $scope.FMCGDataModel.DistributorMargin/100) }
-                $scope.FMCGClient.PriceToCustomer = function () { return $scope.FMCGClient.PriceToRetailer() * (1 + $scope.FMCGDataModel.RetailerMargin/100) }
+                $scope.FMCGClient.VAT = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin / 100) * .05 }
+                $scope.FMCGClient.PriceToDistributor = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin / 100) + $scope.FMCGClient.VAT() }
+                $scope.FMCGClient.PriceToRetailer = function () { return $scope.FMCGClient.PriceToDistributor() * (1 + $scope.FMCGDataModel.DistributorMargin / 100) }
+                $scope.FMCGClient.PriceToCustomer = function () { return $scope.FMCGClient.PriceToRetailer() * (1 + $scope.FMCGDataModel.RetailerMargin / 100) }
 
                 $scope.FMCGClient.VAT5L = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin5L) * .05 }
                 $scope.FMCGClient.PriceToDistributor5L = function () { return $scope.FMCGClient.PriceToCompany() * (1 + $scope.FMCGDataModel.CompanyMargin5L) + $scope.FMCGClient.VAT() }
@@ -386,15 +392,15 @@
                 $scope.atldata = [
                             {
                                 key: "TVAds(%)",
-                                y: $scope.FMCGDataModel.TVAds * 100 / atlsum
+                                y: parseInt($scope.FMCGDataModel.TVAds) * 100 / atlsum
                             },
                             {
                                 key: "NewsAds(%)",
-                                y: $scope.FMCGDataModel.NewspaperAds * 100 / atlsum
+                                y: parseInt($scope.FMCGDataModel.NewspaperAds) * 100 / atlsum
                             },
                             {
                                 key: "HoardAds(%)",
-                                y: $scope.FMCGDataModel.HoardingAds * 100 / atlsum
+                                y: parseInt($scope.FMCGDataModel.HoardingAds) * 100 / atlsum
                             }
                 ];
 
@@ -415,9 +421,9 @@
 
 
                 $scope.FMCGDataModel.TotalATLExpenseCalculated = function () {
-                    return $scope.FMCGDataModel.TVAds +
-                        $scope.FMCGDataModel.NewspaperAds +
-                        $scope.FMCGDataModel.HoardingAds
+                    return parseInt($scope.FMCGDataModel.TVAds) +
+                        parseInt($scope.FMCGDataModel.NewspaperAds) +
+                        parseInt($scope.FMCGDataModel.HoardingAds)
                 }
                 $scope.FMCGDataModel.TotalBTLExpenseCalculated = function () {
                     return $scope.FMCGDataModel.Promoters +
