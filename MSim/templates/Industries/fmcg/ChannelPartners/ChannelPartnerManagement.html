@@ -108,9 +108,9 @@
                             <div class="form-group" ng-class="{ 'has-error': form.pricetocompany.$invalid}">
                                 <label>Price to Company</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input name="pricetocompany" type="number" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-value="FMCGClient.PriceToCompany()" ng-disabled="isSelectedQuarterOver" class="form-control" />
-                                    <div class="input-group-addon">.00</div>
+                                    <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                                    <input name="pricetocompany" type="text" ng-currency fraction="2" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-model="FMCGClient.PriceToCompany()" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                                    <!--<div class="input-group-addon">.00</div>-->
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{ 'has-error': form.retailmargin.$invalid}">
@@ -120,17 +120,17 @@
                             <div class="form-group" ng-class="{ 'has-error': form.vat.$invalid}">
                                 <label>VAT @ 5%</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input name="vat" type="number" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-value="FMCGClient.VAT5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
-                                    <div class="input-group-addon">.00</div>
+                                    <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                                    <input name="vat" type="text" ng-currency fraction="2" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-model="FMCGClient.VAT5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                                    <!--<div class="input-group-addon">.00</div>-->
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{ 'has-error': form.pricetodistributor.$invalid}">
                                 <label>Price to Distributor</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input name="pricetodistributor" type="number" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-value="FMCGClient.PriceToDistributor5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
-                                    <div class="input-group-addon">.00</div>
+                                    <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                                    <input name="pricetodistributor" type="text" ng-currency fraction="2" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-model="FMCGClient.PriceToDistributor5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                                    <!--<div class="input-group-addon">.00</div>-->
                                 </div>
                             </div>
                             <!--<div class="form-group">
@@ -147,9 +147,9 @@
                             <div class="form-group" ng-class="{ 'has-error': form.pricetoretailer.$invalid}">
                                 <label>Price to Retailer</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input name="pricetoretailer" type="number" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-value="FMCGClient.PriceToRetailer5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
-                                    <div class="input-group-addon">.00</div>
+                                    <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                                    <input name="pricetoretailer" type="text" ng-currency fraction="2" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-model="FMCGClient.PriceToRetailer5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                                    <!--<div class="input-group-addon">.00</div>-->
                                 </div>
                             </div>
                             <div class="form-group" ng-class="{ 'has-error': form.retailmargin.$invalid}">
@@ -164,9 +164,9 @@
                             <div class="form-group" ng-class="{ 'has-error': form.pricetocustomer.$invalid}">
                                 <label>Price to Customer</label>
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                                    <input name="pricetocustomer" type="number" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-value="FMCGClient.PriceToCustomer5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
-                                    <div class="input-group-addon">.00</div>
+                                    <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                                    <input name="pricetocustomer" type="text" ng-currency fraction="2" readonly step="0.01" min="1" max="100" popover="Value between 1 and 100" popover-trigger="focus" required ng-model="FMCGClient.PriceToCustomer5L()" ng-disabled="isSelectedQuarterOver" class="form-control" />
+                                    <!--<div class="input-group-addon">.00</div>-->
                                 </div>
                             </div>
                             <!--</form>-->

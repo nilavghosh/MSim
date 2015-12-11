@@ -56,9 +56,9 @@
                     <div class="form-group">
                         <label>Ex-Mill Price</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="exmillprice" type="number" readonly step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" class="form-control" placeholder="in %" ng-value="FMCGClient.ExMILL()" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input name="exmillprice" type="text" ng-currency fraction="2" readonly step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" class="form-control" placeholder="in %" ng-model="FMCGClient.ExMILL()" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 
@@ -66,9 +66,9 @@
                     <div class="form-group">
                         <label>CST @ 2%</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="cstpercentage" type="number" readonly ng-value="FMCGClient.CST()" class="form-control" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input name="cstpercentage" type="text" ng-currency fraction="2" readonly ng-model="FMCGClient.CST()" class="form-control" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 
@@ -84,9 +84,9 @@
                     <div class="form-group">
                         <label>Price to Company</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="pricetocompany" type="number" readonly ng-value="FMCGClient.PriceToCompany()" class="form-control" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input name="pricetocompany" type="text" ng-currency fraction="2" readonly ng-model="FMCGClient.PriceToCompany()" class="form-control" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 
@@ -112,9 +112,9 @@
                     <div class="form-group">
                         <label>Ex-Mill Price</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="exmillprice" type="number" readonly step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" class="form-control" placeholder="in %" ng-value="FMCGClient.ExMILL()" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input name="exmillprice" type="text" ng-currency fraction="2" readonly step="any" min="0" max="1" popover="Value between 0 and 1" popover-trigger="focus" class="form-control" placeholder="in %" ng-model="FMCGClient.ExMILL()" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 
@@ -122,9 +122,9 @@
                     <div class="form-group">
                         <label>CST @ 2%</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="cstpercentage" type="number" readonly ng-value="FMCGClient.CST()" class="form-control" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input name="cstpercentage" type="text" ng-currency fraction="2" readonly ng-model="FMCGClient.CST()" class="form-control" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 
@@ -140,18 +140,18 @@
                     <div class="form-group">
                         <label>Price to Company</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="pricetocompany" type="number" readonly ng-value="FMCGClient.PriceToCompany()" class="form-control" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input name="pricetocompany" type="text" ng-currency fraction="2" readonly ng-model="FMCGClient.PriceToCompany()" class="form-control" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Place your order</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
                             <input type="text" ng-currency fraction="0" currency-symbol="" ng-model="FMCGDataModel.PlaceanOrder5L" ng-disabled="isSelectedQuarterOver" class="form-control" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
                 </div>
