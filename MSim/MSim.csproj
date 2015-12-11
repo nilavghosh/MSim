@@ -678,11 +678,9 @@
     <Content Include="Scripts\bower_components\angular-cookies\index.js" />
     <Content Include="Scripts\bower_components\angular-currency\angular-currency.js" />
     <Content Include="Scripts\bower_components\angular-currency\karma.conf.js" />
-    <Content Include="Scripts\bower_components\angular-input-masks-standalone.min.js" />
     <Content Include="Scripts\bower_components\angular-knob\app\index.html" />
     <Content Include="Scripts\bower_components\angular-knob\app\scripts\controllers\example.js" />
     <Content Include="Scripts\bower_components\angular-knob\src\angular-knob.js" />
-    <Content Include="Scripts\bower_components\angular-locale_en-in.js" />
     <Content Include="Scripts\bower_components\angular-nvd3\dist\angular-nvd3.js" />
     <Content Include="Scripts\bower_components\angular-nvd3\dist\angular-nvd3.min.js" />
     <Content Include="Scripts\bower_components\angular-nvd3\Gruntfile.js" />
