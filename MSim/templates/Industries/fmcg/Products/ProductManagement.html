@@ -75,9 +75,9 @@
                     <div class="form-group">
                         <label>Freight</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-inr"></i></div>
-                            <input name="freight" type="number" readonly ng-value="FMCGClient.Freight" class="form-control" />
-                            <div class="input-group-addon">.00</div>
+                            <!--<div class="input-group-addon"><i class="fa fa-inr"></i></div>-->
+                            <input type="text" ng-currency fraction="2" name="freight" readonly ng-model="FMCGClient.Freight" class="form-control" />
+                            <!--<div class="input-group-addon">.00</div>-->
                         </div>
                     </div>
 

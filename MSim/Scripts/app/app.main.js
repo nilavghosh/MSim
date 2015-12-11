@@ -152,6 +152,7 @@ appmain.config(['$httpProvider', function ($httpProvider) {
     }
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
+    $httpProvider.interceptors.push('httpResponseErrorInterceptor');
 }]);
 
 angular.module("appMain").config(["$stateProvider", function (t) {
@@ -371,3 +372,38 @@ angular.module("app.controllers").controller("adminCtrl", ["$scope", "$http", fu
 
     $scope.init();
 }]);
+
+
+
+appmain.factory('httpResponseErrorInterceptor', function ($q, $injector) {
+    var failureCount = 0;
+    var failureUrl = "";
+    return {
+        'responseError': function (response) {
+            if ((response.status >= 400 && response.status <= 599) || response.status == -1) {
+                if (failureCount == 0 || failureUrl != response.config.url) {
+                    failureCount = 1;
+                    failureUrl = response.config.url;
+                }
+                else if (failureUrl == response.config.url) {
+                    failureCount++;
+                }
+
+                if (failureCount <= 3) {
+                    // should retry
+                    var $http = $injector.get('$http');
+                    return $http(response.config);
+                }
+                else {
+                    pushMessage("danger", "Check your network connection!");
+                }
+            }
+            else {
+                failureCount = 0;
+                failureUrl = "";
+            }
+            // give up
+            return $q.reject(response);
+        }
+    };
+});
