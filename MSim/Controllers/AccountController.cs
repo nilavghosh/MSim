@@ -461,7 +461,8 @@ namespace MSim.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
+            return RedirectToAction("GameDashboard", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
