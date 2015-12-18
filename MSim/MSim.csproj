@@ -2090,6 +2090,8 @@
     <Content Include="Scripts\landingjs\wow.min.js" />
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js" />
+    <Content Include="Content\login-register.css" />
+    <Content Include="Scripts\login-register.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -2106,6 +2108,7 @@
     <Content Include="templates\Industries\fmcg\MarketReports\MarketReports.html" />
     <Content Include="templates\Industries\fmcg\Rankings\Ranking.html" />
     <Content Include="templates\Industries\fmcg\Results.html" />
+    <Content Include="templates\Landing.html" />
     <Content Include="templates\Main.html" />
     <Content Include="templates\admin\img\avatar.jpg" />
     <Content Include="templates\admin\index.html" />

@@ -73,7 +73,8 @@ namespace MSim
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js",
-                "~/Scripts/linq.js"
+                "~/Scripts/linq.js",
+                "~/Scripts/login-register.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -81,6 +82,7 @@ namespace MSim
                  "~/Scripts/bower_components/metro-bootstrap/dist/css/metro-bootstrap.css",
                  "~/Scripts/bower_components/bootstrap-fileinput/css/fileinput.min.css",
                  "~/Content/Site.css",
+                 "~/Content/login-register.css",
                  "~/Content/rdash-ui/dist/css/rdash.min.css",
                  "~/Content/handsontable/handsontable.full.css",
                  "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
@@ -89,6 +91,7 @@ namespace MSim
                  "~/Scripts/bower_components/animate/animate.min.css",
                  "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.css",
                  "~/Scripts/bower_components/angular-treasure-overlay-spinner/dist/treasure-overlay-spinner.min.css"
+
                   ));
 
 

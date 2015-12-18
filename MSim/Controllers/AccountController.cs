@@ -176,6 +176,7 @@ namespace MSim.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
+                  
                 }
                 AddErrors(result);
             }
@@ -461,8 +462,8 @@ namespace MSim.Controllers
             {
                 return Redirect(returnUrl);
             }
-            //return RedirectToAction("Index", "Home");
-            return RedirectToAction("GameDashboard", "Home");
+            return RedirectToAction("Index", "Home");
+          
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

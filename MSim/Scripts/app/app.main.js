@@ -156,7 +156,10 @@ appmain.config(['$httpProvider', function ($httpProvider) {
 }]);
 
 angular.module("appMain").config(["$stateProvider", function (t) {
-    t.state("index", {
+    t.state("landing", {
+        templateUrl: "/templates/landing.html"
+    })
+    .state("index", {
         templateUrl: "/templates/admin/index.html"
     })
     .state("index.admin", {
@@ -380,7 +383,7 @@ appmain.factory('httpResponseErrorInterceptor', function ($q, $injector) {
     var failureUrl = "";
     return {
         'responseError': function (response) {
-            if ((response.status >= 400 && response.status <= 599) || response.status == -1) {
+            else if ((response.status >= 404 && response.status <= 599) || response.status == -1) {
                 if (failureCount == 0 || failureUrl != response.config.url) {
                     failureCount = 1;
                     failureUrl = response.config.url;
