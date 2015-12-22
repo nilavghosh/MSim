@@ -383,7 +383,7 @@ appmain.factory('httpResponseErrorInterceptor', function ($q, $injector) {
     var failureUrl = "";
     return {
         'responseError': function (response) {
-            else if ((response.status >= 404 && response.status <= 599) || response.status == -1) {
+            if ((response.status >= 400 && response.status <= 599) || response.status == -1) {
                 if (failureCount == 0 || failureUrl != response.config.url) {
                     failureCount = 1;
                     failureUrl = response.config.url;

@@ -237,6 +237,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Content Include="Controllers\AccountController - Copy.txt" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FMCGController.cs" />
     <Compile Include="Controllers\Services\AppMainController.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountBindingModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FMCG\ChannelPartnerData.cs" />
     <Compile Include="Models\FMCG\GamePlayerData.cs" />
@@ -257,12 +259,15 @@
     <Compile Include="Models\FMCG\ReportMapping.cs" />
     <Compile Include="Models\FMCG\UserMarketShare.cs" />
     <Compile Include="Models\FMCG\ResultData.cs" />
+    <Content Include="Models\IdentityModels - Copy.txt" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
     <Compile Include="Models\SelectedGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Providers\ApplicationOAuthProvider - Copy.txt" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Content Include="Results\ChallengeResult - Copy.txt" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

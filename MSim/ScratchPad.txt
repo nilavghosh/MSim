@@ -56,4 +56,16 @@ https://docs.angularjs.org/api/ng/filter/currency
 
 Authentication in angularjs
 Resource Metadata Github
-http://stackoverflow.com/questions/18805054/what-is-the-proper-way-to-log-in-users-using-angular-express
+
+Have to Implement
+https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
+
+
+OWIN/OAuth/Katana Cool Understanding
+http://chris.59north.com/post/What-is-OWIN-and-what-is-it-doing-in-my-new-ASPNET-MVC-project
+http://oauth.net/articles/authentication/
+http://www.mikesdotnetting.com/article/269/asp-net-5-middleware-or-where-has-my-httpmodule-gone
+
+Really good web api authentication tutorial
+http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api
+Oauth from apps and web servers - https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified
