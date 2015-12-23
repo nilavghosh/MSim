@@ -69,3 +69,9 @@ http://www.mikesdotnetting.com/article/269/asp-net-5-middleware-or-where-has-my-
 Really good web api authentication tutorial
 http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api
 Oauth from apps and web servers - https://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified
+
+Form submission
+http://www.angularjshub.com/examples/forms/formsubmission/
+
+Angularjs form url encoding problem when using ng-token-auth or serializer
+https://github.com/angular/angular.js/issues/6039

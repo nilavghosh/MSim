@@ -32,33 +32,23 @@
                 <div class="row header">
                     <div class="col-xs-12">
                         <div class="user pull-right">
-                            <div class="item dropdown">
-                                <a href="#" class="dropdown-toggle">
+                            <div class="item dropdown open">
+                                <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
                                     <img src="templates/admin/img/avatar.jpg">
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li class="dropdown-header">
-                                        Joe Bloggs
+                                        {{user.uid}}
                                     </li>
                                     <li class="divider"></li>
                                     <li class="link">
-                                        <a href="#">
+                                        <a href="#" ui-sref="index.editprofile">
                                             Profile
                                         </a>
                                     </li>
-                                    <li class="link">
-                                        <a href="#">
-                                            Menu Item
-                                        </a>
-                                    </li>
-                                    <li class="link">
-                                        <a href="#">
-                                            Menu Item
-                                        </a>
-                                    </li>
                                     <li class="divider"></li>
                                     <li class="link">
-                                        <a href="#">
+                                        <a href="#" ng-click="logOut()">
                                             Logout
                                         </a>
                                     </li>

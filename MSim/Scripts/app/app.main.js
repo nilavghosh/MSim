@@ -1,127 +1,4 @@
-﻿//var appmain = angular.module("appMain", ["ngRoute", "fmcgGame", "ui.bootstrap"]);
-//appmain.config(['$httpProvider', function ($httpProvider) {
-//    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
-//    $httpProvider.defaults.headers.post = {
-//        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
-//        'Content-Type': 'application/json'
-//    }
-//    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
-//    $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
-//}]);
-
-//appmain.controller('appMainCtrl', ['$scope', '$rootScope', '$location', '$http', '$timeout', function ($scope, $rootScope, $location, $http, $timeout) {
-//    $scope.go = function (hash) {
-//        $location.path(hash + '/' + $rootScope.gameOfChoice.selectedIndustry.industry);
-//    }
-//    $scope.max = 200;
-
-//    $scope.random = function () {
-//        var value = Math.floor((Math.random() * 100) + 1);
-//        var type;
-
-//        if (value < 25) {
-//            type = 'success';
-//        } else if (value < 50) {
-//            type = 'info';
-//        } else if (value < 75) {
-//            type = 'warning';
-//        } else {
-//            type = 'danger';
-//        }
-
-//        $scope.showWarning = (type === 'danger' || type === 'warning');
-
-//        $scope.dynamic = value;
-//        $scope.type = type;
-//    };
-//    $scope.random();
-
-//    $scope.randomStacked = function () {
-//        $scope.stacked = [];
-//        var types = ['success', 'info', 'warning', 'danger'];
-
-//        //for (var i = 0, n = Math.floor((Math.random() * 4) + 1) ; i < n; i++) {
-//        //    var index = Math.floor((Math.random() * 4));
-//        //    $scope.stacked.push({
-//        //        value: Math.floor((Math.random() * 30) + 1),
-//        //        type: types[index]
-//        //    });
-//        //}
-//        $scope.stacked.push({
-//            value: 25,
-//            type: 'info'
-//        });
-//        $scope.stacked.push({
-//            value: 1,
-//            type: 'danger'
-//        });
-//        $scope.stacked.push({
-//            value: 25,
-//            type: 'warning'
-//        });
-//        $scope.stacked.push({
-//            value: 25,
-//            type: 'danger'
-//        });
-//        $scope.stacked.push({
-//                    value: 25,
-//                    type: 'success'
-//                });
-
-//    };
-//    $scope.randomStacked();
-
-
-
-
-
-//    $rootScope.gameOfChoice = {
-//        selectedIndustry: "",
-//        selectedGameId: "",
-//        code: "",
-//    }
-
-
-//    $scope.getGames = function () {
-//        $http.get('/api/appmain/GetGames').
-//        then(function (response) {
-//            $scope.gameCollection = response.data;
-
-//        }, function (response) {
-//            //  pushMessage(response.statusText, 'info');
-//        });
-//    }
-
-
-//    $scope.init = function () {
-//        $scope.getGames();
-//    }
-//    $scope.init();
-
-//}]);
-
-
-//appmain.config(['$routeProvider',
-//function ($routeProvider) {
-//    $routeProvider.
-//         when('/', {
-//             templateUrl: 'templates/Main.html',
-//             controller: 'appMainCtrl'
-//         }).
-//         when('/playGame/:industry', {
-//             templateUrl: function (params) {
-//                 return 'templates/industries/' + params.industry + '/Main.html'
-//             },
-//             resolve: {
-//                 userRegistration: ['registrationService', function (registrationService) {
-//                     return registrationService.CheckRegistration()
-//                 }]
-//             }
-//         })
-//}]);
-
-
-appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
+﻿appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
     var url = 'api/appmain/CheckRegistration';
     var service = {};
     service.CheckRegistration = function () {
@@ -145,15 +22,17 @@ appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location"
 
 
 appmain.config(['$httpProvider', function ($httpProvider) {
-    $httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
-    $httpProvider.defaults.headers.post = {
-        'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
-        'Content-Type': 'application/json'
-    }
+    //$httpProvider.defaults.headers.get = { 'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken") }
+    //$httpProvider.defaults.headers.post = {
+    //    'Authorization': 'Bearer ' + sessionStorage.getItem("accessToken"),
+    //    'Content-Type': 'application/json'
+    //}
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
-    $httpProvider.interceptors.push('httpResponseErrorInterceptor');
+    //$httpProvider.interceptors.push('httpResponseErrorInterceptor');
 }]);
+
+
 
 angular.module("appMain").config(["$stateProvider", function (t) {
     t.state("landing", {
@@ -266,7 +145,7 @@ function AlertsCtrl(e) {
 
 angular.module("appMain").controller("AlertsCtrl", ["$scope", AlertsCtrl]);
 
-function MasterCtrl($scope, e, $http, $location, $rootScope) {
+function MasterCtrl($scope, e, $http, $location, $rootScope, $auth, $state) {
     var o = 992;
     $scope.getWidth = function () {
         return window.innerWidth
@@ -293,6 +172,7 @@ function MasterCtrl($scope, e, $http, $location, $rootScope) {
         }
     };
 
+
     $scope.gridOptions.columnDefs = [
       { name: 'Industry', field: 'industry' },
       { name: 'Game', field: 'game' },
@@ -318,9 +198,71 @@ function MasterCtrl($scope, e, $http, $location, $rootScope) {
        });
     }
 
+    $scope.submitLogin = function () {
 
+        var loginData = {
+            grant_type: 'password',
+            username: $scope.loginForm.email,
+            password: $scope.loginForm.password
+        };
+
+        $auth.submitLogin($.param(loginData))
+          .then(function (resp) {
+              alert("Login Success"); // handle success response
+          })
+          .catch(function (resp) {
+              alert("Login Failed");  // handle error response
+          });
+
+        //$.ajax({
+        //    type: 'POST',
+        //    url: '/api/auth/sign_in',
+        //    data: loginData
+        //}).done(function (data) {
+        //    //self.user(data.userName);
+        //    //// Cache the access token in session storage.
+        //    //sessionStorage.setItem(tokenKey, data.access_token);
+        //    alert("Login Success");
+        //}).fail(function () {
+        //    alert("Login Failed");
+        //});
+    };
+
+
+    $scope.submitRegistration = function () {
+
+        var registrationData = {
+            Email: $scope.registrationForm.email,
+            Password: $scope.registrationForm.password,
+            ConfirmPassword: $scope.registrationForm.password
+        };
+
+        $auth.submitRegistration(registrationData)
+          .then(function (resp) {
+              alert("Registration Success"); // handle success response
+          })
+          .catch(function (resp) {
+              alert("Registration Failed");  // handle error response
+          });
+    };
+
+
+    $scope.logIn = function () {
+        openLoginModal();
+    }
+
+    $scope.logOut = function () {
+        $auth.signOut()
+         .then(function (resp) {
+         })
+         .catch(function (resp) {
+             // handle error response
+         });
+        //$state.go("landing");
+        window.location.href = window.location.origin;
+    }
 }
-angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", "$location", "$rootScope", MasterCtrl]);
+angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", "$location", "$rootScope", "$auth", "$state", MasterCtrl]);
 
 
 

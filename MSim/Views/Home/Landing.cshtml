@@ -6,7 +6,7 @@
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" ng-app="appMain">
 <!--<![endif]-->
 <head>
     <!-- meta charec set -->
@@ -46,18 +46,54 @@
 </head>
 
 <body id="body">
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/angular")
-    @Styles.Render("~/Content/css")
 
+    <div ui-view>
+        <div ng-controller="MasterCtrl" class="body-content">
 
-    <div ui-view class="body-content">
-        <div ng-controller="MasterCtrl">
             <!-- preloader -->
             <div id="preloader">
                 <img src="Content/img/preloader.gif" alt="Preloader">
             </div>
 
+            <!--
+            Fixed Navigation
+            ==================================== -->
+            <header id="navigation" class="navbar-fixed-top navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- responsive nav button -->
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-bars fa-2x"></i>
+                        </button>
+                        <!-- /responsive nav button -->
+                        <!-- logo -->
+                        <a class="navbar-brand" href="#body">
+                            <h1 id="logo">
+                                <img src="Content/img/logo.png" alt="MSim">
+                            </h1>
+                        </a>
+                        <!-- /logo -->
+                    </div>
+
+                    <!-- main nav -->
+                    <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                        <ul id="nav" class="nav navbar-nav">
+                            <li class="current"><a href="#body">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#works">Work</a></li>
+                            <li><a href="#team">Team</a></li>
+                            <li><a ng-show="user.signedIn" ui-sref="index.admin" href="" id="dashBoardLink">SimGames</a></li>
+                            <li><a href="#" id="loginLink" ng-click="user.signedIn == true ? logOut() : logIn()">{{user.signedIn == true ? "Log out" : "Log in"}}</a></li>
+                        </ul>
+                    </nav>
+                    <!-- /main nav -->
+
+                </div>
+            </header>
+            <!--
+            End Fixed Navigation
+            ==================================== -->
             <!--
             Fixed Login
             ==================================== -->
@@ -89,10 +125,10 @@
                                     </div>
                                     <div class="error"></div>
                                     <div class="form loginBox">
-                                        <form method="post" action="/login" accept-charset="UTF-8">
-                                            <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                                            <input id="password" class="form-control" type="password" placeholder="Password" name="password">
-                                            <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                        <form accept-charset="UTF-8" ng-submit="submitLogin()" role="form" ng-init="loginForm = {}">
+                                            <input id="email" class="form-control" type="email" placeholder="Email" name="email" ng-model="loginForm.email">
+                                            <input id="password" class="form-control" type="password" placeholder="Password" name="password" ng-model="loginForm.password">
+                                            <input class="btn btn-default btn-login" type="submit" value="Login">
                                         </form>
                                     </div>
                                 </div>
@@ -100,9 +136,9 @@
                             <div class="box">
                                 <div class="content registerBox" style="display:none;">
                                     <div class="form">
-                                        <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
-                                            <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                                            <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                        <form ng-submit="submitRegistration()" role="form" ng-init="registrationForm = {}" accept-charset="UTF-8">
+                                            <input id="email" class="form-control" type="email" placeholder="Email" name="email" ng-model="registrationForm.email">
+                                            <input id="password" class="form-control" type="password" placeholder="Password" name="password" ng-model="registrationForm.password">
                                             <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
                                             <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
                                         </form>
@@ -131,45 +167,6 @@
             End Login
             ==================================== -->
             <!-- end preloader -->
-            <!--
-            Fixed Navigation
-            ==================================== -->
-            <header id="navigation" class="navbar-fixed-top navbar">
-                <div class="container">
-                    <div class="navbar-header">
-                        <!-- responsive nav button -->
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <i class="fa fa-bars fa-2x"></i>
-                        </button>
-                        <!-- /responsive nav button -->
-                        <!-- logo -->
-                        <a class="navbar-brand" href="#body">
-                            <h1 id="logo">
-                                <img src="Content/img/logo.png" alt="MSim">
-                            </h1>
-                        </a>
-                        <!-- /logo -->
-                    </div>
-
-                    <!-- main nav -->
-                    <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                        <ul id="nav" class="nav navbar-nav">
-                            <li class="current"><a href="#body">Home</a></li>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#works">Work</a></li>
-                            <li><a href="#team">Team</a></li>
-                            <li><a href="/Home/GameDashboard" id="dashBoardLink">SimGames</a></li>
-                            <li><a href="#" id="loginLink" onclick="openLoginModal();">Log in</a></li>
-                        </ul>
-                    </nav>
-                    <!-- /main nav -->
-
-                </div>
-            </header>
-            <!--
-            End Fixed Navigation
-            ==================================== -->
             <!--
             Home Slider
             ==================================== -->
@@ -613,8 +610,6 @@
             <!--
             End Contact Us
             ==================================== -->
-
-
             <footer id="footer" class="footer">
                 <div class="container">
                     <div class="row">
@@ -675,6 +670,11 @@
             <a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
         </div>
     </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @Styles.Render("~/Content/css")
+
+
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
@@ -699,8 +699,8 @@
     <!-- jquery.appear -->
     <script src="Scripts/landingjs/jquery.appear.js"></script>
     <!-- Contact form validation -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+    @*<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>*@
     <!-- Google Map -->
     @*<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>*@
     <!-- jquery easing -->
@@ -721,62 +721,62 @@
     <!-- Custom Functions -->
     <script src="Scripts/landingjs/custom.js"></script>
 
-    <script type="text/javascript">
-        $(function () {
-            /* ========================================================================= */
-            /*	Contact Form
-            /* ========================================================================= */
+    @*<script type="text/javascript">
+            $(function () {
+                /* ========================================================================= */
+                /*	Contact Form
+                /* ========================================================================= */
 
-            $('#contact-form').validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 2
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    message: {
-                        required: true
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "come on, you have a name don't you?",
-                        minlength: "your name must consist of at least 2 characters"
-                    },
-                    email: {
-                        required: "no email, no message"
-                    },
-                    message: {
-                        required: "um...yea, you have to write something to send this form.",
-                        minlength: "thats all? really?"
-                    }
-                },
-                submitHandler: function (form) {
-                    $(form).ajaxSubmit({
-                        type: "POST",
-                        data: $(form).serialize(),
-                        url: "process.php",
-                        success: function () {
-                            $('#contact-form :input').attr('disabled', 'disabled');
-                            $('#contact-form').fadeTo("slow", 0.15, function () {
-                                $(this).find(':input').attr('disabled', 'disabled');
-                                $(this).find('label').css('cursor', 'default');
-                                $('#success').fadeIn();
-                            });
+                $('#contact-form').validate({
+                    rules: {
+                        name: {
+                            required: true,
+                            minlength: 2
                         },
-                        error: function () {
-                            $('#contact-form').fadeTo("slow", 0.15, function () {
-                                $('#error').fadeIn();
-                            });
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        message: {
+                            required: true
                         }
-                    });
-                }
+                    },
+                    messages: {
+                        name: {
+                            required: "come on, you have a name don't you?",
+                            minlength: "your name must consist of at least 2 characters"
+                        },
+                        email: {
+                            required: "no email, no message"
+                        },
+                        message: {
+                            required: "um...yea, you have to write something to send this form.",
+                            minlength: "thats all? really?"
+                        }
+                    },
+                    submitHandler: function (form) {
+                        $(form).ajaxSubmit({
+                            type: "POST",
+                            data: $(form).serialize(),
+                            url: "process.php",
+                            success: function () {
+                                $('#contact-form :input').attr('disabled', 'disabled');
+                                $('#contact-form').fadeTo("slow", 0.15, function () {
+                                    $(this).find(':input').attr('disabled', 'disabled');
+                                    $(this).find('label').css('cursor', 'default');
+                                    $('#success').fadeIn();
+                                });
+                            },
+                            error: function () {
+                                $('#contact-form').fadeTo("slow", 0.15, function () {
+                                    $('#error').fadeIn();
+                                });
+                            }
+                        });
+                    }
+                });
             });
-        });
-    </script>
+        </script>*@
 
 </body>
 @*@section Scripts {

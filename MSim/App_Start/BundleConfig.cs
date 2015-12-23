@@ -44,6 +44,8 @@ namespace MSim
                  "~/Scripts/bower_components/angular-locale_en-in.js",
                  "~/Scripts/bower_components/ng-currency/dist/ng-currency.js",
                  "~/Scripts/bower_components/angular-input-masks-standalone.min.js",
+                 "~/Scripts/bower_components/angular-cookie/angular-cookie.js",
+                 "~/Scripts/bower_components/ng-token-auth/dist/ng-token-auth.js",
                  "~/Scripts/app/appbasic.main.js",
                  "~/Scripts/bower_components/handsontable/dist/handsontable.full.js",
                  "~/Scripts/handsontable-extensions/angular/ngHandsontable.js"
