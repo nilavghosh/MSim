@@ -34,6 +34,7 @@ using System.Net.Http.Headers;
 namespace MSim.Controllers.Services
 {
     [Authorize]
+    [RoutePrefix("api/FMCGService")]
     public class FMCGServiceController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -64,7 +65,7 @@ namespace MSim.Controllers.Services
 
 
         [HttpPost]
-        [ActionName("GetPlayerData")]
+        [Route("GetPlayerData")]
         public async Task<object> GetPlayerData(Object registrationChoice)
         {
             RegisteredGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<RegisteredGame>(registrationChoice.ToString());
@@ -99,7 +100,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("SavePlayerData")]
+        [Route("SavePlayerData")]
         public async Task<object> SavePlayerData(Object playerdata)
         {
             var playerdatadocument = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)playerdata).ToString());
@@ -124,7 +125,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpGet]
-        [ActionName("GetStaticData")]
+        [Route("GetStaticData")]
         public async Task<object> GetStaticData()
         {
             var filter = new BsonDocument();
@@ -135,7 +136,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("GetStartedQuarters")]
+        [Route("GetStartedQuarters")]
         public async Task<object> GetStartedQuarters(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -176,7 +177,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("GetAllPlayerDataForGame")]
+        [Route("GetAllPlayerDataForGame")]
         public async Task<object> GetAllPlayerDataForGame(Object registrationChoice)
         {
             SelectedGame selectedgame = Newtonsoft.Json.JsonConvert.DeserializeObject<SelectedGame>(registrationChoice.ToString());
@@ -224,7 +225,7 @@ namespace MSim.Controllers.Services
 
         [AllowAnonymous]
         [HttpPost]
-        [ActionName("Upload")]
+        [Route("Upload")]
         public async Task<object> Upload()
         {
             var file = HttpContext.Current.Request.Files.Count > 0 ?
@@ -285,7 +286,7 @@ namespace MSim.Controllers.Services
 
         [AllowAnonymous]
         [HttpPost]
-        [ActionName("GetMarketReport")]
+        [Route("GetMarketReport")]
         public async Task<object> GetMarketReport(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -410,7 +411,7 @@ namespace MSim.Controllers.Services
 
         [AllowAnonymous]
         [HttpPost]
-        [ActionName("GetFMCGGameDesignerDataSheet")]
+        [Route("GetFMCGGameDesignerDataSheet")]
         public async Task<object> GetFMCGGameDesignerDataSheet(Object registrationChoice)
         {
             var filepath = HostingEnvironment.MapPath(@"~/App_Data/GameModel/FMCG.xlsx");
@@ -507,7 +508,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("GetFinancialReport")]
+        [Route("GetFinancialReport")]
         public async Task<object> GetFinancialReport(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -660,7 +661,7 @@ namespace MSim.Controllers.Services
 
         [AllowAnonymous]
         [HttpPost]
-        [ActionName("StartQuarter")]
+        [Route("StartQuarter")]
         public async Task<object> StartQuarter(SelectedGame selectedgame)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -683,7 +684,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("GetPlayerRankings")]
+        [Route("GetPlayerRankings")]
         public async Task<object> GetPlayerRankings(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -802,7 +803,7 @@ namespace MSim.Controllers.Services
 
 
         [HttpPost]
-        [ActionName("GetTimeLeft")]
+        [Route("GetTimeLeft")]
         public async Task<object> GetTimeLeft(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -841,7 +842,7 @@ namespace MSim.Controllers.Services
 
         // POST api/<controller>
         [HttpPost]
-        [ActionName("SaveFMCGData")]
+        [Route("SaveFMCGData")]
         public async Task<IHttpActionResult> SaveFMCGData(Object CPData)
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -864,7 +865,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("SaveFMCGAdminStaticSheet")]
+        [Route("SaveFMCGAdminStaticSheet")]
         public async Task<IHttpActionResult> SaveFMCGAdminStaticSheet(Object adminStaticData)
         {
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)adminStaticData).ToString());
@@ -879,7 +880,7 @@ namespace MSim.Controllers.Services
 
 
         [HttpPost]
-        [ActionName("SaveFMCGStaticData")]
+        [Route("SaveFMCGStaticData")]
         public async Task<IHttpActionResult> SaveFMCGStaticData(Object staticData)
         {
             var document = BsonDocument.Parse(((Newtonsoft.Json.Linq.JObject)staticData).ToString());
@@ -893,7 +894,7 @@ namespace MSim.Controllers.Services
         }
 
         [HttpPost]
-        [ActionName("GetFinancialsasExcel")]
+        [Route("GetFinancialsasExcel")]
         public async Task<HttpResponseMessage> GetFinancialsasExcel(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");
@@ -990,7 +991,7 @@ namespace MSim.Controllers.Services
         }
         
         [HttpPost]
-        [ActionName("GetFinancialsasExcel2")]
+        [Route("GetFinancialsasExcel2")]
         public async Task<HttpResponseMessage> GetFinancialsasExcel2(Object registrationChoice)
         {
             var collection = database.GetCollection<BsonDocument>("registeredGames");

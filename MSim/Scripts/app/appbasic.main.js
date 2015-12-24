@@ -7,8 +7,10 @@ appmain = angular.module("appMain", ["fmcgGame", "ui.bootstrap", "ui.router", "n
      // will extend the defaults using angular.extend
      //Getting ng-token-auth to work with WebApi https://github.com/lynndylanhurley/ng-token-auth/issues/56
      $authProvider.configure({
+         apiUrl: 'api',
          storage: 'localStorage',
          emailRegistrationPath: '/Account/Register',
+         signOutUrl: '/Account/Logout',
          handleLoginResponse: function (resp, $auth) {
              // the persistData method will store the token for subsequent requests.
              // this will be stored using cookies or localStorage depending on your config. 

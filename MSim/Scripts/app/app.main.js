@@ -1,5 +1,5 @@
 ﻿appmain.factory("registrationService", ["$http", "$rootScope", "$q", "$location", function ($http, $rootScope, $q, $location) {
-    var url = 'api/appmain/CheckRegistration';
+    var url = '/api/appmain/CheckRegistration';
     var service = {};
     service.CheckRegistration = function () {
         return $http.post(url, $rootScope.selectedgame).then(
@@ -256,9 +256,7 @@ function MasterCtrl($scope, e, $http, $location, $rootScope, $auth, $state) {
          .then(function (resp) {
          })
          .catch(function (resp) {
-             // handle error response
          });
-        //$state.go("landing");
         window.location.href = window.location.origin;
     }
 }
