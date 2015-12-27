@@ -22,5 +22,7 @@ namespace MSim.Models.FMCG
     {
         public string username { get; set; }
         public bool joined { get; set; }
+        public string timeofjoining { get; set; }
+        public bool istester { get; set; }
     }
 }

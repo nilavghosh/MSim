@@ -80,20 +80,19 @@ namespace MSim
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                 "~/Scripts/bower_components/font-awesome/css/font-awesome.min.css",
                  "~/Scripts/bower_components/bootstrap/dist/css/bootstrap.css",
                  "~/Scripts/bower_components/metro-bootstrap/dist/css/metro-bootstrap.css",
                  "~/Scripts/bower_components/bootstrap-fileinput/css/fileinput.min.css",
-                 "~/Content/Site.css",
                  "~/Content/login-register.css",
+                 "~/Content/Site.css",
                  "~/Content/rdash-ui/dist/css/rdash.min.css",
                  "~/Content/handsontable/handsontable.full.css",
                  "~/Scripts/handsontable-extensions/plugins/bootstrap/handsontable.bootstrap.css",
                  "~/Scripts/bower_components/nvd3/build/nv.d3.min.css",
-                 "~/Scripts/bower_components/font-awesome/css/font-awesome.min.css",
                  "~/Scripts/bower_components/animate/animate.min.css",
                  "~/Scripts/bower_components/angular-ui-grid/ui-grid.min.css",
                  "~/Scripts/bower_components/angular-treasure-overlay-spinner/dist/treasure-overlay-spinner.min.css"
-
                   ));
 
 

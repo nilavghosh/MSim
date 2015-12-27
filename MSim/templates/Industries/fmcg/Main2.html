@@ -1,184 +1,240 @@
-﻿<section class="container view" id="homepage" ng-controller="fmcgCtrl">
-    <div class="row">
-        <div class="col-md-3 col-md-offset-5">
-            <knob knob-data="data" knob-options="options7"></knob>
-        </div>
-    </div>
-    <!--<div class="row">
-        <div class="col-md-6 col-md-offset-4">
-            <br />
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary active" btn-radio="1" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(1)" ng-class="{'disabled': !isQuarter1Started}"><strong>QTR-1</strong></label>
-                <label class="btn btn-primary" btn-radio="2" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(2)" ng-class="{'disabled': !isQuarter2Started}"><strong>QTR-2</strong></label>
-                <label class="btn btn-primary" btn-radio="3" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(3)" ng-class="{'disabled': !isQuarter3Started}"><strong>QTR-3</strong></label>
-                <label class="btn btn-primary" btn-radio="4" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(4)" ng-class="{'disabled': !isQuarter4Started}"><strong>QTR-4</strong></label>
+﻿<section class="view" id="homepage" ng-controller="fmcgCtrl">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">MSim</a>
             </div>
-            <br />
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <!--<ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" ng-click="logOut()">Log Out</a></li>
+                    <li><a href="#" ng-click="simgames()">SimGames</a></li>
+                    <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>-->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5">
+                <knob knob-data="data" knob-options="options7"></knob>
+            </div>
         </div>
-    </div>-->
-    <div class="row">
-        <div class="col-md-12">
-            <ul class="nav nav-tabs">
-                <li ng-click="isQuarter1Started ? setServiceSelectedQuarter(1) : notStartedAlert(1)" ng-class="{'active': selectedquarter == 1 && isQuarter1Started,  'disabled': !isQuarter1Started}">
-                    <a href=" #home" data-toggle="tab" title="Quarter 1">
-                        <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter1Started && !isQuarter1Over, 'four' : isQuarter1Started && isQuarter1Over}">
-                            Q1
-                        </span>
-                    </a>
-                </li>
-
-
-                <li ng-click="isQuarter2Started ? setServiceSelectedQuarter(2) :notStartedAlert(2)" ng-class="{'active': selectedquarter == 2 && isQuarter2Started,  'disabled': !isQuarter2Started}">
-                    <a href=" #profile" data-toggle="tab" title="Quarter 2">
-                        <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter2Started && !isQuarter2Over, 'four' : isQuarter2Started && isQuarter2Over}">
-                            Q2
-                        </span>
-                    </a>
-                </li>
-
-
-                <li ng-click="isQuarter3Started ? setServiceSelectedQuarter(3):notStartedAlert(3)" ng-class="{'active': selectedquarter == 3 && isQuarter3Started,  'disabled': !isQuarter3Started}">
-                    <a href="#messages" data-toggle="tab" title="Quarter 3">
-                        <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter3Started && !isQuarter3Over, 'four' : isQuarter3Started && isQuarter3Over}">
-                            Q3
-                        </span>
-                    </a>
-                </li>
-
-                <li ng-click="isQuarter4Started ? setServiceSelectedQuarter(4):notStartedAlert(4)" ng-class="{'active': selectedquarter == 4 && isQuarter4Started,  'disabled': !isQuarter4Started}">
-                    <a href="#settings" data-toggle="tab" title="Quarter 4">
-                        <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter4Started && !isQuarter4Over, 'four' : isQuarter4Started && isQuarter4Over}">
-                            Q4
-                        </span>
-                    </a>
-                </li>
-
-                <li ng-click="isQuarter4Started && isQuarter4Over ? setCompletedandActive() : notCompletedAlert()" ng-class=" {'active': gamecompletedactive == true,'disabled' : !isQuarter4Over}">
-                    <a href="" data-toggle="tab" title="Completed">
-                        <span class="round-tabs" ng-class="{'one' : isQuarter4Started && isQuarter4Over}">
-                            <i class="glyphicon glyphicon-ok"></i>
-                        </span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-2">
-            <a type="button" ng-hide="$state.current.name == 'playgame' || $state.current.name == 'playgame.Dashboard'" ui-sref="playgame.Dashboard" href="" class="btn btn-success">Back to Dashboard</a>
-        </div>
-        <!--<div class="col-md-3 col-md-offset-3">
-            <knob knob-data="data" knob-options="options7"></knob>
-            <br />
+        <!--<div class="row">
+            <div class="col-md-6 col-md-offset-4">
+                <br />
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active" btn-radio="1" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(1)" ng-class="{'disabled': !isQuarter1Started}"><strong>QTR-1</strong></label>
+                    <label class="btn btn-primary" btn-radio="2" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(2)" ng-class="{'disabled': !isQuarter2Started}"><strong>QTR-2</strong></label>
+                    <label class="btn btn-primary" btn-radio="3" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(3)" ng-class="{'disabled': !isQuarter3Started}"><strong>QTR-3</strong></label>
+                    <label class="btn btn-primary" btn-radio="4" ng-model="selectedquarter" ng-click="setServiceSelectedQuarter(4)" ng-class="{'disabled': !isQuarter4Started}"><strong>QTR-4</strong></label>
+                </div>
+                <br />
+            </div>
         </div>-->
-    </div>
-    <treasure-overlay-spinner active='spinner.active'>
-        <div ui-view>
-            <div ng-class="{'notstartedmessage' : gameStarted }" class="row">
-                <div class="col-md-6 col-md-offset-2">
-                    <pre style="text-align:center">Game Not Started Yet!</pre>
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li ng-click="isQuarter1Started ? setServiceSelectedQuarter(1) : notStartedAlert(1)" ng-class="{'active': selectedquarter == 1 && isQuarter1Started,  'disabled': !isQuarter1Started}">
+                        <a href=" #home" data-toggle="tab" title="Quarter 1">
+                            <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter1Started && !isQuarter1Over, 'four' : isQuarter1Started && isQuarter1Over}">
+                                Q1
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li ng-click="isQuarter2Started ? setServiceSelectedQuarter(2) :notStartedAlert(2)" ng-class="{'active': selectedquarter == 2 && isQuarter2Started,  'disabled': !isQuarter2Started}">
+                        <a href=" #profile" data-toggle="tab" title="Quarter 2">
+                            <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter2Started && !isQuarter2Over, 'four' : isQuarter2Started && isQuarter2Over}">
+                                Q2
+                            </span>
+                        </a>
+                    </li>
+
+
+                    <li ng-click="isQuarter3Started ? setServiceSelectedQuarter(3):notStartedAlert(3)" ng-class="{'active': selectedquarter == 3 && isQuarter3Started,  'disabled': !isQuarter3Started}">
+                        <a href="#messages" data-toggle="tab" title="Quarter 3">
+                            <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter3Started && !isQuarter3Over, 'four' : isQuarter3Started && isQuarter3Over}">
+                                Q3
+                            </span>
+                        </a>
+                    </li>
+
+                    <li ng-click="isQuarter4Started ? setServiceSelectedQuarter(4):notStartedAlert(4)" ng-class="{'active': selectedquarter == 4 && isQuarter4Started,  'disabled': !isQuarter4Started}">
+                        <a href="#settings" data-toggle="tab" title="Quarter 4">
+                            <span class="round-tabs" ng-class="{'animated flash infinite one': isQuarter4Started && !isQuarter4Over, 'four' : isQuarter4Started && isQuarter4Over}">
+                                Q4
+                            </span>
+                        </a>
+                    </li>
+
+                    <li ng-click="isQuarter4Started && isQuarter4Over ? setCompletedandActive() : notCompletedAlert()" ng-class=" {'active': gamecompletedactive == true,'disabled' : !isQuarter4Over}">
+                        <a href="" data-toggle="tab" title="Completed">
+                            <span class="round-tabs" ng-class="{'one' : isQuarter4Started && isQuarter4Over}">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                </ul>
             </div>
-
-            <span ng-class="{'hideme' : !gameStarted}">
-                <div class="row">
-                    <br />
-                    <br />
-                    <div class="col-md-9  col-md-offset-1">
-                        <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover4}" ng-mouseenter="hover4 = true" ng-mouseleave="hover4=false">
-                                <a ui-sref="playgame.ManagingProduct" href="">
-                                    <img class="tile-img" src="/Content/icons/product.png" />
-                                    <h4>MANAGING PRODUCT</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium tile-teal" ng-class="{'animated bounce':hover1}" ng-mouseenter="hover1 = true" ng-mouseleave="hover1=false">
-                                <a ui-sref=" playgame.ManagingChannelPartner" href="">
-                                    <img class="tile-img" src="/Content/icons/channelpartners.png" />
-                                    <h4>MANAGING CHANNEL PARTNER</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover2}" ng-mouseenter="hover2 = true" ng-mouseleave="hover2=false">
-                                <a ui-sref="playgame.ManagingSalesTeam" href="">
-                                    <img class="tile-img" src="/Content/icons/sales.png" />
-                                    <h4>MANAGING SALES TEAM</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover3}" ng-mouseenter="hover3 = true" ng-mouseleave="hover3=false">
-                                <a ui-sref="playgame.ManagingPromotions" href="">
-                                    <img class="tile-img" src="/Content/icons/promotions.png" />
-                                    <h4>MANAGING PROMOTIONS</h4>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9  col-md-offset-1">
-                        <div ng-show="selectedquarter > 1" class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium tile-teal" ng-class="{'animated bounce':hover4}" ng-mouseenter="hover4 = true" ng-mouseleave="hover4=false">
-                                <a ui-sref="playgame.Q1-Reports({selectedquarter : selectedquarter-1})" href="">
-                                    <img class="tile-img" src="/Content/icons/financialreport.png" />
-                                    <h4>FINANCIAL REPORTS - Q{{selectedquarter-1}}</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <div ng-show="selectedquarter > 1" class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.MarketReports({selectedquarter : selectedquarter-1})" href="">
-                                    <img class="tile-img" src="/Content/icons/marketresearch.png" />
-                                    <h4>MARKET RESEARCH REPORTS - Q{{selectedquarter-1}}</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <div ng-show="isSelectedQuarterOver" class="col-sm-6 col-md-3">
-                            <div class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.Rankings({selectedquarter : selectedquarter})" href="">
-                                    <img class="tile-img" src="/Content/icons/rankings.png" />
-                                    <h4>PLAYER RANKINGS AFTER Q{{selectedquarter}} !</h4>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div ng-show="false" class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.ManagingPromotions" href=""><h4>MAILBOX</h4></a>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div ng-show="false" class="thumbnail tile tile-medium">
-                                <a ui-sref="playgame.ManagingPromotions" href=""><h4>HELP!!!</h4></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9  col-md-offset-1">
-                        <div class="col-sm-6 col-md-3">
-                            <div ng-show="false" class="thumbnail tile tile-medium tile-teal">
-                                <a href="/fmcg/Manage"><h4>ADMIN</h4></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--<div class="row">
-                    <div class="col-md-6 col-md-offset-2">
-                        <pre style="text-align:center">Do not refresh the browser when playing the game!</pre>
-                    </div>
-                </div>-->
-            </span>
-
         </div>
-    </treasure-overlay-spinner>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+                <a type="button" ng-hide="$state.current.name == 'playgame' || $state.current.name == 'playgame.Dashboard'" ui-sref="playgame.Dashboard" href="" class="btn btn-success">Back to Dashboard</a>
+            </div>
+            <!--<div class="col-md-3 col-md-offset-3">
+                <knob knob-data="data" knob-options="options7"></knob>
+                <br />
+            </div>-->
+        </div>
+        <treasure-overlay-spinner active='spinner.active'>
+            <div ui-view>
+                <div ng-class="{'notstartedmessage' : gameStarted }" class="row">
+                    <div class="col-md-6 col-md-offset-2">
+                        <pre style="text-align:center">Game Not Started Yet!</pre>
+                    </div>
+                </div>
+
+                <span ng-class="{'hideme' : !gameStarted}">
+                    <div class="row">
+                        <br />
+                        <br />
+                        <div class="col-md-9  col-md-offset-1">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover4}" ng-mouseenter="hover4 = true" ng-mouseleave="hover4=false">
+                                    <a ui-sref="playgame.ManagingProduct" href="">
+                                        <img class="tile-img" src="/Content/icons/product.png" />
+                                        <h4>MANAGING PRODUCT</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium tile-teal" ng-class="{'animated bounce':hover1}" ng-mouseenter="hover1 = true" ng-mouseleave="hover1=false">
+                                    <a ui-sref=" playgame.ManagingChannelPartner" href="">
+                                        <img class="tile-img" src="/Content/icons/channelpartners.png" />
+                                        <h4>MANAGING CHANNEL PARTNER</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover2}" ng-mouseenter="hover2 = true" ng-mouseleave="hover2=false">
+                                    <a ui-sref="playgame.ManagingSalesTeam" href="">
+                                        <img class="tile-img" src="/Content/icons/sales.png" />
+                                        <h4>MANAGING SALES TEAM</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium" ng-class="{'animated bounce':hover3}" ng-mouseenter="hover3 = true" ng-mouseleave="hover3=false">
+                                    <a ui-sref="playgame.ManagingPromotions" href="">
+                                        <img class="tile-img" src="/Content/icons/promotions.png" />
+                                        <h4>MANAGING PROMOTIONS</h4>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9  col-md-offset-1">
+                            <div ng-show="selectedquarter > 1" class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium tile-teal" ng-class="{'animated bounce':hover4}" ng-mouseenter="hover4 = true" ng-mouseleave="hover4=false">
+                                    <a ui-sref="playgame.Q1-Reports({selectedquarter : selectedquarter-1})" href="">
+                                        <img class="tile-img" src="/Content/icons/financialreport.png" />
+                                        <h4>FINANCIAL REPORTS - Q{{selectedquarter-1}}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div ng-show="selectedquarter > 1" class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium">
+                                    <a ui-sref="playgame.MarketReports({selectedquarter : selectedquarter-1})" href="">
+                                        <img class="tile-img" src="/Content/icons/marketresearch.png" />
+                                        <h4>MARKET RESEARCH REPORTS - Q{{selectedquarter-1}}</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div ng-show="isSelectedQuarterOver" class="col-sm-6 col-md-3">
+                                <div class="thumbnail tile tile-medium">
+                                    <a ui-sref="playgame.Rankings({selectedquarter : selectedquarter})" href="">
+                                        <img class="tile-img" src="/Content/icons/rankings.png" />
+                                        <h4>PLAYER RANKINGS AFTER Q{{selectedquarter}} !</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div ng-show="false" class="thumbnail tile tile-medium">
+                                    <a ui-sref="playgame.ManagingPromotions" href=""><h4>MAILBOX</h4></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div ng-show="false" class="thumbnail tile tile-medium">
+                                    <a ui-sref="playgame.ManagingPromotions" href=""><h4>HELP!!!</h4></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9  col-md-offset-1">
+                            <div class="col-sm-6 col-md-3">
+                                <div ng-show="false" class="thumbnail tile tile-medium tile-teal">
+                                    <a href="/fmcg/Manage"><h4>ADMIN</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row">
+                        <div class="col-md-6 col-md-offset-2">
+                            <pre style="text-align:center">Do not refresh the browser when playing the game!</pre>
+                        </div>
+                    </div>-->
+                </span>
+
+            </div>
+        </treasure-overlay-spinner>
+    </div>
 </section>
 
 <script type="text/javascript">

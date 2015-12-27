@@ -27,27 +27,24 @@
 
     <!-- CSS
     ================================================== -->
-    <!-- Fontawesome Icon font -->
-    @*<link rel="stylesheet" href="Content/landingcss/font-awesome.min.css">*@
-    <!-- Twitter Bootstrap css -->
-    @*<link rel="stylesheet" href="Content/landingcss/bootstrap.min.css">*@
-    <!-- jquery.fancybox  -->
+    @*<!-- jquery.fancybox  -->
     <link rel="stylesheet" href="Content/landingcss/jquery.fancybox.css">
-    <!-- animate -->
-    @*<link rel="stylesheet" href="Content/landingcss/animate.css">*@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="Content/landingcss/main.css">
     <!-- media-queries -->
-    <link rel="stylesheet" href="Content/landingcss/media-queries.css">
-
-    <!-- Modernizer Script for old Browsers -->
-    @*<script src="Scripts/landingjs/modernizr-2.6.2.min.js"></script>*@
+    <link rel="stylesheet" href="Content/landingcss/media-queries.css">*@
 
 </head>
 
 <body id="body">
-
+    @Styles.Render("~/Content/css")
     <div ui-view>
+        <!-- jquery.fancybox  -->
+        <link rel="stylesheet" href="Content/landingcss/jquery.fancybox.css">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="Content/landingcss/main.css">
+        <!-- media-queries -->
+        <link rel="stylesheet" href="Content/landingcss/media-queries.css">
         <div ng-controller="MasterCtrl">
 
             <!-- preloader -->
@@ -81,10 +78,10 @@
                         <ul id="nav" class="nav navbar-nav">
                             <li class="current"><a href="#body">Home</a></li>
                             <li><a href="#features">Features</a></li>
-                            <li><a href="#works">Work</a></li>
+                            @*<li><a href="#works">Work</a></li>*@
                             <li><a href="#team">Team</a></li>
                             <li><a ng-show="user.signedIn" ui-sref="index.admin" href="" id="dashBoardLink">SimGames</a></li>
-                            <li><a href="#" id="loginLink" ng-click="user.signedIn == true ? logOut() : logIn()">{{user.signedIn == true ? "Log out" : "Log in"}}</a></li>
+                            <li><a href="#" id="loginLink" ng-click="user.signedIn == true ? logOutfromHome() : logIn()">{{user.signedIn == true ? "Log out" : "Log in"}}</a></li>
                         </ul>
                     </nav>
                     <!-- /main nav -->
@@ -186,7 +183,7 @@
                         <!-- single slide -->
                         <div class="item active" style="background-image: url(Content/img/banner.jpg);">
                             <div class="carousel-caption">
-                                <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Brandi</span>!</h2>
+                                <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> MSim</span>!</h2>
                                 <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
                                 <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
 
@@ -228,11 +225,10 @@
             <!--
             Features
             ==================================== -->
-
             <section id="features" class="features">
                 <div class="container">
                     <div class="row">
-
+                        <br />
                         <div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
                             <h2>Features</h2>
                             <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -292,10 +288,10 @@
             Our Works
             ==================================== -->
 
-            <section id="works" class="works clearfix">
+            @*<section id="works" class="works clearfix">
                 <div class="container">
                     <div class="row">
-
+                        <br />
                         <div class="sec-title text-center">
                             <h2>Works</h2>
                             <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -395,7 +391,7 @@
                 </div>
 
 
-            </section>
+            </section>*@
 
             <!--
             End Our Works
@@ -407,7 +403,7 @@
             <section id="team" class="team">
                 <div class="container">
                     <div class="row">
-
+                        <br />
                         <div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
                             <h2>Meet Our Team</h2>
                             <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -418,7 +414,7 @@
                         </div>
 
                         <!-- single member -->
-                        <figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                        @*<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="member-thumb">
                                 <img src="Content/img/team/member-1.png" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay">
@@ -433,10 +429,10 @@
                             </div>
                             <h4>Bir Singh</h4>
                             <span>Co-Founder & CEO</span>
-                        </figure>
+                        </figure>*@
                         <!-- end single member -->
                         <!-- single member -->
-                        <figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                        <figure class="team-member col-md-offset-3 col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
                             <div class="member-thumb">
                                 <img src="Content/img/team/member-2.png" alt="Team Member" class="img-responsive">
                                 <figcaption class="overlay">
@@ -450,7 +446,7 @@
                                 </figcaption>
                             </div>
                             <h4>Nilav Ghosh</h4>
-                            <span>Co-Founder & CTO</span>
+                            @*<span>Co-Founder & CTO</span>*@
                         </figure>
                         <!-- end single member -->
                         <!-- single member -->
@@ -468,7 +464,7 @@
                                 </figcaption>
                             </div>
                             <h4>Kumar Saurabh</h4>
-                            <span>Co-Founder & COO</span>
+                            @*<span>Co-Founder & COO</span>*@
                         </figure>
                         <!-- end single member -->
 
@@ -484,7 +480,7 @@
             Some fun facts
             ==================================== -->
 
-            <section id="facts" class="facts">
+            @*<section id="facts" class="facts">
                 <div class="parallax-overlay">
                     <div class="container">
                         <div class="row number-counters">
@@ -532,7 +528,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>*@
 
             <!--
             End Some fun facts
@@ -544,7 +540,7 @@
             <section id="contact" class="contact">
                 <div class="container">
                     <div class="row mb50">
-
+                        <br />
                         <div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
                             <h2>Let’s Discuss</h2>
                             <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
@@ -559,8 +555,8 @@
                             <div class="contact-address">
                                 <h3>We can be reached at</h3>
                                 <p>Block-D Lajpat Nagar-I</p>
-                                <p>New Delhi, India</p>
-                                <p>110024</p>
+                                <p>New Delhi, India - 110024</p>
+                                <p>Ph : +91 982070492</p>
                             </div>
                         </div>
                         <!-- end contact address -->
@@ -614,14 +610,14 @@
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms">
+                        <div class="col-md-offset-4 col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms">
                             <div class="footer-single">
-                                <img src="Content/img/footer-logo.png" alt="">
+                                <p><h3>MSim</h3></p>
                                 <p>MSim Technologies Pvt. Ltd. is a simulation firm which specializes in designing simulations for managers in the real market scenario. </p>
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                        @*<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
                             <div class="footer-single">
                                 <h6>Subscribe </h6>
                                 <form action="#" class="subscribe">
@@ -654,16 +650,16 @@
                                     <li><a href="#">Pressroom</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>*@
 
                     </div>
-                    <div class="row">
+                    @*<div class="row">
                         <div class="col-md-12">
                             <p class="copyright text-center">
                                 Copyright © 2015 <a href="http://themefisher.com/">Themefisher</a>. All rights reserved. Designed & developed by <a href="http://themefisher.com/">Themefisher</a>
                             </p>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </footer>
 
@@ -672,10 +668,6 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/angular")
-    @Styles.Render("~/Content/css")
-
-
-
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/games")

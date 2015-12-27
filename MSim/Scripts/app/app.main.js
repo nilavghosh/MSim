@@ -48,7 +48,21 @@ angular.module("appMain").config(["$stateProvider", function (t) {
     })
     .state("index.playgames", {
         url: "/playgames",
-        templateUrl: "/templates/admin/templates/playgames.html"
+        templateUrl: "/templates/admin/templates/playgames.html",
+        params: {
+            seldate: null,
+        },
+        resolve: {
+            games: function ($http, $stateParams) {
+                return $http.post('/api/appmain/GetGamesForDate', $stateParams.seldate).then(function (response) {
+                    return response.data;
+                });
+            }
+        },
+        controller: function ($scope, games) {
+            $scope.gridOptions.data = games;
+            //$scope.items = financials;
+        }
     })
     .state("index.editprofile", {
         url: "editprofile",
@@ -208,7 +222,8 @@ function MasterCtrl($scope, e, $http, $location, $rootScope, $auth, $state) {
 
         $auth.submitLogin($.param(loginData))
           .then(function (resp) {
-              alert("Login Success"); // handle success response
+              $('#loginModal').modal('hide');
+              //alert("Login Success"); // handle success response
           })
           .catch(function (resp) {
               alert("Login Failed");  // handle error response
@@ -251,13 +266,24 @@ function MasterCtrl($scope, e, $http, $location, $rootScope, $auth, $state) {
         openLoginModal();
     }
 
-    $scope.logOut = function () {
+    $scope.logOutfromHome = function () {
+        $auth.signOut()
+         .then(function (resp) {
+         })
+         .catch(function (resp) {
+         });
+    }
+
+    $rootScope.logOut = function () {
         $auth.signOut()
          .then(function (resp) {
          })
          .catch(function (resp) {
          });
         window.location.href = window.location.origin;
+    }
+    $rootScope.simgames = function () {
+        $state.go("index.admin");
     }
 }
 angular.module("appMain").controller("MasterCtrl", ["$scope", "$cookieStore", "$http", "$location", "$rootScope", "$auth", "$state", MasterCtrl]);

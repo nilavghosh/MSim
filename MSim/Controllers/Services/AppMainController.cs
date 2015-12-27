@@ -173,6 +173,29 @@ namespace MSim.Controllers.Services
                 //string playersDatainJson = games.ToJson(new JsonWriterSettings { OutputMode = JsonOutputMode.Strict });
                 if (games.Count == 1)
                 {
+                    List<Player> players = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Player>>(games[0]["players"].ToString());
+                    var istester = players.Where(p => p.username == User.Identity.Name).First().istester;
+                    if (istester)
+                    {
+                        ObjectId gameid = ObjectId.Parse(selectedgame._id);
+
+                        //var builder = Builders<BsonDocument>.Filter;
+                        //var filter = Builders<BsonDocument>.Filter.Eq("_id", gameid);
+
+
+                        var game = games[0];
+                        game["started"] = true;
+                        game["q1starttime"] = DateTime.UtcNow;
+                        game["q2starttime"] = DateTime.UtcNow.AddMinutes(game["q1duration"].AsInt32);
+                        game["q3starttime"] = DateTime.UtcNow.AddMinutes(game["q2duration"].AsInt32 + game["q1duration"].AsInt32); ;
+                        game["q4starttime"] = DateTime.UtcNow.AddMinutes(game["q1duration"].AsInt32 + game["q1duration"].AsInt32 + game["q3duration"].AsInt32); ;
+                        game["q1started"] = true;
+                        game["q2started"] = false;
+                        game["q3started"] = false;
+                        game["q4started"] = false;
+
+                        await collection.ReplaceOneAsync(filter, game);
+                    }
                     return true;
                 }
                 else
