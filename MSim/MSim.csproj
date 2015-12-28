@@ -300,7 +300,6 @@
     <Content Include="Content\img\logo1.png" />
     <Content Include="Content\img\parallax\city.jpg" />
     <Content Include="Content\img\preloader.gif" />
-    <Content Include="Content\img\team\member-1.png" />
     <Content Include="Content\img\team\member-2.png" />
     <Content Include="Content\img\team\member-3.png" />
     <Content Include="Content\img\works\item-1.jpg" />
