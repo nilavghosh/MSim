@@ -237,6 +237,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Content Include="Content\login-register.css" />
     <Content Include="Controllers\AccountController - Copy.txt" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FMCGController.cs" />
@@ -2108,7 +2109,6 @@
     <Content Include="Scripts\landingjs\wow.min.js" />
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js" />
-    <Content Include="Content\login-register.css" />
     <Content Include="Scripts\login-register.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
