@@ -237,6 +237,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Content Include="Content\img\banners\banner_original.jpg" />
+    <Content Include="Content\img\banners\people-woman-coffee-meeting.jpg" />
     <Content Include="Content\login-register.css" />
     <Content Include="Controllers\AccountController - Copy.txt" />
     <Compile Include="Controllers\AccountController.cs" />
