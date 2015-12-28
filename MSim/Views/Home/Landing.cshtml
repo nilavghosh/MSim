@@ -28,11 +28,11 @@
     <!-- CSS
     ================================================== -->
     @*<!-- jquery.fancybox  -->
-    <link rel="stylesheet" href="Content/landingcss/jquery.fancybox.css">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="Content/landingcss/main.css">
-    <!-- media-queries -->
-    <link rel="stylesheet" href="Content/landingcss/media-queries.css">*@
+        <link rel="stylesheet" href="Content/landingcss/jquery.fancybox.css">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="Content/landingcss/main.css">
+        <!-- media-queries -->
+        <link rel="stylesheet" href="Content/landingcss/media-queries.css">*@
 
 </head>
 
@@ -65,11 +65,12 @@
                         </button>
                         <!-- /responsive nav button -->
                         <!-- logo -->
-                        <a class="navbar-brand" href="#body">
+                        @*<a class="navbar-brand" href="#body">
                             <h1 id="logo">
-                                <img src="Content/img/logo.png" alt="MSim">
-                            </h1>
-                        </a>
+                                     <img src="Content/img/logo.png" alt="MSim">
+                                </h1>
+                        </a>*@
+                        <a class="navbar-brand" href="#">MSim</a>
                         <!-- /logo -->
                     </div>
 
@@ -173,8 +174,8 @@
 
                     <!-- Indicators bullet -->
                     <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        @*<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>*@
+                        @*<li data-target="#carousel-example-generic" data-slide-to="1"></li>*@
                     </ol>
                     <!-- End Indicators bullet -->
                     <!-- Wrapper for slides -->
@@ -183,9 +184,9 @@
                         <!-- single slide -->
                         <div class="item active" style="background-image: url(Content/img/banner.jpg);">
                             <div class="carousel-caption">
-                                <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> MSim</span>!</h2>
-                                <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
-                                <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
+                                <h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated"><span> MSim</span>!</h2>
+                                <h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">Let the game begin!</span></h3>
+                                @*<p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>*@
 
                                 <ul class="social-links text-center">
                                     <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
@@ -197,20 +198,20 @@
                         </div>
                         <!-- end single slide -->
                         <!-- single slide -->
-                        <div class="item" style="background-image: url(Content/img/banner.jpg);">
-                            <div class="carousel-caption">
-                                <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
-                                <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
-                                <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
+                        @*<div class="item" style="background-image: url(Content/img/banner.jpg);">
+                                <div class="carousel-caption">
+                                    <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Meet<span> Team</span>!</h2>
+                                    <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">/creative</span> one page template.</h3>
+                                    <p data-wow-duration="500ms" class="wow slideInRight animated">We are a team of professionals</p>
 
-                                <ul class="social-links text-center">
-                                    <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-                                    <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-                                    <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                    <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                                    <ul class="social-links text-center">
+                                        <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+                                        <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+                                        <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                        <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>*@
                         <!-- end single slide -->
 
                     </div>
@@ -287,111 +288,110 @@
             <!--
             Our Works
             ==================================== -->
-
             @*<section id="works" class="works clearfix">
-                <div class="container">
-                    <div class="row">
-                        <br />
-                        <div class="sec-title text-center">
-                            <h2>Works</h2>
-                            <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-                        </div>
+                    <div class="container">
+                        <div class="row">
+                            <br />
+                            <div class="sec-title text-center">
+                                <h2>Works</h2>
+                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                            </div>
 
-                        <div class="sec-sub-title text-center">
-                            <p>We are a business simulation firm specializing in the Business Simulation Games. </p>
-                        </div>
+                            <div class="sec-sub-title text-center">
+                                <p>We are a business simulation firm specializing in the Business Simulation Games. </p>
+                            </div>
 
-                        <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
-                            <ul class="text-center">
-                                <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
-                                <li><a href="javascript:;" data-filter=".Simulations" class="filter">Simulations</a></li>
-                                <li><a href="javascript:;" data-filter=".Quizzes" class="filter">Quizzes</a></li>
-                                <li><a href="javascript:;" data-filter=".Case Studies" class="filter">Case Studies</a></li>
-                                <li><a href="javascript:;" data-filter=".Articles" class="filter">Articles</a></li>
-                            </ul>
+                            <div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
+                                <ul class="text-center">
+                                    <li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
+                                    <li><a href="javascript:;" data-filter=".Simulations" class="filter">Simulations</a></li>
+                                    <li><a href="javascript:;" data-filter=".Quizzes" class="filter">Quizzes</a></li>
+                                    <li><a href="javascript:;" data-filter=".Case Studies" class="filter">Case Studies</a></li>
+                                    <li><a href="javascript:;" data-filter=".Articles" class="filter">Articles</a></li>
+                                </ul>
+                            </div>
+
                         </div>
+                    </div>
+
+                    <div class="project-wrapper">
+
+                        <figure class="mix work-item Simulations">
+                            <img src="Content/img/works/item-1.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-1.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Quizzes">
+                            <img src="Content/img/works/item-2.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-2.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Case Studies">
+                            <img src="Content/img/works/item-3.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-3.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Articles">
+                            <img src="Content/img/works/item-4.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-4.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Simulations">
+                            <img src="Content/img/works/item-5.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-5.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Articles">
+                            <img src="Content/img/works/item-6.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-6.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Case Studies">
+                            <img src="Content/img/works/item-7.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-7.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="mix work-item Quizzes">
+                            <img src="Content/img/works/item-8.jpg" alt="">
+                            <figcaption class="overlay">
+                                <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-8.jpg"><i class="fa fa-eye fa-lg"></i></a>
+                                <h4>Labore et dolore magnam</h4>
+                                <p>Photography</p>
+                            </figcaption>
+                        </figure>
 
                     </div>
-                </div>
-
-                <div class="project-wrapper">
-
-                    <figure class="mix work-item Simulations">
-                        <img src="Content/img/works/item-1.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-1.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Quizzes">
-                        <img src="Content/img/works/item-2.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-2.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Case Studies">
-                        <img src="Content/img/works/item-3.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-3.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Articles">
-                        <img src="Content/img/works/item-4.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-4.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Simulations">
-                        <img src="Content/img/works/item-5.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-5.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Articles">
-                        <img src="Content/img/works/item-6.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-6.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Case Studies">
-                        <img src="Content/img/works/item-7.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-7.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="mix work-item Quizzes">
-                        <img src="Content/img/works/item-8.jpg" alt="">
-                        <figcaption class="overlay">
-                            <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="Content/img/works/item-8.jpg"><i class="fa fa-eye fa-lg"></i></a>
-                            <h4>Labore et dolore magnam</h4>
-                            <p>Photography</p>
-                        </figcaption>
-                    </figure>
-
-                </div>
 
 
-            </section>*@
+                </section>*@
 
             <!--
             End Our Works
@@ -415,21 +415,21 @@
 
                         <!-- single member -->
                         @*<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-                            <div class="member-thumb">
-                                <img src="Content/img/team/member-1.png" alt="Team Member" class="img-responsive">
-                                <figcaption class="overlay">
-                                    <h5>voluptatem quia voluptas </h5>
-                                    <p>sit aspernatur aut odit aut fugit,</p>
-                                    <ul class="social-links text-center">
-                                        <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-                                        <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-                                        <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                    </ul>
-                                </figcaption>
-                            </div>
-                            <h4>Bir Singh</h4>
-                            <span>Co-Founder & CEO</span>
-                        </figure>*@
+                                <div class="member-thumb">
+                                    <img src="Content/img/team/member-1.png" alt="Team Member" class="img-responsive">
+                                    <figcaption class="overlay">
+                                        <h5>voluptatem quia voluptas </h5>
+                                        <p>sit aspernatur aut odit aut fugit,</p>
+                                        <ul class="social-links text-center">
+                                            <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
+                                            <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
+                                            <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
+                                        </ul>
+                                    </figcaption>
+                                </div>
+                                <h4>Bir Singh</h4>
+                                <span>Co-Founder & CEO</span>
+                            </figure>*@
                         <!-- end single member -->
                         <!-- single member -->
                         <figure class="team-member col-md-offset-3 col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
@@ -479,56 +479,55 @@
             <!--
             Some fun facts
             ==================================== -->
-
             @*<section id="facts" class="facts">
-                <div class="parallax-overlay">
-                    <div class="container">
-                        <div class="row number-counters">
+                    <div class="parallax-overlay">
+                        <div class="container">
+                            <div class="row number-counters">
 
-                            <div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-                                <h2>Some Fun Facts</h2>
-                                <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
-                            </div>
+                                <div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
+                                    <h2>Some Fun Facts</h2>
+                                    <div class="devider"><i class="fa fa-heart-o fa-lg"></i></div>
+                                </div>
 
-                            <!-- first count item -->
-                            <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-                                <div class="counters-item">
-                                    <i class="fa fa-clock-o fa-3x"></i>
-                                    <strong data-to="3200">0</strong>
-                                    <!-- Set Your Number here. i,e. data-to="56" -->
-                                    <p>Hours of Work</p>
+                                <!-- first count item -->
+                                <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
+                                    <div class="counters-item">
+                                        <i class="fa fa-clock-o fa-3x"></i>
+                                        <strong data-to="3200">0</strong>
+                                        <!-- Set Your Number here. i,e. data-to="56" -->
+                                        <p>Hours of Work</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                                <div class="counters-item">
-                                    <i class="fa fa-users fa-3x"></i>
-                                    <strong data-to="120">0</strong>
-                                    <!-- Set Your Number here. i,e. data-to="56" -->
-                                    <p>Satisfied Clients</p>
+                                <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
+                                    <div class="counters-item">
+                                        <i class="fa fa-users fa-3x"></i>
+                                        <strong data-to="120">0</strong>
+                                        <!-- Set Your Number here. i,e. data-to="56" -->
+                                        <p>Satisfied Clients</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-                                <div class="counters-item">
-                                    <i class="fa fa-rocket fa-3x"></i>
-                                    <strong data-to="360">0</strong>
-                                    <!-- Set Your Number here. i,e. data-to="56" -->
-                                    <p> Projects Delivered </p>
+                                <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                                    <div class="counters-item">
+                                        <i class="fa fa-rocket fa-3x"></i>
+                                        <strong data-to="360">0</strong>
+                                        <!-- Set Your Number here. i,e. data-to="56" -->
+                                        <p> Projects Delivered </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-                                <div class="counters-item">
-                                    <i class="fa fa-trophy fa-3x"></i>
-                                    <strong data-to="6454">0</strong>
-                                    <!-- Set Your Number here. i,e. data-to="56" -->
-                                    <p>Awards Won</p>
+                                <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
+                                    <div class="counters-item">
+                                        <i class="fa fa-trophy fa-3x"></i>
+                                        <strong data-to="6454">0</strong>
+                                        <!-- Set Your Number here. i,e. data-to="56" -->
+                                        <p>Awards Won</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- end first count item -->
+                                <!-- end first count item -->
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>*@
+                </section>*@
 
             <!--
             End Some fun facts
@@ -618,48 +617,48 @@
                         </div>
 
                         @*<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <div class="footer-single">
-                                <h6>Subscribe </h6>
-                                <form action="#" class="subscribe">
-                                    <input type="text" name="subscribe" id="subscribe">
-                                    <input type="submit" value="&#8594;" id="subs">
-                                </form>
-                                <p>eusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <div class="footer-single">
+                                    <h6>Subscribe </h6>
+                                    <form action="#" class="subscribe">
+                                        <input type="text" name="subscribe" id="subscribe">
+                                        <input type="submit" value="&#8594;" id="subs">
+                                    </form>
+                                    <p>eusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <div class="footer-single">
-                                <h6>Explore</h6>
-                                <ul>
-                                    <li><a href="#">Inside Us</a></li>
-                                    <li><a href="#">Flickr</a></li>
-                                    <li><a href="#">Google</a></li>
-                                    <li><a href="#">Forum</a></li>
-                                </ul>
+                            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                                <div class="footer-single">
+                                    <h6>Explore</h6>
+                                    <ul>
+                                        <li><a href="#">Inside Us</a></li>
+                                        <li><a href="#">Flickr</a></li>
+                                        <li><a href="#">Google</a></li>
+                                        <li><a href="#">Forum</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <div class="footer-single">
-                                <h6>Support</h6>
-                                <ul>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Market Blog</a></li>
-                                    <li><a href="#">Help Center</a></li>
-                                    <li><a href="#">Pressroom</a></li>
-                                </ul>
-                            </div>
-                        </div>*@
+                            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
+                                <div class="footer-single">
+                                    <h6>Support</h6>
+                                    <ul>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Market Blog</a></li>
+                                        <li><a href="#">Help Center</a></li>
+                                        <li><a href="#">Pressroom</a></li>
+                                    </ul>
+                                </div>
+                            </div>*@
 
                     </div>
                     @*<div class="row">
-                        <div class="col-md-12">
-                            <p class="copyright text-center">
-                                Copyright © 2015 <a href="http://themefisher.com/">Themefisher</a>. All rights reserved. Designed & developed by <a href="http://themefisher.com/">Themefisher</a>
-                            </p>
-                        </div>
-                    </div>*@
+                            <div class="col-md-12">
+                                <p class="copyright text-center">
+                                    Copyright © 2015 <a href="http://themefisher.com/">Themefisher</a>. All rights reserved. Designed & developed by <a href="http://themefisher.com/">Themefisher</a>
+                                </p>
+                            </div>
+                        </div>*@
                 </div>
             </footer>
 

@@ -157,7 +157,7 @@ body > section,
 }
 
 .navbar-brand {
-  padding: 0;
+  padding: 10px;
 }
 
 .navbar-nav li a {
