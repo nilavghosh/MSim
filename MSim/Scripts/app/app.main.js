@@ -252,12 +252,29 @@ function MasterCtrl($scope, e, $http, $location, $rootScope, $auth, $state) {
             ConfirmPassword: $scope.registrationForm.password
         };
 
+        var loginData = {
+            grant_type: 'password',
+            username: $scope.registrationForm.email,
+            password: $scope.registrationForm.password
+        };
+
+
+
+
         $auth.submitRegistration(registrationData)
           .then(function (resp) {
               alert("Registration Success"); // handle success response
+              $auth.submitLogin($.param(loginData))
+              .then(function (resp) {
+                  $('#loginModal').modal('hide');
+                  //alert("Login Success"); // handle success response
+              })
+          .catch(function (resp) {
+              alert("Login Failed");  // handle error response
+          });
           })
           .catch(function (resp) {
-              alert("Registration Failed");  // handle error response
+              alert("Registration Failed - " + resp.data.modelState[""][0]);  // handle error response
           });
     };
 
