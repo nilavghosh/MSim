@@ -29,7 +29,7 @@ appmain.config(['$httpProvider', function ($httpProvider) {
     //}
     $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
     $httpProvider.defaults.headers.post['Cache-Control'] = 'no-cache';
-    //$httpProvider.interceptors.push('httpResponseErrorInterceptor');
+    $httpProvider.interceptors.push('httpResponseErrorInterceptor');
 }]);
 
 
