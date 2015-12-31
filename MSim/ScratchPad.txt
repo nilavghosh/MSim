@@ -73,6 +73,11 @@ Oauth from apps and web servers - https://aaronparecki.com/articles/2012/07/29/1
 Form submission
 http://www.angularjshub.com/examples/forms/formsubmission/
 
+Login Modals:
+http://www.creative-tim.com/product/login-and-register-modal
+http://bootsnipp.com/snippets/featured/modal-login-with-jquery-effects
+https://codyhouse.co/demo/login-signup-modal-window/index.html#0
+
 Angularjs form url encoding problem when using ng-token-auth or serializer
 https://github.com/angular/angular.js/issues/6039
 

@@ -21,7 +21,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 
 /* Set padding to display errors that occur during databinding */
@@ -307,4 +307,9 @@ pre {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.landingpagea{
+    color: #428bca !important; 
+    text-decoration: none !important;
 }
